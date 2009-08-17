@@ -1,0 +1,226 @@
+\documentclass{article}
+\title{Course Design Document\\Software Tools, Techniques and Practices\\for Engineering Studies}
+\author{Asokan Pichai\\Prabhu Ramachandran}
+\date{}
+\parindent=0pt
+\begin{document}
+\maketitle
+
+\subsection{Preamble} 
+\begin{description}
+  \item[Version] 0.8
+  \item[Purpose] This document captures the design of the Software
+      Tools, Techniques and Practices course. This course is designed
+      under the project on ``Adoption of Open Source Software in Science
+      and Engineering Education'' at Indian Institute of Technology,
+      Bombay funded by the National Mission on Education through
+      Information and Communication Technology, Ministry of Human
+      Resources Development under the thrust area of ``Adaptation and
+      deployment of open source packages equivalent to MATLAB, ORCAD etc''.
+
+  \item[Recipients] in no particular order
+  \begin{enumerate}
+     \item Kannan Moudgalya
+     \item Venkatesh Choppella
+     \item Madhu Belur
+     \item Mani Bhushan
+     \item Eric Jones
+     \item Travis Oliphant
+     \item Greg Wilson
+  \end{enumerate}
+\end{description}
+\newpage
+
+\section{Specifications}
+\begin{description}
+
+\item[Audience] The course is meant for students of BE/BTech and ME/MTech programmes. While it is open to all students,
+    it has been designed with students of non-CS, non-IT streams only.
+\begin{itemize}
+\item Separate courses will be designed along similar lines targetted to students of Bsc/MSc in Physics, Chemistry and Mathematics. These courses will predominantly but not necessarily use the same tools.
+\item For students of Statistics a broadly similar course using R will be designed. 
+\item Each of these courses will have a corresponding `Train the Teachers' course.
+\end{itemize}
+
+\item[Background] The students will possess good computer usage skills and some programming knowledge
+\begin{itemize}
+\item Good computer usage skills is typically using computers for preparing documents, sending email etc.
+\item Some programming knowledge is basic understanding of coding such as operators, assignments, conditionals, loops
+    and functions.
+\item Knowledge of any specific language or operating system is NOT assumed.
+\end{itemize}
+
+\item[Context] Engineering students use computers for a large number of
+    curricular tasks--mostly computation centred. However, they do not
+    see this as coding or programming tasks and usually are not even
+    aware of the tools and techniques that will help them to handle
+    these tasks better. This results in less than optimal use of their
+    time and resources. This also causes difficulties when it comes
+    tocollaboration and building on other people's work. This program is
+    intended to train such students in good software practices and tools
+    for producing code and documentation.
+\end{description}
+
+\newpage
+
+\section{Course Objectives}
+\emph{Each objective is associated with a level in the Revised Bloom's
+Taxonomy - which is a standard pedagogic tool for curriculum planning,
+instructional delivery and assessment. Please refer to:
+http://www.apa.org/ed/new\_blooms.html for a one page explanation.} 
+
+
+After successfully completing the program, the participants will be able to:
+\begin{enumerate}
+\item \label{intro} understand how software tools work together and how they can be used in tandem to carry out tasks,\hfill \texttt{RBT U\phantom{p}}
+\item \label{cmd} use unix command line tools to carry out common (mostly text processing) tasks,\hfill \texttt{RBT Ap}
+\item \label{pdf} to generate professional documents, \hfill \texttt{RBT Ap}
+\item \label{VC} use version control effectively--for both code and documents,\hfill \texttt{RBT Ap}
+\item \label{scr} automate tasks by writing shell scripts and python scripts,\hfill \texttt{RBT Ap}
+\item \label{sty} realise the impact of coding style and readbility on quality,\hfill \texttt{RBT U\phantom{p}}
+\item \label{py} write mid-sized programs that carry out typical engineering/numerical computations such as those that involve (basic) manipulation of large arrays in an efficient manner,\hfill \texttt{RBT Ap}
+\item \label{plot} generate 2D and simple 3D plots, \hfill \texttt{RBT Ap}
+\item \label{dbg} debug programs using a standardised approach,\hfill \texttt{RBT Ap}
+\item \label{test} understand the importance of tests and the philosophy of Test Driven Development,\hfill \texttt{RBT U\phantom{p}}
+\item \label{unit} write unit tests and improve the quality of code.  \hfill \texttt{RBT Ap}
+    \end{enumerate}
+\section{Assessment Strategies}
+We will use tests and quizzes during the course and an end of course project to evaluate the degree of achievement of the objective. The projects will be be individual but sufficient hooks will be built into projects that the participants need to work together. Such hooks will be in the nature of building dependencies--A's code will call B's function etc--rather than making people work in teams.
+
+\section{Module Plan}
+The objectives listed against the modules may be covered only partially in that module. In other words, each module may cover one or more objectives fully or partially. And each objective may be handled in one or more modules--partially or fully. 
+
+\begin{tabular}{||l|l|l|r||}\hline\hline
+Seq & Module  & Course Objectives & Duration\\
+Num & Name    & Covered           & (Hours)\\\hline 
+1 & Using Linux Tools        & \ref{intro}, \ref{cmd}, \ref{scr}, \ref{dbg} and  \ref{test} & 7\\\hline
+2 & Basic Python Programming & \ref{scr}, \ref{sty}, \ref{dbg} and \ref{test}               & 8\\\hline 
+3 & LaTeX                    & \ref{pdf} and \ref{scr}                                      & 2\\\hline
+4 & Version Control          & \ref{VC}                                                     & 2\\\hline
+5 & Coding Style \& Approach & \ref{sty} and \ref{test}                                     & 2\\\hline
+6 & Test Driven Development  & \ref{test}, \ref{unit}, \ref{cmd} and \ref{scr}              & 4\\\hline
+7 & Advanced Python          & \ref{py}, \ref{dbg}, \ref{plot} and \ref{test}               & 8\\\hline
+8 & Project                  & All applied                                                  & 6\\\hline
+\end{tabular}    
+
+Session Count = 39 + 1 Buffer
+\subsection*{Note}
+\begin{itemize}
+    \item All sessions will be held in rooms where students are sitting before a computer.
+    \item We will use \texttt{bzr} as the version control tool. The course materials will be duplicated with other tools
+          such as \texttt{hg, git, svn}.
+    \item It is expected that shell scripting covered in module 1 will act as a revision for basic programming
+      concepts.
+\end{itemize}     
+
+\section{Module 1: Using Linux Tools}
+\label{ULT}
+\subsection{Module Objectives}
+After successfully completing this module a participant will be able to:
+	\begin{itemize}
+	\item Understand the design philosophy of *nix \hfill U\phantom{p}
+	\item Use Linux as their day-to-day operating system\hfill Ap
+	\item Use the text processing tools such as \texttt{grep, tr}\hfill Ap
+	\item Write and execute (bash) shell scripts\hfill Ap
+	\item Use a text editor comfortably\hfill Ap
+	\end{itemize}
+\subsection{Suggested Reading}
+\begin{enumerate}
+	\item "In the beginning..." by Neal Stephenson
+	\item "The Unix Programming Environment" by Kernighan and Pike
+\end{enumerate}
+\subsection{Session Plan}
+\begin{tabular}{llr}
+Session & Topic & Duration\\\hline
+1 & Introduction to the course                                       & ~5 mts\\
+  & Historical background and implications. Why Unix?                & 10 mts\\
+  & Getting started--logging in; \tt{ls, date, who, cd, mkdir}       & 10 mts\\
+  & Getting help: \tt{apropos, man, info}                            & 10 mts\\
+  & Basic file handling: \tt{cp, mv, rm}                             & 10 mts\\
+  & First session buffer                                             & ~5 mts\\\hline
+
+2 & Command line arguments                                           & ~5 mts\\
+  & Basic text processing: \tt{head, tail, cut, paste}               & 15 mts\\
+  & Shell meta characters                                            & 10 mts\\
+  & Looking at files: \tt{cat, less}                                 & ~5 mts\\
+  & Directory structure: \tt{man hier, ls -l}                        & ~5 mts\\
+  & Permissions and ownership, \tt{chmod, chown}                     & 10 mts\\\hline
+
+3 & Redirection and Piping                                           & 10 mts\\
+  & More text processing: \tt{grep, tr}                              & 10 mts\\
+  & Elementary regex: . ? * \^ \$ [ ]                                  & 15 mts\\
+  & One liners: show lines n to m, show directories                  & 15 mts\\\hline
+
+4 & More text processing: \tt{join, sort, uniq}                      & 10 mts\\
+  & Generating a word frequency list                                 & 10 mts\\
+  & Basic editing and editors: vim, scite                            & 10 mts\\
+  & Personalising your environment: \tt{.bashrc, .vimrc}             & 10 mts\\
+  & Subshells and \tt{source}                                        & 10 mts\\\hline
+
+5 & More tools: \tt{tar, zip, diff, cmp, comm}                       & 25 mts\\
+  & Environment variables, \tt{set}                                  & 10 mts\\
+  & Writing simple shell scripts                                     & 15 mts\\\hline
+
+6 & Control structures and operators in bash                         & 20 mts\\
+  & Writing shell scripts                                            & 30 mts\\\hline
+
+7 & Functions in bash scripts                                        & 20 mts\\
+  & Assessment Test                                                  & 30 mts\\\hline\hline
+\end{tabular}
+
+\section{Module 2: Basic Python Programming}
+\label{BPyP}
+\subsection{Module Objectives}
+After successfully completing this module a participant will be able to:
+	\begin{itemize}
+            \item write modular, procedural code in python, \hfill RBT Ap
+            \item understand the functional features of python, \hfill RBT U\phantom{p}
+            \item understand the object model of python, \hfill RBT U\phantom{p}
+            \item write programs using objects \hfill RBT Ap
+	\end{itemize}
+\subsection{Suggested Reading}
+\begin{itemize}
+    \item Python tutorial available at http://www.python.org/doc/tut
+    \item ``Dive into Python'' by Mark Pilgrim
+\end{itemize}
+
+\begin{tabular}{llr}
+Session & Topic & Duration\\\hline
+1 & Introduction to the Python language. Philosophy           & 25 mts\\
+  & The interpreter(\texttt{ipython}--python as calculator        & \\
+  & Editing and running a .py file                            & \\
+  & Basic data types and operators: Numeric and string        & \\
+  & Syntax: \tt{while, if, raw\_input(), int(), def}          & \\
+  & Problem set 1                                             & 25 mts\\\hline
+
+2 & lists and tuples: basic operations                        & 15 mts\\
+  & Syntax: \tt{range(),for, len()}                           & \\
+  & Code Reading: Example set 1                               & 10 mts\\
+  & Problem set 2                                             & 25 mts\\\hline
+
+3 & Strings: basic operations                                 & 10 mts\\
+  & Introduction to the standard library                      & \\
+  & I/O: reading and writing files                            & 15 mts\\
+  & Problem set 3                                             & 25 mts\\\hline
+
+4 & Dictionaries: basic operations                            & 10 mts\\
+  & Modules and code organization                             & 10 mts\\
+  & Executing modules as scripts: \texttt{\_\_main\_\_}       &\\
+  & \texttt{import} and overview of major modules             & 15 mts\\
+  & Problem set 4                                             & 15 mts\\\hline  
+
+5 & Interim Assessment                                        & 30 mts\\
+  & Functional approach: overview                             & 25 mts\\
+  & \texttt{map, filter, reduce} and list comprehensions      & \\\hline
+
+6 & Classes and Objects                                       & 20 mts\\
+  & Writing Object-oriented code                              & 30 mts\\
+  & Code Reading: Example set 2                               &\\\hline
+
+7 & Case Studies:                                             & 50 mts\\
+  & png notation                                              &\\              
+  & result html generation                                    &\\\hline
+8 & Assessment                                                & 50 mts\\\hline\hline
+\end{tabular}
+
+\end{document}

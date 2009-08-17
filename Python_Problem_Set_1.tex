@@ -1,0 +1,91 @@
+\documentclass[11pt]{article}
+\title{Basic Python Problem Set 1}
+\author{Asokan Pichai}
+\date{}
+\begin{document}
+\maketitle
+\section{Pyramids}
+\begin{enumerate}
+    \item Write a program to display the following pyramid. The number of lines in the pyramid should not be hard-coded.
+        It should be obtained from the user.  The pyramid should appear as close to the centre of the screen as possible.
+        \begin{verbatim}
+                     *
+                    ***
+                   *****
+                  *******
+        \end{verbatim}
+    \item Write a program to display the following pyramid. The number of lines in the pyramid should not be hard-coded.
+        It should be obtained from the user.  The pyramid should appear as close to the centre of the screen as possible.
+        \begin{verbatim}
+                     *
+                    * *
+                   * * *
+                  * * * *
+        \end{verbatim}
+    \item Write a program to display the following pyramid. The number of lines has to be a parameter obtained from the
+        user. The pyramid must appear aligned to the left edge of the screen.
+        \begin{verbatim}
+        1
+        2 2
+        3 3 3
+        4 4 4 4
+        \end{verbatim}
+    \item Write a program to display the following pyramid. The number of lines has to be a parameter obtained from the
+        user. The pyramid must appear aligned to the left edge of the screen.
+        \begin{verbatim}
+          1
+          2   4
+          3   6   9
+          4   8  12  16
+          5  10  15  20  25
+        \end{verbatim}
+    \item Write a program to display the following output. The last number where the program will stop printing has to
+        be a parameter obtained from the user. The pyramid must appear aligned to the left edge of the screen. Note that
+        depending on the last number, the base of the pyramid may be smaller than the line above it.
+        \begin{verbatim}
+          1
+          2   3
+          4   5   6
+          7   8   9  10
+         11  12  
+        \end{verbatim}
+\end{enumerate}
+\section{Some mathematics}
+\begin{enumerate}
+    \item Write a program to calculate the gcd of two numbers.
+    \item Write a program to generate all the Armstrong numbers: three numbers that are equal to the sum of the cubes of
+        their digits: that is $abc = a^3 + b^3 + c^3$
+    \item Write a program that lists all four digit numbers that are perfect squares \emph{and} have all their digits
+        even. An example is $6400$ which is $80^2$. Note that in order to be listed a four digit number must satisfy
+        both criteria. For example, $5625$ is a square, it does not have all digits even and
+        $4842$ is not a square and hence they should not appear in the output. You can assume that two functions
+        $areDigitsEven()$ and $isSquare()$ are available. (Please ask the instructor for the exact location of these
+        functions and copy them to your area.)
+\end{enumerate}
+\section{Code}
+\begin{verbatim}
+#-------------------------------- #
+# Accepts an integer and returns  #
+# True if all digits are even     #
+# False otherwise                 #
+#-------------------------------- #
+def areDigitsEven( n ):
+    while n > 0:
+        if (n % 10) %2 != 0:
+            return False
+        n = n / 10
+    return True
+#-------------------------------- #
+# Accepts an integer and returns  #
+# True if it is a perfect square  #
+# False otherwise                 #
+#-------------------------------- #
+def isSquare( n ):
+    i = 1
+    while i * i < n:
+        i += 1
+    return i * i == n
+    
+\end{verbatim}
+\end{document}
+    
