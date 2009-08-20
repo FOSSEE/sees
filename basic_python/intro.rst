@@ -14,21 +14,45 @@ The system requirements:
 
 
 
-Introduction
-============
+1. Introduction
+===============
 
-  The Python programming language was created by a dutch named Guido van Rossum.
-  The idea of Python was conceived in December 1989. The name Python has nothing
-  to do with the reptilian, but its been named after the 70s comedy series 
-  "Monty Python's Flying Circus", since it happens to be Guido's favourite 
-  TV series. 
+The Python programming language was created by a dutch named Guido van Rossum.
+The idea of Python was conceived in December 1989. The name Python has nothing
+to do with the reptilian, but its been named after the 70s comedy series 
+"Monty Python's Flying Circus", since it happens to be Guido's favourite 
+TV series. 
+
+Current stable version of Python is 2.6.x, although Python 3.0 is also the stable
+version, it is not backwards compatible with the previous versions and is hence
+not entirely popular at the moment. This material will focus on the 2.6.x series.
   
-  Current stable version of Python is 2.6.x, although Python 3.0 is also the stable
-  version, it is not backwards compatible with the previous versions and is hence
-  not entirely popular at the moment. This material contains material pertaining 
-  to the 2.6.x series.
-  
-The Python Interpreter
-======================
-  
-  
+Python is licensed under the Python Software Foundation License (PSF License) 
+which is GPL compatible Free Software license (excepting license version 1.6 and 2.0)
+It is a no strings attached license, which means the source code is free to modify
+and redistribute.
+
+The Python docs define Python as "Python is an interpreted, object-oriented, 
+high-level programming language with dynamic semantics." A more detailed summary
+can be found at http://www.python.org/doc/essays/blurb.html. Python is a language that
+has been designed to help the programmer concentrate on solving the problem at hand
+and not worry about the programming language idiosyncrasies.
+
+Python is a highly cross platform compatible language on account of it being an 
+interpreted language. It is highly scalable and hence has been adapted to run on 
+the Nokia 60 series phones. Python has been designed to be readable and easy to use
+
+**Resources available for reference**
+
+* Web: http://www.python.org
+* Doc: http://www.python.org/doc
+* Free Tutorials:
+    * Official Python Tutorial: http://docs.python.org/tut/tut.html
+    * Byte of Python: http://www.byteofpython.info/
+    * Dive into Python: http://diveintopython.org/
+
+
+
+1.1 The Python Interpreter
+--------------------------
+
