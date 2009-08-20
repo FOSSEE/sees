@@ -90,4 +90,23 @@ Advanced Actions:
      Resolve:
 	Fixing the changes that contradict each other and checking in the correct version.
      
-We should mention here what is distributing and centralised version control.
+Types of Version Control:
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Based on how source management is carried out in a tool there are two categories of Version Control Systems(VCS):
+
+      - Centralized VCS: 
+      	In this kind of system all the revision control functions are performed on a shared server. If two developers try to change the same file at the same time, without some method of managing access the developers may end up overwriting each other's work. Centralized revision control systems solve this problem in one of two different "source management models": file locking and version merging. Both svn and cvs follows this kind of management.
+   
+      - Distributed VCS:
+      	In a distributed model, every developer has their own repo. Diffs, commits, and reverts are all done locally, one needs Internet only to share the changes with others. It makes work faster, handles branching and merging in better way, with less management. hg, bzr and git uses this workflow.
+
+
+Suggested Reading:
+------------------
+
+	* http://karlagius.com/2009/01/09/version-control-for-the-masses/
+	* http://betterexplained.com/articles/a-visual-guide-to-version-control/
+	* http://en.wikipedia.org/wiki/Revision_control
+	* http://hgbook.red-bean.com/
+	* http://betterexplained.com/articles/intro-to-distributed-version-control-illustrated/
