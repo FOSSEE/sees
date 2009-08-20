@@ -3,8 +3,8 @@ Lists and Tuples
 
 Python provides an intuitive way to represent a group items, called *Lists*. The
 items of a *List* are called its elements. Unlike C/C++, elements can be of any
-type. A *List* is represented as a list of comma-sepated elements with paren-
-thesis around them::
+type. A *List* is represented as a list of comma-sepated elements with square
+brackets around them::
 
   >>> a = [10, 'Python programming', 20.3523, 23, 3534534L]
   >>> a
@@ -350,4 +350,26 @@ a sorted copy of the list. However the original list is left intact::
   [1, 3, 4, 5, 7]
   >>> a
   [5, 1, 3, 7, 4]
+
+
+List Comprehensions
+-------------------
+
+List Comprehension is a convenvience utility provided by Python. It is a 
+syntatic sugar to create *Lists*. Using *List Comprehensions* one can create
+*Lists* from other type of sequential data structures or other *Lists* itself.
+The syntax of *List Comprehensions* consists of a square brackets to indicate
+the result is a *List* within which we include at least one **for** clause and
+multiple **if** clauses. It will be more clear with an example::
+
+  >>> num = [1, 2, 3]
+  >>> sq = [x*x for x in num]
+  >>> sq
+  [1, 4, 9]
+  >>> all_num = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  >>> even = [x for x in all_num if x%2 == 0]
+
+The syntax used here is very clear from the way it is written. It can be 
+translated into english as, "for each element x in the list all_num, 
+if remainder of x divided by 2 is 0, add x to the list."
 
