@@ -11,9 +11,6 @@ The system requirements:
   * IPython 
   * Text editor - scite, vim, emacs or whatever you are comfortable with.
 
-
-
-
 1. Introduction
 ===============
 
@@ -51,7 +48,30 @@ the Nokia 60 series phones. Python has been designed to be readable and easy to 
     * Byte of Python: http://www.byteofpython.info/
     * Dive into Python: http://diveintopython.org/
 
+**Advantages of Python - Why Python??**
 
+* Python has been designed for readability and ease of use. Its been designed in 
+  such a fashion that it imposes readability on the programmer. Python does away
+  with the braces and the semicolons and instead implements code blocks based on 
+  indentation, thus enhancing readability. 
+
+* Python is a high level, interpreted, modular and object oriented language.
+  Python performs memory management on its own, thus the programmer need not bother
+  about allocating and deallocating memory to variables. Python provides extensibility
+  by providing modules which can be easily imported similar to headers in C and 
+  packages in Java. Python is object oriented and hence provides all the object oriented
+  characterstics such as inheritence, encapsulation and polymorphism.
+
+* Python offers a highly powerful interactive programming interface in the form
+  of the 'Interactive Interpreter' which will be discussed in more detail in the 
+  following sections.
+
+* Python provides a rich standard library and an extensive set of modules. The 
+  power of Python modules can be seen in this slightly exaggerated cartoon
+  http://xkcd.com/353/
+
+* Python interfaces well with most other programming languages such as C, C++ 
+  and FORTRAN.
 
 1.1 The Python Interpreter
 --------------------------
