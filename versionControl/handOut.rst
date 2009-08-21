@@ -101,7 +101,35 @@ Based on how source management is carried out in a tool there are two categories
       - Distributed VCS:
       	In a distributed model, every developer has their own repo. Diffs, commits, and reverts are all done locally, one needs Internet only to share the changes with others. It makes work faster, handles branching and merging in better way, with less management. hg, bzr and git uses this workflow.
 
+Get Going with Hg:
+------------------
 
+Reasons for selecting Hg rather then any other tools are:
+
+	- It is easy to learn and use.
+	- It is lightweight.
+	- It scales excellently.
+	- It is based on Python.
+
+To get going with hg, following command gives the version. ::
+   
+   $hg version
+
+   Mercurial Distributed SCM (version 1.1.2)
+   Copyright (C) 2005-2008 Matt Mackall <mpm@selenic.com> and others
+   This is free software; see the source for copying conditions. There is NO
+   warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+Built-in help, Mercurial provides a built-in help system. Following command will print a brief list of commands, along with a description of what each does. ::
+
+   $hg help
+
+   Mercurial Distributed SCM
+   list of commands:
+   add          add the specified files on the next commit
+   addremove	-----------------------
+
+	  
 Suggested Reading:
 ------------------
 
