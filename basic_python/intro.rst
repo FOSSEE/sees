@@ -73,6 +73,26 @@ the Nokia 60 series phones. Python has been designed to be readable and easy to 
 * Python interfaces well with most other programming languages such as C, C++ 
   and FORTRAN.
 
+Although, Python has one setback. Python is not fast as some of the compiled 
+languages like C or C++. Yet, the amount of flexibility and power more than make
+up for this setback.
+
+
 1.1 The Python Interpreter
 --------------------------
+
+Typing python at the shell prompt on any standard Unix/Gnu-Linux system fires up
+the Python 'Interactive Interpreter'. The Python interpreter is one of the most 
+integral features of Python. The prompt obtained when the interactive interpreter
+is similar to what is shown below. The exact appearance might differ based on the
+version of Python being used. The ``>>>`` thing shown is the python prompt. 
+When something is typed at the prompt and the enter key is hit, the python interpreter
+interprets the command entered and performs the appropriate action.
+
+::
+
+  Python 2.5.2 (r252:60911, Oct  5 2008, 19:24:49) 
+  [GCC 4.3.2] on linux2
+  Type "help", "copyright", "credits" or "license" for more information.
+  >>> 
 
