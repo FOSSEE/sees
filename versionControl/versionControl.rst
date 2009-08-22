@@ -1,4 +1,4 @@
-s
+
 Module 4: Version Control
 =========================
 
