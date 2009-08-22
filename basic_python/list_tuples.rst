@@ -1,6 +1,9 @@
 Lists and Tuples
 ================
 
+Lists
+-----
+
 Python provides an intuitive way to represent a group items, called *Lists*. The
 items of a *List* are called its elements. Unlike C/C++, elements can be of any
 type. A *List* is represented as a list of comma-sepated elements with square
@@ -12,9 +15,12 @@ brackets around them::
 
 
 Common List Operations
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~
+
+The following are some of the most commonly used operations on *Lists*.
 
 
+~~~~~~~~
 Indexing
 ~~~~~~~~
 
@@ -31,6 +37,7 @@ It is important to note here that the last element of the *List* has an index of
 -1.
 
 
+~~~~~~~~~~~~~
 Concatenating
 ~~~~~~~~~~~~~
 
@@ -42,6 +49,7 @@ Two or more *Lists* can be concatenated using the + operator::
   [54, 75, 23, 'write', 67, 'read']
   
 
+~~~~~~~
 Slicing
 ~~~~~~~
 
@@ -88,8 +96,10 @@ the second index::
   [1, 5, 9]
 
 
+~~~~~~~~~~~~~~
 Multiplication
 ~~~~~~~~~~~~~~
+
 
 A *List* can be multiplied with an integer to repeat itself::
 
@@ -99,6 +109,7 @@ A *List* can be multiplied with an integer to repeat itself::
   [42, 'Python', 54, 42, 'Python', 54, 42, 'Python', 54]
 
 
+~~~~~~~~~~
 Membership
 ~~~~~~~~~~
 
@@ -114,6 +125,7 @@ operator::
   False
 
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Length, Maximum and Minimum
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -130,6 +142,7 @@ element with the smallest value::
   1
 
 
+~~~~~~~~~~~~~~~~~
 Changing Elements
 ~~~~~~~~~~~~~~~~~
 
@@ -141,6 +154,7 @@ Unlike Strings *Lists* are mutable, i.e. elements of a *List* can be manipulated
   [1, 3, 9, 7]
 
 
+~~~~~~~~~~~~~~~~~
 Deleting Elements
 ~~~~~~~~~~~~~~~~~
 
@@ -155,6 +169,7 @@ An element or a slice of a *List* can be deleted by using the **del** statement:
   [1, 5, 7]
 
 
+~~~~~~~~~~~~~~~~
 Assign to Slices
 ~~~~~~~~~~~~~~~~
 
@@ -177,7 +192,7 @@ deletes a list of elements from the *List*.
 
 
 None, Empty Lists, and Initialization
--------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 An *Empty List* is a *List* with no elements and is simply represented as
 []. A *None List* is one with all elements in it being **None**. It serves
@@ -193,7 +208,7 @@ no value::
 
 
 Nested Lists
-------------
+~~~~~~~~~~~~
 
 As mentioned earlier, a List can contain elements of any data type. This also
 implies a *List* can have a *Lists* themselves as its elements. These are 
@@ -203,7 +218,7 @@ called as *Nested Lists*. There is no limit on the depth of the *Nested Lists*::
 
 
 List Methods
-------------
+~~~~~~~~~~~~
 
 A method is a function that is coupled to an object. More about objects
 and its methods are discussed in Advanced Python module. In general, a
@@ -220,6 +235,7 @@ the *List* methods.
 Some of the most commonly used *List* methods are as follows:
 
 
+~~~~~~
 append
 ~~~~~~
 
@@ -233,6 +249,7 @@ The *append* method is used to append an object at the end of the list::
 It is important to note that append changes the *List* in-place.
 
 
+~~~~~
 count
 ~~~~~
 
@@ -246,6 +263,7 @@ in a list::
   1
 
 
+~~~~~~
 extend
 ~~~~~~
 
@@ -261,6 +279,7 @@ This is an in-place method. This method is equivalent to using the + operator, b
 using the + operator returns a new list.
 
 
+~~~~~
 index
 ~~~~~
 
@@ -272,6 +291,7 @@ specified as argument::
   3
 
 
+~~~~~~
 insert
 ~~~~~~
 
@@ -286,6 +306,7 @@ argument to the list at the position specified by the first argument::
 The *insert* method changes the *List* in-place.
 
 
+~~~
 pop
 ~~~
 
@@ -304,6 +325,7 @@ of the element to be removed can be specified as an argument to the
 The *pop* method changes the *List* in-place.
 
 
+~~~~~~
 remove
 ~~~~~~
 
@@ -316,6 +338,7 @@ parameter::
   [1, 3, 4, 2, 5, 2]
 
 
+~~~~~~~
 reverse
 ~~~~~~~
 
@@ -329,6 +352,7 @@ thing::
   ['tim', 'alex', 'guido']
 
 
+~~~~
 sort
 ~~~~
 
@@ -353,7 +377,7 @@ a sorted copy of the list. However the original list is left intact::
 
 
 List Comprehensions
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 List Comprehension is a convenvience utility provided by Python. It is a 
 syntatic sugar to create *Lists*. Using *List Comprehensions* one can create
@@ -373,3 +397,110 @@ The syntax used here is very clear from the way it is written. It can be
 translated into english as, "for each element x in the list all_num, 
 if remainder of x divided by 2 is 0, add x to the list."
 
+
+Tuples
+------
+
+*Tuples* are sequences just like *Lists*, but they are immutable. In other
+words *Tuples* provides a way to represent a group of items, where the group
+of items cannot be changed in any way. The syntax of a *Tuple* is also very
+similar to *List*. A *Tuple* is represented with the list of items, called
+elements of the *Tuple* separated by comma, with the entire list being enclosed
+in parenthesis. It is not compulsory to use parenthesis around a *Tuple* but
+it may be necessary in some of the cases::
+
+  >>> a = 1, 2, 3
+  >>> a
+  (1, 2, 3)
+  >>> b = 1,
+  >>> b
+  (1,)
+
+It is interesting to note the second example. Just a value followed by a comma
+automatically makes that an element of a *Tuple* with only one element. It is
+also important to note that, irrespective of input having a parenthesis, the
+output always has a parenthesis.
+
+The first example is also known as *Tuple packing*, because values are being
+packed into a tuple. It is also possible to do *Tuple unpacking* which is more
+interesting. It is better to understand that by example. Say we have a 
+co-ordinate pair from which we need to separate x and y co-ordinates::
+
+  >>> a = (1, 2)
+  >>> x, y = a
+  >>> x
+  1
+  >>> y
+  2
+
+*Tuple unpacking* also has several other use-cases of which the most interesting
+one is to swap the values of two variables. Using programming languages like C
+would require anywhere around 10 lines of code and an extra temporary variable
+to do this (including all the #include stuff). Python does it in the most
+intuitive way in just one line. Say we want to swap the co-ordinates in the
+above example::
+
+  >>> x, y = y, x
+  >>> x
+  2
+  >>> y
+  1
+
+Common Tuple Operations
+~~~~~~~~~~~~~~~~~~~~~~~
+
+There is no need to introduce all the *Tuple* operations again, since *Tuples*
+support the following operations that *List* supports in exactly the same way:
+
+  * Indexing
+  * Concatenating
+  * Slicing
+  * Membership
+  * Multiplication
+  * Length, Maximum, Minimum
+
+The following examples illustrate the above operations::
+
+  >>> a = (1, 2, 3, 4, 5, 6)
+  >>> a[5]
+  6
+  >>> b = (7, 8, 9)
+  >>> a + b
+  (1, 2, 3, 4, 5, 6, 7, 8, 9)
+  >>> a[3:5]
+  (4, 5)
+  >>> 5 in a
+  True
+  >>> c = (1,)
+  >>> c * 5
+  (1, 1, 1, 1, 1)
+  >>> len(a)
+  6
+  >>> max(a)
+  6
+  >>> min(a)
+  1
+
+However the following *List* operations are not supported by *Tuples* because
+*Tuples* cannot be changed once they are created:
+
+  * Changing elements
+  * Deleting elements
+  * Assigning to slices
+
+Similarity to *Lists* leads to the questions like, why not *Lists* only? Why do
+we even want *Tuples*? Can we do the same with *Lists*? And the answer is **Yes**
+we can do it, but *Tuples* are helpful at times, like we can return Tuples from
+functions. They are also returned by some built-in functions and methods. And
+also there are some use cases like co-ordinate among other things. So *Tuples*
+are helpful.
+
+
+Conclusion
+----------
+
+This section on *Lists* and *Tuples* introduces almost all the necessary 
+machinary required to work on *Lists* and *Tuples*. Topics like how to
+iterate through these data structures will be introduced in the later
+sections.
+ 
