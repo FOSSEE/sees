@@ -65,7 +65,7 @@ Basic Actions
 	The latest revision of the repo.
      Check out:
      	Initial download of repo onto machine.
-     Check in:
+     Commit:
      	Upload a file to repository(if it has changed). The file gets a new revision number, and people can “check out” the latest one.
      Checking Message:
      	A short message describing what was changed.
@@ -169,14 +169,14 @@ Every Mercurial repository is complete, self-contained, and independent. It cont
 
 To start a new repository hg uses *"init"*: ::
 
-   $ mkdir newRepo
-   $ cd newRepo/
-   $ cp ../Desktop/handOut.rst .
+   $ mkdir feviCol
+   $ cd feviCol/
+   $ echo "print 'Yeh Fevicol ka Majboot jod hai!'" > feviStick.py
    $ ls -a
-   .  ..  handOut.rst
+   .  ..  feviStick.py
    $ hg init
    $ ls -a
-   .  ..  handOut.rst  .hg
+   .  ..  feviStick.py  .hg
 
 *.hg* directory indicates that this new dir is now a repo.This is where Mercurial keeps all of its metadata for the repository.The contents of the .hg directory and its subdirectories are private to Mercurial. Rest all files are for the user to use them as they pleases.
 
@@ -186,18 +186,18 @@ Creating a branch of existing local repo is very easy via hg using clone command
     updating working directory
     2 files updated, 0 files merged, 0 files removed, 0 files unresolved
 
-now newCopy is exact copy of already existing repo. And this command can be used to create branch of locally created repo also: ::
+newCopy is exact copy of already existing repo. And this command can be used to create branch of locally created repo also: ::
 
-    $ hg clone newRepo copyNewRepo
+    $ hg clone feviCol feviCol-pull
     updating working directory
-    1 files updated, 0 files merged, 0 files removed, 0 files unresolved
+    0 files updated, 0 files merged, 0 files removed, 0 files unresolved
 
 These local branches can prove really handy at times. It allows keep multiple copies of local branch for different purposes, say for debugging, testing, working version.
 	
 History or Logs:
 ~~~~~~~~~~~~~~~~	  
 
-For the new repo created, first thing which can be tried is to check the logs/history. What changes were made and when and why, answers to all those questions are stored in logs safely. So for the the cloned repo the history can be viewed using command *"log"* (we are working here on localCopyhello repo). ::
+For the new repo created, first thing which can be tried is to check the logs/history. What changes were made and when and why, answers to all those questions are stored in logs safely. So for the the cloned repo the history can be viewed using command *"log"* (following commands are wrt localCopyhello repo). ::
 
     $hg log
     changeset:   4:2278160e78d4
@@ -271,7 +271,69 @@ The hg log  command's -v (or --verbose) option gives you this extra detail. ::
     description:
     Get make to generate the final binary from a .o file.
 
-All about command options??? should we use this?
+Making Changes:
+~~~~~~~~~~~~~~~
+
+There is feviStick.py file in repo created above with name feviCol. ::
+
+    $ cd feviCol
+    $ hg log
+    $ hg status
+    ? feviStick.py
+
+*status(st)* command prints the revision history of the specified files or the entire project. "?" sign in front of file indicates that this file is not yet part of track record. *add* command is used to add new files to repo. ::
+
+    $ hg add feviStick.py
+    $ hg st
+    A feviStick.py
+
+So file is now part of repository(A symbol). Use *commit (alias ci)* command to make changes effective(this command would be explained in more details in later parts). ::
+   
+   $ hg ci -u "Shantanu <shantanu@fossee.in>" -m "First commit."
+   $ hg log
+   changeset:   0:84f5e91f4de1
+   tag:         tip
+   user:        Shantanu <shantanu@fossee.in>
+   date:        Fri Aug 21 23:37:13 2009 +0530
+   summary:     First commit.
+
+Similar to add there are other commands available for file management in repo. ::
+
+   $ hg cp feviStick.py pidiLite.py
+   $ hg st
+   A pidiLite.py
+
+*copy (alias cp)* command is used to mark files as copied for the next commit. ::
+
+   $ hg rename pidiLite.py feviCol.py
+   $ hg st
+   A feviCol.py
+   $ hg ci -u "Shantanu <shantanu@fossee.in>" -m "Renamed pidiLite.py."
+   $ hg tip
+   changeset:   1:d948fb4137c5
+   tag:         tip
+   user:        Shantanu <shantanu@fossee.in>
+   date:        Sat Aug 22 00:11:25 2009 +0530
+   summary:     Renamed pidiLite.py.
+
+*rename(alias mv)* rename files; equivalent of copy + remove. *tip* command shows newest revision in the repository.. ::
+
+   $ hg remove feviCol.py
+   $ hg st
+   R feviCol.py
+
+R status of files denotes, file is marked as to be removed by the previous command *remove*. To add the file again to repo, one can use *revert* command, which restore individual files or dirs to an earlier state. ::
+
+  $ ls
+  feviStick.py
+  $ hg revert feviCol.py
+  $ ls
+  feviCol.py  feviStick.py
+
+Sharing Changes:
+~~~~~~~~~~~~~~~~
+
+As mentioned earlier that repositories in Mercurial are self-contained. This means that the changeset just created exists only in Fevicol repository and not in previously cloned feviVol-pull. There are a few ways that can be used to propagate this change into other repositories.
 
 Suggested Reading:
 ------------------
