@@ -397,3 +397,110 @@ The syntax used here is very clear from the way it is written. It can be
 translated into english as, "for each element x in the list all_num, 
 if remainder of x divided by 2 is 0, add x to the list."
 
+
+Tuples
+------
+
+*Tuples* are sequences just like *Lists*, but they are immutable. In other
+words *Tuples* provides a way to represent a group of items, where the group
+of items cannot be changed in any way. The syntax of a *Tuple* is also very
+similar to *List*. A *Tuple* is represented with the list of items, called
+elements of the *Tuple* separated by comma, with the entire list being enclosed
+in parenthesis. It is not compulsory to use parenthesis around a *Tuple* but
+it may be necessary in some of the cases::
+
+  >>> a = 1, 2, 3
+  >>> a
+  (1, 2, 3)
+  >>> b = 1,
+  >>> b
+  (1,)
+
+It is interesting to note the second example. Just a value followed by a comma
+automatically makes that an element of a *Tuple* with only one element. It is
+also important to note that, irrespective of input having a parenthesis, the
+output always has a parenthesis.
+
+The first example is also known as *Tuple packing*, because values are being
+packed into a tuple. It is also possible to do *Tuple unpacking* which is more
+interesting. It is better to understand that by example. Say we have a 
+co-ordinate pair from which we need to separate x and y co-ordinates::
+
+  >>> a = (1, 2)
+  >>> x, y = a
+  >>> x
+  1
+  >>> y
+  2
+
+*Tuple unpacking* also has several other use-cases of which the most interesting
+one is to swap the values of two variables. Using programming languages like C
+would require anywhere around 10 lines of code and an extra temporary variable
+to do this (including all the #include stuff). Python does it in the most
+intuitive way in just one line. Say we want to swap the co-ordinates in the
+above example::
+
+  >>> x, y = y, x
+  >>> x
+  2
+  >>> y
+  1
+
+Common Tuple Operations
+~~~~~~~~~~~~~~~~~~~~~~~
+
+There is no need to introduce all the *Tuple* operations again, since *Tuples*
+support the following operations that *List* supports in exactly the same way:
+
+  * Indexing
+  * Concatenating
+  * Slicing
+  * Membership
+  * Multiplication
+  * Length, Maximum, Minimum
+
+The following examples illustrate the above operations::
+
+  >>> a = (1, 2, 3, 4, 5, 6)
+  >>> a[5]
+  6
+  >>> b = (7, 8, 9)
+  >>> a + b
+  (1, 2, 3, 4, 5, 6, 7, 8, 9)
+  >>> a[3:5]
+  (4, 5)
+  >>> 5 in a
+  True
+  >>> c = (1,)
+  >>> c * 5
+  (1, 1, 1, 1, 1)
+  >>> len(a)
+  6
+  >>> max(a)
+  6
+  >>> min(a)
+  1
+
+However the following *List* operations are not supported by *Tuples* because
+*Tuples* cannot be changed once they are created:
+
+  * Changing elements
+  * Deleting elements
+  * Assigning to slices
+
+Similarity to *Lists* leads to the questions like, why not *Lists* only? Why do
+we even want *Tuples*? Can we do the same with *Lists*? And the answer is **Yes**
+we can do it, but *Tuples* are helpful at times, like we can return Tuples from
+functions. They are also returned by some built-in functions and methods. And
+also there are some use cases like co-ordinate among other things. So *Tuples*
+are helpful.
+
+
+Conclusion
+----------
+
+This section on *Lists* and *Tuples* introduces almost all the necessary 
+machinary required to work on *Lists* and *Tuples*. Topics like how to
+iterate through these data structures will be introduced in the later
+sections.
+ 
