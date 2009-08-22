@@ -60,7 +60,7 @@ the Nokia 60 series phones. Python has been designed to be readable and easy to 
   about allocating and deallocating memory to variables. Python provides extensibility
   by providing modules which can be easily imported similar to headers in C and 
   packages in Java. Python is object oriented and hence provides all the object oriented
-  characterstics such as inheritence, encapsulation and polymorphism.
+  characteristics such as inheritance, encapsulation and polymorphism.
 
 * Python offers a highly powerful interactive programming interface in the form
   of the 'Interactive Interpreter' which will be discussed in more detail in the 
@@ -81,13 +81,17 @@ up for this setback.
 1.1 The Python Interpreter
 --------------------------
 
-Typing python at the shell prompt on any standard Unix/Gnu-Linux system fires up
-the Python 'Interactive Interpreter'. The Python interpreter is one of the most 
-integral features of Python. The prompt obtained when the interactive interpreter
-is similar to what is shown below. The exact appearance might differ based on the
-version of Python being used. The ``>>>`` thing shown is the python prompt. 
-When something is typed at the prompt and the enter key is hit, the python interpreter
-interprets the command entered and performs the appropriate action.
+1.1.1 The Interactive Interpreter
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Typing *python* at the shell prompt on any standard Unix/Gnu-Linux system and
+hitting the enter key fires up the Python 'Interactive Interpreter'. The Python
+interpreter is one of the most integral features of Python. The prompt obtained
+when the interactive interpreter is similar to what is shown below. The exact
+appearance might differ based on the version of Python being used. The ``>>>``
+thing shown is the python prompt. When something is typed at the prompt and the
+enter key is hit, the python interpreter interprets the command entered and
+performs the appropriate action.
 
 ::
 
@@ -96,3 +100,163 @@ interprets the command entered and performs the appropriate action.
   Type "help", "copyright", "credits" or "license" for more information.
   >>> 
 
+Lets try with an example, type ``print 'Hello, World!'`` at the prompt and hit
+the enter key. 
+
+::
+
+  >>> print 'Hello, World!'
+  Hello, World!
+
+This example was quite straight forward, and thus we have written our first
+line of Python code. Now let us try typing something arbitrary at the prompt.
+For example: 
+
+::
+  
+  >>> arbit word
+    File "<stdin>", line 1
+      arbit word
+              ^
+  SyntaxError: invalid syntax
+  >>>
+    
+The interpreter gave an error message saying that 'arbit word' was invalid
+syntax which is valid. The interpreter is an amazing tool when learning to
+program in Python. The interpreter provides a help function that provides the
+necessary documentation regarding all Python syntax, constructs, modules and
+objects. Typing *help()* at the prompt gives the following output:
+
+::
+  
+  >>> help()
+  
+  Welcome to Python 2.5!  This is the online help utility.
+  
+  If this is your first time using Python, you should definitely check out
+  the tutorial on the Internet at http://www.python.org/doc/tut/.
+  
+  Enter the name of any module, keyword, or topic to get help on writing
+  Python programs and using Python modules.  To quit this help utility and
+  return to the interpreter, just type "quit".
+  
+  To get a list of available modules, keywords, or topics, type "modules",
+  "keywords", or "topics".  Each module also comes with a one-line summary
+  of what it does; to list the modules whose summaries contain a given word
+  such as "spam", type "modules spam".
+  
+  help> 
+  
+
+As mentioned in the output, entering the name of any module, keyword or topic
+will provide the documentation and help regarding the same through the online
+help utility. Pressing *Ctrl+d* exits the help prompt and returns to the
+python prompt. 
+
+Let us now try a few examples at the python interpreter. 
+
+Eg 1:
+::
+  
+  >>> print 'Hello, python!'
+  Hello, python!
+  >>>
+  
+Eg 2:
+::
+  
+  >>> print 4321*567890
+  2453852690
+  >>> 
+  
+Eg 3:
+::
+  
+  >>> 4321*567890
+  2453852690L
+  >>>
+
+::
+  
+  Note: Notice the 'L' at the end of the output. The 'L' signifies that the
+  output of the operation is of type *long*. It was absent in the previous
+  example because we used the print statement. This is because *print* formats
+  the output before displaying.
+  
+Eg 4:
+::
+  
+  >>> big = 12345678901234567890 ** 3
+  >>> print big
+  1881676372353657772490265749424677022198701224860897069000
+  >>> 
+
+::
+  
+  This example is to show that unlike in C or C++ there is no limit on the
+  value of an integer.
+
+1.1.2 *ipython* - An enhanced interactive Python interpreter
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The power and the importance of the interactive interpreter was the highlight
+of the previous section. This section provides insight into the enhanced
+interpreter with more advanced set of features called **ipython**. Entering
+*ipython* at the shell prompt fires up the interactive interpreter. 
+
+::
+  
+  $ ipython
+  Python 2.5.2 (r252:60911, Oct  5 2008, 19:24:49) 
+  Type "copyright", "credits" or "license" for more information.
+  
+  IPython 0.8.4 -- An enhanced Interactive Python.
+  ?         -> Introduction and overview of IPython's features.
+  %quickref -> Quick reference.
+  help      -> Python's own help system.
+  object?   -> Details about 'object'. ?object also works, ?? prints more.
+  
+  In [1]: 
+  
+This is the output obtained upon firing ipython. The exact appearance may
+change based on the Python version installed. The following are some of the
+various features provided by **ipython**:
+  
+  * Suggestions - ipython provides suggestions of the possible methods and
+    operations available for the given python object.
+
+Eg:
+  
+::
+  
+  In [4]: a = 6
+  
+  In [5]: a.
+  a.__abs__           a.__divmod__        a.__index__         a.__neg__       
+    a.__rand__          a.__rmod__          a.__rxor__
+  a.__add__           a.__doc__           a.__init__          a.__new__       
+    a.__rdiv__          a.__rmul__          a.__setattr__
+  a.__and__           a.__float__         a.__int__           a.__nonzero__   
+    a.__rdivmod__       a.__ror__           a.__str__
+  a.__class__         a.__floordiv__      a.__invert__        a.__oct__       
+    a.__reduce__        a.__rpow__          a.__sub__
+  a.__cmp__           a.__getattribute__  a.__long__          a.__or__        
+    a.__reduce_ex__     a.__rrshift__       a.__truediv__
+  a.__coerce__        a.__getnewargs__    a.__lshift__        a.__pos__      
+    a.__repr__          a.__rshift__        a.__xor__
+  a.__delattr__       a.__hash__          a.__mod__           a.__pow__      
+    a.__rfloordiv__     a.__rsub__          
+  a.__div__           a.__hex__           a.__mul__           a.__radd__     
+    a.__rlshift__       a.__rtruediv__      
+
+In this example, we initialized 'a' (a variable - a concept that will be
+discussed in the subsequent sections.) to 6. In the next line when the *tab* key
+is pressed after typing '*a.*' ipython displays the set of all possible methods
+that are applicable on the object 'a' (an integer in this context). Ipython
+provides many such datatype specific features which will be presented in the
+further sections as and when the datatypes are introduced.
+
+1.2 Editing and running a python file
+-------------------------------------
+
+The 
