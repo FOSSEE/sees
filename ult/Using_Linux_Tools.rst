@@ -116,20 +116,81 @@ The two main frameworks for developing graphical applications are those of GNOME
 
 Reasons for Using Linux
 -----------------------
-- The Linux operating system is free of charge. No user or server licenses are required.Sometimes, one cam find various Linux distributions on the shelf available for purchase, that cost is purely to cover the packaging and possible support available for the distribution.
+- Linux is free:
 
-\* The newer 'Advanced Linux Servers', now available from companies such as Redhat, actually charge a license fee because of the support and update services they provide for the operating system. These services can be considered rightly charged since they are aimed at businesses that will use their operating system in critical environments where downtime and immediate support is non-negotiable.
+As in free beer, they say. If you want to spend absolutely nothing, you don't even have to pay the price of a CD. Linux can be downloaded in its entirety from the Internet completely for free. No registration fees, no costs per user, free updates, and freely available source code in case you want to change the behavior of your system.
+Most of all, Linux is free as in free speech:
+The license commonly used is the GNU Public License (GPL). The license says that anybody who may want to do so, has the right to change Linux and eventually to redistribute a changed version, on the one condition that the code is still available after redistribution. In practice, you are free to grab a kernel image, for instance to add support for teletransportation machines or time travel and sell your new code, as long as your customers 
+can still have a copy of that code.
 
-- Linux is developed by hundreds of thousands of people worldwide. Because of this community development mode there are very fresh ideas going into the operating system and many more people to find glitches and bugs in the software than any commercial company could ever afford.
+- Linux is portable to any hardware platform:
 
-- Runtime errors and crashes are quite rare on the Linux operating system due to the way its kernel is designed and the way processes are allowed to access it. No one can guarantee that your Linux desktop or server will not crash at all, because that would be a bit extreme, however, we can say that it happens a lot less frequently in comparison with other operating systems.
+A vendor who wants to sell a new type of computer and who doesn't know what kind of OS his new machine will run (say the CPU in your car or washing machine), can take a Linux kernel and make it work on his hardware, because documentation related to this activity is freely available.
+
+- Linux was made to keep on running:
+
+As with UNIX, a Linux system expects to run without rebooting all the time. That is why a lot of tasks are being executed at night or scheduled automatically for other calm moments, resulting in higher availability during busier periods and a more balanced use of the hardware. This property allows for Linux to be applicable also in environments where people don't have the time or the possibility to control their systems night and day.
+
+- Linux is secure and versatile:
+
+The security model used in Linux is based on the UNIX idea of security, which is known to be robust and of proven quality. But Linux is not only fit for use as a fort against enemy attacks from the Internet: it will adapt equally to other situations, utilizing the same high standards for security. Your development machine or control station will be as secure as you firewall.
+
+- Linux is scalable:
+
+From a Palmtop with 2 MB of memory to a petabyte storage cluster with hundreds of nodes: add or remove the appropriate packages and Linux fits all. You don't need a supercomputer anymore,because you can use Linux to do big things using the building blocks provided with the system. If you want to do little things, such as making an operating system for an embedded processor or just recycling your old 486, Linux will do that as well.
+
+- The Linux OS and Linux applications have very short debug−times:
+
+Because Linux has been developed and tested by thousands of people, both errors and people to fix them are found very quickly. It often happens that there are only a couple of hours between discovery and fixing of a bug.
+
+3. Getting Started
+===================
+Logging in, activating the user interface and logging out
+----------------------------------------------------------
+In order to work on a Linux system directly, you will need to provide a user name and password. You always need to authenticate to the system. Most PC−based Linux systems have two basic modes for a system to run in: either quick and sober in text console mode, which looks like DOS with mouse, multitasking and multi−user features, or in graphical console mode, which
+looks better but eats more system resources.
+
+Graphical Mode
+~~~~~~~~~~~~~~
+This is the default nowadays on most desktop computers. You know you will connect to the system using graphical mode when you are first asked for your user name, and then, in a new window, to type your password.
+
+To log in, make sure the mouse pointer is in the login window, provide your user name and password to the system and click *OK* or press *Enter*.
+It is generally considered a bad idea to connect (graphically) using the root user name, the system adminstrator's account, since the use of graphics includes running a lot of extra programs, in root's case with a lot of extra permissions. To keep all risks as low as possible, use a normal user account to connect graphically. But there are enough risks to keep this in mind as a general advice, for all use of the root account: only log in as root when extra privileges are required.
+
+After entering your user name/password combination, it can take a little while before the graphical environment is started, depending on the CPU speed of your computer, on the software you use and on your personal settings.
+
+To continue, you will need to open a *terminal window* or *xterm* for short (X being the name for the underlying software supporting the graphical environment). This program can be found in the *Applications−>Utilities,
+System Tools* or *Internet menu*, depending on what window manager you are using. There might be icons that you can use as a shortcut to get an xterm window as well, and clicking the right mouse button on the desktop background will usually present you with a menu containing a terminal window application.
+
+While browsing the menus, you will notice that a lot of things can be done without entering commands via the keyboard. For most users, the good old point−'n'−click method of dealing with the computer will do. But this
+guide is for future network and system administrators, who will need to meddle with the heart of the system.
+
+They need a stronger tool than a mouse to handle all the tasks they will face. This tool is the shell, and when in graphical mode, we activate our shell by opening a terminal window.
+
+The terminal window is your control panel for the system. Almost everything that follows is done using this simple but powerful text tool. A terminal window should always show a command prompt when you open one. This terminal shows a standard prompt, which displays the user's login name, and the current working directory, represented by the twiddle (~)
+
+Another common form for a prompt is this one:
+[user@host dir]
+
+In the above example, *user* will be your login name, *hosts* the name of the machine you are working on, and *dir* an indication of your current location in the file system.Prompts can display all kinds of information, but that they are not part of the commands you are giving to your system. To disconnect from the system in graphical mode, you need to close all terminal windows and other applications. After that, hit the logout icon or find Log Out in the menu. Closing everything is not really
+necessary, and the system can do this for you, but session management might put all currently open applications back on your screen when you connect again, which takes longer and is not always the desired effect. However, this behavior is configurable.
+
+When you see the login screen again, asking to enter user name and password, logout was successful.
+
+Text Mode
+~~~~~~~~~
+You know you're in text mode when the whole screen is black, showing (in most cases white) characters. A text mode login screen typically shows some information about the machine you are working on, the name of the machine and a prompt waiting for you to log in.
+
+The login is different from a graphical login, in that you have to hit the *Enter* key after providing your user name, because there are no buttons on the screen that you can click with the mouse. Then you should type
+your password, followed by another *Enter*. You won't see any indication that you are entering something, not even an asterisk, and you won't see the cursor move. But this is normal on Linux and is done for security
+reasons.
+
+When the system has accepted you as a valid user, you may get some more information, called the *message of the day*, which can be anything. Additionally, it is popular on UNIX systems to display a fortune cookie,
+which contains some general wise or unwise (this is up to you) thoughts. After that, you will be given a shell, indicated with the same prompt that you would get in graphical mode.
+
+Also in text mode: log in as root only to do setup and configuration that absolutely requires administrator privileges, such as adding users, installing software packages, and performing network and other system configuration. Once you are finished, immediately leave the special account and resume your work as a non−privileged user.
+
+Logging out is done by entering the logout command, followed by Enter. You are successfully disconnected from the system when you see the login screen again.Don't power−off the computer after logging out. It is not meant to be shut off without application of the proper procedures for halting the system. Powering it off without going through the halting process might cause severe damage!
 
 
-- There are almost no viruses for Linux and, because there are so many people working on Linux, whenever a bug is found, a fix is provided rather quickly. Linux is much more difficult for hackers to break into as it has been designed from the ground up with security in mind.
 
-
-- Linux uses less system resources than other current operating systems. You don't need the latest, fastest computer to run Linux. In fact you can run a functional version of Linux from a floppy disk with a computer that is 5-6 years old!
-
-- Linux has been designed to put power into the hands of the user so that you have total control of the operating system and not the other way around. 
-
-- Linux is fully compatible with all other systems, apart from offering localization to a specific region or language, targeting of specific user groups, and support for real-time applications.
