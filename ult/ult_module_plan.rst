@@ -23,7 +23,7 @@ Suggested Reading
 +---------+---------------------------------+---------+
 | Session | Topic  			    | Duration|
 +=========+=================================+=========+
-| 1	  | Introduction to Course          |  5 mt   |
+| 1	  | Introduction to the Course      |  5 mt   |
 |         |                                 |         |
 |         | Historical background and       |  10 mts |
 |         | implications. Why Unix?         |         |
