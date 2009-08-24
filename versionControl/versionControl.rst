@@ -22,37 +22,39 @@ Suggested Reading:
 +=========+=================================+=========+
 | 1	  | Introduction to Course          | 5 mts   |
 +---------+---------------------------------+---------+
-| 2	  | Why Revision Control?           | 10 mts  |
+| 2	  | Why Revision Control?           | 5 mts   |
 |	  |	- Use case: for team	    |	      |
 |	  |	- Use case: for single dev  |	      |
 +---------+---------------------------------+---------+
-| 3       | Let there be Repository...	    | 15 mts  |
+| 3	  | Learning the Lingo              | 5 mts   |
++---------+---------------------------------+---------+
+| 4       | Let there be Repository...	    | 15 mts  |
 |	  | 	- Creating Repositpry.	    |	      |     		
 |	  | 	- Cloning existing Repo.    |	      |		
 |	  |	- Branches concept 	    |         |
 +---------+---------------------------------+---------+
-| 4	  | Navigating through history logs | 5 mts   |
+| 5	  | Navigating through history logs | 5 mts   |
 +---------+---------------------------------+---------+
-| 5	  | Making changes in local branch  | 15 mts  |
+| 6	  | Making changes in local branch  | 15 mts  |
 |	  |	- add	    		    |	      |
 |	  |	- cp			    |	      |
 |	  |	- rename		    |	      |  	
 |	  |	- rm			    |	      |	
 +---------+---------------------------------+---------+
-| 6	  | Sharing the changes		    | 10 mts  |
+| 7	  | Sharing the changes		    | 10 mts  |
 |	  | 	- status		    |	      |
 |	  |	- pull			    |	      |
 |	  |	- update		    |	      |
 +---------+---------------------------------+---------+
-| 7	  | Merging the changes		    | 20 mts  |
+| 8	  | Merging the changes		    | 20 mts  |
 |	  | 	- commit		    |	      |
 |	  |	- glog			    |	      |
 |	  |	- push			    |	      |
 |	  |	- merge			    |	      |
 +---------+---------------------------------+---------+
-| 8	  | Handling conflicts during merge | 20 mts  |
+| 9	  | Handling conflicts during merge | 20 mts  |
 +---------+---------------------------------+---------+
-| 9	  | Exporting the changes: getting  |	      |
+| 10	  | Exporting the changes: getting  |	      |
 |	  | patch, diff   	   	    | 10 mts  |
 +---------+---------------------------------+---------+
 
@@ -60,3 +62,4 @@ Suggested Reading:
 
 *buffer time = 10 mts*
 
+*For this course, working LAN is needed if Internet is not available.*
