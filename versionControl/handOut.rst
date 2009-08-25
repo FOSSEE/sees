@@ -12,13 +12,12 @@ The following words are from a blogpost "http://karlagius.com/2009/01/09/version
 
 Version control (or source control) is nothing more arcane than keeping copies of ones work as one make changes to it. On the surface, it’s all straight-forward; make a copy of every file before making any changes to it. That way, if something seriously messes up, one can always fall back to something that worked before, or at least compare the broken copy with one that used to work so one can figure out where it went off kilter. Accidentally deleted half of thesis and closed the word processor? No problem – out comes the backup."
 
-Now, in the real world, it’s not so easy. One probably cooks up their own version control system without realizing it had such a geeky name. For instances files with names oldxxxxxx.odt and latestxxxxxx.odt. Every time to make some change in a file, one save it with different name then the original one. Luckily there are like, loads of version control systems out there to do this heavy lifting.
+Now, in the real world, it’s not so easy. One probably cooks up their own version control system without realizing it had such a geeky name. For instances files with names oldxxxxxx.py and latestxxxxxx.py. Every time to make some change in a file, one save it with different name then the original one. Luckily there are like, loads of version control systems out there to do this heavy lifting.
 
 Why Use Version Control
 =======================
-
-"Its the start which most people fail to attempt". 
-One of idea behind Version Control Tools was to save that "one" step, to build onto it, rather then simply loose it. So here are some reasons why is automated version control needed:
+ 
+One of idea behind Version Control Tools was to build onto very first step which can be creating a empty file, or writting a first buggy program for assignment, rather then simply loose it. So here are some reasons why is automated version control needed:
 
     - It will track the history and evolution of a project, so one don't have to do it manually. It allows to track what changes where made, when were they made, by whom and why.
     - For a team of people working on same project, revision control software makes it easier to collaborate. For example, when people more or less simultaneously make potentially incompatible changes, the software will help them to identify and resolve those conflicts.
@@ -112,6 +111,8 @@ Why hg?
 	- It is lightweight.
 	- It scales excellently.
 	- It is based on Python.
+
+A small point to notice here, hg cant track binary files for changes, one can add them to repo, but wont be able to track changes made to it. And hg considers, odt, pdf files as binary.
 
 Getting Started:
 ----------------
@@ -275,14 +276,14 @@ The hg log  command's -v (or --verbose) option gives you this extra detail. ::
 Making Changes:
 ---------------
 
-There is feviStick.py file in repo created above with name feviCol. ::
+There is feviStick.py file in repo created above with name Fevicol. *status(alias st)* command prints the revision history of the specified files or the entire project::
 
     $ cd Fevicol
     $ hg log
     $ hg status
     ? feviStick.py
 
-*status(st)* command prints the revision history of the specified files or the entire project. "?" sign in front of file indicates that this file is not yet part of track record. *add* command is used to add new files to repo. ::
+"?" sign in front of file indicates that this file is not yet part of track record. *add* command is used to add new files to repo. ::
 
     $ hg add feviStick.py
     $ hg st
@@ -298,13 +299,13 @@ So file is now part of repository(A symbol). Use *commit (alias ci)* command to 
    date:        Fri Aug 21 23:37:13 2009 +0530
    summary:     First commit.
 
-Similar to add there are other commands available for file management in repo. ::
+Similar to add there are other commands available for file management in repo. *copy (alias cp)* command is used to mark files as copied for the next commit.::
 
    $ hg cp feviStick.py pidiLite.py
    $ hg st
    A pidiLite.py
 
-*copy (alias cp)* command is used to mark files as copied for the next commit. ::
+*rename(alias mv)* rename files; equivalent of copy + remove. *tip* command shows newest revision in the repository. ::
 
    $ hg rename pidiLite.py feviCol.py
    $ hg st
@@ -317,7 +318,7 @@ Similar to add there are other commands available for file management in repo. :
    date:        Sat Aug 22 00:11:25 2009 +0530
    summary:     Renamed pidiLite.py.
 
-*rename(alias mv)* rename files; equivalent of copy + remove. *tip* command shows newest revision in the repository.. ::
+*remove* command is used to remove files from a repo. ::
 
    $ hg remove feviCol.py
    $ hg st
@@ -337,7 +338,7 @@ Sharing Changes:
 Pulling from repo:
 ~~~~~~~~~~~~~~~~~~
 
-As mentioned earlier that repositories in Mercurial are self-contained. This means that the changeset just created exists only in Fevicol repository and not in previously cloned fevicol-pull. There are a few ways that can be used to propagate this change into other repositories. ::
+As mentioned earlier that repositories in Mercurial are self-contained. This means that the changeset just created exists only in Fevicol repository and not in previously cloned Fevicol-pull. There are a few ways that can be used to propagate this change into other repositories. ::
 
    $ hg clone Fevicol Fevicol-clone
    updating working directory
@@ -397,13 +398,13 @@ Making Changes:
 After getting the desired version of local repo, one can make changes as he/she needs and then make them available(share) for others. For these operations we will be working in Fevicol-clone repo which we created earlier. It's often good practice to keep a “pristine” copy of a remote repository around, which you can then make temporary clones of to create sandboxes for each task you want to work on. ::
 
     $ cd Fevicol-clone/
-    $ cat cat feviStick.py 
+    $ cat feviStick.py 
     print 'Yeh Fevicol ka Majboot jod hai'
 
 This tagline is correct for feviCol.py but for feviStick.py it should be different. ::
 
     $ echo "print 'Ab no more Chip Chip'" > feviStick.py
-    $ cat cat feviStick.py
+    $ cat feviStick.py
     print 'Ab no more Chip Chip'
     $ hg st
     M feviStick.py
@@ -426,7 +427,7 @@ Mercurial records your name and address with each change that you commit, so tha
 	  
 	  - Specify a -u option to the hg commit command on the command line, followed by a username.
 	  - set HGUSER environment variable.
-	  - Edit hgrc file present in .hg folder to set this property, add following lines to that file and Mercurial will read those parameters from that location.
+	  - Edit hgrc file present in .hg folder to set this property, add following lines to that file and Mercurial will read those parameters from that location. ::
 	  
 		[ui]
 		username = Firstname Lastname <email.address@example.net>
@@ -447,7 +448,7 @@ Once this parameter is set, *hg commit* command drops us into a text editor, to 
     HG: branch 'default'
     HG: changed feviStick.py 
 
-This would be vi sort of editor, where you can enter the log message in first line, once you are done with log message quit the editor using *[ESC] key ":wq"*.Once we've finished the commit, we can use the hg tip command to display the changeset we just created. ::
+This would be your default system editor(for me it is vim, one can set it also), where you can enter the log message in first line, once you are done with log message quit the editor using *[ESC] key ":wq"*.Once we've finished the commit, we can use the hg tip command to display the changeset we just created. ::
 
     $ hg tip
     changeset:   3:e1ab2aff4ddd
@@ -474,7 +475,7 @@ The *hg outgoing* command tells us what changes would be pushed into another rep
     date:        Sun Aug 23 23:32:01 2009 +0530
     summary:     Changed tagline for feviStick.py.
 
-And the hg push command does the actual push. ::
+And the *hg push* command does the actual push. ::
 
     $ hg push ../Fevicol
     pushing to ../Fevicol
@@ -503,10 +504,193 @@ changesets are imported, but update is yet to be done. ::
    $ $ cat feviStick.py 
    print 'Ab no more Chip Chip'
 
-Dos and Don'ts with Mercurial:
-==============================
+Merging the Work:
+~~~~~~~~~~~~~~~~~
 
+This is next aspect of any version control, how to merge work done by various participants of project in a way that no one looses changes being made, and still remains updated. Here is simple case study which can help understanding why merging is required: 
 
+Two persons, changu and mangu are contributing on same project. Both starts from cloning the same online repo(lets say present state A), so that both have a working local repo. Now changu edits one of file, commits the changes and pushes to the repo, hence changing the state of repo to B, but mangu, have not updated his repo, makes a change in one of files and reaches to a different state C. Now when changu pulls repo from mangu, his repo will have multiple heads. This stage is clearly ambiguous the repo of changu is not consistent, it has multiple heads, and from here, whatever changes he makes can take whatsoever direction if it is not fixed, and hence changu will have to merge changes so that everything becomes consistent again.
+
+Lets see how this work with working repo, we will use Fevicol and Fevicol-clone repositories created earlier. For now, the status of both repo is: ::
+
+    $ cd Fevicol-clone
+    $ hg tip
+    changeset:   3:e1ab2aff4ddd
+    tag:         tip
+    user:        Shantanu Choudhary <shantanu@fossee.in>
+    date:        Sun Aug 23 23:32:01 2009 +0530
+    summary:     Changed tagline for feviStick.py.
+
+The tagline for feviCol.py is not complete, so we make changes in that file in this repo. ::
+
+    $ echo "print 'Yeh Fevicol ka Majboot jod hai, tootega nahin'" > feviStick.py
+    $ hg st
+    M feviStick.py
+
+And commit the changes made ::
+
+    $ hg ci -u "Shantanu <shantanu@fossee.in>" -m "Updated tag line for feviCol.py."
+    $ hg st
+    $ hg tip
+    changeset:   4:caf986b15e05
+    tag:         tip
+    user:        Shantanu <shantanu@fossee.in>
+    date:        Tue Aug 25 16:28:24 2009 +0530
+    summary:     Updated tag line for feviCol.py.
+
+Now we will make some changes on Fevicol repo. We will add new file here ::
+
+    $ cd Fevicol
+    $ echo "print 'Jor laga ke hayyiya'" > firstAdd.py
+    $ hg st
+    ? firstAdd.py
+    $ hg add firstAdd.py
+    $ hg st
+    A firstAdd.py
+    $ hg ci -u "Shantanu <shantanu@fossee.in>" -m "Added firsAdd.py."
+    $ hg tip
+    changeset:   4:fadbd6492cc4
+    tag:         tip
+    user:        Shantanu <shantanu@fossee.in>
+    date:        Tue Aug 25 16:46:24 2009 +0530
+    summary:     Added firsAdd.py.
+    
+So now we have two repo, who have different commit history and tree, now if we try to pull changes from one to another, this is how it goes(we are still in Fevicol repo): ::
+
+    $ hg pull ../Fevicol-clone 
+    pulling from ../Fevicol-clone
+    searching for changes
+    adding changesets
+    adding manifests
+    adding file changes
+    added 1 changesets with 1 changes to 1 files (+1 heads)
+    (run 'hg heads' to see heads, 'hg merge' to merge)
+
+There we go, since both repo were on different track, hg pull command in last line gives some heading from here. *hg heads* command show current repository heads or show branch heads. ::
+
+    $ hg heads
+    changeset:   5:caf986b15e05
+    tag:         tip
+    parent:      3:e1ab2aff4ddd
+    user:        Shantanu <shantanu@fossee.in>
+    date:        Tue Aug 25 16:28:24 2009 +0530
+    summary:     Updated tag line for feviCol.py.
+
+    changeset:   4:fadbd6492cc4
+    user:        Shantanu <shantanu@fossee.in>
+    date:        Tue Aug 25 16:46:24 2009 +0530
+    summary:     Added firsAdd.py.
+    
+To get better understanding of what is going on hg have a tool known as *glog* which shows revision history alongside an ASCII revision graph. ::
+     
+    $ hg glog
+    o  changeset:   5:caf986b15e05
+    |  tag:         tip
+    |  parent:      3:e1ab2aff4ddd
+    |  user:        Shantanu <shantanu@fossee.in>
+    |  date:        Tue Aug 25 16:28:24 2009 +0530
+    |  summary:     Updated tag line for feviCol.py.
+    |
+    | @  changeset:   4:fadbd6492cc4
+    |/   user:        Shantanu <shantanu@fossee.in>
+    |    date:        Tue Aug 25 16:46:24 2009 +0530
+    |    summary:     Added firsAdd.py.
+    |
+    o  changeset:   3:e1ab2aff4ddd
+    |  user:        Shantanu Choudhary <shantanu@fossee.in>
+    |  date:        Sun Aug 23 23:32:01 2009 +0530
+    |  summary:     Changed tagline for feviStick.py.
+    |
+    o  changeset:   2:a7912d45f47c
+    |  user:        Shantanu <shantanu@fossee.in>
+    |  date:        Sun Aug 23 22:34:35 2009 +0530
+    |  summary:     Updated Content.
+    |
+    o  changeset:   1:d948fb4137c5
+    |  user:        Shantanu <shantanu@fossee.in>
+    |  date:        Sat Aug 22 00:11:25 2009 +0530
+    |  summary:     Renamed pidiLite.py.
+    |
+    o  changeset:   0:84f5e91f4de1
+       user:        Shantanu <shantanu@fossee.in>
+       date:        Fri Aug 21 23:37:13 2009 +0530
+       summary:     First commit.
+
+To bring repo on single track/branch once again we will have to merge these two branches. Without merging them even hg update wont work for obvious reason of confusing track record. ::
+
+    $ hg up
+    abort: crosses branches (use 'hg merge' or 'hg update -C')
+
+*hg merge* command merge working directory with another revision. ::
+
+    $ hg merge
+    1 files updated, 0 files merged, 0 files removed, 0 files unresolved
+    (branch merge, don't forget to commit) 
+    $ hg tip 
+    changeset:   5:caf986b15e05
+    tag:         tip
+    parent:      3:e1ab2aff4ddd
+    user:        Shantanu <shantanu@fossee.in>
+    date:        Tue Aug 25 16:28:24 2009 +0530
+    summary:     Updated tag line for feviCol.py.
+
+After merging two branches, until we commit the results of merge it will keep on showing two heads. ::
+
+    $ hg ci -u "Shantanu <shantanu@fossee.in>" -m "Merged branches of add and tag line."
+    $ hg heads 
+    changeset:   6:edbe97209954
+    tag:         tip
+    parent:      4:fadbd6492cc4
+    parent:      5:caf986b15e05
+    user:        Shantanu <shantanu@fossee.in>
+    date:        Tue Aug 25 17:06:03 2009 +0530
+    summary:     Merged branches of add and tag line.
+
+Here is brief and meaningful output of glog ::
+
+    $ hg glog 
+    @    changeset:   6:edbe97209954
+    |\   tag:         tip
+    | |  parent:      4:fadbd6492cc4
+    | |  parent:      5:caf986b15e05
+    | |  user:        Shantanu <shantanu@fossee.in>
+    | |  date:        Tue Aug 25 17:06:03 2009 +0530
+    | |  summary:     Merged branches of add and tag line.
+    | |
+    | o  changeset:   5:caf986b15e05
+    | |  parent:      3:e1ab2aff4ddd
+    | |  user:        Shantanu <shantanu@fossee.in>
+    | |  date:        Tue Aug 25 16:28:24 2009 +0530
+    | |  summary:     Updated tag line for feviCol.py.
+    | |
+    o |  changeset:   4:fadbd6492cc4
+    |/   user:        Shantanu <shantanu@fossee.in>
+    |    date:        Tue Aug 25 16:46:24 2009 +0530
+    |    summary:     Added firsAdd.py.
+
+And we are back on track.
+
+Workflow:
+=========
+
+This is chain of steps which can be followed for working against a project that has a centralized copy, you may want to make sure you're up to date first. This means pulling its changes and then updating. 
+
+For example: ::
+    
+    $ hg pull
+    $ hg update
+
+This will grab the remote changes from the location you first cloned from. Then it will apply the changes. You can do this in one go with: ::
+
+    $ hg pull -u
+
+Now let's say you make some changes. You edit a file and you want to commit your change. You can do this with: ::
+
+    $ hg commit
+
+An editor will pop-up asking you to write a message describing your change. This is required. When you're done for the day, and you have required changesets sitting in your repository. Before pushing to upstream make sure to pull and update and merge branches if required, once everything looks okay and you have single track, push the changes, ::
+
+    $ hg push
 
 Suggested Reading:
 ==================
