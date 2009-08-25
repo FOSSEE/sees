@@ -1,6 +1,6 @@
-=====================
-Basic Python Workshop
-=====================
+============
+Basic Python
+============
 
 This document is intended to be handed out at the end of the workshop. It has
 been designed for Engineering students who are Python beginners and have basic
@@ -8,11 +8,11 @@ programming skills. The focus is on basic numerics and plotting using Python.
 
 The system requirements:
   * Python - version 2.5.x or newer.
-  * IPython 
+  * IPython
   * Text editor - scite, vim, emacs or whatever you are comfortable with.
 
-1. Introduction
-===============
+Introduction
+============
 
 The Python programming language was created by a dutch named Guido van Rossum.
 The idea of Python was conceived in December 1989. The name Python has nothing
@@ -78,11 +78,11 @@ languages like C or C++. Yet, the amount of flexibility and power more than make
 up for this setback.
 
 
-1.1 The Python Interpreter
---------------------------
+The Python Interpreter
+======================
 
-1.1.1 The Interactive Interpreter
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The Interactive Interpreter
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Typing *python* at the shell prompt on any standard Unix/Gnu-Linux system and
 hitting the enter key fires up the Python 'Interactive Interpreter'. The Python
@@ -196,8 +196,8 @@ Eg 4:
   This example is to show that unlike in C or C++ there is no limit on the
   value of an integer.
 
-1.1.2 *ipython* - An enhanced interactive Python interpreter
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*ipython* - An enhanced interactive Python interpreter
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The power and the importance of the interactive interpreter was the highlight
 of the previous section. This section provides insight into the enhanced
@@ -232,22 +232,14 @@ Eg:
   In [4]: a = 6
   
   In [5]: a.
-  a.__abs__           a.__divmod__        a.__index__         a.__neg__       
-    a.__rand__          a.__rmod__          a.__rxor__
-  a.__add__           a.__doc__           a.__init__          a.__new__       
-    a.__rdiv__          a.__rmul__          a.__setattr__
-  a.__and__           a.__float__         a.__int__           a.__nonzero__   
-    a.__rdivmod__       a.__ror__           a.__str__
-  a.__class__         a.__floordiv__      a.__invert__        a.__oct__       
-    a.__reduce__        a.__rpow__          a.__sub__
-  a.__cmp__           a.__getattribute__  a.__long__          a.__or__        
-    a.__reduce_ex__     a.__rrshift__       a.__truediv__
-  a.__coerce__        a.__getnewargs__    a.__lshift__        a.__pos__      
-    a.__repr__          a.__rshift__        a.__xor__
-  a.__delattr__       a.__hash__          a.__mod__           a.__pow__      
-    a.__rfloordiv__     a.__rsub__          
-  a.__div__           a.__hex__           a.__mul__           a.__radd__     
-    a.__rlshift__       a.__rtruediv__      
+  a.__abs__           a.__divmod__        a.__index__         a.__neg__          a.__rand__          a.__rmod__          a.__rxor__
+  a.__add__           a.__doc__           a.__init__          a.__new__          a.__rdiv__          a.__rmul__          a.__setattr__
+  a.__and__           a.__float__         a.__int__           a.__nonzero__      a.__rdivmod__       a.__ror__           a.__str__
+  a.__class__         a.__floordiv__      a.__invert__        a.__oct__          a.__reduce__        a.__rpow__          a.__sub__
+  a.__cmp__           a.__getattribute__  a.__long__          a.__or__           a.__reduce_ex__     a.__rrshift__       a.__truediv__
+  a.__coerce__        a.__getnewargs__    a.__lshift__        a.__pos__          a.__repr__          a.__rshift__        a.__xor__
+  a.__delattr__       a.__hash__          a.__mod__           a.__pow__          a.__rfloordiv__     a.__rsub__          
+  a.__div__           a.__hex__           a.__mul__           a.__radd__         a.__rlshift__       a.__rtruediv__      
 
 In this example, we initialized 'a' (a variable - a concept that will be
 discussed in the subsequent sections.) to 6. In the next line when the *tab* key
@@ -256,7 +248,45 @@ that are applicable on the object 'a' (an integer in this context). Ipython
 provides many such datatype specific features which will be presented in the
 further sections as and when the datatypes are introduced.
 
-1.2 Editing and running a python file
--------------------------------------
+Editing and running a python file
+=================================
 
-The 
+The previous sections focused on the use of the interpreter to run python code.
+While the interpeter is an excellent tool to test simple solutions and
+experiment with small code snippets, its main disadvantage is that everything
+written in the interpreter is lost once its quit. Most of the times a program is 
+used by people other than the author. So the programs have to be available in 
+some form suitable for distribution, and hence they are written in files. This 
+section will focus on editing and running python files. Start by opening a text 
+editor ( it is recommended you choose one from the list at the top of this page ).
+In the editor type down python code and save the file with an extension **.py** 
+(python files have an extension of .py). Once done with the editing, save the 
+file and exit the editor. 
+
+Let us look at a simple example of calculating the gcd of 2 numbers using Python:
+
+**Creating the first python script(file)**
+::
+
+  $ emacs gcd.py
+    def gcd(x,y):
+      if x % y == 0:
+        return y
+      return gcd(y, x%y)
+  
+    print gcd(72, 92)
+
+To run the script, open the shell prompt, navigate to the directory that 
+contains the python file and run `python <filename.py>` at the prompt ( in this 
+case filename is gcd.py )
+
+**Running the python script**
+::
+  
+  $ python gcd.py
+  4
+  $ 
+
+Basic Datatypes and operators in Python
+=======================================
+
