@@ -545,15 +545,12 @@ Text that is enclosed between ``\begin{verbatim}`` and ``\end{verbatim}`` will b
 ::
 
   \begin{verbatim}
-  10 PRINT "HELLO WORLD ";
-  20 GOTO 10
+  from numpy import *
+  a = linspace(0, 5, 50, endpoint = False)
   \end{verbatim}
 
-
-10 PRINT "HELLO WORLD ";
-
-20 GOTO 10
-
+  from numpy import *
+  a = linspace(0, 5, 50, endpoint = False)
 
 Within a paragraph, similar behavior can be accessed with
 ::
@@ -565,14 +562,14 @@ The + is just an example of a delimiter character. You can use any character exc
 The starred verstion of the verbatim environment emphasizes the spaces in the text. 
 ::
 
-  \begin{verbatim*}
-  10 PRINT "HELLO WORLD ";
-  20 GOTO 10
-  \end{verbatim*}
+  \begin{verbatim}
+  from numpy import *
+  a = linspace(0, 5, 50, endpoint = False)
+  \end{verbatim}
 
-10␣PRINT␣"HELLO␣WORLD␣";
+  from␣numpy␣import␣*
+  a␣=␣linspace(0,␣5,␣50,␣endpoint␣=␣False)
 
-20␣GOTO␣10
 
 Tables, Figures and Captions
 ----------------------------
@@ -659,7 +656,7 @@ Both float environments support an optional parameter called the placement speci
 
 +-----------+-------------------------------------------------------------------+
 | Specifier | Permission                                                        |
-+-----------+-------------------------------------------------------------------+
++===========+===================================================================+
 |   h       |  Place the float here                                             |
 |           |  (approximately at the same point it occurs in the source text)   |
 +-----------+-------------------------------------------------------------------+
@@ -777,11 +774,115 @@ The ``align`` environments center the single equation around the ``&`` sign. The
 Arrays and Matrices
 +++++++++++++++++++
 
+To typset arrays, use the ``array`` environment. It works similar to the ``tabular`` environment. The ``\\`` command is used to break the lines. 
+::
+
+  \begin{equation*}
+  \mathbf{X} = \left(
+   \begin{array}{ccc}
+   x_1 & x_2 & \ldots \\
+   x_3 & x_4 & \ldots \\
+   \vdots & \vdots & \ddots
+   \end{array} \right)
+  \end{equation*}
+
+The ``array`` environment can also be used to typeset piecewise functions by using a “.” as an invisible ``\right`` delimiter
+::
+
+  \begin{equation*}
+  |x| = \left\{
+   \begin{array}{rl}
+    -x & \text{if } x < 0\\
+     0 & \text{if } x = 0\\
+     x & \text{if } x > 0
+   \end{array} \right.
+   \end{equation*}
+
+The ``array`` environment can be used for typesetting matrices also, but ``amsmath`` provides a better solution using the different matrix environments. There are six versions with different delimiters: ``matrix`` (none), ``pmatrix`` (, ``bmatrix`` [, ``Bmatrix`` {, ``vmatrix`` | and ``Vmatrix`` ‖. The number of columns need not be specified, unlike the ``array`` environment.
+::
+
+  \begin{equation*}
+    \begin{matrix}
+    1 & 2 \\
+    3 & 4
+    \end{matrix} \qquad
+ 
+    \begin{bmatrix}
+    1 & 2 & 3 \\
+    4 & 5 & 6 \\
+    7 & 8 & 9
+    \end{bmatrix}
+  \end{equation*}
+
 
 Bibliography
 ------------
 
-You can produce a bibliography with the ``thebibliography`` environment.
+As mentioned previously, you can either use the ``thebibliography`` environment to include your references in the main document file itself, or use BibTeX to generate a database of references and keep using them as and when required. We shall first look at how we can include the reference items within our document itself. 
+
+``thebibliography`` environment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To use the thebibliography environment, you simply list down all the bibliography items within the bibliography environment as shown below. 
+
+Each item starts with ``\bibitem[label]{marker}``. The marker is then used to cite the bibliography item within the document, using ``\cite{marker}``. If the ``label`` option is not used, the bibliography items get enumerated automatically.
+::
+  
+  Lamport's \cite{WBook} book is a good reference for LaTeX.
+  
+  \begin{thebibliography}{99}
+  
+    \bibitem{WBook} Lamport, Leslie (1994). \emph{LaTeX: A document preparation system: User's guide and reference}.
+     illustrations by Duane Bibby (2nd ed.). Reading, Mass: Addison-Wesley Professional. 
+  
+  \end{thebibliography}
+
+The ``99`` in the example above indicates the maximum width of the label that the references may get. We here assume that the number of Bibliography items will be less than 100. If your document has less than 10 references, you may want to replace ``99`` with ``9``. 
+
+BibTeX
+~~~~~~
+
+The previous section detailed the process of embedding the references at the end of the document's source file and using the ``\cite`` command to cite them. In this section we shall use the BibTeX environment for references. 
+
+Using BibTeX you can create a database of all your references in a text file and cite the appropriate ones in each document. This method is much more convinient than writing down all the references for each document at the end of it, when you are writing multiple documents in a field. 
+
+The BibTeX database is stored in a ``.bib`` file. The structure of the file is quite simple and an example is shown below. 
+::
+
+  @book{Lamport94,
+  author    = "Leslie Lamport",
+  title     = "A Document Preparation System: User's Guide and Reference",
+  publisher = "Addison-Wesley Professional",
+  year      = "1994",
+  edtion    = "second",
+  note      = "illustrations by Duane Bibby"
+  }
+
+Each bibliography entry starts with a declaration of the type of the reference being mentioned. The reference is in the above example is of the book type. BibTeX has a wide range of reference types, for example, ``article, book, conference, manual, proceedings, unpublished``.
+
+The type of reference is followed by a left curly brace, and immediately followed by the citation key. The citation key, ``Lamport94`` in the example above is used to cite this reference using the command ``\cite{Lamport94}``. 
+
+This is followed by the relevant fields and their values, listed one by one. Each entry must be followed by a comma to delemit one field from the other. 
+
+To get your LaTeX document to use the bibliography database, you just add the following lines to your LaTeX document. 
+::
+
+  \bibliographystyle{plain}
+  \bibliography{LaTeX}
+
+Bibliography styles are files that tell BibTeX how to format the information stored in the ``.bib`` database file. The style file for this example is ``plain.bst``. Note that you do not need to add the ``.bst`` extension to the filename.  If you wish to achieve a particular style of listing the bibliography items and citing them, you should use an appropriate style file. 
+
+The ``bibliography`` command specifies the file that shoule be used as the database for references. The file used in this example is ``LaTeX.bib``
+
+Compiling
++++++++++
+
+Adding BibTeX based references, slightly complicates the process of coompiling the document to obtain the desired output. The exact workings of LaTeX and BibTeX will not be explained here. The procedure for obtaining the output (without any explanations) is as follows:
+
+1. Compile the ``.tex`` file using ``pdflatex`` - ``$pdflatex LaTeX(.tex)``
+2. Compile the ``.bib`` file using ``bibtex`` -  ``$bibtex LaTeX(.bib)``
+3. Compile the ``.tex`` file again. 
+4. Compile the ``.tex`` file for one last time!
 
 
 --------------------------------------------------------
