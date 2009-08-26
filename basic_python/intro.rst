@@ -384,5 +384,28 @@ Eg 9:
 
 Python provides a datatype for complex numbers. Complex numbers are initialized 
 as shown in the example above. The *real* and *imag* operators return the real and
-imaginary parts of the complex number as shown. The *abs()* returens the absolute
+imaginary parts of the complex number as shown. The *abs()* returns the absolute
 value of the complex number.
+
+Variables
+~~~~~~~~~
+
+Variables are just names that represent a value. Variables have already been 
+introduced in the various examples from the previous sections. Certain rules about
+using variables:
+
+  * Variables have to be initialized or assigned a value before being used.
+  * Variable names can consist of letters, digits and underscores(_).
+  * Variable names cannot begin with digits, but can contain digits in them.
+
+In reference to the previous section examples, 'a', 'b', 'lng', 'fl', 'e' and 'cplx'
+are all variables of various datatypes.
+
+::
+  
+  Note: Python is not a strongly typed language and hence an integer variable can at a
+  later stage be used as a float variable as well.
+
+Strings
+~~~~~~~
+
