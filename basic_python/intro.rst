@@ -222,10 +222,10 @@ This is the output obtained upon firing ipython. The exact appearance may
 change based on the Python version installed. The following are some of the
 various features provided by **ipython**:
   
-  * Suggestions - ipython provides suggestions of the possible methods and
+    Suggestions - ipython provides suggestions of the possible methods and
     operations available for the given python object.
 
-Eg:
+Eg 5:
   
 ::
   
@@ -287,6 +287,102 @@ case filename is gcd.py )
   4
   $ 
 
+Another method to run a python script would be to include the line
+
+`#! /usr/bin/python`
+
+at the beginning of the python file and then make the file executable by 
+
+$ chmod a+x *filename.py*
+
+Once this is done, the script can be run as a standalone program as follows:
+
+$ ./*filename.py*
+
 Basic Datatypes and operators in Python
 =======================================
 
+Python provides the following set of basic datatypes.
+
+  * Numbers: int, float, long, complex
+  * Strings
+  * Boolean
+
+Numbers
+~~~~~~~
+
+Numbers were introduced in the examples presented in the interactive interpreter
+section. Numbers include types as mentioned earlier viz., int (integers), float 
+(floating point numbers), long (large integers), complex (complex numbers with 
+real and imaginary parts). Python is not a strongly typed language, which means 
+the type of a variable need not mentioned during its initialization. Let us look
+at a few examples.
+
+Eg 6:
+::
+  
+  >>> a = 1 #here a is an integer variable
+
+Eg 7:
+::
+
+  >>> lng = 122333444455555666666777777788888888999999999 #here lng is a variable of type long
+  >>> lng
+  122333444455555666666777777788888888999999999L #notice the trailing 'L'
+  >>> print lng
+  122333444455555666666777777788888888999999999 #notice the absence of the trailing 'L'
+  >>> lng+1
+  122333444455555666666777777788888889000000000L
+
+
+Long numbers are the same as integers in almost all aspects. They can be used in
+operations just like integers and along with integers without any distinction.
+The only distinction comes during type checking (which is not a healthy practice).
+Long numbers are tucked with a trailing 'L' just to signify that they are long.
+Notice that in the example just lng at the prompt displays the value of the variable
+with the 'L' whereas `print lng` displays without the 'L'. This is because print 
+formats the output before printing. Also in the example, notice that adding an 
+integer to a long does not give any errors and the result is as expected. So for
+all practical purposes longs can be treated as ints.
+
+Eg 8:
+::
+
+  >>> fl = 3.14159 #fl is a float variable
+  >>> e = 1.234e-4 #e is also a float variable, specified in the exponential form
+  >>> a = 1
+  >>> b = 2
+  >>> a/b #integer division
+  0
+  >>> a/fl #floating point division
+  0.31831015504887655
+  >>> e/fl
+  3.9279473133031364e-05
+
+
+Floating point numbers, simply called floats are real numbers with a decimal point.
+The example above shows the initialization of a float variable. Shown also in this
+example is the difference between integer division and floating point division.
+'a' and 'b' here are integer variables and hence the division gives 0 as the quotient.
+When either of the operands is a float, the operation is a floating point division,
+and the result is also a float as illustrated.
+
+Eg 9:
+::
+
+  >>> cplx = 3 + 4j #cplx is a complex variable
+  >>> cplx
+  (3+4j)
+  >>> print cplx.real #prints the real part of the complex number
+  3.0
+  >>> print cplx.imag #prints the imaginary part of the complex number
+  4.0
+  >>> print cplx*fl  #multiplies the real and imag parts of the complex number with the multiplier
+  (9.42477+12.56636j)
+  >>> abs(cplx) #returns the absolute value of the complex number
+  5.0
+
+Python provides a datatype for complex numbers. Complex numbers are initialized 
+as shown in the example above. The *real* and *imag* operators return the real and
+imaginary parts of the complex number as shown. The *abs()* returens the absolute
+value of the complex number.
