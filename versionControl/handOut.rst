@@ -17,7 +17,7 @@ Now, in the real world, it’s not so easy. One probably cooks up their own vers
 Why Use Version Control
 =======================
  
-One of idea behind Version Control Tools was to build onto very first step which can be creating a empty file, or writting a first buggy program for assignment, rather then simply loose it. So here are some reasons why is automated version control needed:
+One of idea behind Version Control Tools was to build onto very first step which can be creating a empty file, or writing a first buggy program for assignment, rather then simply loose it. So here are some reasons why is automated version control needed:
 
     - It will track the history and evolution of a project, so one don't have to do it manually. It allows to track what changes where made, when were they made, by whom and why.
     - For a team of people working on same project, revision control software makes it easier to collaborate. For example, when people more or less simultaneously make potentially incompatible changes, the software will help them to identify and resolve those conflicts.
@@ -148,7 +148,7 @@ For specific command, just follow the command name after the help. ::
 Let there be Repository:
 ------------------------
 
-In Mercurial, everything happens inside a repository. The repository for a project contains all of the files that “belong to” that project, along with a historical record of the project's files. A repository is simply a directory tree in filesystem that Mercurial treats as special.
+In Mercurial, everything happens inside a repository. The repository for a project contains all of the files that “belong to” that project, along with a historical record of the project's files. A repository is simply a directory tree in file-system that Mercurial treats as special.
 
 There can be two ways to create a repo, either getting local copy for existing repo available on Internet or machine, or creating a new repo. For getting already existing repo hg uses command *"clone"* ::
 
@@ -299,7 +299,7 @@ So file is now part of repository(A symbol). Use *commit (alias ci)* command to 
    date:        Fri Aug 21 23:37:13 2009 +0530
    summary:     First commit.
 
-Similar to add there are other commands available for file management in repo. *copy (alias cp)* command is used to mark files as copied for the next commit.::
+Similar to add there are other commands available for file management in repo. *copy (alias cp)* command is used to mark files as copied for the next commit. ::
 
    $ hg cp feviStick.py pidiLite.py
    $ hg st
@@ -409,7 +409,7 @@ This tagline is correct for feviCol.py but for feviStick.py it should be differe
     $ hg st
     M feviStick.py
 
-Mercurial's hg status command will tell us what Mercurial knows about the files in the repository. 'M' sign infront of feviStick.py indicates that Mercurial has noticed change.
+Mercurial's hg status command will tell us what Mercurial knows about the files in the repository. 'M' sign in front of feviStick.py indicates that Mercurial has noticed change.
 
 It's somewhat helpful to know that feviStick.py was modified, but one might prefer to know exactly what changes were made to it. To do this, use the *hg diff* command. ::
 
@@ -509,7 +509,7 @@ Merging the Work:
 
 This is next aspect of any version control, how to merge work done by various participants of project in a way that no one looses changes being made, and still remains updated. Here is simple case study which can help understanding why merging is required: 
 
-Two persons, changu and mangu are contributing on same project. Both starts from cloning the same online repo(lets say present state A), so that both have a working local repo. Now changu edits one of file, commits the changes and pushes to the repo, hence changing the state of repo to B, but mangu, have not updated his repo, makes a change in one of files and reaches to a different state C. Now when changu pulls repo from mangu, his repo will have multiple heads. This stage is clearly ambiguous the repo of changu is not consistent, it has multiple heads, and from here, whatever changes he makes can take whatsoever direction if it is not fixed, and hence changu will have to merge changes so that everything becomes consistent again.
+Two persons, A and B are contributing on same project. Both starts from cloning the same online repo(lets say present state X), so that both have a working local repo. Now A edits one of file, commits the changes and pushes to the repo, hence changing the state of repo to Y, but B, have not updated his repo, makes a change in one of files and reaches to a different state Z. Now when A pulls repo from B, his repo will have multiple heads. This stage is clearly ambiguous, the repo of A is not consistent, it has multiple heads, and from here, whatever changes he makes can take whatsoever direction if it is not fixed, and hence A will have to merge changes so that everything becomes consistent again.
 
 Lets see how this work with working repo, we will use Fevicol and Fevicol-clone repositories created earlier. For now, the status of both repo is: ::
 
@@ -700,3 +700,4 @@ Suggested Reading:
 	* http://en.wikipedia.org/wiki/Revision_control
 	* http://hgbook.red-bean.com/
 	* http://betterexplained.com/articles/intro-to-distributed-version-control-illustrated/
+	* http://wiki.alliedmods.net/Mercurial_Tutorial
