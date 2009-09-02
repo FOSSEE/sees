@@ -91,7 +91,8 @@ when the interactive interpreter is similar to what is shown below. The exact
 appearance might differ based on the version of Python being used. The ``>>>``
 thing shown is the python prompt. When something is typed at the prompt and the
 enter key is hit, the python interpreter interprets the command entered and
-performs the appropriate action.
+performs the appropriate action. All the examples presented in this document are
+to be tried hands on, on the interactive interpreter.
 
 ::
 
@@ -196,6 +197,11 @@ Eg 4:
   This example is to show that unlike in C or C++ there is no limit on the
   value of an integer.
 
+Try this on the interactive interpreter:
+``import this``
+
+*Hint: The output gives an idea of Power of Python*
+
 *ipython* - An enhanced interactive Python interpreter
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -277,7 +283,7 @@ Let us look at a simple example of calculating the gcd of 2 numbers using Python
     print gcd(72, 92)
 
 To run the script, open the shell prompt, navigate to the directory that 
-contains the python file and run `python <filename.py>` at the prompt ( in this 
+contains the python file and run ``python <filename.py>`` at the prompt ( in this 
 case filename is gcd.py )
 
 **Running the python script**
@@ -289,7 +295,7 @@ case filename is gcd.py )
 
 Another method to run a python script would be to include the line
 
-`#! /usr/bin/python`
+``#! /usr/bin/python``
 
 at the beginning of the python file and then make the file executable by 
 
@@ -340,7 +346,7 @@ operations just like integers and along with integers without any distinction.
 The only distinction comes during type checking (which is not a healthy practice).
 Long numbers are tucked with a trailing 'L' just to signify that they are long.
 Notice that in the example just lng at the prompt displays the value of the variable
-with the 'L' whereas `print lng` displays without the 'L'. This is because print 
+with the 'L' whereas ``print lng`` displays without the 'L'. This is because print 
 formats the output before printing. Also in the example, notice that adding an 
 integer to a long does not give any errors and the result is as expected. So for
 all practical purposes longs can be treated as ints.
@@ -409,3 +415,149 @@ are all variables of various datatypes.
 Strings
 ~~~~~~~
 
+Strings are one of the essential data structures of any programming language.
+The ``print "Hello, World!"`` program was introduced in the earlier section, and
+the *"Hello, World!"* in the print statement is a string. A string is basically 
+a set of characters. Strings can be represented in various ways shown below:
+
+::
+
+  s = 'this is a string'              # a string variable can be represented using single quotes
+  s = 'This one has "quotes" inside!' # The string can have quotes inside it as shown
+  s = "I have 'single-quotes' inside!"
+  l = "A string spanning many lines\
+  one more line\
+  yet another"                        # a string can span more than a single line.
+  t = """A triple quoted string does  # another way of representing multiline strings.
+  not need to be escaped at the end and
+  "can have nested quotes" etc."""
+
+Try the following on the interpreter:
+``s = 'this is a string with 'quotes' of similar kind'``
+
+**Exercise: How to use single quotes within single quotes in a string as shown 
+in the above example without getting an error?**
+
+String operations
+-----------------
+
+A few basic string operations are presented here. 
+
+**String concatenation**
+String concatenation is done by simple addition of two strings.
+
+::
+
+  >>> x = 'Hello'
+  >>> y = ' Python'
+  >>> print x+y
+  Hello Python
+
+*Try this yourself:*
+
+::
+  
+  >>> somenum = 13
+  >>> print x+somenum
+
+The problem with the above example is that here a string variable and an integer
+variable are trying to be concantenated. To obtain the desired result from the 
+above example the str(), repr() and the `` can be used.
+
+**str()** simply converts a value to a string in a reasonable form.
+**repr()** creates a string that is a representation of the value.
+
+The difference can be seen in the example shown below:
+
+::
+  
+  >>> str(1000000000000000000000000000000000000000000000000L)
+  '1000000000000000000000000000000000000000000000000'
+  >>> repr(1000000000000000000000000000000000000000000000000L)
+  '1000000000000000000000000000000000000000000000000L'
+
+It can be observed that the 'L' in the long value shown was omitted by str(), 
+whereas repr() converted that into a string too. An alternative way of using 
+repr(value) is ```value```. 
+
+A few more examples:
+::
+  
+  >>> x = "Let's go \nto Pycon"
+  >>> print x
+  Let's go 
+  to Pycon
+
+In the above example, notice that the '\n'(newline) character is formatted and 
+the string is printed on two lines. The strings discussed until now were normal 
+strings. Other than these there are two other types of strings namely, raw strings
+and unicode strings.
+
+**Raw strings** are strings which are unformatted, that is the backslashes(\) are 
+not parsed and are left as it is in the string. Raw strings are represented with
+an 'r' at the start of a string. 
+Let us look at an example
+
+::
+  
+  >>> x = r"Let's go \nto Pycon"
+  >>> print x
+  Let's go \nto Pycon
+
+Note: The '\n' is not being parsed into a new line and is left as it is.
+
+*Try this yourself:*
+
+::
+  
+  >>> x = r"Let's go to Pycon\"
+
+**Unicode strings** are strings where the characters are Unicode characters as 
+opposed to ASCII characters. Unicode strings are represented with a 'u' at the 
+start of the string.
+Let us look at an example:
+
+::
+  
+  >>> x = u"Let's go to Pycon!"
+  >>> print x
+  Let's go to Pycon!
+
+Boolean
+~~~~~~~
+
+Python also provides special Boolean datatype. A boolean variable can assume a 
+value of either *True* or *False* (Note the capitalizations). 
+
+Let us look at examples:
+
+::
+
+  >>> t = True
+  >>> f = not t
+  >>> print f
+  False
+  >>> f or t
+  True
+  >>> f and t
+  False
+
+The **while** loop
+~~~~~~~~~~~~~~~~~~
+
+The Python **while** loop is similar to the C/C++ while loop. The syntax is as
+follows:
+
+::
+
+  statement 0
+  while condition:
+    statement 1 #while block
+    statement 2 #while block
+  statement 3 #outside the while block.
+
+Let us look at an example:
+
+::
+  
+  
