@@ -1,5 +1,5 @@
-1. Introduction to the Course
-=============================
+Introduction to the Course
+==========================
 
 Engineering students use computers for a large number of curricular
 tasks – mostly computation centred. However, they do not see this as coding or programming tasks and usually are not even aware of the tools and
@@ -33,14 +33,16 @@ After successfully completing the program, the participants will be able to:
 
 - write unit tests and improve the quality of code.
 
-2. Introducing Linux
-=====================
+Introducing Linux
+=================
 
-Linux (commonly pronounced ˈlɪnəks') is a generic term referring to Unix-like computer operating systems based on the Linux kernel. Their development is one of the most prominent examples of free and open source software collaboration; typically all the underlying source code can be used, freely modified, and redistributed by anyone under the terms of the GNU Global Public License (GPL) and other free software licences.
+(Attribution : A significant chunk of the content under this section is based on data from Wikipedia and the Linux Documentation Project)
 
-Linux is predominantly known for its use in servers, although it is installed on a wide variety of computer hardware, ranging from embedded devices and mobile phones to supercomputers. 
+Linux (usually pronounced ˈlɪnəks') is a generic term referring to Unix-like computer operating systems based on the Linux kernel. The development of the Linux OS is considered the basis for Free and Open Source Software (FOSS) collaboration since typically the underlying source code can be used, modified freely, and redistributed by anyone under the terms of the GNU Global Public License (GPL) and other free software licences.
 
-The name "Linux"  comes from the Linux kernel, originally written in 1991 by Linus Torvalds. The rest of the system usually comprises components such as the Apache HTTP Server, the X Window System, the GNOME and KDE desktop environments, and utilities and libraries from the GNU Project (announced in 1983 by Richard Stallman). Commonly-used applications with desktop Linux systems include the Mozilla Firefox web-browser and the OpenOffice.org office application suite. The GNU contribution is the basis for the Free Software Foundation's preferred name GNU/Linux
+Linux is installed on a variety of computer hardware, that include mobile phones, embedded devices and supercomputers, but is infamous for its use in servers.
+
+The name "Linux"  comes from the Linux kernel, originally written in 1991 by Linus Torvalds. The rest of the system usually comprises components such as the Apache HTTP Server, the X Window System, the GNOME and KDE desktop environments, and utilities and libraries from the GNU Project (announced in 1983 by Richard Stallman). Commonly-used applications with desktop Linux systems include the Mozilla Firefox web-browser and the OpenOffice.org office application suite. The GNU contribution is the basis for the Free Software Foundation's preferred name GNU/Linux. The kernel's mascot is a penguin named "Tux".
 
 Historical Background
 ----------------------
@@ -63,7 +65,6 @@ In 1991, in Helsinki, Linus Torvalds began a project that later became the Linux
 
 Torvalds continues to direct the development of the kernel. Stallman heads the Free Software Foundation, which in turn supports the GNU components. Finally, individuals and corporations develop third-party non-GNU components. These third-party components comprise a vast body of work and may include both kernel modules and user applications and libraries. Linux vendors and communities combine and distribute the kernel, GNU components, and non-GNU components, with additional package management software in the form of Linux distributions.
 
-For the 2.6.29 release only, the kernel's mascot, a penguin named Tux, was temporarily replaced by Tuz in order to highlight efforts to save the Tasmanian Devil from extinction.
 
 Design and Implications
 ------------------------
@@ -143,8 +144,9 @@ From a Palmtop with 2 MB of memory to a petabyte storage cluster with hundreds o
 
 Because Linux has been developed and tested by thousands of people, both errors and people to fix them are found very quickly. It often happens that there are only a couple of hours between discovery and fixing of a bug.
 
-3. Getting Started
-===================
+Getting Started
+================
+
 Logging in, activating the user interface and logging out
 ----------------------------------------------------------
 In order to work on a Linux system directly, you will need to provide a user name and password. You always need to authenticate to the system. Most PC−based Linux systems have two basic modes for a system to run in: either quick and sober in text console mode, which looks like DOS with mouse, multitasking and multi−user features, or in graphical console mode, which
@@ -192,5 +194,109 @@ Also in text mode: log in as root only to do setup and configuration that absolu
 
 Logging out is done by entering the logout command, followed by Enter. You are successfully disconnected from the system when you see the login screen again.Don't power−off the computer after logging out. It is not meant to be shut off without application of the proper procedures for halting the system. Powering it off without going through the halting process might cause severe damage!
 
+Basic Commands
+===============
+
+ls
+---
+
+When invoked without any arguments, *ls* lists the files in the current working directory. A directory that is not the current working directory can be specified and ls will list the files there. The user also may specify any list of files and directories. In this case, all files and all contents of specified directories will be listed. The name *ls* is derived from *list segments* which was used in earlier systems.
+
+Files whose names start with "." are not listed, unless the *-a* flag is specified or the files are specified explicitly.
+
+Without options, *ls* displays files in a bare format. This bare format however makes it difficult to establish the type, permissions, and size of the files. The most common options to reveal this information or change the list of files are:
+
+    * *-l* long format, displaying Unix file types, permissions, number of hard links, owner, group, size, date, and filename
+    * *-F* appends a character revealing the nature of a file, for example, * for an executable, or / for a directory. Regular files have no suffix.
+    * *-a* lists all files in the given directory, including those whose names start with "." (which are hidden files in Unix). By default, these files are excluded from the list.
+    * *-R* recursively lists subdirectories. The command ls -R / would therefore list all files.
+    * *-d* shows information about a symbolic link or directory, rather than about the link's target or listing the contents of a directory.
+    * *-t* sort the list of files by modification time.
+    * *-h* print sizes in human readable format. (e.g., 1K, 234M, 2G, etc.)
+
+In some environments, providing the option *--color* (for GNU ls) or *-G* (FreeBSD ls) causes ls to highlight different types of files with different colors, instead of with characters as *-F* would. To determine what color to use for a file, GNU *ls* checks the Unix file type, the file permissions, and the file extension, while FreeBSD *ls* checks only the Unix file type and file permissions.::
+
+	$ ls
+	jeeves.rst psmith.html blandings.html
+	$ ls -l
+	drwxr--r--   1 plum  editors   4096  jeeves
+	-rw-r--r--   1 plum  editors  30405  psmith
+	-r-xr-xr-x   1 plum  plum      8460  blandings
 
 
+date
+------
+
+The Unix date command displays the time and date. The super-user can use it to set the system clock.
+
+With no options, the date command displays the current date and time, including the abbreviated day name, abbreviated month name, day of the month, the time separated by colons, the timezone name, and the year. For example::
+
+	$date
+	Tue Sep  8 12:01:45 IST 2009
+
+Options
+~~~~~~~~
+
+*-d, -de* : string display time described by string, not now.
+
+*-e* : datefile like de once for each line of datefile
+
+*-s, --set* : string set time described by string
+
+*-n* : don't synchronize the clocks on groups of machines using the utility timed(8). By default, if timed is running, date will set the time on all of the machines in the local group. *-n* inhibites that.
+
+*-u* : Display or set the date in UTC (universal) time.
+
+*date [-u|--utc|--universal] [mmddHHMM[[cc]yy].SS* : The only valid option for the this form specifies Coordinated Universal Time.
+
+*-u GMT* : example - Sat Feb 5 14:49:42 GMT 2005
+
+*--utc, --universal* : Coordinated Universal Time, example - Tue Sep  8 07:05:54 UTC 2009
+
+*-ITIMESPEC, --iso-8601* [=TIMESPEC] : output date/time in ISO 8601 format. TIMESPEC=date for date only, hours, minutes, or seconds for date and time to the indicated precision.
+
+*--iso-8601* without TIMESPEC defaults to 'date'.
+
+*-R*, *--rfc-822* outputs RFC-822 compliant date string,
+example - Sat Feb 5 09:50:23 EST 2005
+
+*--help*
+
+The Single Unix Specification (SUS) mandates only one option: *-u*, where the date and time is printed as if the timezone was UTC+0. Other Unix and Unix-like systems provide extra options.
+
+The XSI extension to the SUS specifies that the date command can also be used to set the date. The new date is specified as an option to date in the format MMddhhmm[[cc]yy], where MM specifies the two-digit numeric month, dd specifies the two-digit numeric day, hh specifies the two-digit numeric hour, mm specifies the two-digit numeric minutes. Optionally cc specifies the first two digits of the year, and yy specifies the last two digits of the year.
+
+Other Unix and Unix-like systems may set different options or date formats for date, for example, on some systems to set the current date and time to September 8, 2004 01:22 you type::
+
+	$date --set="20040908 01:22"
+
+cd
+----
+
+Change directory. Use “ cd ..” to go up one directory.
+
+One dot '.' represents the current directory while two dots '..' represent the parent directory.
+
+“ cd -” will return you to the previous directory (a bit like an “undo”).
+
+You can also use cd absolute path or cd relative path (see below):
+
+Absolute paths
+
+    An “ absolute path” is easily recognised from the leading forward slash, /. The / means that you start at the top level directory and continue down.
+
+For example to get to /boot/grub you would type::
+
+	$cd /boot/grub
+
+This is an absolute path because you start at the top of the hierarchy and go downwards from there (it doesn't matter where in the filesystem you were when you typed the command).
+
+Relative paths
+
+    A “ relative path” doesn't have a preceding slash. Use a relative path when you start from a directory below the top level directory structure. This is dependent on where you are in the filesystem.
+
+    For example if you are in root's home directory and want to get to /root/music, you type::
+
+	$ cd music
+
+Please note that there is no / using the above cd command. Using a / would cause this to be an absolute path, working from the top of the hierarchy downward.
