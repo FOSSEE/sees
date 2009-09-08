@@ -559,5 +559,134 @@ follows:
 Let us look at an example:
 
 ::
+
+    >>> x = 1  
+    >>> while x <= 5:
+    ...   print x
+    ...   x += 1
+    ... 
+    1
+    2
+    3
+    4
+    5
+
+The **if** conditional
+~~~~~~~~~~~~~~~~~~~~~~
+
+The Python **if** block provides the conditional execution of statements. 
+If the condition evaluates as true the block of statements defined under the if 
+block are executed.
+
+If the first block is not executed on account of the condition not being satisfied,
+the set of statements in the **else** block are executed.
+
+The **elif** block provides the functionality of evaluation of multiple conditions
+as shown in the example.
+
+The syntax is as follows:
+
+::
+
+  if condition :
+      statement_1
+      statement_2
+
+  elif condition:
+      statement_3
+      statement_4
+  else:
+      statement_5
+      statement_6
+
+Let us look at an example:
+
+::
   
+   >>> n = raw_input("Input a number:")
+   >>> if n < 0:
+         print n," is negative"
+         elif n > 0:
+         print n," is positive"
+         else:
+         print n, " is 0"
+
+**raw_input()**
+~~~~~~~~~~~~~~~
+
+In the previous example we saw the call to the raw_input() subroutine. 
+The **raw_input()** method is used to take user inputs through the console.
+Unlike **input()** which assumes the data entered by the user as a standard python
+expression, **raw_input()** treats all the input data as raw data and converts
+everything into a string. To illustrate this let us look at an example.
+
+::
+
+  >>> input("Enter a number thats a palindrome:")
+  Enter a number thats a palindrome:121
+  121
+
+  >>> input("Enter your name:")
+  Enter your name:PythonFreak
+  Traceback (most recent call last):
+    File "<stdin>", line 1, in <module>
+    File "<string>", line 1, in <module>
+  NameError: name 'PythonFreak' is not defined
+
+As shown above the **input()** assumes that the data entered is a valid Python
+expression. In the first call it prompts for an integer input and when entered
+it accepts the integer as an integer, whereas in the second call, when the string
+is entered without the quotes, **input()** assumes that the entered data is a valid
+Python expression and hence it raises and exception saying PythonFreak is not 
+defined.
+
+::
+
+  >>> input("Enter your name:")
+  Enter your name:'PythonFreak'
+  'PythonFreak'
+  >>> 
+
+Here the name is accepted because its entered as a string (within quotes). But
+its unreasonable to go on using quotes each time a string is entered. Hence the
+alternative is to use **raw_input()**.
+
+Let us now look at how **raw_input()** operates with an example.
+
+::
+
+  >>> raw_input("Enter your name:")
+  Enter your name:PythonFreak
+  'PythonFreak'
+
+Observe that the **raw_input()** is converting it into a string all by itself.
+
+::
+
+  >>> pal = raw_input("Enter a number thats a palindrome:")
+  Enter a number thats a palindrome:121
+  '121'
+
+Observe that **raw_input()** is converting the integer 121 also to a string as 
+'121'. Let us look at another example:
+
+::
   
+  >>> pal = raw_input("Enter a number thats a palindrome:")
+  Enter a number thats a palindrome:121
+  >>> pal + 2
+  Traceback (most recent call last):
+    File "<stdin>", line 1, in <module>
+  TypeError: cannot concatenate 'str' and 'int' objects
+  >>> pal
+  '121'
+
+Observe here that the variable *pal* is a string and hence integer operations
+cannot be performed on it. Hence the exception is raised.
+
+**int()** method
+~~~~~~~~~~~~~~~~
+
+Generally for computing purposes 
+
+Let us look at an example.
