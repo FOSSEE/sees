@@ -36,7 +36,6 @@ using negative indices.::
 It is important to note here that the last element of the *List* has an index of
 -1.
 
-
 ~~~~~~~~~~~~~
 Concatenating
 ~~~~~~~~~~~~~
@@ -376,28 +375,6 @@ a sorted copy of the list. However the original list is left intact::
   [5, 1, 3, 7, 4]
 
 
-List Comprehensions
-~~~~~~~~~~~~~~~~~~~
-
-List Comprehension is a convenvience utility provided by Python. It is a 
-syntatic sugar to create *Lists*. Using *List Comprehensions* one can create
-*Lists* from other type of sequential data structures or other *Lists* itself.
-The syntax of *List Comprehensions* consists of a square brackets to indicate
-the result is a *List* within which we include at least one **for** clause and
-multiple **if** clauses. It will be more clear with an example::
-
-  >>> num = [1, 2, 3]
-  >>> sq = [x*x for x in num]
-  >>> sq
-  [1, 4, 9]
-  >>> all_num = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-  >>> even = [x for x in all_num if x%2 == 0]
-
-The syntax used here is very clear from the way it is written. It can be 
-translated into english as, "for each element x in the list all_num, 
-if remainder of x divided by 2 is 0, add x to the list."
-
-
 Tuples
 ------
 
@@ -495,12 +472,55 @@ functions. They are also returned by some built-in functions and methods. And
 also there are some use cases like co-ordinate among other things. So *Tuples*
 are helpful.
 
+Additional Syntax
+-----------------
+
+The following additional syntax are introduced to make it easier to operate on
+*Lists*.
+
+range()
+~~~~~~~
+
+The *range* function takes at least one argument and 2 additional optional
+arguments. If two or more arguments are specified, the range function returns
+a list of natural numbers starting from the first argument passed to it to the
+second argument. The third argument, if specified is used as a step. Suppose
+only one argument is specified, then *range* function returns a list of natural
+numbers starting from 0 upto the argument specified::
+
+  >>> range(5, 10, 2)
+  [5, 7, 9]
+  >>> range(2, 15)
+  [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+  >>> range(12)
+  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+
+for
+~~~
+
+The **for** keyword is used as a part of the looping construct. Unlike for loops
+in other languages, Python's for is used to iterate through the elements of 
+sequences like *Lists*, *Tuples*, *Dictionaries*, etc. The syntax of the for loop
+consists of **for**, followed by a variable to hold the individual or the current
+element of the list during iteration and **in**, followed by the sequence and a
+semicolon(':') The next line which is part of the **for** loop, i.e the statements
+that are part of the loop should start with a new intend::
+
+  >>> names = ['Guido', 'Alex', 'Tim']
+  >>> for name in names:
+  ...   print "Name =", name
+  ... 
+  Name = Guido
+  Name = Alex
+  Name = Tim
+
 
 Conclusion
 ----------
 
 This section on *Lists* and *Tuples* introduces almost all the necessary 
 machinary required to work on *Lists* and *Tuples*. Topics like how to
-iterate through these data structures will be introduced in the later
-sections.
+use these data structures in bigger more useful programs will be introduced
+in the subsequent chapters.
+
  
