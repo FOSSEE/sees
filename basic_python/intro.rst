@@ -1,6 +1,6 @@
-=====================
-Basic Python Workshop
-=====================
+============
+Basic Python
+============
 
 This document is intended to be handed out at the end of the workshop. It has
 been designed for Engineering students who are Python beginners and have basic
@@ -8,11 +8,11 @@ programming skills. The focus is on basic numerics and plotting using Python.
 
 The system requirements:
   * Python - version 2.5.x or newer.
-  * IPython 
+  * IPython
   * Text editor - scite, vim, emacs or whatever you are comfortable with.
 
-1. Introduction
-===============
+Introduction
+============
 
 The Python programming language was created by a dutch named Guido van Rossum.
 The idea of Python was conceived in December 1989. The name Python has nothing
@@ -78,11 +78,11 @@ languages like C or C++. Yet, the amount of flexibility and power more than make
 up for this setback.
 
 
-1.1 The Python Interpreter
---------------------------
+The Python Interpreter
+======================
 
-1.1.1 The Interactive Interpreter
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The Interactive Interpreter
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Typing *python* at the shell prompt on any standard Unix/Gnu-Linux system and
 hitting the enter key fires up the Python 'Interactive Interpreter'. The Python
@@ -196,8 +196,8 @@ Eg 4:
   This example is to show that unlike in C or C++ there is no limit on the
   value of an integer.
 
-1.1.2 *ipython* - An enhanced interactive Python interpreter
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*ipython* - An enhanced interactive Python interpreter
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The power and the importance of the interactive interpreter was the highlight
 of the previous section. This section provides insight into the enhanced
@@ -222,32 +222,24 @@ This is the output obtained upon firing ipython. The exact appearance may
 change based on the Python version installed. The following are some of the
 various features provided by **ipython**:
   
-  * Suggestions - ipython provides suggestions of the possible methods and
+    Suggestions - ipython provides suggestions of the possible methods and
     operations available for the given python object.
 
-Eg:
+Eg 5:
   
 ::
   
   In [4]: a = 6
   
   In [5]: a.
-  a.__abs__           a.__divmod__        a.__index__         a.__neg__       
-    a.__rand__          a.__rmod__          a.__rxor__
-  a.__add__           a.__doc__           a.__init__          a.__new__       
-    a.__rdiv__          a.__rmul__          a.__setattr__
-  a.__and__           a.__float__         a.__int__           a.__nonzero__   
-    a.__rdivmod__       a.__ror__           a.__str__
-  a.__class__         a.__floordiv__      a.__invert__        a.__oct__       
-    a.__reduce__        a.__rpow__          a.__sub__
-  a.__cmp__           a.__getattribute__  a.__long__          a.__or__        
-    a.__reduce_ex__     a.__rrshift__       a.__truediv__
-  a.__coerce__        a.__getnewargs__    a.__lshift__        a.__pos__      
-    a.__repr__          a.__rshift__        a.__xor__
-  a.__delattr__       a.__hash__          a.__mod__           a.__pow__      
-    a.__rfloordiv__     a.__rsub__          
-  a.__div__           a.__hex__           a.__mul__           a.__radd__     
-    a.__rlshift__       a.__rtruediv__      
+  a.__abs__           a.__divmod__        a.__index__         a.__neg__          a.__rand__          a.__rmod__          a.__rxor__
+  a.__add__           a.__doc__           a.__init__          a.__new__          a.__rdiv__          a.__rmul__          a.__setattr__
+  a.__and__           a.__float__         a.__int__           a.__nonzero__      a.__rdivmod__       a.__ror__           a.__str__
+  a.__class__         a.__floordiv__      a.__invert__        a.__oct__          a.__reduce__        a.__rpow__          a.__sub__
+  a.__cmp__           a.__getattribute__  a.__long__          a.__or__           a.__reduce_ex__     a.__rrshift__       a.__truediv__
+  a.__coerce__        a.__getnewargs__    a.__lshift__        a.__pos__          a.__repr__          a.__rshift__        a.__xor__
+  a.__delattr__       a.__hash__          a.__mod__           a.__pow__          a.__rfloordiv__     a.__rsub__          
+  a.__div__           a.__hex__           a.__mul__           a.__radd__         a.__rlshift__       a.__rtruediv__      
 
 In this example, we initialized 'a' (a variable - a concept that will be
 discussed in the subsequent sections.) to 6. In the next line when the *tab* key
@@ -256,7 +248,164 @@ that are applicable on the object 'a' (an integer in this context). Ipython
 provides many such datatype specific features which will be presented in the
 further sections as and when the datatypes are introduced.
 
-1.2 Editing and running a python file
--------------------------------------
+Editing and running a python file
+=================================
 
-The 
+The previous sections focused on the use of the interpreter to run python code.
+While the interpeter is an excellent tool to test simple solutions and
+experiment with small code snippets, its main disadvantage is that everything
+written in the interpreter is lost once its quit. Most of the times a program is 
+used by people other than the author. So the programs have to be available in 
+some form suitable for distribution, and hence they are written in files. This 
+section will focus on editing and running python files. Start by opening a text 
+editor ( it is recommended you choose one from the list at the top of this page ).
+In the editor type down python code and save the file with an extension **.py** 
+(python files have an extension of .py). Once done with the editing, save the 
+file and exit the editor. 
+
+Let us look at a simple example of calculating the gcd of 2 numbers using Python:
+
+**Creating the first python script(file)**
+::
+
+  $ emacs gcd.py
+    def gcd(x,y):
+      if x % y == 0:
+        return y
+      return gcd(y, x%y)
+  
+    print gcd(72, 92)
+
+To run the script, open the shell prompt, navigate to the directory that 
+contains the python file and run `python <filename.py>` at the prompt ( in this 
+case filename is gcd.py )
+
+**Running the python script**
+::
+  
+  $ python gcd.py
+  4
+  $ 
+
+Another method to run a python script would be to include the line
+
+`#! /usr/bin/python`
+
+at the beginning of the python file and then make the file executable by 
+
+$ chmod a+x *filename.py*
+
+Once this is done, the script can be run as a standalone program as follows:
+
+$ ./*filename.py*
+
+Basic Datatypes and operators in Python
+=======================================
+
+Python provides the following set of basic datatypes.
+
+  * Numbers: int, float, long, complex
+  * Strings
+  * Boolean
+
+Numbers
+~~~~~~~
+
+Numbers were introduced in the examples presented in the interactive interpreter
+section. Numbers include types as mentioned earlier viz., int (integers), float 
+(floating point numbers), long (large integers), complex (complex numbers with 
+real and imaginary parts). Python is not a strongly typed language, which means 
+the type of a variable need not mentioned during its initialization. Let us look
+at a few examples.
+
+Eg 6:
+::
+  
+  >>> a = 1 #here a is an integer variable
+
+Eg 7:
+::
+
+  >>> lng = 122333444455555666666777777788888888999999999 #here lng is a variable of type long
+  >>> lng
+  122333444455555666666777777788888888999999999L #notice the trailing 'L'
+  >>> print lng
+  122333444455555666666777777788888888999999999 #notice the absence of the trailing 'L'
+  >>> lng+1
+  122333444455555666666777777788888889000000000L
+
+
+Long numbers are the same as integers in almost all aspects. They can be used in
+operations just like integers and along with integers without any distinction.
+The only distinction comes during type checking (which is not a healthy practice).
+Long numbers are tucked with a trailing 'L' just to signify that they are long.
+Notice that in the example just lng at the prompt displays the value of the variable
+with the 'L' whereas `print lng` displays without the 'L'. This is because print 
+formats the output before printing. Also in the example, notice that adding an 
+integer to a long does not give any errors and the result is as expected. So for
+all practical purposes longs can be treated as ints.
+
+Eg 8:
+::
+
+  >>> fl = 3.14159 #fl is a float variable
+  >>> e = 1.234e-4 #e is also a float variable, specified in the exponential form
+  >>> a = 1
+  >>> b = 2
+  >>> a/b #integer division
+  0
+  >>> a/fl #floating point division
+  0.31831015504887655
+  >>> e/fl
+  3.9279473133031364e-05
+
+
+Floating point numbers, simply called floats are real numbers with a decimal point.
+The example above shows the initialization of a float variable. Shown also in this
+example is the difference between integer division and floating point division.
+'a' and 'b' here are integer variables and hence the division gives 0 as the quotient.
+When either of the operands is a float, the operation is a floating point division,
+and the result is also a float as illustrated.
+
+Eg 9:
+::
+
+  >>> cplx = 3 + 4j #cplx is a complex variable
+  >>> cplx
+  (3+4j)
+  >>> print cplx.real #prints the real part of the complex number
+  3.0
+  >>> print cplx.imag #prints the imaginary part of the complex number
+  4.0
+  >>> print cplx*fl  #multiplies the real and imag parts of the complex number with the multiplier
+  (9.42477+12.56636j)
+  >>> abs(cplx) #returns the absolute value of the complex number
+  5.0
+
+Python provides a datatype for complex numbers. Complex numbers are initialized 
+as shown in the example above. The *real* and *imag* operators return the real and
+imaginary parts of the complex number as shown. The *abs()* returns the absolute
+value of the complex number.
+
+Variables
+~~~~~~~~~
+
+Variables are just names that represent a value. Variables have already been 
+introduced in the various examples from the previous sections. Certain rules about
+using variables:
+
+  * Variables have to be initialized or assigned a value before being used.
+  * Variable names can consist of letters, digits and underscores(_).
+  * Variable names cannot begin with digits, but can contain digits in them.
+
+In reference to the previous section examples, 'a', 'b', 'lng', 'fl', 'e' and 'cplx'
+are all variables of various datatypes.
+
+::
+  
+  Note: Python is not a strongly typed language and hence an integer variable can at a
+  later stage be used as a float variable as well.
+
+Strings
+~~~~~~~
+
