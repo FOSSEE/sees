@@ -543,7 +543,8 @@ Let us look at examples:
   False
 
 The **while** loop
-~~~~~~~~~~~~~~~~~~
+==================
+
 
 The Python **while** loop is similar to the C/C++ while loop. The syntax is as
 follows:
@@ -572,7 +573,7 @@ Let us look at an example:
     5
 
 The **if** conditional
-~~~~~~~~~~~~~~~~~~~~~~
+======================
 
 The Python **if** block provides the conditional execution of statements. 
 If the condition evaluates as true the block of statements defined under the if 
@@ -612,7 +613,7 @@ Let us look at an example:
          print n, " is 0"
 
 **raw_input()**
-~~~~~~~~~~~~~~~
+===============
 
 In the previous example we saw the call to the raw_input() subroutine. 
 The **raw_input()** method is used to take user inputs through the console.
@@ -685,7 +686,7 @@ Observe here that the variable *pal* is a string and hence integer operations
 cannot be performed on it. Hence the exception is raised.
 
 **int()** method
-~~~~~~~~~~~~~~~~
+================
 
 Generally for computing purposes, the data used is not strings or raw data but 
 on integers, floats and similar mathematical data structures. The data obtained
@@ -715,7 +716,7 @@ using the **int()** method the string *pal* was converted to an integer variable
 
 
 Functions in Python: **def**
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+============================
 
 *Functions* allow us to enclose a set of statements and call the function again
 and again instead of repeating the group of statements everytime. Functions also
@@ -809,7 +810,6 @@ the values are manipulated even outside the function::
   >>> can_change(name)
   >>> name
   ['Mr.', 'James', 'Gosling']
-
 If nothing is returned by the function explicitly, Python takes care to return
 None when the funnction is called.
 
