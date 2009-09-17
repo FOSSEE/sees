@@ -512,8 +512,100 @@ For me when I open the shell the output is something like: ::
    Good Morning baali, Have a nice day!
    This is Wednesday 16 in September of 2009 (11:54:47 AM IST) 
 
-Loops and Control Structures:
------------------------------
+Loops
+-----
+
+Bash has three different commands for looping -- ``for``, ``while`` and ``until``. 
+
+``for`` loop
+~~~~~~~~~~~~
+
+Suppose we have a set of files, that have names beginning with numbers followed by their names - ``08 - Society.mp3``. We would like to rename these files to remove the numbering. How would we go about doing that? It is clear from the problem statement that we could use a ``for`` loop, to loop through the list of files and rename each of the files.  
+
+Let's first look at a simple ``for`` loop, to understand how it works. 
+::
+
+  for animal in rat cat dog man
+  do 
+    echo $animal
+  done
+
+We just wrote a list of animals, each animal's name separated by a space and printed each name on a separate line. The variable ``animal`` is a dummy variable and has no significance. You could use something as lame as ``i`` in place of ``animal``.  
+
+Now, we use a simple ``for`` loop to list the files that we are interested in. 
+::
+
+  ls *.mp3 > list
+  for i in `cat list`
+  do
+    echo "$i"
+  done
+
+If your filenames contain spaces, ``for`` assumes each space separated word to be a single item in the list and prints it in a separate line. We could change the script slightly to overcome this problem. 
+::
+
+  for i in *.mp3
+  do
+    echo "$i"
+  done
+
+Now, we have each file printed on a separate line. Depending on the files that we have we could use grep to get the relevant portion of the filenames and rename the files. 
+::
+
+  for i in *.mp3
+  do 
+    j=$(echo "$i"|grep -o "[A-Za-z'&. ]*.mp3")
+    echo "$i -> $j"
+  done
+
+Now we just replace the echo command with a ``mv`` or a ``cp`` command. 
+::
+
+  for i in *.mp3
+  do 
+    j=$(echo "$i"|grep -o "[A-Za-z'&. ]*.mp3")
+    cp "$i" "$j"
+  done
+
+As an exercise, you could try sorting the files in reverse alphabetical order and then prefix numbers to each of the filenames.  
+
+``while``
+~~~~~~~~~
+
+The ``while`` command allows us to continuously execute a block of commands until the command that is controlling the loop is executing successfully. 
+
+Let's start with the lamest example of a while loop.
+::
+
+  while true
+  do
+    echo "True"
+  done
+
+This, as you can see, is an infinite loop that prints the ``True``. 
+
+Say we wish to write a simple program that takes user input and prints it back, until the input is ``quit``, which quits the program. 
+::
+
+  while [ "$variable" != "quit" ]
+  do
+    read variable
+    echo "Input - $variable"
+  done
+  exit 0
+
+``until``
+~~~~~~~~~
+
+The ``until`` loop is similar to the ``while`` loop, except that it executes until the conditional command does not execute properly. 
+
+The infinite loop changes to the following, when ``until`` is used.
+::
+
+  until false
+  do
+    echo "True"
+  done
 
 
 Further Reading:
