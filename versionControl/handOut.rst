@@ -1,4 +1,4 @@
-
+is	
 =================
  Version Control
 =================
@@ -688,7 +688,7 @@ Now let's say you make some changes. You edit a file and you want to commit your
 
     $ hg commit
 
-An editor will pop-up asking you to write a message describing your change. This is required. When you're done for the day, and you have required changesets sitting in your repository. Before pushing to upstream make sure to pull and update and merge branches if required, once everything looks okay and you have single track, push the changes, ::
+An editor will pop-up asking you to write a message describing your change. When you're done for the day, and you have required changesets sitting in your repository. Before pushing to upstream make sure to pull and update and merge branches if required, once everything looks okay and you have single track, push the changes, ::
 
     $ hg push
 

@@ -25,59 +25,48 @@ Session Level Split-up
 +---------+---------------------------------+---------+
 | Session | Topic  			    | Duration|
 +=========+=================================+=========+
-| 1	  | Introduction, TeX & LaTeX       | 10 min  |
+| 1	  | Introduction, TeX & LaTeX       |  5 min  |
 |         | WYSIWG vs. WYSIWM               |         |
 |         |                                 |         |
-|         | LaTeX source, Hello World       | 10 min  |
-|         | Compiling                       |         |
+|         | Hello World, Compiling,         |  10 min |
+|         | Where we want to go, Some Basics|         |
 +---------+---------------------------------+---------+
-| 2	  | General Document Structure      | 15 min  |
+| 2	  | Some Structural Elements        |  15 min |
 |         |                                 |         |
-|	  | ``\documentclass``,             |         |
-|	  | Document environment,           |	      |
-|         | Preamble,                       |         |
-|         | Packages,                       |         |
-|         | Top Matter,                     |         |
-|         | Abstract,                       |         |
-|         | Sectioning Commands,            |         |
-|         | Appendices,                     |         |
-|         | ToC, Bibliography,              |         |
-|         | Including files                 |         |
+|         | Top Matter, ``\documentclass``, |         |
+|	  | Abstract,                       |         |
+|         | Sections, Chapters & Parts,     |         |
+|         | Appendices, Table of Contents   |         |
 +---------+---------------------------------+---------+
-| 3	  | Line & Page Breaks,             |  5 min  |
-|         | Symbols & Special Characters,   |         |
-|	  | Emphasized words                |         |
-|	  |                                 |	      |
-|         | Cross References,               |  5 min  |
-|         | Footnotes,                      |         |
-|         |                                 |         |
-|         | Enumerate, Itemize, Description |  5 min  |
-|         |                                 |         |
-|         | Flushleft, Flushright, Center   |  5 min  |
+| 3	  | Emphasizing, Quotation marks,   |  5 min  |
+|	  | Dashes & Hyphens, Footnotes,    |         |
+|         | Flushleft, Flushright & Center  |         |
+|	  |                                 |         |
+|         | Enumerate, Itemize, Description,|  10 min |
 |         | Quote, Quotation and Verse,     |         |
-|         | Abstract,                       |         |
 |         | Verbatim                        |         |
 +---------+---------------------------------+---------+
-|         | Buffer time                     |  5 min  |
+| 4	  | ``\tabular`` environment,       |  20 min |
+|         | Importing Graphics, Floats,     |         |
+|         | Captions, List of Figures,      |         |
+|         | List of Tables, Cross References|         |     
 +---------+---------------------------------+---------+
-| 4	  | ``\tabular`` environment,       | 15 min  |
-|         | Importing Graphics, Floats      |         |
-|	  |                                 |	      |
-|         | Captions, List of Figures,      |  5 min  |
-|         | List of Tables                  |         |
+| 5	  | ``\thebibliography``            |  10 min |
+|         | environment, BibTeX             |         |
 +---------+---------------------------------+---------+
-| 5	  | ``\usepackage{amsmath}``,       |  5 min  |
+| 6	  | ``\usepackage{amsmath}``,       |  5 min  |
 |         | Single Equations                |         |
 |         |                                 |         |
-|         | Building blocks of an equation, | 15 min  |
+|         | Building blocks of an equation, |  15 min |
 |         | Multiple Equations, Arrays and  |         |
 |	  | Matrices                        |         |
 +---------+---------------------------------+---------+
-| 6	  | ``\thebibliography``            | 15 min  |
-|         | environment, BibTeX             |         |
+| 7       | ``beamer``, ``listing``,        |  10 min |
+|         | Including files                 |         |
 +---------+---------------------------------+---------+
-|         | Buffer time                     |  5 min  |
+| 8       | Excercises                      |  15 min |
 +---------+---------------------------------+---------+
+
 
 
 
