@@ -375,7 +375,7 @@ Apart from the above commands, that take any motion or visual block as an argume
 +----------------------------------------+---------+
 
 Note: You can prefix numbers to any of the commands, to repeat them.
-
+ppp
 Undo and Redo
 ~~~~~~~~~~~~~
 You can undo almost anything using ``u``. 
@@ -425,10 +425,16 @@ Searching and Replacing
 | for confirmation each time.           |                  |
 +---------------------------------------+------------------+
 
-
-scite
+SciTE
 -----
 
+SciTE is a *source code* editor, that has a feel similar to the GUI text editors. It has a wide range of features that are extremely useful for a programmer, editing code. Also it aims to keep configuration simple, and the user needs to edit a text file to configure SciTE to his/her liking. 
+
+Opening, Saving, Editing files with SciTE is extremely simple and trivial. Knowledge of using a text editor will suffice. 
+
+SciTE can syntax highlight code in various languages. It also has auto-indentation, code-folding and other such features which are useful when editing code. 
+
+SciTE also gives you the option to (compile and) run your code, from within the editor. 
 
 Personalizing your Environment
 ==============================
