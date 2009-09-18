@@ -607,6 +607,56 @@ The infinite loop changes to the following, when ``until`` is used.
     echo "True"
   done
 
+Functions
+---------
+
+When a group of commands are repeatedly being used within a script, it is convenient to group them as a function. This saves a lot of time and you can avoid retyping the code again and again. Also, it will help you maintain your code easily. Let's see how we can define a simple function, ``hello-world``. Functions can be defined in bash, either using the ``function`` built-in followed by the function name or just the function name followed by a pair of parentheses. 
+::
+
+  function hello-world
+  { 
+  echo "Hello, World."; 
+  }
+
+  hello-world () {
+    echo "Hello, World.";
+  }
+
+  $ hello-world
+  Hello, World.
+
+Passing parameters to functions is similar to passing them to scripts. 
+::
+
+  function hello-name
+  { 
+  echo "Hello, $1."; 
+  }
+
+  $ hello-name 9
+  Hello, 9.
+
+Any variables that you define within a function, will be added to the global namespace. If you wish to define variables that are restricted to the scope of the function, define a variable using the ``local`` built-in command of bash.
+
+We shall now write a function for the word frequency generating script that we had looked at in the previous session. 
+
+::
+
+  function word_frequency {
+    if [ $# -ne 1 ]
+    then
+      echo "Usage: $0 file_name"
+      exit 1
+    else 
+      if [ -f "$1" ]
+      then
+        grep  "[A-Za-z]*" -o "$1" | tr 'A-Z' 'a-z' | sort | uniq -c | sort -nr | less
+      fi
+    fi
+  }
+
+As an exercise, modify the function to accept the input for the number of top frequency words to be shown (if none is given, assume 10).
+
 
 Further Reading:
 ---------------- 

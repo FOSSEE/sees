@@ -428,7 +428,7 @@ Searching and Replacing
 SciTE
 -----
 
-SciTE is a *source code* editor, that has a feel similar to the GUI text editors. It has a wide range of features that are extremely useful for a programmer, editing code. Also it aims to keep configuration simple, and the user needs to edit a text file to configure SciTE to his/her liking. 
+SciTE is a *source code* editor, that has a feel similar to the commonly used GUI text editors. It has a wide range of features that are extremely useful for a programmer, editing code. Also it aims to keep configuration simple, and the user needs to edit a text file to configure SciTE to his/her liking. 
 
 Opening, Saving, Editing files with SciTE is extremely simple and trivial. Knowledge of using a text editor will suffice. 
 
