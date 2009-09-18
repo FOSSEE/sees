@@ -320,6 +320,13 @@ The dictionary consists of pairs of strings, which are called *keys* and their
 corresponding *values* separated by *:* and each of these *key-value* pairs are
 comma(',') separated and the entire structure wrapped in a pair curly braces *{}*.
 
+::
+
+  Note: The data inside a dictionary is not ordered. The order in which you enter
+  the key-value pairs is not the order in which they are stored in the dictionary.
+  Python has an internal storage mechanism for that which is out of the purview 
+  of this document.
+
 **dict()**
 ~~~~~~~~~~
 
@@ -333,4 +340,120 @@ dictionaries. Let us look at an example.
 **String Formatting with Dictionaries:**
 
 String formatting was discussed in the previous section and it was mentioned that
-dictionaries can also be used for formatting more than one value like . 
+dictionaries can also be used for formatting more than one value. This section 
+focuses on the formatting of strings using dictionaries. String formatting using
+dictionaries is more appealing than doing the same with tuples. Here the *keyword*
+can be used as a place holder and the *value* corresponding to it is replaced in
+the formatted string. Let us look at an example.
+
+::
+
+  >>> player = { 'Name':'Rahul Dravid', 'Matches':133, 'Avg':52.53, '100s':26 }
+  >>> strng = '%(Name)s has played %(Matches)d with an average of %(Avg).2f and has %(100s)d hundreds to his name.'
+  >>> print strng % player
+  Rahul Dravid has played 133 with an average of 52.53 and has 26 hundreds to his name.
+
+Dictionary Methods
+~~~~~~~~~~~~~~~~~~
+
+**clear()**
+-----------
+
+The **clear()** method removes all the existing *key-value* pairs from a dictionary.
+It returns *None* or rather does not return anything. It is a method that changes
+the object. It has to be noted here that dictionaries are not immutable. Let us 
+look at an example.
+
+::
+  
+  >>> dct
+  {'Anil': 'Kumble', 'Sachin': 'Tendulkar', 'Rahul': 'Dravid'}
+  >>> dct.clear()
+  >>> dct
+  {}
+
+**copy()**
+----------
+
+The **copy()** returns a copy of a given dictionary. Let us look at an example.
+
+::
+
+  >>> dct = {'Anil': 'Kumble', 'Sachin': 'Tendulkar', 'Rahul': 'Dravid'}
+  >>> dctcopy = dct.copy()
+  >>> dctcopy
+  {'Anil': 'Kumble', 'Sachin': 'Tendulkar', 'Rahul': 'Dravid'}
+
+
+**get()**
+---------
+
+**get()** returns the *value* for the *key* passed as the argument and if the
+*key* does not exist in the dictionary, it returns *None*. Let us look at an
+example.
+
+::
+
+  >>> print dctcopy.get('Saurav')
+  None
+  >>> print dctcopy.get('Anil')
+  Kumble
+
+**has_key()**
+-------------
+
+This method returns *True* if the given *key* is in the dictionary, else it returns 
+*False*.
+
+::
+
+  >>> dctcopy.has_key('Saurav')
+  False
+  >>> dctcopy.has_key('Sachin')
+  True
+
+**pop()**
+---------
+
+This method is used to retrieve the *value* of a given *key* and subsequently 
+remove the *key-value* pair from the dictionary. Let us look at an example.
+
+::
+
+  >>> print dctcopy.pop('Sachin')
+  Tendulkar
+  >>> dctcopy
+  {'Anil': 'Kumble', 'Rahul': 'Dravid'}
+
+**popitem()**
+-------------
+
+This method randomly pops a *key-value* pair from a dictionary and returns it.
+The *key-value* pair returned is removed from the dictionary. Let us look at an
+example.
+
+::
+
+  >>> print dctcopy.popitem()
+  ('Anil', 'Kumble')
+  >>> dctcopy
+  {'Rahul': 'Dravid'}
+
+  Note that the item chosen is completely random since dictionaries are unordered
+  as mentioned earlier.
+
+**update()**
+------------
+
+The **update()** method updates the contents of one dictionary with the contents
+of another dictionary. For items with existing *keys* their *values* are updated,
+and the rest of the items are added. Let us look at an example.
+
+::
+
+  >>> dctcopy.update(dct)
+  >>> dct
+  {'Anil': 'Kumble', 'Sachin': 'Tendulkar', 'Rahul': 'Dravid'}
+  >>> dctcopy
+  {'Anil': 'Kumble', 'Sachin': 'Tendulkar', 'Rahul': 'Dravid'}
+
