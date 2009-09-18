@@ -1,7 +1,6 @@
-is	
-=================
- Version Control
-=================
+===============
+Version Control
+===============
 
 Introduction
 ============

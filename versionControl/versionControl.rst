@@ -5,11 +5,12 @@ Module 4: Version Control
 Module Objectives
 -----------------
 
-After successfully completing this module a participant will be able to:
-	- Understand use of Version Control tools                            U
-	- Create and use repository for daily use of assignments/projects    Ap
-	- Browse exsiting repo, make changes and commit back                 Ap
-	- Work collaboratively with a team on live project                   Ap
+After successfully completing this module a participant will be able to: ::
+      
+  - Understand use of Version Control tools                            U
+  - Create and use repository for daily use of assignments/projects    Ap
+  - Browse exsiting repo, make changes and commit back                 Ap
+  - Work collaboratively with a team on live project                   Ap
 
 Suggested Reading:
 ------------------

@@ -11,7 +11,7 @@ After successfully completing this module a participant will be able to: ::
     diff, cmp, comm
   - Create and extract archives(.tar files) and zipped files(.gz)     Ap
   - Set/Modify environment as per need	    	                      Ap
-  - Create shell scripts to autmoate tasks.			      Ap
+  - Create shell scripts to automate tasks.			      Ap
 
 tar:
 ====
@@ -431,7 +431,7 @@ These spaces in between operator and operands is important, without them shell i
    $ expr 2*3
    expr: syntax error
    
-One can use backquotes(`) also to get value of expr. ::
+One can use back-quotes(`) also to get value of expr. ::
 
    $ echo `expr 6 + 3`
    9
@@ -439,7 +439,7 @@ One can use backquotes(`) also to get value of expr. ::
    $ echo $result
    9
 
-Shell uses three kinds of quotes. Double quotes("), anything enclosed among them except from variable trailing after $, and characters after \ would be printed as it is. Single quotes('), anything enclsed within them is just same, no formulation/interpretaion. Back quotes(`), anything inclosed is considered as command, or is executed. ::
+Shell uses three kinds of quotes. Double quotes("), anything enclosed among them except from variable trailing after $, and characters after \ would be printed as it is. Single quotes('), anything enclosed within them is just same, no formulation/interpretation. Back quotes(`), anything inclosed is considered as command, or is executed. ::
 
    $ echo "Today is date"
    Today is date
@@ -453,8 +453,8 @@ Shell uses three kinds of quotes. Double quotes("), anything enclosed among them
    Today is 
     Wed Sep 16 17:41:13 IST 2009 
 
-if construct:
--------------
+if else construct:
+------------------
 
 One can have simple *if else if* constructs in shell scripts to check conditions. Lets take simple example of writing a script which returns back whether the argument passed is positive or not: ::
 
@@ -594,6 +594,40 @@ Say we wish to write a simple program that takes user input and prints it back, 
   done
   exit 0
 
+Now lets try and use these above mentioned options provided by shell to write a utility. Until now, when we try find or locate it looks through directories and files for result. But they wont search through tar archives and zipped files. Lets create a shell script for especially looking through these files: ::
+
+  #!/bin/sh
+
+  #To check number of arguments being passed.
+  if [ $# -eq 0 ] ; then
+  echo "Correct usage: $0 tar-archive filename \nOr $0 filename"
+  exit 1
+  else
+    if [ $# -eq 1 ] ; then
+      tar_archive=`find $PWD -name "*.tar*"`
+    else
+      tar_archive=`find $PWD -name $1`
+    fi
+  fi
+
+  #Search of particular file inside archives.
+  for archive in $tar_archive
+  do
+    echo $archive
+    variable=`tar -tf $archive`
+    for word in $variable
+    do
+      if [ $# -eq 1 ] ; then
+        echo "$word" | grep -q ".*$1"
+      else
+	echo "$word" | grep -q ".*$2"
+      fi
+    if [ $? -eq 0 ] ; then 
+      echo "File present in $archive!" 
+    fi  
+    done
+  done
+
 ``until``
 ~~~~~~~~~
 
@@ -661,6 +695,9 @@ As an exercise, modify the function to accept the input for the number of top fr
 Further Reading:
 ---------------- 
 	* http://www.freeos.com/guides/lsst/ 
-	* http://www.freeos.com/guides/lsst/ch02sec01.html
 	* http://bash.cyberciti.biz/guide/Main_Page
+	* http://tldp.org/LDP/abs/html/
+	* http://tldp.org/LDP/Bash-Beginners-Guide/html/Bash-Beginners-Guide.html
 	
+
+..  LocalWords:  allfiles txt cvf vf tf regex mkdir cp cd xvf gzip gz stdout
