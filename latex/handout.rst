@@ -52,7 +52,7 @@ Here are a few reasons, why you should use LaTeX -
 Hello World
 ~~~~~~~~~~~
 
-Ok, let's get started with our first LaTeX document. Open up your favorite editor and type in the following code. 
+OK, let's get started with our first LaTeX document. Open up your favorite editor and type in the following code. 
 
 ::
 
@@ -275,7 +275,7 @@ Elementary Text Typesetting
 Emphasizing
 ~~~~~~~~~~~
 
-*Italic* font is generally used to emphasize text. The ``\emph`` command may be used to achive this effect in LaTeX.
+*Italic* font is generally used to emphasize text. The ``\emph`` command may be used to achieve this effect in LaTeX.
 ::
 
   This is the \emph{emphasized text}.
@@ -325,9 +325,9 @@ The ``center`` environment generates centered text.
 
 Itemize, Enumerate, and Description
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-LaTeX has three different enivronments for producing lists. Itemize, Enumerate and Description allow you to produce lists of various types in LaTeX. 
+LaTeX has three different environments for producing lists. Itemize, Enumerate and Description allow you to produce lists of various types in LaTeX. 
 
-Itemize is used to produce unnumbered lists. The bullets of the list can be easily changed to use any character. Enumerate environment allows you to produce auto-numbered lists. The description environment, allows you to produce a list of definitons. These environments can be nested within each other, easily. 
+Itemize is used to produce unnumbered lists. The bullets of the list can be easily changed to use any character. Enumerate environment allows you to produce auto-numbered lists. The description environment, allows you to produce a list of definitions. These environments can be nested within each other, easily. 
 
 ::
 
@@ -400,10 +400,10 @@ The verbatim environment allows us to insert pre-formatted text in a LaTeX docum
   from numpy import *
   a = linspace(0, 5, 50, endpoint = False)
 
-To insert verbatim text inline, the ``\verb`` command can be used. 
+To insert verbatim text in-line, the ``\verb`` command can be used. 
 ::
   
- The verb command allows placing \verb|verbatim text| inline. 
+ The verb command allows placing \verb|verbatim text| in-line. 
 
 The | is just an example of a delimiter character. You can use any character except letters, * or space.
 
@@ -479,7 +479,7 @@ A few ``optional arguments``:
     This parameter can either be set to true or false. When set to true, the image is scaled according to both width and height, without changing the aspect ratio, so that it does not exceed both the width and the height dimensions. 
 
   ``scale=x``
-    Scale the image by a factor of ``x``. For eg. ``scale=2``, will double the image size. 
+    Scale the image by a factor of ``x``. For example, ``scale=2``, will double the image size. 
 
   ``angle=x``
     This option can be used to rotate the image by ``x`` degrees, counter-clockwise. 
@@ -604,7 +604,7 @@ Each bibliography entry starts with a declaration of the type of the reference b
 
 The type of reference is followed by a left curly brace, and immediately followed by the citation key. The citation key, ``Lamport94`` in the example above is used to cite this reference using the command ``\cite{Lamport94}``. 
 
-This is followed by the relevant fields and their values, listed one by one. Each entry must be followed by a comma to delemit one field from the other. 
+This is followed by the relevant fields and their values, listed one by one. Each entry must be followed by a comma to delimit one field from the other. 
 
 To get your LaTeX document to use the bibliography database, you just add the following lines to your LaTeX document. 
 ::
@@ -614,7 +614,7 @@ To get your LaTeX document to use the bibliography database, you just add the fo
 
 Bibliography styles are files that tell BibTeX how to format the information stored in the ``.bib`` database file. The style file for this example is ``plain.bst``. Note that you do not need to add the ``.bst`` extension to the filename.  If you wish to achieve a particular style of listing the bibliography items and citing them, you should use an appropriate style file. 
 
-The ``bibliography`` command specifies the file that shoule be used as the database for references. The file used in this example is ``LaTeX.bib``
+The ``bibliography`` command specifies the file that should be used as the database for references. The file used in this example is ``LaTeX.bib``
 
 Compiling
 +++++++++
@@ -663,7 +663,7 @@ Exponents and subscripts can be typeset using the carat ``^`` and the underscore
 
 The ``\sqrt`` command is used to typeset the square root symbol. LaTeX of the root sign is determined automatically. The nth root is generated with ``\sqrt[n]``. 
 
-To explicitly show a multiplication a dot may be shown. ``\cdot`` could be used, which typesets the dot to the centre. ``\cdots`` is three centered dots while ``\ldots`` sets the dots on the baseline. Besides that ``\vdots`` for vertical and ``\ddots`` can be used for diagonal dots.
+To explicitly show a multiplication a dot may be shown. ``\cdot`` could be used, which typesets the dot to the center. ``\cdots`` is three centered dots while ``\ldots`` sets the dots on the baseline. Besides that ``\vdots`` for vertical and ``\ddots`` can be used for diagonal dots.
 
 A fraction can be typeset with the command ``\frac{..}{..}``
 
@@ -690,7 +690,7 @@ The ``&`` is used to align the equations vertically and the ``\\`` command is us
 Arrays and Matrices
 ~~~~~~~~~~~~~~~~~~~
 
-To typset arrays, use the ``array`` environment. It works similar to the ``tabular`` environment. The ``\\`` command is used to break the lines. 
+To typeset arrays, use the ``array`` environment. It works similar to the ``tabular`` environment. The ``\\`` command is used to break the lines. 
 ::
 
   \begin{equation*}
@@ -786,7 +786,7 @@ This command includes the first 20 lines of the file ``lstexample.py`` into out 
 
 Including files
 ~~~~~~~~~~~~~~~
-When working on a large document, it is convinient sometimes, to split the large file into smaller input files and club them together at the time of compiling. 
+When working on a large document, it is convenient sometimes, to split the large file into smaller input files and club them together at the time of compiling. 
 
 The ``\input`` or ``\include`` commands may be used to embed one LaTeX file into another. The ``\input`` command is equivalent to a copy and paste of the document, just before the compilation. The ``\include`` command is exactly similar, except for the fact that it creates a new page every time it is issued.
 
@@ -799,19 +799,19 @@ A note on filenames
 
 Never use filenames or directories that contain spaces. Make filenames as long or short as you would like, but strictly avoid spaces. Stick to upper or lower case letters (without accents), the digits, the hyphen and the full stop or period.
 
---------------------------------------------------------
 
-Acknowledgements, Attributions
-------------------------------
+
+Recommended Reading
+===================
 
 1. *LaTeX Wikibook*
 
 2. *The Not So Short Introduction to LaTeX2e* by Tobias Oetikar et al.. 
 
-3. http://www.ctan.org/tex-archive/info/l2tabu/english/
-..  LocalWords:  LaTeX WYSIWG WYSIWM pdf
 
 
 
 
 
+..  LocalWords:  LaTeX Lamport tex documentclass pdf pdflatex dvi topmatter ToC
+..  LocalWords:  FOSSEE tocdepth addcontentsline toc emph

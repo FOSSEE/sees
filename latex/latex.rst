@@ -64,9 +64,6 @@ Session Level Split-up
 | 7       | ``beamer``, ``listing``,        |  10 min |
 |         | Including files                 |         |
 +---------+---------------------------------+---------+
-| 8       | Excercises                      |  15 min |
+| 8       | Exercises                       |  15 min |
 +---------+---------------------------------+---------+
-
-
-
 

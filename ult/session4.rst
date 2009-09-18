@@ -245,7 +245,7 @@ In general, it is good to spend as little time as possible in the insert mode an
 To save the file, use ``:w`` in the command mode. From here on, it is understood that we are in the command mode, whenever we are issuing any command to vim. 
 
 To save a file and continue editing, use ``:w FILENAME``
-The file name is optional. If you donot specify a filename, it is saved in the same file that you opened. If a file name different from the one you opened is specified, the text is saved with the new name, but you continue editing the file that you opened. The next time you save it without specifying a name, it gets saved with the name of the file that you initially opened. 
+The file name is optional. If you do not specify a filename, it is saved in the same file that you opened. If a file name different from the one you opened is specified, the text is saved with the new name, but you continue editing the file that you opened. The next time you save it without specifying a name, it gets saved with the name of the file that you initially opened. 
 
 To save file with a new name and continue editing the new file, use ``:saveas FILENAME``
 
@@ -375,7 +375,7 @@ Apart from the above commands, that take any motion or visual block as an argume
 +----------------------------------------+---------+
 
 Note: You can prefix numbers to any of the commands, to repeat them.
-ppp
+
 Undo and Redo
 ~~~~~~~~~~~~~
 You can undo almost anything using ``u``. 
@@ -385,21 +385,21 @@ To undo the undo command type ``C-r``
 Searching and Replacing
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-+----------------------------------------+---------+
-| Finding                                          |
-+========================================+=========+
-| Next occurence of ``text``, forward    |``\text``|
-+----------------------------------------+---------+
-| Next occurence of ``text``, backward   |``?text``|
-+----------------------------------------+---------+
-| Search again in the same direction     | ``n``   |
-+----------------------------------------+---------+
-| Search again in the opposite direction | ``N``   |
-+----------------------------------------+---------+
-| Next occurence of ``x`` in the line    | ``fx``  |
-+----------------------------------------+---------+
-| Previous occurence of ``x`` in the line| ``Fx``  |
-+----------------------------------------+---------+
++-----------------------------------------+---------+
+| Finding                                           |
++=========================================+=========+
+| Next occurrence of ``text``, forward    |``\text``|
++-----------------------------------------+---------+
+| Next occurrence of ``text``, backward   |``?text``|
++-----------------------------------------+---------+
+| Search again in the same direction      | ``n``   |
++-----------------------------------------+---------+
+| Search again in the opposite direction  | ``N``   |
++-----------------------------------------+---------+
+| Next occurrence of ``x`` in the line    | ``fx``  |
++-----------------------------------------+---------+
+| Previous occurrence of ``x`` in the line| ``Fx``  |
++-----------------------------------------+---------+
 
 +---------------------------------------+------------------+
 | Finding and Replacing                                    |
@@ -441,20 +441,20 @@ Personalizing your Environment
 
 .bashrc
 -------
-What would you do, if you want bash to execute a particular command each time you start it up? For instance, say you want the current directory to be your Desktop instead of your home folder, each time bash starts up. How would you achieve this? Bash reads and executes commands in a whole bunch of files called startup files, when it starts up. 
+What would you do, if you want bash to execute a particular command each time you start it up? For instance, say you want the current directory to be your Desktop instead of your home folder, each time bash starts up. How would you achieve this? Bash reads and executes commands in a whole bunch of files called start-up files, when it starts up. 
 
 When bash starts up as an interactive login shell, it reads the files ``/etc/profile``, ``~/.bash_profile``, ``~/.bash_login``, and ``~/.profile`` in that order. 
 
-When it is a shell that is not a login shell, ``~/.bashrc`` is read and the commands in it are executed. This can be prevented using the ``--norc`` option. To force bash to use another file, instead of the ``~/.bashrc`` file on startup, the ``--rcfile`` option may be used. 
+When it is a shell that is not a login shell, ``~/.bashrc`` is read and the commands in it are executed. This can be prevented using the ``--norc`` option. To force bash to use another file, instead of the ``~/.bashrc`` file on start-up, the ``--rcfile`` option may be used. 
 
 Now, you know what you should do, to change the current directory to you Desktop. Just put a ``cd ~/Desktop`` into your ``~/.bashrc`` and you are set!
 
-This example is quite a simple and lame one. The startup files are used for a lot more complex things than this. You could set (or unset) aliases and a whole bunch of environment variables in the ``.bashrc``. We shall look at them, in the next section where we look at environment variables and ``set`` command.
+This example is quite a simple and lame one. The start-up files are used for a lot more complex things than this. You could set (or unset) aliases and a whole bunch of environment variables in the ``.bashrc``. We shall look at them, in the next section where we look at environment variables and ``set`` command.
 
 
 .vimrc
 ------
-``.vimrc`` is a file similar to ``.bashrc`` for vim. It is a startup file that vim reads and executes, each time it starts up. The options that you would like to be set every time you use vim, are placed in the ``.vimrc`` file, so that they are automatically set each time vim starts. The recommended place for having your ``.vimrc`` is also your home directory. 
+``.vimrc`` is a file similar to ``.bashrc`` for vim. It is a start-up file that vim reads and executes, each time it starts up. The options that you would like to be set every time you use vim, are placed in the ``.vimrc`` file, so that they are automatically set each time vim starts. The recommended place for having your ``.vimrc`` is also your home directory. 
 
 The file ``/etc/vimrc`` is the global config file and shouldn't usually be edited. You can instead edit the ``~/.vimrc`` file that is present in your home folder. 
 
