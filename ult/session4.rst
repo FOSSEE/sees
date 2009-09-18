@@ -402,7 +402,7 @@ Searching and Replacing
 +-----------------------------------------+---------+
 
 +---------------------------------------+------------------+
-| Finding and Replacing                                    |
+| Finding and Replacing                 | Commands         |
 +=======================================+==================+
 | Replace the first instance of ``old`` |``:s/old/new``    |
 | with ``new`` in the current line.     |                  |

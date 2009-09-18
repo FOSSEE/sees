@@ -802,16 +802,10 @@ Never use filenames or directories that contain spaces. Make filenames as long o
 
 
 Recommended Reading
-===================
+-------------------
 
 1. *LaTeX Wikibook*
 
 2. *The Not So Short Introduction to LaTeX2e* by Tobias Oetikar et al.. 
 
 
-
-
-
-
-..  LocalWords:  LaTeX Lamport tex documentclass pdf pdflatex dvi topmatter ToC
-..  LocalWords:  FOSSEE tocdepth addcontentsline toc emph

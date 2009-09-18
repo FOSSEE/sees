@@ -594,7 +594,21 @@ Say we wish to write a simple program that takes user input and prints it back, 
   done
   exit 0
 
-Now lets try and use these above mentioned options provided by shell to write a utility. Until now, when we try find or locate it looks through directories and files for result. But they wont search through tar archives and zipped files. Lets create a shell script for especially looking through these files: ::
+``until``
+~~~~~~~~~
+
+The ``until`` loop is similar to the ``while`` loop, except that it executes until the conditional command does not execute properly. 
+
+The infinite loop changes to the following, when ``until`` is used.
+::
+
+  until false
+  do
+    echo "True"
+  done
+
+Now lets try and use these above mentioned options provided by shell to write a utility. Until now, when we try find or locate it looks through directories and files for result. But they wont search through tar archives and zipped files. Lets create a shell script for especially looking through these files
+::
 
   #!/bin/sh
 
@@ -628,18 +642,6 @@ Now lets try and use these above mentioned options provided by shell to write a 
     done
   done
 
-``until``
-~~~~~~~~~
-
-The ``until`` loop is similar to the ``while`` loop, except that it executes until the conditional command does not execute properly. 
-
-The infinite loop changes to the following, when ``until`` is used.
-::
-
-  until false
-  do
-    echo "True"
-  done
 
 Functions
 ---------
@@ -699,5 +701,3 @@ Further Reading:
 	* http://tldp.org/LDP/abs/html/
 	* http://tldp.org/LDP/Bash-Beginners-Guide/html/Bash-Beginners-Guide.html
 	
-
-..  LocalWords:  allfiles txt cvf vf tf regex mkdir cp cd xvf gzip gz stdout
