@@ -305,3 +305,32 @@ the buffer maybe lost completely and the changes made to the file are lost forev
 Dictionaries
 ============
 
+A dictionary in general, are designed to be able to look up meanings of words. 
+Similarly, the Python dictionaries are also designed to look up for a specific
+key and retrieve the corresponding value. Dictionaries are data structures that
+provide key-value mappings. Dictionaries are similar to lists except that instead
+of the values having integer indexes, dictionaries have keys or strings as indexes.
+Let us look at an example of how to define dictionaries.
+
+::
+
+  >>> dct = { 'Sachin': 'Tendulkar', 'Rahul': 'Dravid', 'Anil': 'Kumble'}
+
+The dictionary consists of pairs of strings, which are called *keys* and their
+corresponding *values* separated by *:* and each of these *key-value* pairs are
+comma(',') separated and the entire structure wrapped in a pair curly braces *{}*.
+
+**dict()**
+~~~~~~~~~~
+
+The **dict()** function is used to create dictionaries from other mappings or other
+dictionaries. Let us look at an example.
+
+::
+
+  >>> diction = dict(mat = 133, avg = 52.53)
+
+**String Formatting with Dictionaries:**
+
+String formatting was discussed in the previous section and it was mentioned that
+dictionaries can also be used for formatting more than one value like . 
