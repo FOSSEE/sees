@@ -1,111 +1,61 @@
-Introduction to the Course
-==========================
-
-Engineering students use computers for a large number of curricular
-tasks – mostly computation centred. However, they do not see this as coding or programming tasks and usually are not even aware of the tools and
-techniques that will help them to handle these tasks better. This results
-in less than optimal use of their time and resources. This also causes
-difficulties when it comes tocollaboration and building on other people’s
-work. This course is intended to train such students in good software
-practices and tools for producing code and documentation.
-
-After successfully completing the program, the participants will be able to:
-
-- understand how software tools work together and how they can be used in tandem to carry out tasks,        
-                             
-- use unix command line tools to carry out common (mostly text processing tasks,
-                                                            
-- to generate professional documents,                                
-
-- use version control effectively – for both code and documents,       
-
-- automate tasks by writing shell scripts and python scripts,        
-
-- realise the impact of coding style and readbility on quality,      
-
-- write mid-sized programs that carry out typical engineering / numerical computations such as those that involve (basic) manipulation of large arrays in an efficient manner,                                      
-
-- generate 2D and simple 3D plots,                                   
-
-- debug programs using a standardised approach,
-
-- understand the importance of tests and the philosophy of Test Driven Development,
-
-- write unit tests and improve the quality of code.
-
 Introducing Linux
 =================
 
 (Attribution : A significant chunk of the content under this section is based on data from Wikipedia and the Linux Documentation Project)
 
-Linux (usually pronounced ˈlɪnəks') is a generic term referring to Unix-like computer operating systems based on the Linux kernel. The development of the Linux OS is considered the basis for Free and Open Source Software (FOSS) collaboration since typically the underlying source code can be used, modified freely, and redistributed by anyone under the terms of the GNU Global Public License (GPL) and other free software licences.
+Linux (usually pronounced ˈlɪnəks') is a generic term referring to Unix-like computer operating systems based on the Linux kernel, where a kernel is the intermediate layer between the hardware and the applications. The kernel is, on an abstract level, the core of (most) operating systems, that manages the various system resources. The development of the Linux OS is considered the basis for Free and Open Source Software (FOSS) collaboration since typically the underlying source code can be used, modified freely, and redistributed by anyone under the terms of the GNU (a recursive acronym for "GNU's Not Unix!") Global Public License (GPL) and other free software licences. This freedom to access and reuse various components of a system, is one of the primary reasons for the popularity of Linux.
 
 Linux is installed on a variety of computer hardware, that include mobile phones, embedded devices and supercomputers, but is infamous for its use in servers.
 
-The name "Linux"  comes from the Linux kernel, originally written in 1991 by Linus Torvalds. The rest of the system usually comprises components such as the Apache HTTP Server, the X Window System, the GNOME and KDE desktop environments, and utilities and libraries from the GNU Project (announced in 1983 by Richard Stallman). Commonly-used applications with desktop Linux systems include the Mozilla Firefox web-browser and the OpenOffice.org office application suite. The GNU contribution is the basis for the Free Software Foundation's preferred name GNU/Linux. The kernel's mascot is a penguin named "Tux".
+The name "Linux"  comes from the Linux kernel, originally written in 1991 by Linus Torvalds. The rest of the system usually comprises components such as the Apache HTTP Server, the X Window System, the GNOME and KDE desktop environments, and utilities and libraries from the GNU Project (announced in 1983 by Richard Stallman). Commonly-used applications with desktop Linux systems include the Mozilla Firefox web-browser and the OpenOffice.org office application suite. The GNU contribution is the basis for the Free Software Foundation's preferred name GNU/Linux. The kernel's mascot is a penguin named "Tux". Mozilla Firefox and OpenOffice.org are open-source projects which can be run on most Operating Systems, including proprietary ones.
 
 Historical Background
 ----------------------
 
 Events leading to the creation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-- The Unix operating system was conceived and implemented in the 1960s and first released in 1970. Its availability and portability caused it to be widely adopted, copied and modified by academic institutions and businesses. Its design became influential to authors of other systems.
+- The Unix operating system was developed in the 1960s and released for public use in 1970. Its accessibility and portability caused it to be widely adopted, copied and modified by academic institutions and businesses. Its design became influential to authors of other systems. Other free operating systems include the Berkeley Software Distribution (BSD), developed at the University of California at Berkeley, and MINIX which was released by Andrew S. Tanenbaum. The development and adoption of BSD and MINIX were limited due to various reasons, and this lack of a widely-adopted and free kernel triggered Linus Torvalds into starting his project.
 
 - In 1983, Richard Stallman started the GNU project with the goal of creating a free UNIX-like operating system. As part of this work, he wrote the GNU General Public License (GPL). By the early 1990s there was almost enough available software to create a full operating system. However, the GNU kernel, called Hurd, failed to attract enough attention from developers leaving GNU incomplete.
 
-- Another free operating system project in the 1980s was the Berkeley Software Distribution (BSD). This was developed by UC Berkeley from the 6th edition of Unix from AT&T. Since BSD contained Unix code that AT&T owned, AT&T filed a lawsuit (USL v. BSDi) in the early 1990s against the University of California. This strongly limited the development and adoption of BSD.
-
-- MINIX, a Unix-like system intended for academic use, was released by Andrew S. Tanenbaum in 1987. While source code for the system was available, modification and redistribution were restricted. In addition, MINIX's 16-bit design was not well adapted to the 32-bit features of the increasingly cheap and popular Intel 386 architecture for personal computers.
-
-- These factors of a lack of a widely-adopted, free kernel provided the impetus for Torvalds's starting his project. He has stated that if either the GNU or 386BSD kernels were available at the time, he likely would not have written his own.
-
 The Creation of Linux
 ~~~~~~~~~~~~~~~~~~~~~~
-In 1991, in Helsinki, Linus Torvalds began a project that later became the Linux kernel. It was initially a terminal emulator, which Torvalds used to access the large UNIX servers of the university. He wrote the program specifically for the hardware he was using and independent of an operating system because he wanted to use the functions of his new PC with an 80386 processor. Development was done on Minix using the GNU C compiler. This application is still the main choice for compiling Linux today (although the code can be built with other compilers, such as the Intel C Compiler).
+In 1991, Linus Torvalds began a project at the University of Helsinki that later became the Linux kernel. It was initially a terminal (command-line) emulator, which Torvalds used to access the large UNIX servers of the university. He wrote the program targeting just the hardware he was using and independent of an operating system because he wanted to use the functions of his computer with an 80386 processor. Development was done on Minix using the GNU C compiler. This application is still the main choice for compiling Linux today (although the code can be built with other compilers, such as the Intel C Compiler).
 
-Torvalds continues to direct the development of the kernel. Stallman heads the Free Software Foundation, which in turn supports the GNU components. Finally, individuals and corporations develop third-party non-GNU components. These third-party components comprise a vast body of work and may include both kernel modules and user applications and libraries. Linux vendors and communities combine and distribute the kernel, GNU components, and non-GNU components, with additional package management software in the form of Linux distributions.
+Torvalds continues to direct the development of the kernel. Stallman heads the Free Software Foundation, which in turn supports the GNU components. Finally, individuals and corporations develop third-party non-GNU components, which constitute a vast body of work and including kernel modules, and user applications and libraries. Linux vendors and communities combine and distribute the kernel, GNU components, and non-GNU components, with additional package management software in the form of Linux distributions.
 
 
 Design and Implications
 ------------------------
 
-A Linux-based system is a modular Unix-like operating system. It derives much of its basic design from principles established in Unix during the 1970s and 1980s. Such a system uses a monolithic kernel, the Linux kernel, which handles process control, networking, and peripheral and file system access. Device drivers are integrated directly with the kernel.
-
-Separate projects that interface with the kernel provide much of the system's higher-level functionality. The GNU userland is an important part of most Linux-based systems, providing the most common implementation of the C library, a popular shell, and many of the common Unix tools which carry out many basic operating system tasks. The graphical user interface (or GUI) used by most Linux systems is based on the X Window System.
+A Linux-based system is a modular Unix-like operating system, deriving much of its basic design from principles established in Unix earlier. Such a system uses a monolithic kernel, called the Linux kernel, which handles process control, networking, and peripheral and file system access. Device drivers are integrated directly with the kernel. Separate projects that interface with the kernel provide much of the system's higher-level functionality. The GNU userland is an important part of most Linux-based systems, providing the most common implementation of the C library, a popular shell, and many of the common Unix tools which carry out many basic operating system tasks. The graphical user interface (or GUI) used by most Linux systems is based on the "X Window System".
 
 User Interface
 ~~~~~~~~~~~~~~
-Users can control a Linux-based system through a command line interface (or CLI), a graphical user interface (or GUI), or through controls attached to the associated hardware (this is common for embedded systems). For desktop systems, the default mode is usually graphical user interface (or GUI).
+Users can control a Linux-based system through a command line interface (or CLI), a graphical user interface (or GUI), or through controls attached to the associated hardware (this is common for embedded systems). For desktop systems, the default mode is usually the GUI. On desktop machines, "KDE", "GNOME" and "Xfce" are the most popular user interfaces,though a variety of additional user interfaces exist. Most popular user interfaces run on top of the "X Window System" (or X), which enables a graphical application running on one machine to be displayed and controlled from another in a network.
 
-On desktop machines, KDE, GNOME and Xfce are the most popular user interfaces,[36] though a variety of additional user interfaces exist. Most popular user interfaces run on top of the X Window System (or X), which provides network transparency, enabling a graphical application running on one machine to be displayed and controlled from another.
-
-Other GUIs include X window managers such as FVWM, Enlightenment and Window Maker. The window manager provides a means to control the placement and appearance of individual application windows, and interacts with the X window system. This is a more minimalist goal than KDE, GNOME et al., which are termed desktop environments.
-
-A Linux system typically provides a CLI of some sort through a shell, which is the traditional way of interacting with a Unix system. A Linux distribution specialized for servers may use the CLI as its only interface. A “headless system” run without even a monitor can be controlled by the command line via a remote-control protocol such as SSH or telnet.
-
-Most low-level Linux components, including the GNU Userland, use the CLI exclusively. The CLI is particularly suited for automation of repetitive or delayed tasks, and provides very simple inter-process communication. A graphical terminal emulator program is often used to access the CLI from a Linux desktop.
+A Linux system also provides a CLI of some sort through a shell, which is the traditional way of interacting with a Unix system. A Linux distribution specialized for servers may use the CLI as its only interface. A “headless system” (system run without even a monitor) can be controlled by the command line via a remote-control protocol such as SSH or telnet. The CLI is particularly suited for automation of repetitive or delayed tasks, and provides very simple inter-process communication. A graphical terminal emulator program is often used to access the CLI from a Linux desktop.
 
 Development
 ~~~~~~~~~~~
-The primary difference between Linux and many other popular contemporary operating systems is that the Linux kernel and other components are free and open source software. Linux is not the only such operating system, although it is by far the most widely used. Some free and open source software licenses are based on the principle of copyleft, a kind of reciprocity: any work derived from a copyleft piece of software must also be copyleft itself. The most common free software license, the GNU GPL, is a form of copyleft, and is used for the Linux kernel and many of the components from the GNU project.
+The primary difference between Linux and many other popular contemporary operating systems is that the Linux kernel and other components are free and open source software. Linux is not the only such operating system, although it is by far the most widely used. Some free and open source software licenses are based on the principle of "copyleft", a kind of reciprocity: any work derived from a copyleft piece of software must also be copyleft itself. The most common free software license, the GNU GPL, is a form of copyleft, and is used for the Linux kernel and many of the components from the GNU project.
 
-Linux based distributions are intended by developers for interoperability with other operating systems and established computing standards. Linux systems adhere to POSIX, SUS, ISO and ANSI standards where possible, although to date only one Linux distribution has been POSIX.1 certified, Linux-FT.
-
-Free software projects, although developed in a collaborative fashion, are often produced independently of each other. The fact that the software licenses explicitly permit redistribution, however, provides a basis for larger scale projects that collect the software produced by stand-alone projects and make it available all at once in the form of a Linux distribution.
+Linux based distributions are intended by developers for interoperability with other operating systems and established computing standards. Linux systems adhere to POSIX, SUS, ISO and ANSI standards where possible, although to date only one Linux distribution has been POSIX.1 certified, Linux-FT.Free software projects, although developed in a collaborative fashion, are often produced independently of each other. The fact that the software licenses explicitly permit redistribution, however, provides a basis for larger scale projects that collect the software produced by stand-alone projects and make it available all at once in the form of a Linux distribution.
 
 A Linux distribution, commonly called a "distro", is a project that manages a remote collection of system software and application software packages available for download and installation through a network connection. This allows the user to adapt the operating system to his/her specific needs. Distributions are maintained by individuals, loose-knit teams, volunteer organizations, and commercial entities. A distribution can be installed using a CD that contains distribution-specific software for initial system installation and configuration. A package manager such as Synaptic or YAST allows later package upgrades and installations. A distribution is responsible for the default configuration of the installed Linux kernel, general system security, and more generally integration of the different software packages into a coherent whole.
 
 Community
 ~~~~~~~~~
-A distribution is largely driven by its developer and user communities. Some vendors develop and fund their distributions on a volunteer basis, Debian being a well-known example. Others maintain a community version of their commercial distributions, as Red Hat does with Fedora.
+A distribution is largely driven by its developer and user communities. Some vendors develop and fund their distributions on a volunteer basis. Examples include Debian and the Debian-based, Ubuntu. Others maintain a community version of their commercial distributions, as Red Hat does with Fedora.
 
-In many cities and regions, local associations known as Linux Users Groups (LUGs) seek to promote their preferred distribution and by extension free software. They hold meetings and provide free demonstrations, training, technical support, and operating system installation to new users. Many Internet communities also provide support to Linux users and developers. Most distributions and free software / open source projects have IRC chatrooms or newsgroups. Online forums are another means for support, with notable examples being LinuxQuestions.org and the Gentoo forums. Linux distributions host mailing lists; commonly there will be a specific topic such as usage or development for a given list.
-
-There are several technology websites with a Linux focus. Print magazines on Linux often include cover disks including software or even complete Linux distributions.
+In many cities and regions, local associations known as Linux Users Groups (LUGs) seek to promote their preferred distribution and by extension free software. They hold meetings and provide free demonstrations, training, technical support, and operating system installation to new users. Many Internet communities also provide support to Linux users and developers. Most distributions and free software / open source projects have IRC (Internet Relay Chat) chatrooms or newsgroups. Online forums are another means for support. Linux distributions host mailing lists; commonly there will be a specific topic such as usage or development for a given list. All these can be found simply by running an appropriate search on Google.
 
 Although Linux distributions are generally available without charge, several large corporations sell, support, and contribute to the development of the components of the system and of free software. These include Dell, IBM, HP, Oracle, Sun Microsystems, Novell, Nokia. A number of corporations, notably Red Hat, have built their entire business around Linux distributions.
 
-The free software licenses, on which the various software packages of a distribution built on the Linux kernel are based, explicitly accommodate and encourage commercialization; the relationship between a Linux distribution as a whole and individual vendors may be seen as symbiotic. One common business model of commercial suppliers is charging for support, especially for business users. A number of companies also offer a specialized business version of their distribution, which adds proprietary support packages and tools to administer higher numbers of installations or to simplify administrative tasks. Another business model is to give away the software in order to sell hardware.
+Can I make a profit out of running a business involving Linux?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The answer is, "Yes!". The free software licenses, on which the various software packages of a distribution built on the Linux kernel are based, explicitly accommodate and encourage commercialization; the relationship between a Linux distribution as a whole and individual vendors may be seen as symbiotic. One common business model of commercial suppliers is charging for support, especially for business users. A number of companies also offer a specialized business version of their distribution, which adds proprietary support packages and tools to administer higher numbers of installations or to simplify administrative tasks. Another business model is to give away the software in order to sell hardware. Examples of corporations that are extensively (and sometimes exclusively) open-source and Linux-powered , with successful revenue generation models involving these, are Google, SUN, Mozilla, etc.
 
 Programming on Linux
 ~~~~~~~~~~~~~~~~~~~~
@@ -113,32 +63,31 @@ Most Linux distributions support dozens of programming languages. The most commo
 
 Most distributions also include support for PHP, Perl, Ruby, Python and other dynamic languages. Examples of languages that are less common, but still supported, are C# via the Mono project, sponsored by Novell, and Scheme. A number of Java Virtual Machines and development kits run on Linux, including the original Sun Microsystems JVM (HotSpot), and IBM's J2SE RE, as well as many open-source projects like Kaffe.
 
-The two main frameworks for developing graphical applications are those of GNOME and KDE. These projects are based on the GTK+ and Qt widget toolkits, respectively, which can also be used independently of the larger framework. Both support a wide variety of languages. There are a number of Integrated development environments available including Anjuta, Code::Blocks, Eclipse, KDevelop, Lazarus, MonoDevelop, NetBeans, and Omnis Studio while the long-established editors Vim and Emacs remain popular.
+The two main frameworks for developing graphical applications are those of GNOME and KDE. These projects are based on the GTK+ and Qt widget toolkits, respectively, which can also be used independently of the larger framework. Both support a wide variety of languages. There are a number of Integrated Development Environments (IDEs) available including Anjuta, Code::Blocks, Eclipse, KDevelop, Lazarus, MonoDevelop, NetBeans, and Omnis Studio while the long-established editors Vim and Emacs remain popular.
 
 Reasons for Using Linux
 -----------------------
 - Linux is free:
 
-As in free beer, they say. If you want to spend absolutely nothing, you don't even have to pay the price of a CD. Linux can be downloaded in its entirety from the Internet completely for free. No registration fees, no costs per user, free updates, and freely available source code in case you want to change the behavior of your system.
-Most of all, Linux is free as in free speech:
-The license commonly used is the GNU Public License (GPL). The license says that anybody who may want to do so, has the right to change Linux and eventually to redistribute a changed version, on the one condition that the code is still available after redistribution. In practice, you are free to grab a kernel image, for instance to add support for teletransportation machines or time travel and sell your new code, as long as your customers 
-can still have a copy of that code.
+As in "free beer". Linux can be downloaded in its entirety from the Internet completely for free. No registration fees, no costs per user, free updates, and freely available source code in case you want to change the behavior of your system.
+Most of all, Linux is free as in "free speech":
+The license commonly used is the GNU Public License (GPL). The license says that anybody who may want to do so, has the right to change Linux and eventually to redistribute a changed version, on the one condition that the code is still available after redistribution. In practice, you are free to grab a kernel image and sell the new code, as long as your customers can still have a copy of that code.
 
 - Linux is portable to any hardware platform:
 
-A vendor who wants to sell a new type of computer and who doesn't know what kind of OS his new machine will run (say the CPU in your car or washing machine), can take a Linux kernel and make it work on his hardware, because documentation related to this activity is freely available.
+A vendor, who wants to sell a new type of computer and who does not know what kind of OS his/her new machine will run, can take a Linux kernel and make it work on his/her hardware, because documentation related to this activity is freely available.
 
 - Linux was made to keep on running:
 
-As with UNIX, a Linux system expects to run without rebooting all the time. That is why a lot of tasks are being executed at night or scheduled automatically for other calm moments, resulting in higher availability during busier periods and a more balanced use of the hardware. This property allows for Linux to be applicable also in environments where people don't have the time or the possibility to control their systems night and day.
+As with UNIX, a Linux system expects to run without rebooting all the time. That is why a lot of tasks are being executed at night or scheduled automatically for other times, resulting in higher availability during busier periods and a more balanced use of the hardware. This property allows for Linux to be applicable to environments where people do not have the time or the possibility to control their systems constantly.
 
 - Linux is secure and versatile:
 
-The security model used in Linux is based on the UNIX idea of security, which is known to be robust and of proven quality. But Linux is not only fit for use as a fort against enemy attacks from the Internet: it will adapt equally to other situations, utilizing the same high standards for security. Your development machine or control station will be as secure as you firewall.
+The security model used in Linux is based on the UNIX idea of security, which is known to be robust and of proven quality. But Linux is not only safe from attacks from the Internet: it will adapt equally to other situations, utilizing the same high standards for security.
 
 - Linux is scalable:
 
-From a Palmtop with 2 MB of memory to a petabyte storage cluster with hundreds of nodes: add or remove the appropriate packages and Linux fits all. You don't need a supercomputer anymore,because you can use Linux to do big things using the building blocks provided with the system. If you want to do little things, such as making an operating system for an embedded processor or just recycling your old 486, Linux will do that as well.
+From a Palmtop with 2 MB of memory to a petabyte storage cluster with hundreds of nodes: add or remove the appropriate packages and Linux fits all. One does not need a supercomputer anymore,because you can use Linux to do big things using the building blocks provided with the system. If one wants to do little things, such as making an operating system for an embedded processor or just recycling your old 486, Linux will do that as well.
 
 - The Linux OS and Linux applications have very short debug−times:
 
@@ -149,50 +98,42 @@ Getting Started
 
 Logging in, activating the user interface and logging out
 ----------------------------------------------------------
-In order to work on a Linux system directly, you will need to provide a user name and password. You always need to authenticate to the system. Most PC−based Linux systems have two basic modes for a system to run in: either quick and sober in text console mode, which looks like DOS with mouse, multitasking and multi−user features, or in graphical console mode, which
-looks better but eats more system resources.
+In order to work on a Linux system directly, one needs to provide a user name and password. You always need to authenticate to the system. Most PC−based Linux systems have two basic modes for a system to run in: either quick and clean in text console mode,which includes with mouse, multitasking and multi−user features, or in graphical console mode, which looks better but eats more system resources.
 
 Graphical Mode
 ~~~~~~~~~~~~~~
-This is the default nowadays on most desktop computers. You know you will connect to the system using graphical mode when you are first asked for your user name, and then, in a new window, to type your password.
+This is the default nowadays on most desktop computers. You know you will be connecting to the system using graphical mode when you are first asked for your user name, and then to type your password.
 
 To log in, make sure the mouse pointer is in the login window, provide your user name and password to the system and click *OK* or press *Enter*.
 It is generally considered a bad idea to connect (graphically) using the root user name, the system adminstrator's account, since the use of graphics includes running a lot of extra programs, in root's case with a lot of extra permissions. To keep all risks as low as possible, use a normal user account to connect graphically. But there are enough risks to keep this in mind as a general advice, for all use of the root account: only log in as root when extra privileges are required.
 
 After entering your user name/password combination, it can take a little while before the graphical environment is started, depending on the CPU speed of your computer, on the software you use and on your personal settings.
 
-To continue, you will need to open a *terminal window* or *xterm* for short (X being the name for the underlying software supporting the graphical environment). This program can be found in the *Applications−>Utilities,
-System Tools* or *Internet menu*, depending on what window manager you are using. There might be icons that you can use as a shortcut to get an xterm window as well, and clicking the right mouse button on the desktop background will usually present you with a menu containing a terminal window application.
+To continue, you will need to open a *terminal window* or *xterm* for short (X being the name for the underlying software supporting the graphical environment). This program can be found in the *Applications−>Utilities->System Tools* or *Internet menu*, depending on what window manager you are using. There might be icons that you can use as a shortcut to get an *xterm* window as well, and clicking the right mouse button on the desktop background will usually present you with a menu containing a terminal window application.
 
-While browsing the menus, you will notice that a lot of things can be done without entering commands via the keyboard. For most users, the good old point−'n'−click method of dealing with the computer will do. But this
-guide is for future network and system administrators, who will need to meddle with the heart of the system.
+While browsing the menus, you will notice that a lot of things can be done without entering commands via the keyboard. For most users, the good old point−n−click method of dealing with the computer will do. But for those who want to enter the "heart" of the system, a tool stronger than a mouse will be required to handle the various tasks. This tool is the shell, and when in graphical mode, we activate our shell by opening a terminal window.
 
-They need a stronger tool than a mouse to handle all the tasks they will face. This tool is the shell, and when in graphical mode, we activate our shell by opening a terminal window.
-
-The terminal window is your control panel for the system. Almost everything that follows is done using this simple but powerful text tool. A terminal window should always show a command prompt when you open one. This terminal shows a standard prompt, which displays the user's login name, and the current working directory, represented by the twiddle (~)
+A terminal window should always show a command prompt when you open one. This terminal shows a standard prompt, which displays the user's login name, and the current working directory, represented by the twiddle (~)
 
 Another common form for a prompt is this one:
 [user@host dir]
 
-In the above example, *user* will be your login name, *hosts* the name of the machine you are working on, and *dir* an indication of your current location in the file system.Prompts can display all kinds of information, but that they are not part of the commands you are giving to your system. To disconnect from the system in graphical mode, you need to close all terminal windows and other applications. After that, hit the logout icon or find Log Out in the menu. Closing everything is not really
-necessary, and the system can do this for you, but session management might put all currently open applications back on your screen when you connect again, which takes longer and is not always the desired effect. However, this behavior is configurable.
+In the above example, *user* will be your login name, *hosts* the name of the machine you are working on, and *dir* an indication of your current location in the file system. Prompts can display all kinds of information, but they are not part of the commands you are giving to your system. To disconnect from the system in graphical mode, you need to close all terminal windows and other applications. After that, hit the *logout* icon or find *Log Out* in the menu. Closing everything is not really necessary, and the system can do this for you, but session management might put all currently open applications back on your screen when you connect again, which takes longer and is not always the desired effect. However, this behavior is configurable.
 
 When you see the login screen again, asking to enter user name and password, logout was successful.
 
 Text Mode
 ~~~~~~~~~
-You know you're in text mode when the whole screen is black, showing (in most cases white) characters. A text mode login screen typically shows some information about the machine you are working on, the name of the machine and a prompt waiting for you to log in.
+One is in text mode when the whole screen is black, showing (in most cases white) characters. A text mode login screen typically shows some information about the machine you are working on, the name of the machine and a prompt waiting for you to log in.
 
-The login is different from a graphical login, in that you have to hit the *Enter* key after providing your user name, because there are no buttons on the screen that you can click with the mouse. Then you should type
-your password, followed by another *Enter*. You won't see any indication that you are entering something, not even an asterisk, and you won't see the cursor move. But this is normal on Linux and is done for security
+The login is different from a graphical login, in that you have to hit the *Enter* key after providing your user name, because there are no buttons on the screen that you can click with the mouse. Then you should type your password, followed by another *Enter*. You will not see any indication that you are entering something, not even an asterisk, and you won't see the cursor move. But this is normal on Linux and is done for security
 reasons.
 
-When the system has accepted you as a valid user, you may get some more information, called the *message of the day*, which can be anything. Additionally, it is popular on UNIX systems to display a fortune cookie,
-which contains some general wise or unwise (this is up to you) thoughts. After that, you will be given a shell, indicated with the same prompt that you would get in graphical mode.
+When the system has accepted you as a valid user, you may get some more information, called the *message of the day*, which can be anything. Additionally, it is popular on UNIX systems to display a fortune cookie, which contains some general wise or unwise (this is up to you) thoughts. After that, you will be given a shell, indicated with the same prompt that you would get in graphical mode.
 
 Also in text mode: log in as root only to do setup and configuration that absolutely requires administrator privileges, such as adding users, installing software packages, and performing network and other system configuration. Once you are finished, immediately leave the special account and resume your work as a non−privileged user.
 
-Logging out is done by entering the logout command, followed by Enter. You are successfully disconnected from the system when you see the login screen again.Don't power−off the computer after logging out. It is not meant to be shut off without application of the proper procedures for halting the system. Powering it off without going through the halting process might cause severe damage!
+Logging out is done by entering the *logout* command, followed by Enter. You are successfully disconnected from the system when you see the login screen again.Don't power−off the computer after logging out. It is not meant to be shut off without application of the proper procedures for halting the system. Powering it off without going through the halting process might cause severe damage!
 
 Basic Commands
 ===============
@@ -223,6 +164,7 @@ In some environments, providing the option *--color* (for GNU ls) or *-G* (FreeB
 	-rw-r--r--   1 plum  editors  30405  psmith
 	-r-xr-xr-x   1 plum  plum      8460  blandings
 
+Here "$" actually is the beginning of the prompt. This is typical in most Unix-based systems.
 
 2.date
 -------
@@ -234,46 +176,20 @@ With no options, the date command displays the current date and time, including 
 	$date
 	Tue Sep  8 12:01:45 IST 2009
 
-Options
-~~~~~~~~
-
-*-d, -de* : string display time described by string, not now.
-
-*-e* : datefile like de once for each line of datefile
-
-*-s, --set* : string set time described by string
-
-*-n* : don't synchronize the clocks on groups of machines using the utility timed(8). By default, if timed is running, date will set the time on all of the machines in the local group. *-n* inhibites that.
-
-*-u* : Display or set the date in UTC (universal) time.
-
-*date [-u|--utc|--universal] [mmddHHMM[[cc]yy].SS* : The only valid option for the this form specifies Coordinated Universal Time.
-
-*-u GMT* : example - Sat Feb 5 14:49:42 GMT 2005
-
-*--utc, --universal* : Coordinated Universal Time, example - Tue Sep  8 07:05:54 UTC 2009
-
-*-ITIMESPEC, --iso-8601* [=TIMESPEC] : output date/time in ISO 8601 format. TIMESPEC=date for date only, hours, minutes, or seconds for date and time to the indicated precision.
-
-*--iso-8601* without TIMESPEC defaults to 'date'.
-
-*-R*, *--rfc-822* outputs RFC-822 compliant date string,
-example - Sat Feb 5 09:50:23 EST 2005
-
-*--help*
-
-The Single Unix Specification (SUS) mandates only one option: *-u*, where the date and time is printed as if the timezone was UTC+0. Other Unix and Unix-like systems provide extra options.
-
-The XSI extension to the SUS specifies that the date command can also be used to set the date. The new date is specified as an option to date in the format MMddhhmm[[cc]yy], where MM specifies the two-digit numeric month, dd specifies the two-digit numeric day, hh specifies the two-digit numeric hour, mm specifies the two-digit numeric minutes. Optionally cc specifies the first two digits of the year, and yy specifies the last two digits of the year.
-
-Other Unix and Unix-like systems may set different options or date formats for date, for example, on some systems to set the current date and time to September 8, 2004 01:22 you type::
+On some systems to set the current date and time to September 8, 2004 01:22 you type::
 
 	$date --set="20040908 01:22"
+
+In order to view the various options for the *date* command, type::
+
+	$man date
+
+This will take you to the "Manual" page comprising of all the details on the *date* command. You can return to the terminal from the "man" page by pressing the *Esc* key in the keyboard and typing ":q" in that order. 
 
 3.cd
 -----
 
-Change directory. Use “ cd ..” to go up one directory.
+This stands for "change directory". When one wants to go up to the parent directory, bypassing the tree of directories one has entered, “ cd ..” can be used.
 
 One dot '.' represents the current directory while two dots '..' represent the parent directory.
 
@@ -315,28 +231,18 @@ The *who* command is related to the command *w*, which provides the same informa
 	beeblebrox pts/2        2009-09-08 18:53 (:0.0)
 
 
-The command can be invoked with the arguments am i or am I (so it is invoked as who am i or am I), showing information about the current terminal only (see the -m option below, of which this invocation is equivalent).
+The command can be invoked with the arguments *am i* or *am I* (so it is invoked as *who am i* or * who am I*), showing information about the current terminal only (see the *-m* option below, of which this invocation is equivalent).
 
-The Single Unix Specification (SUS) without extensions only specifies the following -m, -T, and -u options, all other options are specified in the XSI extension.
+In order to find out the various options that can be appended to the *who* command, check the *man* page by typing out the following in the terminal::
 
-    -a, process the system database used for user information with the -b, -d, -l, -p, -r, -t, -T and -u.
-    -b, show time when system was last rebooted
-    -d, show zombie processes and details
-    -H, show column headers
-    -l, show terminals where a user can log in
-    -m, show information about the current terminal only
-    -p, show active processes
-    -q, quick format, show only names and the number of all users logged on, disables all other options; equivalent to users command line utility
-    -r, show runlevel of the init process.
-    -s, (default) show only name, terminal, and time details
-    -t, show when system clock was last changed
-    -T, show details of each terminal in a standard format 
-    -u, show idle time; XSI shows users logged in and displays information whether the terminal has been used recently or not 
+	$man who
+
+This will take you to the "Manual" page containing details about the *who* command
 
 5.mkdir
 --------
 
-Normal usage is as straightforward as follows::
+This command is used to make a new directory. Normal usage is as straightforward as follows::
 
 	$mkdir name_of_directory
 
@@ -382,27 +288,28 @@ Getting Help
 This is a command to search the manual pages files in Unix and Unix-like operating systems. ::
 
 	$ apropos grep
-	egrep       egrep (1)       Search a file for a pattern using full 		regular expressions
-	fgrep       fgrep (1)       Search a file for a fixed-character 	string
+	egrep       egrep (1)       Search a file for a pattern using full regular expressions
+	fgrep       fgrep (1)       Search a file for a fixed-character	string
 	fmlgrep     fmlgrep (1)     Search a file for a pattern
 	grep        grep (1)        Search a file for a pattern
-	gzgrep      gzgrep (1)      Search a possibly compressed file for a 		regular expression
+	gzgrep      gzgrep (1)      Search a possibly compressed file for a regular expression
 	nisgrep     nismatch (1)    Utilities for searching NIS+ tables
-	pgrep       pgrep (1)       Find or signal a process by name or 	other attribute
-	zgrep       zgrep (1)       Search a possibly compressed file for a 		regular expression
+	pgrep       pgrep (1)       Find or signal a process by name or other attribute
+	zgrep       zgrep (1)       Search a possibly compressed file for a regular expression
+	...
 
 In this example, the user uses *apropos* to search for the string "grep", and apropos returns the indicated *man* pages that include the term "grep".
 
 A short index of explanations for commands is available using the *whatis* command, like in the examples below::
 
-	[your_prompt] whatis ls
-	ls                   (1)  - list directory contents
+	$whatis ls
+	ls (1) 		 - list directory contents
 
 This displays short information about a command, and the first section in the collection of man pages that contains an appropriate page.
 
-If you don't know where to get started and which man page to read, *apropos* gives more information. Say that you don't know how to start a browser, then you could enter the following command::
+If you don't know where to get started and which man page to read, *apropos* gives more information. Say that you do not know how to start a browser, then you could enter the following command::
 
-	another prompt> apropos browser
+	$apropos browser
 	gmusicbrowser (1)    - Jukebox for large collections of audio files
 	infobrowser (1)      - read Info documents
 	libsmbclient (7)     - An extension library for browsers and that 		can be used...
@@ -413,7 +320,7 @@ If you don't know where to get started and which man page to read, *apropos* giv
 	viewres (1)          - graphical class browser for Xt
 	w3m (1)              - a text based Web browser and pager
 	www-browser (1)      - a text based Web browser and pager
-
+	...
 
 2. man
 -------
@@ -424,16 +331,17 @@ To read a manual page for a Unix command, one can use::
 
 	$ man <command_name>
 
-at a shell prompt; for example, "man ftp". In order to simplify navigation through the output, man generally uses the less terminal pager.
+at a shell prompt; for example, "man ftp". In order to simplify navigation through the output, *man* generally uses the less terminal pager.
 
 Pages are traditionally referred to using the notation "name(section)"; for example, ftp(1). The same page name may appear in more than one section of the manual, this can occur when the names of system calls, user commands, or macro packages coincide. Two examples are *man(1)* and *man(7)*, or *exit(2)* and *exit(3)*. The syntax for accessing the non-default manual section varies between different man implementations. On Linux and *BSD, for example, the syntax for reading *printf(3)* is::
 
-	$ man 3 printf
+	$man 3 printf
 
 Another example::
 
-	yourname@yourcomp ~> man man
+	$man man
 
+The previous example will take you to the "Manual" page entry about manual pages!
 
 Layout
 ~~~~~~
@@ -453,12 +361,9 @@ SEE ALSO
 
 Other sections may be present, but these are not well standardized across man pages. Common examples include: OPTIONS, EXIT STATUS, ENVIRONMENT, KNOWN BUGS, FILES, AUTHOR, REPORTING BUGS, HISTORY and COPYRIGHT.
 
-History
-~~~~~~~
+These days virtually every Unix command line application comes with its man page, and many Unix users perceive a lack of man pages as a sign of low quality; indeed, some projects, such as Debian, go out of their way to write man pages for programs lacking one. Few alternatives to *man* have enjoyed much popularity, with the possible exception of the GNU project's "info" system, an early and simple hypertext system.
 
-The UNIX Programmer's Manual was first published on November 3, 1971. The first actual man pages were written by Dennis Ritchie and Ken Thompson at the insistence of Doug McIlroy in 1971. The *troff* macros used for man pages (-mm) were the general-purpose ones written by Ted Dolotta (later to be the first manager of USG and the principal author of the System III manual), with additions for the manuals. At the time, the availability of online documentation through the manual page system was regarded as a great advance. To this day, virtually every Unix command line application comes with its man page, and many Unix users perceive a lack of man pages as a sign of low quality; indeed, some projects, such as Debian, go out of their way to write man pages for programs lacking one. Few alternatives to man have enjoyed much popularity, with the possible exception of the GNU project's "info" system, an early and simple hypertext system.
-
-However, the format of a single page for each application, the lack of classification within the sections and the relatively unsophisticated formatting facilities have motivated the development of alternative documentation systems, such as the previously mentioned info system.
+However, the format of a single page for each application, the lack of classification within the sections and the relatively unsophisticated formatting facilities have motivated the development of alternative documentation systems, such as the previously mentioned "info" system.
 
 Most Unix GUI applications (particularly those built using the GNOME and KDE development environments) now provide end-user documentation in HTML and include embedded HTML viewers such as yelp for reading the help within the application.
 
@@ -590,7 +495,7 @@ To copy a directory, including all its files and subdirectories, to another dire
 
 This copies the clients directory, including all its files, subdirectories, and the files in those subdirectories, to the customers/clients directory.
 
-To copy a specific set of files to another directory, enter::
+To copy a specific set of files of any extension to another directory, enter::
 
     $ cp zaphod arthur ford /home/hhgg/clients
 
@@ -600,7 +505,7 @@ To use pattern-matching characters to copy files, enter::
 
     $ cp programs/*.py .
 
-This copies the files in the programs directory that end with *.py* to the current directory, signified by the single . (dot). You must type a space between the *py* and the final dot.
+This copies the files in the programs directory that end with *.py* to the current directory, signified by the single "." (dot). You must type a space between the *py* and the final dot.
 
 2. mv
 -----
@@ -638,7 +543,7 @@ Note that when the command is called with two arguments (as *mv name1 name2* or 
 3. rm
 ------
 
-*rm* (short for remove) is one of several basic Unix command lines that operates on files. It is used to delete files from a filesystem. The data is not actually destroyed. Only the index listing where the file is stored is destroyed, and the storage is made available for reuse. There are undelete utilities that will attempt to reconstruct the index and can bring the file back if the parts were not reused.
+*rm* (short for "remove") is one of several basic Unix command lines that operates on files. It is used to delete files from a filesystem. The data is not actually destroyed. Only the index listing where the file is stored is destroyed, and the storage is made available for reuse. There are undelete utilities that will attempt to reconstruct the index and can bring the file back if the parts were not reused.
 
 Here's example to remove a file named "foo" from a directory, here shown with the -i option::
 
@@ -688,11 +593,11 @@ For example, in Unix and Unix-like environments, an example of a command-line ar
 
 Programming languages such as C, C++ and Java allow a program to interpret the command line arguments by handling them as string parameters in the main function.
 
-A command line option or simply option (also known as a command line parameter, flag, or a switch) is an indication by a user that a computer program should change its default output.
+A command line option or simply *option* (also known as a command line parameter, flag, or a switch) is an indication by a user that a computer program should change its default output.
 
-Long options are introduced via --, and are typically whole words. For example, *ls --long --classify --all*. Arguments to long options are provided with =, as *ls --block-size=1024*. Some Unix programs use long options with single dashes, for example MPlayer as in *mplayer -nosound*.
+Long options are introduced via "--", and are typically whole words. For example, *ls --long --classify --all*. Arguments to long options are provided with "=", as *ls --block-size=1024*. Some Unix programs use long options with single dashes, for example MPlayer as in *mplayer -nosound*.
 
-Linux also uses -- to terminate option lists. For example, an attempt to delete a file called *-file1* by using *rm -file1* may produce an error, since rm may interpret *-file1* as a command line switch. Using *rm -- -file1* removes ambiguity.
+Linux also uses "--" to terminate option lists. For example, an attempt to delete a file called *-file1* by using *rm -file1* may produce an error, since rm may interpret *-file1* as a command line switch. Using *rm -- -file1* removes ambiguity.
 
 Basic Text Processing
 ======================
@@ -816,18 +721,18 @@ If the files contain:
 +-----------+------------+------------+
 |   who     |   where    |    when    |
 +===========+============+============+
-|  Sam      |  Detroit   | January 3  |
+|  Batman   | GothamCity | January 3  |
 +-----------+------------+------------+	
-|  Dave     | Edgewood   | February 4 |
+| Trillian  | Andromeda  | February 4 |
 +-----------+------------+------------+
-|  Sue      |  Tampa     |  March 19  |
+|  Jeeves   | London     |  March 19  |
 +-----------+------------+------------+	
 
 This creates the file named *www* containing::
 
-	Sam            Detroit         January 3
-	Dave           Edgewood        February 4
-	Sue            Tampa           March 19
+	Batman            GothamCity       January 3
+	Trillian          Andromeda        February 4
+	Jeeves            London           March 19
 
 Shell Meta Characters
 ======================
@@ -880,23 +785,6 @@ The Single Unix Specification specifies the behavior that the contents of each o
 
 If the filename is specified as -, then *cat* will read from standard input at that point in the sequence. If no files are specified, *cat* will read from standard input entered.
 
-Extensions
-~~~~~~~~~~
-
-Both the BSD versions of *cat* (as per the OpenBSD manpage) and the GNU coreutils version of *cat* specify the following options:
-
-    `*` -b (GNU only: --number-nonblank), number non-blank output lines
-
-    `*` -n (GNU only: --number), number all output lines
-
-    `*` -s (GNU only: --squeeze-blank), squeeze multiple adjacent blank lines
-
-    `*` -v (GNU only: --show-nonprinting), displays nonprinting characters 		as if they were visible, except for tabs and the end of line 		character
-
-    `*` -t on BSD, -T on GNU, implies -v but also display tabs as ^I
-
-    `*` -e on BSD, -E on GNU, implies -v but also display end-of-line 		characters as $
-
 Jargon File Definition
 ~~~~~~~~~~~~~~~~~~~~~~
 
@@ -926,7 +814,7 @@ The Jargon File version 4.4.7 lists this as the definition of *cat*::
 Useless Use of 'cat'
 ~~~~~~~~~~~~~~~~~~~~
 
-UUOC (from comp.unix.shell on Usenet) stands for “Useless Use of cat”. As received wisdom on *comp.unix.shell* observes, “The purpose of cat is to concatenate (or 'catenate') files. If it's only one file, concatenating it with nothing at all is a waste of time, and costs you a process.”
+UUOC (from comp.unix.shell on Usenet) stands for “Useless Use of cat”. As it is observed on *comp.unix.shell*, “The purpose of cat is to concatenate (or 'catenate') files. If it's only one file, concatenating it with nothing at all is a waste of time, and costs you a process.”
 
 Nevertheless one sees people doing::
 
@@ -940,7 +828,7 @@ or (equivalently and more classically)::
 
 	some_command and its args ... <file
 
-Since 1995, occasional awards for UUOC have been given out, usually by Perl luminary Randal L. Schwartz. There is a web page devoted to this and other similar awards. In British hackerdom the activity of fixing instances of UUOC is sometimes called 'demoggification'.
+Since 1995, occasional awards for UUOC have been given out. The activity of fixing instances of UUOC is sometimes called 'demoggification'.
 
 Amongst many, it is still considered safer to use *cat* for such cases given that the < and > keys are next to each other in many popular keyboard mappings. While the risk might be low, the impact of using > instead of < can be high and prohibitive.
 
@@ -953,11 +841,6 @@ zcat
 --------
 
 In computing, *more* is a command to view (but not modify) the contents of a text file one screen at a time (terminal pager). It is available on Unix and Unix-like systems, DOS, OS/2 and Microsoft Windows. Programs of this sort are called pagers.
-
-History
-~~~~~~~
-
-The *more* command was originally written by Daniel Halbert, a graduate student at the University of California, Berkeley, in 1978. It was first included in 3.0 BSD, and has since become a standard program in all Unix systems. *less*, a similar command with the extended capability of allowing both forward and backward navigation through the file was written by Mark Nudelman during 1983-85 and is now included in most Unix and Unix-like systems.
 
 Usage
 ~~~~~
@@ -972,41 +855,12 @@ Once *more* has obtained input, it displays as much as can fit on the current sc
 
 There are also other commands that can be used while navigating through the document; consult *more*'s *man* page for more details.
 
-Options
-~~~~~~~
-
-Options are typically entered before the file name, but can also be entered in the environment variable *$MORE*. Options entered in the actual command line will override those entered in the *$MORE* environment variable. Available options may vary between Unix systems, but a typical set of options is as follows:
-
-    * -num: This option specifies an integer which is the screen size (in 	lines).
-
-    * -d: more will prompt the user with the message "[Press space to 		  continue, 'q' to quit.]" and will display "[Press 'h' for 		  instructions.]" instead of ringing the bell when an illegal key is 		  pressed.
-
-    * -l: more usually treats ^L (form feed) as a special character, and 	   will pause after any line that contains a form feed. The -l option 		  will prevent this behavior.
-
-    * -f: Causes more to count logical, rather than screen lines (i.e., long 		  lines are not folded).
-
-    * -p: Do not scroll. Instead, clear the whole screen and then display 		  the text.
-
-    * -c: Do not scroll. Instead, paint each screen from the top, clearing 		  the remainder of each line as it is displayed.
-
-    * -s: Squeeze multiple blank lines into one.
-
-    * -u: Suppress underlining.
-
-    * +/: The +/ option specifies a string that will be searched for before 		  each file is displayed. (Ex.: more +/Preamble gpl.txt)
-
-    * +num: Start at line number num.
-
+*Options* are typically entered before the file name, but can also be entered in the environment variable *$MORE*. Options entered in the actual command line will override those entered in the *$MORE* environment variable. Available options may vary between Unix systems.
 
 3. less
 --------
 
 *less* is a terminal pager program on Unix, Windows and Unix-like systems used to view (but not change) the contents of a text file one screen at a time. It is similar to *more*, but has the extended capability of allowing both forward and backward navigation through the file. Unlike most Unix text editors/viewers, *less* does not need to read the entire file before starting, resulting in faster load times with large files.
-
-History
-~~~~~~~~
-
-*less* was initially written by Mark Nudelman during 1983-85, in the need of a version of more able to do backward scrolling of the displayed text. The name came from the joke of doing "backwards more." *less* is now part of the GNU project and it is included in most Unix systems.
 
 Usage
 ~~~~~~
@@ -1030,7 +884,7 @@ Frequently Used Options
 
     * -N: Shows line numbers (useful for source code viewing).
 
-    * -S: Disables line wrap ("chop long lines"). Long lines can be seen by 		  side scrolling.
+    * -S: Disables line wrap ("chop long lines"). Long lines can be seen by side scrolling.
 
     * -?: Shows help.
 
@@ -1049,14 +903,6 @@ Frequently Used Commands
 
     * /pattern: Search for pattern. Regular expressions can be used.
 
-    * n: Go to next match (after a successful search).
-
-    * N: Go to previous match.
-
-    * mletter: Mark the current position with letter.
-
-    * 'letter: Return to position letter. [' = single quote]
-
     * '^ or g: Go to start of file.
 
     * '$ or G: Go to end of file.
@@ -1064,10 +910,6 @@ Frequently Used Commands
     * s: Save current content (got from another program like grep) in a file.
 
     * =: File information.
-
-    * F: continually read information from file and follow its end. Useful 	    for logs watching. Use Ctrl+C to exit this mode.
-
-    * -option: Toggle command-line option -option.
 
     * h: Help.
 
@@ -1490,12 +1332,6 @@ There are countless implementations and derivatives of *grep* available for many
 
 Other commands contain the word 'grep' to indicate that they search (usually for regular expression matches). The *pgrep* utility, for instance, displays the processes whose names match a given regular expression.
 
-In Perl, *grep* is a built-in function that finds elements in a list. In functional programming languages, this higher-order function is typically named "filter" instead.
-
-The DOS, OS/2 and Microsoft Windows platforms provide the find command for simple string searches. Windows includes the "findstr" command which approximates much of the functionality of “grep”. Ports of grep (Cygwin and GnuWin32, for example) are also available for Windows.
-
-Adobe added support for grep in the CS4 version of InDesign. Their support allow for finding and changing the formatting of text or the text itself in a document using *grep*.
-
 2. tr
 ------
 
@@ -1545,7 +1381,7 @@ In computing, regular expressions provide a concise and flexible means for ident
 
 Regular expressions are used by many text editors, utilities, and programming languages to search and manipulate text based on patterns. For example, Perl, Ruby and Tcl have a powerful regular expression engine built directly into their syntax. Several utilities provided by Unix distributions—including the editor *ed* and the filter *grep* — were the first to popularize the concept of regular expressions.
 
-Traditional Unix regular expression syntax followed common conventions but often differed from tool to tool. The IEEE POSIX Basic Regular Expressions (BRE) standard (released alongside an alternative flavor called Extended Regular Expressions or ERE) was designed mostly for backward compatibility with the traditional (Simple Regular Expression) syntax but provided a common standard which has since been adopted as the default syntax of many Unix regular expression tools, though there is often some variation or additional features. Many such tools also provide support for ERE syntax with command line arguments.
+Traditional Unix regular expression syntax followed common conventions but often differed from tool to tool. The IEEE POSIX *Basic Regular Expressions* (BRE) standard (released alongside an alternative flavor called Extended Regular Expressions or ERE) was designed mostly for backward compatibility with the traditional (Simple Regular Expression) syntax but provided a common standard which has since been adopted as the default syntax of many Unix regular expression tools, though there is often some variation or additional features. Many such tools also provide support for ERE syntax with command line arguments.
 
 In the BRE syntax, most characters are treated as literals — they match only themselves (i.e., a matches "a"). The exceptions, listed below, are called metacharacters or metasequences.
 
@@ -1611,7 +1447,7 @@ The standard quantifiers in regular expressions are greedy, meaning they match a
 
 ...would likely come up with the pattern <.*>, or similar. However, this pattern will actually return "<January 26>, <2004>" instead of the "<January 26>" which might be expected, because the `*` quantifier is greedy — it will consume as many characters as possible from the input, and "January 26>, <2004" has more characters than "January 26".
 
-Though this problem can be avoided in a number of ways (e.g., by specifying the text that is not to be matched: <[^>]*>), modern regular expression tools allow a quantifier to be specified as lazy (also known as non-greedy, reluctant, minimal, or ungreedy) by putting a question mark after the quantifier (e.g., <.*?>), or by using a modifier which reverses the greediness of quantifiers (though changing the meaning of the standard quantifiers can be confusing). By using a lazy quantifier, the expression tries the minimal match first. Though in the previous example lazy matching is used to select one of many matching results, in some cases it can also be used to improve performance when greedy matching would require more backtracking.
+Though this problem can be avoided in a number of ways (e.g., by specifying the text that is not to be matched: <[^>]*>), modern regular expression tools allow a quantifier to be specified as *lazy* (also known as non-greedy, reluctant, minimal, or ungreedy) by putting a question mark after the quantifier (e.g., <.*?>), or by using a modifier which reverses the greediness of quantifiers (though changing the meaning of the standard quantifiers can be confusing). By using a lazy quantifier, the expression tries the minimal match first. Though in the previous example lazy matching is used to select one of many matching results, in some cases it can also be used to improve performance when greedy matching would require more backtracking.
 
 One Liners
 ===========
@@ -1621,7 +1457,7 @@ A *one-liner* is textual input to the command-line of an operating system shell 
 The one liner can be
 
    1. An expression written in the language of the shell.
-   2. The invocation of an interpreter together with program source for the  	   interpreter to run.
+   2. The invocation of an interpreter together with program source for the interpreter to run.
    3. The invocation of a compiler together with source to compile and 	  
       instructions for executing the compiled program.
 
@@ -1638,7 +1474,7 @@ Notice that this original definition of a One-liner implies immediate execution 
 
 The TAPL book contains 20 examples of One-liners (A Handful of Useful awk One-Liners) at the end of the book's first chapter.
 
-Here are the very first of them:
+Here are the first few of them:
 
    1. Print the total number of input lines:
 
@@ -1652,21 +1488,6 @@ Here are the very first of them:
 
       { print $NF }
 
-Here are examples in J:
-
-   1. A function avg to return the average of a list of numbers:
-
-      avg=: +/ % #
-
-   2. Quicksort:
-
-      quicksort=: (($:@(<#[) , (=#[) , $:@(>#[)) ({~ ?@#)) ^: (1<#)
-
-
-Many one-liners are practical. For example, the following Perl one-liner will reverse all the bytes in a file:
-
-	perl -0777e 'print scalar reverse <>' filename
-
 One-liners are also used to show off the differential expressive power of programming languages. Frequently, one-liners are used to demonstrate programming ability. Contests are often held to see who can create the most exceptional one-liner.
 
 The following example is a C program (a winning entry in the "Best one-liner" category of the IOCCC, here split to two lines for presentation).::
@@ -1674,7 +1495,7 @@ The following example is a C program (a winning entry in the "Best one-liner" ca
 	main(int c,char**v){return!m(v[1],v[2]);}m(char*s,char*t){return
 	*t-42?*s?63==*t|*s==*t&&m(s+1,t+1):!*t:m(s,t+1)||*s&&m(s+1,t);}
 
-This one-liner program is a glob pattern matcher. It understands the glob characters '*' meaning 'zero or more characters' and '?' meaning exactly one character, just like most Unix shells.
+This one-liner program is a *glob pattern matcher*. It understands the glob characters '*' meaning 'zero or more characters' and '?' meaning exactly one character, just like most Unix shells.
 
 Run it with two args, the string and the glob pattern. The exit status is 0 (shell true) when the pattern matches, 1 otherwise. The glob pattern must match the whole string, so you may want to use * at the beginning and end of the pattern if you are looking for something in the middle. Examples::
 
@@ -1688,39 +1509,5 @@ Here is a one line shell script to show directories:
 
 	$ ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/' 
 
-
-One liners in functional programming
--------------------------------------
-
-The following Haskell program is a one-liner: it sorts its input lines asciibetically.
-::
-
-	 main = (mapM_ putStrLn . List.sort . lines) =<< getContents 
-
--- In ghci a qualified name like List.sort will work, although as a standalone executable you'd need to import List.
-
-An even shorter version.
-::
- 
-	main = interact (unlines . List.sort . lines) -- Ditto.
-
-Python is well suited for writing one liners using lambda functions without yielding obfuscated code. Here is a one liner in Python that multiplies two matrices (represented as a list of lists)
-::
-
-	z = lambda x, y : [[ sum([x[i] [k]*y[k] [j] for k in 
-	range(len(x[0]))]) for j in range(len(y[0]))] for i in range(len(x))]
-
-Another, that prints all primes within the specified range [2, n] :
-::
-
-	z = lambda n : [x for x in range(2, n + 1) if len([i for i in 
-	range(2, x) if x%i == 0]) == 0]
-
-This performs a Discrete Time Convolution on two input lists and yields a new list
-::
-
-	z = lambda x, h : [sum((x[i - j] if i - j >= 0 and i - j < len(x) 	  else 0)*h[j]
- 	 for j in range(len(h)))
- 	 for i in range(len(x) + len(h) - 1)]
 
 
