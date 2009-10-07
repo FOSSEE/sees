@@ -138,8 +138,8 @@ Logging out is done by entering the *logout* command, followed by Enter. You are
 Basic Commands
 ===============
 
-1.ls
-----
+ls
+---
 
 When invoked without any arguments, *ls* lists the files in the current working directory. A directory that is not the current working directory can be specified and ls will list the files there. The user also may specify any list of files and directories. In this case, all files and all contents of specified directories will be listed. The name *ls* is derived from *list segments* which was used in earlier systems.
 
@@ -166,8 +166,8 @@ In some environments, providing the option *--color* (for GNU ls) or *-G* (FreeB
 
 Here "$" actually is the beginning of the prompt. This is typical in most Unix-based systems.
 
-2.date
--------
+date
+-----
 
 The Unix date command displays the time and date. The super-user can use it to set the system clock.
 
@@ -186,8 +186,8 @@ In order to view the various options for the *date* command, type::
 
 This will take you to the "Manual" page comprising of all the details on the *date* command. You can return to the terminal from the "man" page by pressing the *Esc* key in the keyboard and typing ":q" in that order. 
 
-3.cd
------
+cd
+---
 
 This stands for "change directory". When one wants to go up to the parent directory, bypassing the tree of directories one has entered, “ cd ..” can be used.
 
@@ -217,8 +217,8 @@ Relative paths:
 
 Please note that there is no / using the above cd command. Using a / would cause this to be an absolute path, working from the top of the hierarchy downward.
 
-4.who
------
+who
+----
 
 The standard Unix command *who* displays a list of users who are currently logged into a computer.
 
@@ -239,8 +239,8 @@ In order to find out the various options that can be appended to the *who* comma
 
 This will take you to the "Manual" page containing details about the *who* command
 
-5.mkdir
---------
+mkdir
+-----
 
 This command is used to make a new directory. Normal usage is as straightforward as follows::
 
@@ -282,8 +282,8 @@ tmpdir 	- branches
 Getting Help
 ============
 
-1. apropos and whatis
-----------------------
+apropos and whatis
+-------------------
 
 This is a command to search the manual pages files in Unix and Unix-like operating systems. ::
 
@@ -322,8 +322,8 @@ If you don't know where to get started and which man page to read, *apropos* giv
 	www-browser (1)      - a text based Web browser and pager
 	...
 
-2. man
--------
+man
+----
 
 Man pages (short for "manual pages") are the extensive documentation that comes preinstalled with almost all substantial Unix and Unix-like operating systems. The Unix command used to display them is *man*. Each page is a self-contained document.
 
@@ -371,8 +371,8 @@ Usually the man pages are written in English. Translations into other languages 
 
 The default format of the man pages is troff, with either the macro package man (appearance oriented) or on some systems mdoc (semantic oriented). This makes it possible to typeset a man page to PostScript, PDF and various other formats for viewing or printing.
 
-3. info
---------
+info
+-----
 
 *info* is a software utility which forms a hypertextual, multipage documentation and help viewer working on a command line interface, useful when there is no GUI available.
 
@@ -390,8 +390,8 @@ The syntax is ::
 
 info was initially written for use with GNU/Linux and then ported to other Unix-like operating systems.
 
-4. --help
-----------
+--help
+-------
 
 Most GNU commands support the --help, which gives a short explanation about how to use the command and a list of available options. Below is the output of this option with the *cat* command::
 
@@ -424,8 +424,8 @@ Most GNU commands support the --help, which gives a short explanation about how 
 Basic file handling
 ===================
 
-1. cp
-------
+cp
+---
 
 *cp* is the command entered in a Unix shell to copy a file from one place to another, possibly on a different filesystem. The original file remains unchanged, and the new file may have the same or a different name.
 
@@ -507,8 +507,8 @@ To use pattern-matching characters to copy files, enter::
 
 This copies the files in the programs directory that end with *.py* to the current directory, signified by the single "." (dot). You must type a space between the *py* and the final dot.
 
-2. mv
------
+mv
+---
 
 *mv* (short for move) is a Unix command that moves one or more files or directories from one place to another. The original file is deleted, and the new file may have the same or a different name. If possible (i.e. when the original and new files are on the same file system), *mv* will rename the file instead. Write permission is required on all directories being modified.
 
@@ -540,8 +540,8 @@ In all cases, the file or files being moved or renamed can be a directory.
 
 Note that when the command is called with two arguments (as *mv name1 name2* or *mv name1 /dir/name2*), it can have three different effects, depending on whether *name2* does not exist, is an existing file, or is an existing directory. If the user intends to refer to an existing directory, */.* (or in some Unix versions */* is sufficient) may be appended to the name to force the system to check this. To move a file to a new directory, the directory must be created first.
 
-3. rm
-------
+rm
+---
 
 *rm* (short for "remove") is one of several basic Unix command lines that operates on files. It is used to delete files from a filesystem. The data is not actually destroyed. Only the index listing where the file is stored is destroyed, and the storage is made available for reuse. There are undelete utilities that will attempt to reconstruct the index and can bring the file back if the parts were not reused.
 
@@ -602,8 +602,8 @@ Linux also uses "--" to terminate option lists. For example, an attempt to delet
 Basic Text Processing
 ======================
 
-1. head
---------
+head
+-----
 
 *head* is a program on Unix and Unix-like systems used to display the first few lines of a text file or piped data. The command syntax is::
 
@@ -634,8 +634,8 @@ Many early versions of Unix did not have this command, and so documentation and 
 This says to print every line (implicit), and quit after the fifth.
 
 
-2. tail
--------- 
+tail
+----
 
 *tail* is a program on Unix and Unix-like systems used to display the last few lines of a text file or piped data.
 
@@ -674,8 +674,8 @@ To interrupt tail while it is monitoring, break-in with *Ctrl+C*. This command c
 If you have a command's result to monitor, you can use the *watch* command.
 
 
-3. cut
--------
+cut
+----
 
 In computing, *cut* is a Unix command line utility which is used to extract sections from each line of input — usually from a file.
 
@@ -707,8 +707,8 @@ This gives the output::
 	five:six:seven
 	epsilon:zeta:eta:teta:iota:kappa:lambda:mu
 
-4. paste
----------
+paste
+------
 
 *paste* is a Unix command line utility which is used to join files horizontally (parallel merging) by outputting lines consisting of the sequentially corresponding lines of each file specified, separated by tabs, to the standard output. It is effectively the horizontal equivalent to the utility *cat* command which operates on the vertical plane of two or more files.
 
@@ -776,8 +776,8 @@ or::
 Looking At Files
 ================
 
-1. cat
--------
+cat
+---
 
 The *cat* command is a standard Unix program used to concatenate and display files. The name is from "catenate", a synonym of *concatenate*.
 
@@ -837,8 +837,8 @@ zcat
 
 *zcat* is a Unix program similar to *cat*, that decompresses individual files and concatenates them to standard output. Traditionally *zcat* operated on files compressed by compress but today it is usually able to operate on *gzip* or even *bzip2* archives. On such systems, it is equivalent to *gunzip -c*
 
-2. more
---------
+more
+-----
 
 In computing, *more* is a command to view (but not modify) the contents of a text file one screen at a time (terminal pager). It is available on Unix and Unix-like systems, DOS, OS/2 and Microsoft Windows. Programs of this sort are called pagers.
 
@@ -857,8 +857,8 @@ There are also other commands that can be used while navigating through the docu
 
 *Options* are typically entered before the file name, but can also be entered in the environment variable *$MORE*. Options entered in the actual command line will override those entered in the *$MORE* environment variable. Available options may vary between Unix systems.
 
-3. less
---------
+less
+-----
 
 *less* is a terminal pager program on Unix, Windows and Unix-like systems used to view (but not change) the contents of a text file one screen at a time. It is similar to *more*, but has the extended capability of allowing both forward and backward navigation through the file. Unlike most Unix text editors/viewers, *less* does not need to read the entire file before starting, resulting in faster load times with large files.
 
@@ -991,15 +991,15 @@ The majority of these directories exist in all UNIX operating systems and are ge
 +---------------+------------------------------------------------+
 
 
-1. man hier
-------------
+man hier
+---------
 
 This is the manual page on the UNIX filesystem. The syntax for this is::
 
 	$ man hier
 
-2. ls -l
----------
+ls -l
+-----
 
 Shows you huge amounts of information (permissions, owners, size, and when last modified) for folders and files. The syntax is ::
 
@@ -1010,8 +1010,8 @@ This can be done after entering the required directory.
 Permissions and Ownership
 =========================
 
-1. chmod
----------
+chmod
+------
 
 The *chmod* command (abbreviated from 'change mode') is a shell command and C language function in Unix and Unix-like environments. When executed, it can change file system modes of files and directories. The modes include permissions and special modes.A chmod command first appeared in AT&T Unix version 1, and is still used today on Unix-like machines.
 
@@ -1294,8 +1294,8 @@ This directs the file list output to both standard output as well as to the file
 More Text Processing
 ====================
 
-1. grep
---------
+grep
+-----
 
 *grep* is a command line text search utility originally written for Unix. The name is taken from the first letters in *global / regular expression / print*, a series of instructions for the *ed* text editor. The *grep* command searches files or standard input globally for lines matching a given regular expression, and prints them to the program's standard output.
 
@@ -1332,8 +1332,8 @@ There are countless implementations and derivatives of *grep* available for many
 
 Other commands contain the word 'grep' to indicate that they search (usually for regular expression matches). The *pgrep* utility, for instance, displays the processes whose names match a given regular expression.
 
-2. tr
-------
+tr
+--
 
 *tr* (abbreviated from *translate* or *transliterate*) is a command in Unix-like operating systems.
 
