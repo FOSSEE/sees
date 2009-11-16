@@ -179,6 +179,22 @@ Observe that the whitespaces between the words have not been removed.
         transform the source string. The source string still remains the same.
 	Remember that **strings are immutable**.
 
+Introduction to the standard library
+====================================
+
+Python is often referred to as a "Batteries included!" language, mainly because 
+of the Python Standard Library. The Python Standard Library provides an extensive
+set of features some of which are available directly for use while some require to
+import a few **modules**. The Standard Library provides various built-in functions
+like:
+
+    * **abs()**
+    * **dict()**
+    * **enumerate()**
+
+The built-in constants like **True** and **False** are provided by the Standard Library.
+More information about the Python Standard Library is available http://docs.python.org/library/
+
 
 I/O: Reading and Writing Files
 ==============================
