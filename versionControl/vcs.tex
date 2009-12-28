@@ -1,0 +1,498 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Version Control Systems
+%
+% Author: FOSSEE 
+% Copyright (c) 2009, FOSSEE, IIT Bombay
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[14pt,compress]{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+  \useoutertheme{infolines}
+  \setbeamercovered{transparent}
+}
+
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+%\usepackage{times}
+\usepackage[T1]{fontenc}
+
+% Taken from Fernando's slides.
+\usepackage{ae,aecompl}
+\usepackage{mathpazo,courier,euler}
+\usepackage[scaled=.95]{helvet}
+
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+
+\usepackage{listings}
+\lstset{language=Python,
+    basicstyle=\ttfamily\bfseries,
+    commentstyle=\color{red}\itshape,
+  stringstyle=\color{darkgreen},
+  showstringspaces=false,
+  keywordstyle=\color{blue}\bfseries}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Macros
+\setbeamercolor{emphbar}{bg=blue!20, fg=black}
+\newcommand{\emphbar}[1]
+{\begin{beamercolorbox}[rounded=true]{emphbar} 
+      {#1}
+ \end{beamercolorbox}
+}
+\newcounter{time}
+\setcounter{time}{0}
+\newcommand{\inctime}[1]{\addtocounter{time}{#1}{\tiny \thetime\ m}}
+
+\newcommand{\typ}[1]{\lstinline{#1}}
+
+\newcommand{\kwrd}[1]{ \texttt{\textbf{\color{blue}{#1}}}  }
+
+%%% This is from Fernando's setup.
+% \usepackage{color}
+% \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+% % Use and configure listings package for nicely formatted code
+% \usepackage{listings}
+% \lstset{
+%    language=Python,
+%    basicstyle=\small\ttfamily,
+%    commentstyle=\ttfamily\color{blue},
+%    stringstyle=\ttfamily\color{orange},
+%    showstringspaces=false,
+%    breaklines=true,
+%    postbreak = \space\dots
+% }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title page
+\title[Version Control Systems]{SEES: Version Control Systems}
+
+\author[FOSSEE] {FOSSEE}
+
+\institute[IIT Bombay] {Department of Aerospace Engineering\\IIT Bombay}
+\date[]{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\pgfdeclareimage[height=0.75cm]{iitmlogo}{iitmlogo}
+%\logo{\pgfuseimage{iitmlogo}}
+
+
+%% Delete this, if you do not want the table of contents to pop up at
+%% the beginning of each subsection:
+\AtBeginSubsection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Outline}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Outline}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command: 
+%\beamerdefaultoverlayspecification{<+->}
+
+%%\includeonlyframes{current,current1,current2,current3,current4,current5,current6}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DOCUMENT STARTS
+\begin{document}
+
+\begin{frame}
+  \maketitle
+\end{frame}
+
+% CREATING TOC 
+\begin{frame}
+  \frametitle{Outline}
+  \tableofcontents
+  % You might wish to add the option [pausesections]
+\end{frame}
+
+% Introduction to course-need of version control, history, options available.
+\section{Introduction}
+
+\begin{frame}
+  \frametitle{What is Version Control?}
+  \begin{block}{From a blog post}
+    ``Version control (or source control) is nothing more arcane than keeping copies of ones work as one make changes to it.''
+  \end{block}
+  \pause
+  \begin{block}{}
+    It is better to use these tools rather then wasting creativity to invent VCS which have files with names like \begin{color}{red}{prog1.py, prog2.py}\end{color} or \begin{color}{red}ass1.py, ass2.py.\end{color}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Motivation behind such tools}
+  \begin{itemize}
+  \item Track the history and evolution of a program.
+  \item To collaborate effectively on a project.
+  \item \begin{color}{red}``To err is Human''\end{color} \pause for recovery we have ``Version Control''
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{How is done What is done?}
+  \begin{itemize}
+  \item It keeps track of changes you make to a file. You can improvise, revisit, and amend.
+  \item all procedure is logged/recorded, so you and others can follow the development cycle.
+  \end{itemize}  
+\end{frame}
+
+\begin{frame}
+  \frametitle{Do we really need this?}
+  \emphbar{For team of people working remotely(even different computers/machines) on a project use of version control is inevitable!}
+  \emphbar{For single person: managing projects and assignments becomes easy}
+  \pause
+  \emphbar{Its a good habit!}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Whats on the menu!}
+  \begin{itemize}
+  \item cvs(Concurrent Version System)
+  \item svn (Subversion)
+  \item hg (Mercurial)
+  \item bzr (Bazaar)
+  \item git
+  \end{itemize}
+\end{frame}
+
+% Introduction to jargons 
+\section{Learning the Lingo!}
+
+\begin{frame}
+  \frametitle{Common jargons: Basic setup}
+  \begin{itemize}
+  \item Repository(repo):\\
+        The folder with all files.
+  \item Server:\\
+        Machine with main inventory/repo.
+  \item Client:\\
+        Local machines with copy of main repo.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Actions}
+  \begin{itemize}
+  \item Add:\\
+    Adding file into the repo for the first time.
+  \item Version:\\
+    Version number of a file.
+  \item Head/Tip:\\
+    The latest revision of the repo.
+  \item Check out/Clone:\\
+    Initial download of repo onto machine.
+  \item Commit:\\
+    Recording a change.
+  \item Change log/History:\\
+    List of changes made to repo.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Actions cont...}
+  \begin{itemize}
+  \item Branch:\\
+    Separate local copy of repo for bug fixing, testing.
+  \item Diff/Change:\\
+    Finding the differences in a file in two versions.
+  \item Merge (or patch):\\
+    Apply the changes to file, to make it up-to-date.
+  \item Conflict:\\
+    When merging a file creates a contradict.
+  \item Resolve:\\
+    Fixing the conflict manually.
+  \end{itemize}
+\end{frame}
+
+% Types of Version Controls
+\section{Types of VCS}
+
+\begin{frame}
+  \frametitle{Types:}
+  Based on way of managing the repo there are two types of VCS:
+  \begin{itemize}
+  \item Centralized VCS
+  \item Distributed VCS
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Why hg?}
+  \begin{itemize}
+  \item Easy to learn and use.
+  \item Lightweight.
+  \item Scales excellently.
+  \item Based on Python.
+  \end{itemize}
+\end{frame}
+
+% Initializing the repo, cloning, committing changes, pushing, pulling to repo.
+\section{Getting Started}
+
+\begin{frame}[fragile]
+  \frametitle{Getting comfortable:}
+  Try following commands:
+  \begin{lstlisting}
+    $ hg version    
+    $ hg help
+    $ hg help diff
+  \end{lstlisting} %$
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Cloning a repo}
+  Clone is used to make a copy of an existing repository. This repo can be both local or remote.
+  \begin{lstlisting}
+$ hg clone http://hg.serpentine.com/tutorial/hello 
+     localCopyhello
+  \end{lstlisting}
+  And we get a local copy of this repository. 
+  \begin{lstlisting}
+$ ls localCopyhello/
+hello.c  Makefile
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Creating a repo}
+  To start a new repository \typ{hg} provides \typ{init} command.
+  \begin{lstlisting}
+$ mkdir Fevicol
+$ cd Fevicol/
+$ echo "print 'Yeh Fevicol ka majboot 
+              jod hai'" > feviStick.py
+$ ls -a
+.  ..  feviStick.py
+$ hg init
+$ ls -a
+.  ..  feviStick.py  .hg
+  \end{lstlisting}
+\typ{.hg} folder will store the logs related to this repo.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Cloning a local repo: Branching}
+  All \typ{hg} repositories are self-contained, and independent which can be cloned. Like:
+  \begin{lstlisting}
+$ hg clone localCopyhello newCopy
+updating working directory
+2 files updated, 0 files merged, 
+0 files removed, 0 files unresolved
+  \end{lstlisting}
+or
+  \begin{lstlisting}
+$ hg clone Fevicol Fevicol-pull
+updating working directory
+0 files updated, 0 files merged, 
+0 files removed, 0 files unresolved
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{History/Logs}
+  To check out track record of a repo one has to use \typ{log} command.
+  \begin{lstlisting}
+$ cd localCopyhello
+$ hg log    
+  \end{lstlisting}
+  The output of previous command have following fields:
+  \begin{itemize}
+  \item changeset: identifiers for the changeset.
+  \item user: person who creates the changeset.
+  \item date: The date and time of creation of changeset.
+  \item summary: The one line description of changeset.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{History/Logs cont...}
+By default it returns complete logs of all changes. To make it selective try:
+\begin{lstlisting}
+  $ hg log -r 3
+  $ hg log -r 2:4
+\end{lstlisting}
+To see tip/latest commit history use:\\
+\typ{$ hg tip} %$
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Adding files}
+  We will revisit the Fevicol repo we created earlier.
+  \begin{lstlisting}
+$ cd Fevicol
+$ hg log
+$ hg status
+? feviStick.py
+  \end{lstlisting} %$
+  "?" sign in front of name indicates that this file is not yet part of track record. \typ{add} command is used to add new files to repo.
+  \begin{lstlisting}
+$ hg add feviStick.py
+$ hg st
+A feviStick.py
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Committing changes}
+  \typ{hg} uses \typ{commit} (alias \typ{ci}) command to make changes logged. So after adding a file, we have to commit it also by:
+  \begin{lstlisting}
+$ hg ci -u "Shantanu <shantanu@fossee.in>" 
+        -m "First commit."
+$ hg log
+changeset:   0:84f5e91f4de1
+tag:         tip
+user:        Shantanu <shantanu@fossee.in>
+date:        Fri Aug 21 23:37:13 2009 +0530
+summary:     First commit.    
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{More basic operations}
+  \begin{lstlisting}
+$ hg rename feviStick.py feviCol.py
+$ hg st
+A feviCol.py
+$ hg ci -u "Shantanu <shantanu@fossee.in>" 
+        -m "Renamed feviStick.py."
+$ hg tip
+changeset:   1:d948fb4137c5
+tag:         tip
+user:        Shantanu <shantanu@fossee.in>
+date:        Sat Aug 22 00:11:25 2009 +0530
+summary:     Renamed feviStick.py.
+  \end{lstlisting}
+%% Other commands which can be handy are \typ{cp}, \typ{remove}, \typ{revert} etc.
+\end{frame}
+
+% Introduction to concepts of branches, merging patch?
+\section{Sharing and Collaborating}
+
+\begin{frame}[fragile]
+  \frametitle{Distributing changes}
+  As this repo is self-contained, hence changeset just created are local and are not propagated to previously cloned Fevicol-pull.
+  \begin{lstlisting}
+$ hg pull 
+pulling from /home/baali/Fevicol
+requesting all changes
+adding changesets
+adding manifests
+adding file changes
+added 2 changesets with 2 changes to 2 files
+(run 'hg update' to get a working copy)
+  \end{lstlisting} %$
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Pulling changesets cont...}
+  as last line of previous command suggest, hg \typ{pull} does not(by default) update current directory. It just imports changesets. To add all these changesets one have to update using \typ{up} command:
+  \begin{lstlisting}
+$ cd Fevicol-pull
+$ ls -a
+.  ..  .hg
+$ hg up
+2 files updated, 0 files merged, 
+0 files removed, 0 files unresolved
+$ ls -a
+.  ..  feviCol.py  feviStick.py  .hg    
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Making changes across the repos}
+  \typ{$ cd Fevicol-clone/}\\ %$
+  Lets edit and correct the feviStick.py 
+\begin{lstlisting}
+$ echo "print 'Ab no more Chip Chip'" 
+        > feviStick.py
+$ hg st
+M feviStick.py
+\end{lstlisting}
+  'M' sign indicates that Mercurial has noticed change.\\
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Revisiting changes}
+To look back at the changes made there is \typ{diff} command:
+\begin{lstlisting}
+$ hg diff
+diff -r a7912d45f47c feviStick.py
+--- a/feviStick.py   Sun Aug 23 22:34:35 2009 +0530
++++ b/feviStick.py   Sun Aug 23 22:47:49 2009 +0530
+@@ -1,1 +1,1 @@
+-print 'Yeh Fevicol ka Majboot jod hai'
++print 'Ab no more Chip Chip'
+  \end{lstlisting} %$
+  These changes are not logged until you commit them.\\
+  \begin{lstlisting}
+$ hg ci -u "Shantanu <shantanu@fossee.in>" 
+      -m "Changed tagline for feviStick.py."
+  \end{lstlisting} %$
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Syncing two repos}
+  Now to bring both the repos to same stage one have to \typ{push} changes.
+  \begin{lstlisting}
+$ hg push 
+pushing to /home/baali/Fevicol
+searching for changes
+adding changesets
+adding manifests
+adding file changes
+added 1 changesets with 1 changes to 1 files
+  \end{lstlisting} %$
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Syncing cont...}
+  Same as pulling, pushing wont update the main repo by default. Try running following command:
+  \begin{lstlisting}
+$ hg tip    
+$ cat feviStick.py
+  \end{lstlisting}
+  \typ{tip} shows latest changeset, but content of file are not updated. We have to use \typ{up} on main branch
+  \begin{lstlisting}
+$ hg up
+1 files updated, 0 files merged, 0 files removed, 0 files unresolved    
+  \end{lstlisting} %$
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Merging}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{}
+
+\end{frame}
+
+% Steps to follow to make life easier. How to avoid/handle manual merges.
+\section{Work flow: DOS and DON'Ts}
+
+\begin{frame}
+  \frametitle{Suggested Readings:}
+  \begin{itemize}
+  \item \url{http://hgbook.red-bean.com/}
+  \item \url{http://karlagius.com/2009/01/09/version-control-for-the-masses/}
+  \item Articles related to version control available on \url{http://betterexplained.com/}
+  \item \url{http://en.wikipedia.org/wiki/Revision_control}
+  \item \url{http://wiki.alliedmods.net/Mercurial_Tutorial}
+  \end{itemize}
+\end{frame}
+\end{document}
