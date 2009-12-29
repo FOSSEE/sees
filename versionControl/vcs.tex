@@ -118,6 +118,8 @@
   % You might wish to add the option [pausesections]
 \end{frame}
 
+%% There are some %$ used just to minimise the effect of $ sign used in lstlisting. In emacs it looks unhealthy.
+
 % Introduction to course-need of version control, history, options available.
 \section{Introduction}
 
@@ -473,17 +475,112 @@ $ hg up
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Merging}
+  \frametitle{Merging: Scenario}
+  One very useful feature is merging work of different peers working on same project.\\
+  We consider scenario, two person on one project, both have local copies, and one among them is main branch.
+\end{frame}
 
+
+\begin{frame}[fragile]
+  \frametitle{Making changes to one of repo}
+  \begin{lstlisting}
+$ cd Fevicol-pull
+$ echo "print 'Yeh Fevicol ka Majboot jod 
+        hai, tootega nahin'" > feviCol.py
+$ hg st
+M feviStick.py
+$ hg ci -u "Shantanu <shantanu@fossee.in>" 
+     -m "Updated tag line for feviCol.py."
+$ hg tip| grep changeset
+changeset:   4:caf986b15e05
+  \end{lstlisting} %$
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{}
+  \frametitle{In the meanwhile, other repo is ...}
+  \begin{lstlisting}
+$ cd Fevicol
+$ echo "print 'Jor laga ke hayyiya'" 
+        > firstAdd.py
+$ hg add 
+$ hg st
+A firstAdd.py
+$ hg ci -u "Shantanu <shantanu@fossee.in>"
+        -m "Added firsAdd.py."
+$ hg tip|grep changeset
+changeset:   4:fadbd6492cc4    
+  \end{lstlisting}
+\end{frame}
 
+\begin{frame}[fragile]
+  \frametitle{Merging}
+  \begin{lstlisting}
+$ hg pull ../Fevicol-pull
+pulling from ../Fevicol-pull
+searching for changes
+adding changesets
+adding manifests
+adding file changes
+added 1 changesets with 1 changes to 1 files (+1 heads)
+(run 'hg heads' to see heads, 'hg merge' to merge)    
+  \end{lstlisting} %$
+  Output is already suggesting something!
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Analyzing events in detail}
+  Since hg \typ{pull} don't update the files directly, our changes are still safe. Following command can help us deal this merging problem in better way:
+  \begin{lstlisting}
+$ hg heads
+  \end{lstlisting}
+  This commands shows repo/branch heads.
+  \begin{lstlisting}
+$ hg glog    
+  \end{lstlisting}
+  It shows revision history alongside an ASCII revision graph.\\
+  Because of different track, \typ{up} command fails.
+  \begin{lstlisting}
+$ hg up
+abort: crosses branches (use 'hg merge' or 'hg update -C')
+  \end{lstlisting} %$
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Merging}
+  \typ{hg merge} command merge working directory with another revision.
+  \begin{lstlisting}
+$ hg merge    
+  \end{lstlisting} %$
+  After merging two branches, we have to commit the results to create a common head.
+  \begin{lstlisting}
+$ hg ci -u "Shantanu <shantanu@fossee.in>" 
+        -m "Merged branches."
+$ hg heads    
+$ hg glog
+  \end{lstlisting} %$
 \end{frame}
 
 % Steps to follow to make life easier. How to avoid/handle manual merges.
 \section{Work flow: DOS and DON'Ts}
+
+\begin{frame}
+  \frametitle{Motto behind hg}
+  \begin{center}
+  \color{red}{``Commit Early Commit Often.''}\\  
+  \end{center}  
+\end{frame}
+
+\begin{frame}
+  \frametitle{Steps to be followed}
+  \begin{itemize}
+  \item Make changes.
+  \item Commit.
+  \item Pull changesets.
+  \item Merge if required.
+  \item Push.
+  \end{itemize}
+\end{frame}
 
 \begin{frame}
   \frametitle{Suggested Readings:}
