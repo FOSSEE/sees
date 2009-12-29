@@ -382,13 +382,9 @@ $ hg st
 A feviCol.py
 $ hg ci -u "Shantanu <shantanu@fossee.in>" 
         -m "Added feviCol.py."
-$ hg tip
-changeset:   1:d948fb4137c5
-tag:         tip
-user:        Shantanu <shantanu@fossee.in>
-date:        Sat Aug 22 00:11:25 2009 +0530
+$ hg tip| grep summary 
 summary:     Renamed feviStick.py.
-  \end{lstlisting}
+  \end{lstlisting} %$
 %% Other commands which can be handy are \typ{cp}, \typ{remove}, \typ{revert} etc.
   \inctime{10}
 \end{frame}
@@ -595,7 +591,7 @@ $ hg glog
 \begin{frame}
   \frametitle{Cheat Sheet}
   \begin{center}
-  \includegraphics[height=2.8in, interpolate=true]{dongwoo-Hg-120dpi}  
+  \includegraphics[height=2.8in]{mod}  
   \end{center}  
 \end{frame}
 
@@ -605,7 +601,7 @@ $ hg glog
   \item Make changes.
   \item Commit.
   \item Pull changesets.
-  \item Merge if required.
+  \item Merge(if required).
   \item Push.
   \end{itemize}
   \inctime{10}
