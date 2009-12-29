@@ -130,7 +130,7 @@
   \end{block}
   \pause
   \begin{block}{}
-    It is better to use these tools rather then wasting creativity to invent VCS which have files with names like \begin{color}{red}{prog1.py, prog2.py}\end{color} or \begin{color}{red}ass1.py, ass2.py.\end{color}
+    It is better to use these tools rather then wasting creativity to invent VCS which have files with names like \begin{color}{red}{prog1.py, prog2.py}\end{color} or \begin{color}{red}prog-old.py, prog.py.\end{color}
   \end{block}
 \end{frame}
 
@@ -147,27 +147,30 @@
   \frametitle{How is done What is done?}
   \begin{itemize}
   \item It keeps track of changes you make to a file. You can improvise, revisit, and amend.
-  \item all procedure is logged/recorded, so you and others can follow the development cycle.
+  \item All procedure is logged/recorded, so you and others can follow the development cycle.
   \end{itemize}  
 \end{frame}
 
 \begin{frame}
   \frametitle{Do we really need this?}
-  \emphbar{For team of people working remotely(even different computers/machines) on a project use of version control is inevitable!}
+  \emphbar{For team of people working remotely(even different computers/machines) on a project, use of version control is inevitable!}
+  \vspace{0.15in}
   \emphbar{For single person: managing projects and assignments becomes easy}
+  \vspace{0.15in}
   \pause
-  \emphbar{Its a good habit!}
+  \emphbar{\color{red}{Its a good habit!}}
 \end{frame}
 
 \begin{frame}
   \frametitle{Whats on the menu!}
   \begin{itemize}
-  \item cvs(Concurrent Version System)
+  \item cvs (Concurrent Version System)
   \item svn (Subversion)
   \item hg (Mercurial)
   \item bzr (Bazaar)
   \item git
   \end{itemize}
+  \inctime{10}
 \end{frame}
 
 % Introduction to jargons 
@@ -213,7 +216,7 @@
   \item Merge (or patch):\\
     Apply the changes to file, to make it up-to-date.
   \item Conflict:\\
-    When merging a file creates a contradict.
+    When merging a file is not obvious.
   \item Resolve:\\
     Fixing the conflict manually.
   \end{itemize}
@@ -226,19 +229,24 @@
   \frametitle{Types:}
   Based on way of managing the repo there are two types of VCS:
   \begin{itemize}
-  \item Centralized VCS
-  \item Distributed VCS
+  \item Centralized VCS\\
+    cvs, svn falls under this category.
+  \item Distributed VCS\\
+    hg, bzr, git follows this methodology.
   \end{itemize}
+  \emphbar{We would be covering \typ{hg}}
 \end{frame}
 
 \begin{frame}
   \frametitle{Why hg?}
+    \includegraphics[height=.75in, interpolate=true]{mercurial}
   \begin{itemize}
   \item Easy to learn and use.
   \item Lightweight.
   \item Scales excellently.
   \item Based on Python.
   \end{itemize}
+  \inctime{10}
 \end{frame}
 
 % Initializing the repo, cloning, committing changes, pushing, pulling to repo.
@@ -258,8 +266,9 @@
   \frametitle{Cloning a repo}
   Clone is used to make a copy of an existing repository. This repo can be both local or remote.
   \begin{lstlisting}
-$ hg clone http://hg.serpentine.com/tutorial/hello 
-     localCopyhello
+$ hg clone \
+  http://hg.serpentine.com/tutorial/hello \
+  localCopyhello
   \end{lstlisting}
   And we get a local copy of this repository. 
   \begin{lstlisting}
@@ -294,13 +303,14 @@ updating working directory
 2 files updated, 0 files merged, 
 0 files removed, 0 files unresolved
   \end{lstlisting}
-or
+  or
   \begin{lstlisting}
 $ hg clone Fevicol Fevicol-pull
 updating working directory
 0 files updated, 0 files merged, 
 0 files removed, 0 files unresolved
   \end{lstlisting}
+  \inctime{15}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -321,13 +331,14 @@ $ hg log
 
 \begin{frame}[fragile]
   \frametitle{History/Logs cont...}
-By default it returns complete logs of all changes. To make it selective try:
+By default it returns complete logs of all changes. To make it selective use:
 \begin{lstlisting}
   $ hg log -r 3
   $ hg log -r 2:4
 \end{lstlisting}
-To see tip/latest commit history use:\\
-\typ{$ hg tip} %$
+  To see tip/latest commit history use:\\
+\typ{$ hg tip} \\ %$
+  \inctime{5}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -336,7 +347,7 @@ To see tip/latest commit history use:\\
   \begin{lstlisting}
 $ cd Fevicol
 $ hg log
-$ hg status
+$ hg st
 ? feviStick.py
   \end{lstlisting} %$
   "?" sign in front of name indicates that this file is not yet part of track record. \typ{add} command is used to add new files to repo.
@@ -349,7 +360,7 @@ A feviStick.py
 
 \begin{frame}[fragile]
   \frametitle{Committing changes}
-  \typ{hg} uses \typ{commit} (alias \typ{ci}) command to make changes logged. So after adding a file, we have to commit it also by:
+  \typ{hg} uses \typ{ci} (alias \typ{commit}) command to make changes logged. So after adding a file, we have to commit it also by:
   \begin{lstlisting}
 $ hg ci -u "Shantanu <shantanu@fossee.in>" 
         -m "First commit."
@@ -365,11 +376,12 @@ summary:     First commit.
 \begin{frame}[fragile]
   \frametitle{More basic operations}
   \begin{lstlisting}
-$ hg rename feviStick.py feviCol.py
+$ hg cp feviStick.py pidiLite.py
+$ hg rename pidiLite.py feviCol.py
 $ hg st
 A feviCol.py
 $ hg ci -u "Shantanu <shantanu@fossee.in>" 
-        -m "Renamed feviStick.py."
+        -m "Added feviCol.py."
 $ hg tip
 changeset:   1:d948fb4137c5
 tag:         tip
@@ -378,6 +390,7 @@ date:        Sat Aug 22 00:11:25 2009 +0530
 summary:     Renamed feviStick.py.
   \end{lstlisting}
 %% Other commands which can be handy are \typ{cp}, \typ{remove}, \typ{revert} etc.
+  \inctime{10}
 \end{frame}
 
 % Introduction to concepts of branches, merging patch?
@@ -400,7 +413,7 @@ added 2 changesets with 2 changes to 2 files
 
 \begin{frame}[fragile]
   \frametitle{Pulling changesets cont...}
-  as last line of previous command suggest, hg \typ{pull} does not(by default) update current directory. It just imports changesets. To add all these changesets one have to update using \typ{up} command:
+  As pointed by previous command output, hg \typ{pull} does not(by default) update current directory. It just imports changesets. To add all these changesets one have to update using \typ{up} command:
   \begin{lstlisting}
 $ cd Fevicol-pull
 $ ls -a
@@ -415,7 +428,9 @@ $ ls -a
 
 \begin{frame}[fragile]
   \frametitle{Making changes across the repos}
-  \typ{$ cd Fevicol-clone/}\\ %$
+  \begin{lstlisting}
+$ Fevicol-clone/
+  \end{lstlisting} %$
   Lets edit and correct the feviStick.py 
 \begin{lstlisting}
 $ echo "print 'Ab no more Chip Chip'" 
@@ -428,7 +443,7 @@ M feviStick.py
 
 \begin{frame}[fragile]
   \frametitle{Revisiting changes}
-To look back at the changes made there is \typ{diff} command:
+To revisit changes made earlier use \typ{diff} command:
 \begin{lstlisting}
 $ hg diff
 diff -r a7912d45f47c feviStick.py
@@ -464,6 +479,7 @@ added 1 changesets with 1 changes to 1 files
   \frametitle{Syncing cont...}
   Same as pulling, pushing wont update the main repo by default. Try running following command:
   \begin{lstlisting}
+$ cd Fevicol
 $ hg tip    
 $ cat feviStick.py
   \end{lstlisting}
@@ -472,12 +488,16 @@ $ cat feviStick.py
 $ hg up
 1 files updated, 0 files merged, 0 files removed, 0 files unresolved    
   \end{lstlisting} %$
+  \inctime{15}
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{Merging: Scenario}
   One very useful feature is merging work of different peers working on same project.\\
-  We consider scenario, two person on one project, both have local copies, and one among them is main branch.
+  We consider scenario, two person on one project, both have local copies, and one among them is main branch.\\
+  \begin{center}
+    \includegraphics[height=1in, interpolate=true]{scenario}
+  \end{center}  
 \end{frame}
 
 
@@ -527,7 +547,7 @@ added 1 changesets with 1 changes to 1 files (+1 heads)
   Output is already suggesting something!
 \end{frame}
 
-
+%% Here one can mention the point of having push and pull separate. Because of this policy, changes made are not lost.
 \begin{frame}[fragile]
   \frametitle{Analyzing events in detail}
   Since hg \typ{pull} don't update the files directly, our changes are still safe. Following command can help us deal this merging problem in better way:
@@ -559,6 +579,7 @@ $ hg ci -u "Shantanu <shantanu@fossee.in>"
 $ hg heads    
 $ hg glog
   \end{lstlisting} %$
+  \inctime{15}
 \end{frame}
 
 % Steps to follow to make life easier. How to avoid/handle manual merges.
@@ -572,6 +593,13 @@ $ hg glog
 \end{frame}
 
 \begin{frame}
+  \frametitle{Cheat Sheet}
+  \begin{center}
+  \includegraphics[height=2.8in, interpolate=true]{dongwoo-Hg-120dpi}  
+  \end{center}  
+\end{frame}
+
+\begin{frame}
   \frametitle{Steps to be followed}
   \begin{itemize}
   \item Make changes.
@@ -580,12 +608,14 @@ $ hg glog
   \item Merge if required.
   \item Push.
   \end{itemize}
+  \inctime{10}
 \end{frame}
 
 \begin{frame}
   \frametitle{Suggested Readings:}
   \begin{itemize}
-  \item \url{http://hgbook.red-bean.com/}
+  \item \url{http://mercurial.selenic.com/guide/}
+  \item \url{http://hgbook.red-bean.com/}    
   \item \url{http://karlagius.com/2009/01/09/version-control-for-the-masses/}
   \item Articles related to version control available on \url{http://betterexplained.com/}
   \item \url{http://en.wikipedia.org/wiki/Revision_control}
@@ -593,3 +623,28 @@ $ hg glog
   \end{itemize}
 \end{frame}
 \end{document}
+
+Notes
+-----
+
+From http://mercurial.selenic.com/
+
+Quick Start
+
+Clone a project and push changes
+
+$ hg clone http://selenic.com/repo/hello
+$ cd hello
+$ (edit files)
+$ hg add (new files)
+$ hg commit -m 'My changes'
+$ hg push
+
+
+Create a project and commit
+
+$ hg init (project-directory)
+$ cd (project-directory)
+$ (add some files)
+$ hg add
+$ hg commit -m 'Initial commit'
