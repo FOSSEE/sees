@@ -158,7 +158,7 @@
   \emphbar{For single person: managing projects and assignments becomes easy}
   \vspace{0.15in}
   \pause
-  \emphbar{\color{red}{Its a good habit!}}
+  \emphbar{\color{red}{It is a good habit!}}
 \end{frame}
 
 \begin{frame}
@@ -254,20 +254,27 @@
 
 \begin{frame}[fragile]
   \frametitle{Getting comfortable:}
-  Try following commands:
+  For checking \typ{hg} installation and its version try:
   \begin{lstlisting}
     $ hg version    
+  \end{lstlisting}
+  To get broad help on \typ{hg} and commands available:
+  \begin{lstlisting}
+    $ man hg
     $ hg help
+  \end{lstlisting}
+  To get help on particular \typ{hg} related option try:
+  \begin{lstlisting}
     $ hg help diff
   \end{lstlisting} %$
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Cloning a repo}
-  Clone is used to make a copy of an existing repository. This repo can be both local or remote.
+  \frametitle{Getting working/existing code base}
+  \typ{clone} is used to make a copy of an existing repository. It can be both local or remote.
   \begin{lstlisting}
-$ hg clone \
-  http://hg.serpentine.com/tutorial/hello \
+$ hg clone 
+  http://hg.serpentine.com/tutorial/hello 
   localCopyhello
   \end{lstlisting}
   And we get a local copy of this repository. 
@@ -278,8 +285,22 @@ hello.c  Makefile
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Creating a repo}
-  To start a new repository \typ{hg} provides \typ{init} command.
+  \frametitle{To start track-record on existing files}
+  I have some files which I want to bring under version control. \typ{hg} provides \typ{init} command for this: 
+  \begin{lstlisting}
+$ ls -a circulate/
+.  ..  lena.png  pendulum.txt  points.txt  pos.txt  sslc1.py  sslc1.txt
+$ cd circulate/
+$ hg init
+$ ls -a
+.  ..  .hg  lena.png  pendulum.txt  points.txt  pos.txt  sslc1.py  sslc1.txt    
+  \end{lstlisting}
+  \emphbar{\typ{.hg} directory keeps log of changes made henceforth.}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Starting fresh}
+  We can use \typ{init} to start a new repository also
   \begin{lstlisting}
 $ mkdir Fevicol
 $ cd Fevicol/
@@ -291,12 +312,11 @@ $ hg init
 $ ls -a
 .  ..  feviStick.py  .hg
   \end{lstlisting}
-\typ{.hg} folder will store the logs related to this repo.
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Cloning a local repo: Branching}
-  All \typ{hg} repositories are self-contained, and independent which can be cloned. Like:
+  \frametitle{Making copies: Branching}
+  All \typ{hg} repositories are self-contained, and independent which can be copied(cloned):
   \begin{lstlisting}
 $ hg clone localCopyhello newCopy
 updating working directory
@@ -313,44 +333,85 @@ updating working directory
   \inctime{15}
 \end{frame}
 
+%% Should we here stress on how are distribute VCS have 
+%% different approach then centralized ones? Maybe a pic
+%% or some other graphical representation.
+
+%% Introduction to how logs are managed in VCS.
+%% A analogy in logs and day-to-day life?
 \begin{frame}[fragile]
-  \frametitle{History/Logs}
-  To check out track record of a repo one has to use \typ{log} command.
+  \frametitle{How does it work?}
+  It can roughly be related to Computer/Video Games.
+  \begin{itemize}
+  \item We play games in stages.
+  \item We pass a stage/task- We save the game.
+  \item We resume playing from that point.
+  \item In-case we want to replay or revisit some particular stage, we have it saved.
+  \item Even we can change the course of play henceforth.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Better way to say:}
+  \begin{center}
+    \includegraphics[height=2.5in,width=2.5in, interpolate=true]{mario}
+  \end{center}  
+  \emphbar{\typ{hg} provides power to save and resume from a stage.}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Revisiting saved points:history/logs}
+  In \typ{hg}, the difference between consecutive stages is termed as changeset.\\
+  Once we have saved stages, we need a mechanism to review and access them, for that use \typ{log} command.
   \begin{lstlisting}
 $ cd localCopyhello
 $ hg log    
   \end{lstlisting}
-  The output of previous command have following fields:
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Understanding output}
+  The output provides following information:
   \begin{itemize}
-  \item changeset: identifiers for the changeset.
-  \item user: person who creates the changeset.
-  \item date: The date and time of creation of changeset.
-  \item summary: The one line description of changeset.
+  \item changeset: Identifiers for the changeset.
+  \item user: Person who created the changeset.
+  \item date: Date and time of creation of changeset.
+  \item summary: One line description.
   \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{History/Logs cont...}
-By default it returns complete logs of all changes. To make it selective use:
+  By default \typ{log} returns complete list of all changes. \\
+  For selective view try:
 \begin{lstlisting}
-  $ hg log -r 3
-  $ hg log -r 2:4
+$ hg log -r 3
+$ hg log -r 2:4
 \end{lstlisting}
-  To see tip/latest commit history use:\\
-\typ{$ hg tip} \\ %$
-  \inctime{5}
+  tip/latest changes can be seen via:
+  \begin{lstlisting}
+$ hg tip    
+  \end{lstlisting} %%$
+  \inctime{10}
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Adding files}
-  We will revisit the Fevicol repo we created earlier.
+  \frametitle{Advancing through state:status}
+  We often need to add/delete some files from directory(repo). The structure keeps on evolving, and tools for handling them are needed.\\
+  We will use the Fevicol repo we created earlier.
   \begin{lstlisting}
 $ cd Fevicol
 $ hg log
 $ hg st
 ? feviStick.py
-  \end{lstlisting} %$
-  "?" sign in front of name indicates that this file is not yet part of track record. \typ{add} command is used to add new files to repo.
+  \end{lstlisting} %%$
+  \typ{st} (aka status) is command to show changed files in the working directory.\\
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Adding files}
+  "?" indicates that these file are aliens to track record.\\
+  \typ{add} command is available to add new files to present structure.
   \begin{lstlisting}
 $ hg add feviStick.py
 $ hg st
@@ -359,8 +420,9 @@ A feviStick.py
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Committing changes}
-  \typ{hg} uses \typ{ci} (alias \typ{commit}) command to make changes logged. So after adding a file, we have to commit it also by:
+  \frametitle{Saving present stage: committing}
+  \emphbar{This is equivalent to completing tasks, before reaching a stage where you want to save.}
+  \typ{hg} uses \typ{ci}(aka \typ{commit}) command to save changes. So after adding file, we have to commit it also:
   \begin{lstlisting}
 $ hg ci -u "Shantanu <shantanu@fossee.in>" 
         -m "First commit."
