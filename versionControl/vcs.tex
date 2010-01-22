@@ -619,6 +619,7 @@ changeset:   3:fadbd6492cc4
 
 \begin{frame}[fragile]
   \frametitle{Merging}
+  \emphbar{Lets sync both these branches!}
   \begin{lstlisting}
 $ hg pull ../Fevicol-pull
 pulling from ../Fevicol-pull
@@ -629,22 +630,49 @@ adding file changes
 added 1 changesets with 1 changes to 1 files (+1 heads)
 (run 'hg heads' to see heads, 'hg merge' to merge)    
   \end{lstlisting} %$
-  Output is already suggesting something!
+  \begin{itemize}
+  \item \typ{pull} can be done from a branch explicitly also.
+  \item Output is already suggesting something!
+  \end{itemize}  
 \end{frame}
 
 %% Here one can mention the point of having push and pull separate. Because of this policy, changes made are not lost.
 \begin{frame}[fragile]
   \frametitle{Analyzing events in detail}
-  Since hg \typ{pull} don't update the files directly, our changes are still safe. Following command can help us deal this merging problem in better way:
+  Since hg \typ{pull} don't update the files directly, our changes are still safe. \typ{hg} provides some commands to help understand such problems.
+\begin{tiny}
   \begin{lstlisting}
 $ hg heads
-  \end{lstlisting}
-  This commands shows repo/branch heads.
-  \begin{lstlisting}
+changeset:   4:c5f40fda69cf
+tag:         tip
+parent:      2:0b8286c48e88
+user:        Shantanu <shantanuc@fosse.in>
+date:        Fri Jan 22 19:43:46 2010 +0530
+summary:     Updated tagline for feviCol.py.
+
+changeset:   3:60edf0e499e7
+user:        Shantanu <shantanuc@fosse.in>
+date:        Fri Jan 22 19:47:58 2010 +0530
+summary:     Added firstAdd.py.
+  \end{lstlisting} %%$
+\end{tiny}
+  It shows current repository heads or show branch head
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{What went wrong: Analysis}
+    \begin{lstlisting}
 $ hg glog    
-  \end{lstlisting}
-  It shows revision history alongside an ASCII revision graph.\\
-  Because of different track, \typ{up} command fails.
+  \end{lstlisting} %%$
+  \begin{center}
+  \includegraphics[height=2in]{glog}  
+  \end{center}  
+  It shows history alongside an ASCII revision graph.  
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{What went wrong: Analysis cont...}
+  Because of different 'pasts', \typ{up} command fails.
   \begin{lstlisting}
 $ hg up
 abort: crosses branches (use 'hg merge' or 'hg update -C')
@@ -653,18 +681,40 @@ abort: crosses branches (use 'hg merge' or 'hg update -C')
 
 \begin{frame}[fragile]
   \frametitle{Merging}
-  \typ{hg merge} command merge working directory with another revision.
+  To deal such situations \typ{hg merge} command merge working directory with another revision.
   \begin{lstlisting}
-$ hg merge    
+$ hg merge
+ 1 files updated, 0 files merged, 0 files removed, 0 files unresolved
+(branch merge, don't forget to commit)   
   \end{lstlisting} %$
   After merging two branches, we have to commit the results to create a common head.
   \begin{lstlisting}
 $ hg ci -u "Shantanu <shantanu@fossee.in>" 
         -m "Merged branches."
-$ hg heads    
-$ hg glog
   \end{lstlisting} %$
   \inctime{15}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\typ{glog}}
+  \begin{center}
+  \includegraphics[height=2.8in]{glog-2}  
+  \end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{More information}
+  \begin{itemize}
+  \item \typ{merge} fails if there are conflicting changes.
+    \begin{itemize}
+    \item Like two persons editing same file, same line and pushing it upstream.
+    \end{itemize}
+  \item In conflicts, one have to perform \typ{merge} manually.
+  \item \typ{hg} provides \typ{incoming} command, which checks the would-be imported changes
+    \begin{itemize}
+    \item To avoid conflicting changes before importing.
+    \end{itemize}
+  \end{itemize}
 \end{frame}
 
 % Steps to follow to make life easier. How to avoid/handle manual merges.
@@ -673,7 +723,7 @@ $ hg glog
 \begin{frame}
   \frametitle{Motto behind hg}
   \begin{center}
-  \color{red}{``Commit Early Commit Often.''}\\  
+  \color{red}{``Commit Early Commit Often.''}
   \end{center}  
 \end{frame}
 
@@ -693,7 +743,7 @@ $ hg glog
   \item Merge(if required).
   \item Push.
   \end{itemize}
-  \inctime{10}
+  \inctime{20}
 \end{frame}
 
 \begin{frame}
@@ -705,6 +755,7 @@ $ hg glog
   \item Articles related to version control available on \url{http://betterexplained.com/}
   \item \url{http://en.wikipedia.org/wiki/Revision_control}
   \item \url{http://wiki.alliedmods.net/Mercurial_Tutorial}
+  \item Mario game images are taken from wikipedia.
   \end{itemize}
 \end{frame}
 \end{document}
