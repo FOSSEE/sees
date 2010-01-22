@@ -130,7 +130,7 @@
   \end{block}
   \pause
   \begin{block}{}
-    It is better to use these tools rather then wasting creativity to invent VCS which have files with names like \begin{color}{red}{prog1.py, prog2.py}\end{color} or \begin{color}{red}prog-old.py, prog.py.\end{color}
+    It is better to use these tools rather than wasting creativity to invent VCS which have files with names like \begin{color}{red}{prog1.py, prog2.py}\end{color} or \begin{color}{red}prog-old.py, prog.py.\end{color}
   \end{block}
 \end{frame}
 
@@ -143,8 +143,30 @@
   \end{itemize}
 \end{frame}
 
+%% Introduction to how logs are managed in VCS.
+%% A analogy in logs and day-to-day life?
+\begin{frame}[fragile]
+  \frametitle{How does it work?}
+  It can roughly be related to Computer/Video Games.
+  \begin{itemize}
+  \item We play games in stages.
+  \item We pass a stage/task- \begin{color}{red}we SAVE the game.\end{color}
+  \item We resume playing from there onwards.
+  \item In-case we want to replay or revisit some particular stage, we start from position we saved earlier.
+  \item Even we can change the course of play henceforth.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Better way to say:}
+  \begin{center}
+    \includegraphics[height=2.5in,width=2.5in, interpolate=true]{mario}
+  \end{center}  
+  \emphbar{VCS provides power to save and resume from a stage.}
+\end{frame}
+
 \begin{frame}
-  \frametitle{How is done What is done?}
+  \frametitle{How is it done?}
   \begin{itemize}
   \item It keeps track of changes you make to a file. You can improvise, revisit, and amend.
   \item All procedure is logged/recorded, so you and others can follow the development cycle.
@@ -173,11 +195,11 @@
   \inctime{10}
 \end{frame}
 
-% Introduction to jargons 
+% Introduction to jargon 
 \section{Learning the Lingo!}
 
 \begin{frame}
-  \frametitle{Common jargons: Basic setup}
+  \frametitle{Common jargon: Basic setup}
   \begin{itemize}
   \item Repository(repo):\\
         The folder with all files.
@@ -194,15 +216,15 @@
   \item Add:\\
     Adding file into the repo for the first time.
   \item Version:\\
-    Version number of a file.
+    Version number(Die Hard 4.0).
   \item Head/Tip:\\
-    The latest revision of the repo.
+    Most recent revision/stage.
   \item Check out/Clone:\\
-    Initial download of repo onto machine.
+    Initial download of working copy.
   \item Commit:\\
-    Recording a change.
+    Saving(recording) a change.
   \item Change log/History:\\
-    List of changes made to repo.
+    List of all past changes.
   \end{itemize}
 \end{frame}
 
@@ -210,11 +232,11 @@
   \frametitle{Actions cont...}
   \begin{itemize}
   \item Branch:\\
-    Separate local copy of repo for bug fixing, testing.
+    Separate local copy for bug fixing, testing.
   \item Diff/Change:\\
-    Finding the differences in a file in two versions.
+    Changes made in a file in two different versions.
   \item Merge (or patch):\\
-    Apply the changes to file, to make it up-to-date.
+    Appling the changes to file, to make it up-to-date.
   \item Conflict:\\
     When merging a file is not obvious.
   \item Resolve:\\
@@ -227,10 +249,10 @@
 
 \begin{frame}
   \frametitle{Types:}
-  Based on way of managing the repo there are two types of VCS:
+  Based on ways of managing the repo there are two types of VCS:
   \begin{itemize}
   \item Centralized VCS\\
-    cvs, svn falls under this category.
+    cvs, svn fall under this category.
   \item Distributed VCS\\
     hg, bzr, git follows this methodology.
   \end{itemize}
@@ -244,7 +266,7 @@
   \item Easy to learn and use.
   \item Lightweight.
   \item Scales excellently.
-  \item Based on Python.
+  \item Written in Python.
   \end{itemize}
   \inctime{10}
 \end{frame}
@@ -330,35 +352,12 @@ updating working directory
 0 files updated, 0 files merged, 
 0 files removed, 0 files unresolved
   \end{lstlisting}
-  \inctime{15}
+  \inctime{20}
 \end{frame}
 
 %% Should we here stress on how are distribute VCS have 
 %% different approach then centralized ones? Maybe a pic
 %% or some other graphical representation.
-
-%% Introduction to how logs are managed in VCS.
-%% A analogy in logs and day-to-day life?
-\begin{frame}[fragile]
-  \frametitle{How does it work?}
-  It can roughly be related to Computer/Video Games.
-  \begin{itemize}
-  \item We play games in stages.
-  \item We pass a stage/task- We save the game.
-  \item We resume playing from that point.
-  \item In-case we want to replay or revisit some particular stage, we have it saved.
-  \item Even we can change the course of play henceforth.
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{Better way to say:}
-  \begin{center}
-    \includegraphics[height=2.5in,width=2.5in, interpolate=true]{mario}
-  \end{center}  
-  \emphbar{\typ{hg} provides power to save and resume from a stage.}
-\end{frame}
-
 \begin{frame}[fragile]
   \frametitle{Revisiting saved points:history/logs}
   In \typ{hg}, the difference between consecutive stages is termed as changeset.\\
@@ -392,11 +391,11 @@ $ hg log -r 2:4
   \begin{lstlisting}
 $ hg tip    
   \end{lstlisting} %%$
-  \inctime{10}
+  \inctime{5}
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Advancing through state:status}
+  \frametitle{Advancing through a stage:status}
   We often need to add/delete some files from directory(repo). The structure keeps on evolving, and tools for handling them are needed.\\
   We will use the Fevicol repo we created earlier.
   \begin{lstlisting}
@@ -408,6 +407,7 @@ $ hg st
   \typ{st} (aka status) is command to show changed files in the working directory.\\
 \end{frame}
 
+%% track record is confusing for some. Duma have some doubts :(
 \begin{frame}[fragile]
   \frametitle{Adding files}
   "?" indicates that these file are aliens to track record.\\
@@ -436,7 +436,8 @@ summary:     First commit.
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{More basic operations}
+  \frametitle{Other operations}
+  \typ{hg} supports basic file-management functions like copy, remove, rename etc.
   \begin{lstlisting}
 $ hg cp feviStick.py pidiLite.py
 $ hg rename pidiLite.py feviCol.py
@@ -445,9 +446,9 @@ A feviCol.py
 $ hg ci -u "Shantanu <shantanu@fossee.in>" 
         -m "Added feviCol.py."
 $ hg tip| grep summary 
-summary:     Renamed feviStick.py.
+summary:     Added feviCol.py.
   \end{lstlisting} %$
-%% Other commands which can be handy are \typ{cp}, \typ{remove}, \typ{revert} etc.
+%% Other commands which can be handy are \typ{remove}, \typ{revert} etc.
   \inctime{10}
 \end{frame}
 
@@ -456,7 +457,13 @@ summary:     Renamed feviStick.py.
 
 \begin{frame}[fragile]
   \frametitle{Distributing changes}
-  As this repo is self-contained, hence changeset just created are local and are not propagated to previously cloned Fevicol-pull.
+  \begin{itemize}
+  \item All directory-structure(repo) are self-contained.
+  \item Changes created are local.
+    \begin{itemize}
+    \item Until we sync. previously cloned repos.
+    \end{itemize}
+  \end{itemize}
   \begin{lstlisting}
 $ hg pull 
 pulling from /home/baali/Fevicol
@@ -471,7 +478,7 @@ added 2 changesets with 2 changes to 2 files
 
 \begin{frame}[fragile]
   \frametitle{Pulling changesets cont...}
-  As pointed by previous command output, hg \typ{pull} does not(by default) update current directory. It just imports changesets. To add all these changesets one have to update using \typ{up} command:
+  \typ{pull} command doesn't update current directory, it just imports changesets. To add all these changes, use \typ{up}:
   \begin{lstlisting}
 $ cd Fevicol-pull
 $ ls -a
@@ -482,12 +489,14 @@ $ hg up
 $ ls -a
 .  ..  feviCol.py  feviStick.py  .hg    
   \end{lstlisting}
+  \pause
+  \emphbar{Why \typ{pull} and \typ{up} are needed separately?}
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Making changes across the repos}
+  \frametitle{Making changes across branches}
   \begin{lstlisting}
-$ Fevicol-clone/
+$ cd Fevicol-pull/
   \end{lstlisting} %$
   Lets edit and correct the feviStick.py 
 \begin{lstlisting}
@@ -496,12 +505,12 @@ $ echo "print 'Ab no more Chip Chip'"
 $ hg st
 M feviStick.py
 \end{lstlisting}
-  'M' sign indicates that Mercurial has noticed change.\\
+  'M' sign indicates that \typ{hg} has noticed change.\\
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{Revisiting changes}
-To revisit changes made earlier use \typ{diff} command:
+  To view changes made \typ{hg} provides \typ{diff}:
 \begin{lstlisting}
 $ hg diff
 diff -r a7912d45f47c feviStick.py
@@ -511,7 +520,11 @@ diff -r a7912d45f47c feviStick.py
 -print 'Yeh Fevicol ka Majboot jod hai'
 +print 'Ab no more Chip Chip'
   \end{lstlisting} %$
-  These changes are not logged until you commit them.\\
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Saving the changes}
+  We have to commit these changes.
   \begin{lstlisting}
 $ hg ci -u "Shantanu <shantanu@fossee.in>" 
       -m "Changed tagline for feviStick.py."
@@ -520,7 +533,7 @@ $ hg ci -u "Shantanu <shantanu@fossee.in>"
 
 \begin{frame}[fragile]
   \frametitle{Syncing two repos}
-  Now to bring both the repos to same stage one have to \typ{push} changes.
+  To bring both the repos at same stage we have to \typ{push} differences.
   \begin{lstlisting}
 $ hg push 
 pushing to /home/baali/Fevicol
@@ -532,10 +545,9 @@ added 1 changesets with 1 changes to 1 files
   \end{lstlisting} %$
 \end{frame}
 
-
 \begin{frame}[fragile]
   \frametitle{Syncing cont...}
-  Same as pulling, pushing wont update the main repo by default. Try running following command:
+  Same as pulling, pushing wont update the main directory by default.
   \begin{lstlisting}
 $ cd Fevicol
 $ hg tip    
@@ -558,7 +570,6 @@ $ hg up
   \end{center}  
 \end{frame}
 
-
 \begin{frame}[fragile]
   \frametitle{Making changes to one of repo}
   \begin{lstlisting}
@@ -570,7 +581,7 @@ M feviStick.py
 $ hg ci -u "Shantanu <shantanu@fossee.in>" 
      -m "Updated tag line for feviCol.py."
 $ hg tip| grep changeset
-changeset:   4:caf986b15e05
+changeset:   3:caf986b15e05
   \end{lstlisting} %$
 \end{frame}
 
@@ -586,8 +597,24 @@ A firstAdd.py
 $ hg ci -u "Shantanu <shantanu@fossee.in>"
         -m "Added firsAdd.py."
 $ hg tip|grep changeset
-changeset:   4:fadbd6492cc4    
+changeset:   3:fadbd6492cc4    
   \end{lstlisting}
+\end{frame}
+
+%%\hspace*{-0.5in} 
+
+\begin{frame}[fragile]
+  \frametitle{Situation}
+  \begin{columns}
+    \column{0.5\textwidth}    
+    \begin{block}{\center{main directory}}
+      \includegraphics[height=2in, interpolate=true]{main}
+    \end{block}
+    \column{0.5\textwidth} 
+    \begin{block}{\center{cloned directory}}
+      \includegraphics[height=2in, interpolate=true]{clone}
+    \end{block}
+  \end{columns}
 \end{frame}
 
 \begin{frame}[fragile]
