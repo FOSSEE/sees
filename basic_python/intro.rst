@@ -20,6 +20,8 @@ to do with the reptilian, but its been named after the 70s comedy series
 "Monty Python's Flying Circus", since it happens to be Guido's favourite 
 TV series. 
 
+This is a Test.
+
 Current stable version of Python is 2.6.x, although Python 3.0 is also the stable
 version, it is not backwards compatible with the previous versions and is hence
 not entirely popular at the moment. This material will focus on the 2.6.x series.
