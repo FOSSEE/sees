@@ -123,30 +123,50 @@
 % Introduction to course-need of version control, history, options available.
 \section{Introduction}
 
-\begin{frame}
-  \frametitle{What is Version Control?}
-  \begin{block}{From a blog post}
-    ``Version control (or source control) is nothing more arcane than keeping copies of ones work as one make changes to it.''
-  \end{block}
-  \pause
-  \begin{block}{}
-    It is better to use these tools rather than wasting creativity to invent VCS which have files with names like \begin{color}{red}{prog1.py, prog2.py}\end{color} or \begin{color}{red}prog-old.py, prog.py.\end{color}
-  \end{block}
+%% Home made version control system?
+\begin{frame}[fragile]
+  \frametitle{Home-brew}
+  \begin{center}
+    \includegraphics[height=1.8in,width=4.2in]{folder.png}
+  \end{center}
+  \begin{lstlisting}
+$ ls
+a.out  id1.txt  id2.txt  identifier.cpp  id.txt  lex  pda1.cpp  pda2.cpp  pda.cpp  pda.txt  string.txt
+  \end{lstlisting} %%$
+    %%a screen-shot of folder with all crazy names.  
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Problems with such nomenclature}  
+  \begin{block}{}    
+  \begin{itemize}
+  \item Difficult to relate to content of file.
+  \item Cant track changes done to file.
+  \item It wont scale.
+  \end{itemize}
+    \end{block}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Motivation behind such tools}
+  \frametitle{What is version control}
+  \begin{block}{From a blog post}
+    ``Version control (or source control) is nothing more than keeping copies of work as we make changes to it.''
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Need of Version Control}
   \begin{itemize}
   \item Track the history and evolution of a program.
   \item To collaborate effectively on a project.
-  \item \begin{color}{red}``To err is Human''\end{color} \pause for recovery we have ``Version Control''
+  \item \begin{color}{red}``To err is Human''\end{color} for recovery we have ...
   \end{itemize}
 \end{frame}
 
 %% Introduction to how logs are managed in VCS.
 %% A analogy in logs and day-to-day life?
 \begin{frame}[fragile]
-  \frametitle{How does it work?}
+  \frametitle{How does it work? Analogy}
   It can roughly be related to Computer/Video Games.
   \begin{itemize}
   \item We play games in stages.
@@ -168,115 +188,134 @@
 \begin{frame}
   \frametitle{How is it done?}
   \begin{itemize}
-  \item It keeps track of changes you make to a file. You can improvise, revisit, and amend.
-  \item All procedure is logged/recorded, so you and others can follow the development cycle.
+  \item It keeps track of changes you make to a file. You can improve, revisit, and amend.
+  \item All changes are logged/recorded, so you and others can follow the development cycle.
   \end{itemize}  
 \end{frame}
 
-\begin{frame}
-  \frametitle{Do we really need this?}
-  \emphbar{For team of people working remotely(even different computers/machines) on a project, use of version control is inevitable!}
-  \vspace{0.15in}
-  \emphbar{For single person: managing projects and assignments becomes easy}
-  \vspace{0.15in}
-  \pause
-  \emphbar{\color{red}{It is a good habit!}}
-\end{frame}
+
+%% Introduction to jargon 
+%% This should have some excerpts from normal systems.
+%% Like diffs, folders etc.
+
+%% \section{Learning the Lingo!}
+
+%% \begin{frame}[fragile]
+%%   \frametitle{Common jargon: Basic setup}
+%%   \begin{lstlisting}
+%% $ ls slides/
+%% filter.png  lena_mean.png  lena.png  
+%% neighbour.png  pool.aux  pool.log  
+%% pool.nav  pool.out  pool.pdf  pool.snm  
+%% pool.tex  pool.tex~  pool.toc  pool.vrb    
+%%   \end{lstlisting}  %%$
+%%   \begin{itemize}
+%%   \item Repository(repo):\\
+%%         The folder with all files.
+%%   %% \item Server:\\
+%%   %%       Machine with main inventory/repo.
+%%   %% \item Client:\\
+%%   %%       Local machines with copy of main repo.
+%%   \end{itemize}
+%% \end{frame}
+
+%% \begin{frame}[fragile]
+%%   \frametitle{Actions}
+%%   \begin{itemize}
+%%   \item Add:\\
+%%     Creating/Copying files(cp, touch).
+%%   \item Check out/Clone:\\
+%%     Creating copy of working folder.
+%%   \end{itemize}
+%%   \begin{lstlisting}
+%% $ cp -rv circulate/ local
+%% `circulate/' -> `local'
+%% `circulate/sslc1.txt' -> `local/sslc1.txt'
+%% `circulate/pos.txt' -> `local/pos.txt'
+%% `circulate/pendulum.txt' -> `local/pendulum.txt'
+%% `circulate/lena.png' -> `local/lena.png'
+%% `circulate/sslc1.py' -> `local/sslc1.py'
+%% `circulate/points.txt' -> `local/points.txt'    
+%%   \end{lstlisting}  %%$
+%% \end{frame}
+
+%% \begin{frame}
+%%   \frametitle{Actions cont...}
+%%   \begin{itemize}
+%%     \item Version:\\
+%%     Version number(Die Hard 4.0).\\
+%%     Making changes to folder, changes state/version.
+%%     \item Head/Tip:\\
+%%     Most recent revision/stage.
+%%     \item Commit:\\
+%%     Saving(recording) a change.
+%%   \item Change log/History:\\
+%%     List of all past changes.
+%%   \end{itemize}
+%% \end{frame}
+
+%% \begin{frame}
+%%   \frametitle{Actions cont...}
+%%   \begin{itemize}
+%%   \item Branch:\\
+%%     Separate local copy for bug fixing, testing.
+%%   \item Diff/Change:\\
+%%     Changes made in a file in two different versions.
+%%   \item Merge (or patch):\\
+%%     Appling the changes to file, to make it up-to-date.
+%%   \item Conflict:\\
+%%     When merging a file is not obvious.
+%%   \item Resolve:\\
+%%     Fixing the conflict manually.
+%%   \end{itemize}
+%% \end{frame}
+
+%% % Types of Version Controls
+%% %% \section{Types of VCS}
+
+%% %% \begin{frame}
+%% %%   \frametitle{Types:}
+%% %%   Based on ways of managing the repo there are two types of VCS:
+%% %%   \begin{itemize}
+%% %%   \item Centralized VCS\\
+%% %%     cvs, svn fall under this category.
+%% %%   \item Distributed VCS\\
+%% %%     hg, bzr, git follows this methodology.
+%% %%   \end{itemize}
+%% %%   \emphbar{We would be covering \typ{hg}}
+%% %% \end{frame}
 
 \begin{frame}
-  \frametitle{Whats on the menu!}
-  \begin{itemize}
-  \item cvs (Concurrent Version System)
-  \item svn (Subversion)
-  \item hg (Mercurial)
-  \item bzr (Bazaar)
-  \item git
-  \end{itemize}
-  \inctime{10}
-\end{frame}
-
-% Introduction to jargon 
-\section{Learning the Lingo!}
-
-\begin{frame}
-  \frametitle{Common jargon: Basic setup}
-  \begin{itemize}
-  \item Repository(repo):\\
-        The folder with all files.
-  \item Server:\\
-        Machine with main inventory/repo.
-  \item Client:\\
-        Local machines with copy of main repo.
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Actions}
-  \begin{itemize}
-  \item Add:\\
-    Adding file into the repo for the first time.
-  \item Version:\\
-    Version number(Die Hard 4.0).
-  \item Head/Tip:\\
-    Most recent revision/stage.
-  \item Check out/Clone:\\
-    Initial download of working copy.
-  \item Commit:\\
-    Saving(recording) a change.
-  \item Change log/History:\\
-    List of all past changes.
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Actions cont...}
-  \begin{itemize}
-  \item Branch:\\
-    Separate local copy for bug fixing, testing.
-  \item Diff/Change:\\
-    Changes made in a file in two different versions.
-  \item Merge (or patch):\\
-    Appling the changes to file, to make it up-to-date.
-  \item Conflict:\\
-    When merging a file is not obvious.
-  \item Resolve:\\
-    Fixing the conflict manually.
-  \end{itemize}
-\end{frame}
-
-% Types of Version Controls
-\section{Types of VCS}
-
-\begin{frame}
-  \frametitle{Types:}
-  Based on ways of managing the repo there are two types of VCS:
-  \begin{itemize}
-  \item Centralized VCS\\
-    cvs, svn fall under this category.
-  \item Distributed VCS\\
-    hg, bzr, git follows this methodology.
-  \end{itemize}
-  \emphbar{We would be covering \typ{hg}}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Why hg?}
-    \includegraphics[height=.75in, interpolate=true]{mercurial}
+  \frametitle{We will cover hg?}
+    \includegraphics[height=.75in, interpolate=true]{mercurial}\\
+  Because it is:
   \begin{itemize}
   \item Easy to learn and use.
   \item Lightweight.
   \item Scales excellently.
   \item Written in Python.
   \end{itemize}
-  \inctime{10}
+  \inctime{15}
 \end{frame}
 
 % Initializing the repo, cloning, committing changes, pushing, pulling to repo.
 \section{Getting Started}
 
+\begin{frame}
+  \frametitle{Objective}
+  \begin{block}{}
+    We would \alert{manage} letters collaboratively using \typ{hg}.
+  \end{block}
+
+  %% \pause
+  %% \begin{block}{Disclaimer}
+  %%   Please note, objective is not to learn creative writing, but to learn \alert{hg(mercurial)} via \alert{interesting} use case.
+  %% \end{block}    
+\end{frame}
+
 \begin{frame}[fragile]
   \frametitle{Getting comfortable:}
-  For checking \typ{hg} installation and its version try:
+  For checking \typ{hg} installation and its version type:
   \begin{lstlisting}
     $ hg version    
   \end{lstlisting}
@@ -293,22 +332,34 @@
 
 \begin{frame}[fragile]
   \frametitle{Getting working/existing code base}
-  \typ{clone} is used to make a copy of an existing repository. It can be both local or remote.
+  To get a already existing code-base:
   \begin{lstlisting}
 $ hg clone 
-  http://hg.serpentine.com/tutorial/hello 
-  localCopyhello
+http://hg.serpentine.com/tutorial/hello 
+localCopyhello
   \end{lstlisting}
-  And we get a local copy of this repository. 
+\typ{localCopyhello} is copy of code-base. 
   \begin{lstlisting}
 $ ls localCopyhello/
 hello.c  Makefile
   \end{lstlisting}
 \end{frame}
 
+%%introduction to clone, repo, server, client.
 \begin{frame}[fragile]
-  \frametitle{To start track-record on existing files}
-  I have some files which I want to bring under version control. \typ{hg} provides \typ{init} command for this: 
+  \frametitle{What did we do!}
+  \begin{block}{Explanation}
+    \begin{itemize}
+    \item<1-> \typ{hello} is a \alert{repo}, it's a collection of files and folders. 
+    \item<2-> This repo is located on remote(\alert{server}) machine.    
+    \item<3-> We copy(\alert{clone}) repo to our local machine.
+    \end{itemize}    
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Creating repo of existing files}
+  I have some files which I want to bring under version control. \typ{hg} provides \alert{\typ{init}} command for this: 
   \begin{lstlisting}
 $ ls -a circulate/
 .  ..  lena.png  pendulum.txt  points.txt  pos.txt  sslc1.py  sslc1.txt
@@ -324,15 +375,14 @@ $ ls -a
   \frametitle{Starting fresh}
   We can use \typ{init} to start a new repository also
   \begin{lstlisting}
-$ mkdir Fevicol
-$ cd Fevicol/
-$ echo "print 'Yeh Fevicol ka majboot 
-              jod hai'" > feviStick.py
+$ mkdir letter
+$ cd letter
+$ touch letter.tex
 $ ls -a
-.  ..  feviStick.py
+.  ..  letter.tex
 $ hg init
 $ ls -a
-.  ..  feviStick.py  .hg
+.  ..  letter.tex  .hg
   \end{lstlisting}
 \end{frame}
 
@@ -345,14 +395,28 @@ updating working directory
 2 files updated, 0 files merged, 
 0 files removed, 0 files unresolved
   \end{lstlisting}
-  or
+  \alert{or}
   \begin{lstlisting}
-$ hg clone Fevicol Fevicol-pull
+$ hg clone letter letter-clone
 updating working directory
 0 files updated, 0 files merged, 
-0 files removed, 0 files unresolved
-  \end{lstlisting}
-  \inctime{20}
+0 files removed, 0 files unresolved 
+ \end{lstlisting}
+\end{frame}
+
+%%introduction to branch
+\begin{frame}[fragile]
+  \frametitle{Why do we need branching?}
+  \begin{block}{}
+    \begin{itemize}
+    \item To keep separate set for \alert{experimentation}.
+    \item Simple way to \alert{backup} all in one go!
+    \item It helps in collaborative environment.
+    %% should we mention it at all? there is no need to know atleast here.
+    %% syncing and integrating in backup files and testing environment can also be mentioned.
+    \end{itemize}
+  \end{block}
+  \inctime{15}
 \end{frame}
 
 %% Should we here stress on how are distribute VCS have 
@@ -360,8 +424,8 @@ updating working directory
 %% or some other graphical representation.
 \begin{frame}[fragile]
   \frametitle{Revisiting saved points:history/logs}
-  In \typ{hg}, the difference between consecutive stages is termed as changeset.\\
-  Once we have saved stages, we need a mechanism to review and access them, for that use \typ{log} command.
+  In \typ{hg}, the difference between consecutive stages is termed as \alert{changeset}.\\
+  Once we have saved stages, we need a mechanism to review and access them, for that use \alert{\typ{log}} command.
   \begin{lstlisting}
 $ cd localCopyhello
 $ hg log    
@@ -370,14 +434,16 @@ $ hg log
 
 \begin{frame}[fragile]
   \frametitle{Understanding output}
-  The output provides following information:
+  It provides following information:
   \begin{itemize}
-  \item changeset: Identifiers for the changeset.
-  \item user: Person who created the changeset.
-  \item date: Date and time of creation of changeset.
-  \item summary: One line description.
+  \item \alert{changeset}: Identifiers for the changeset.
+  \item \alert{user}: Person who created the changeset.
+  \item \alert{date}: Date and time of creation of changeset.
+  \item \alert{summary}: One line description.
   \end{itemize}
 \end{frame}
+
+%% here we should have image of dotA or halo for resuming from a stage in game.
 
 \begin{frame}[fragile]
   \frametitle{History/Logs cont...}
@@ -397,56 +463,70 @@ $ hg tip
 \begin{frame}[fragile]
   \frametitle{Advancing through a stage:status}
   We often need to add/delete some files from directory(repo). The structure keeps on evolving, and tools for handling them are needed.\\
-  We will use the Fevicol repo we created earlier.
+  We will use the \typ{letter} repo we created earlier.
   \begin{lstlisting}
-$ cd Fevicol
+$ cd letter
 $ hg log
 $ hg st
-? feviStick.py
+? letter.tex
   \end{lstlisting} %%$
-  \typ{st} (aka status) is command to show changed files in the working directory.\\
+  \alert{\typ{st}} (aka status) is command to show changed files in the working directory.\\
 \end{frame}
 
 %% track record is confusing for some. Duma have some doubts :(
 \begin{frame}[fragile]
   \frametitle{Adding files}
-  "?" indicates that these file are aliens to track record.\\
-  \typ{add} command is available to add new files to present structure.
+  "?" indicates that this file are aliens to track record.\\
+  \alert{\typ{add}} command is available to add new files to present structure.
   \begin{lstlisting}
-$ hg add feviStick.py
+$ hg add letter.tex
 $ hg st
-A feviStick.py
+A letter.tex
   \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{Saving present stage: committing}
   \emphbar{This is equivalent to completing tasks, before reaching a stage where you want to save.}
-  \typ{hg} uses \typ{ci}(aka \typ{commit}) command to save changes. So after adding file, we have to commit it also:
+  \typ{hg} uses \alert{\typ{ci}}(aka \typ{commit}) command to save changes. So after adding file, we have to commit it also:
   \begin{lstlisting}
 $ hg ci -u "Shantanu <shantanu@fossee.in>" 
         -m "First commit."
 $ hg log
-changeset:   0:84f5e91f4de1
+changeset:   0:210664b4ed58
 tag:         tip
 user:        Shantanu <shantanu@fossee.in>
-date:        Fri Aug 21 23:37:13 2009 +0530
-summary:     First commit.    
+date:        Tue Feb 23 19:41:45 2010 +0530
+summary:     First commit.
   \end{lstlisting}
+\end{frame}
+
+%% explanation of ci command??
+\begin{frame}[fragile]
+  \frametitle{\typ{ci} command}
+  Some arguments passed to \typ{ci} command are worth noticing:
+  \begin{itemize}
+  \item \alert{u}: To provide name and email contact information of person making changes!\\
+  In case you don't want to repeat that each time of committing, add info to \typ{hgrc} file.
+  \item<2-> \alert{m}: It is to provide one-line summary of changeset. \\
+    if this argument is not passed, hg takes you to editor to specify the message which is required to commit.
+  \end{itemize}  
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{Other operations}
   \typ{hg} supports basic file-management functions like copy, remove, rename etc.
   \begin{lstlisting}
-$ hg cp feviStick.py pidiLite.py
-$ hg rename pidiLite.py feviCol.py
+$ hg cp letter.tex letter-prof.tex
+$ hg rename letter.tex letter-personal.tex
 $ hg st
-A feviCol.py
+A letter-personal.tex
+A letter-pro.tex
+R letter.tex
 $ hg ci -u "Shantanu <shantanu@fossee.in>" 
-        -m "Added feviCol.py."
+        -m "Renamed and added letters."
 $ hg tip| grep summary 
-summary:     Added feviCol.py.
+summary:     Renamed and added letters.
   \end{lstlisting} %$
 %% Other commands which can be handy are \typ{remove}, \typ{revert} etc.
   \inctime{10}
@@ -465,8 +545,9 @@ summary:     Added feviCol.py.
     \end{itemize}
   \end{itemize}
   \begin{lstlisting}
+$ cd letter-clone
 $ hg pull 
-pulling from /home/baali/Fevicol
+pulling from /home/baali/letter
 requesting all changes
 adding changesets
 adding manifests
@@ -478,48 +559,76 @@ added 2 changesets with 2 changes to 2 files
 
 \begin{frame}[fragile]
   \frametitle{Pulling changesets cont...}
-  \typ{pull} command doesn't update current directory, it just imports changesets. To add all these changes, use \typ{up}:
+  \alert{\typ{pull}} command doesn't update current directory, it just imports changesets. To add all these changes, use \alert{\typ{up}}:
   \begin{lstlisting}
-$ cd Fevicol-pull
 $ ls -a
 .  ..  .hg
 $ hg up
 2 files updated, 0 files merged, 
 0 files removed, 0 files unresolved
 $ ls -a
-.  ..  feviCol.py  feviStick.py  .hg    
-  \end{lstlisting}
+.  ..  .hg  letter-personal.tex  
+letter-pro.tex
+  \end{lstlisting} %% $
   \pause
   \emphbar{Why \typ{pull} and \typ{up} are needed separately?}
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Making changes across branches}
+  \frametitle{Content of letter}
+  Personal letter can be letter to ask a girl out!\\
+  Using LaTeX to write letter, it would be straight forward:
+
+  \begin{small}  
+  \begin{block}{}
   \begin{lstlisting}
-$ cd Fevicol-pull/
-  \end{lstlisting} %$
-  Lets edit and correct the feviStick.py 
-\begin{lstlisting}
-$ echo "print 'Ab no more Chip Chip'" 
-        > feviStick.py
+\documentclass{letter}
+\begin{document}
+\begin{letter}{}
+\opening{Hello Jas,}
+I really enjoyed meeting you in CS 101, 
+but would love to know you better. 
+How about a coffee on Thursday after class?
+
+\closing{-Samarth}
+\end{letter}
+\end{document}
+
+  \end{lstlisting}
+  \end{block}
+  \end{small}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Sharing the changes!}
+  \begin{lstlisting}    
 $ hg st
-M feviStick.py
-\end{lstlisting}
-  'M' sign indicates that \typ{hg} has noticed change.\\
+M letter-personal.tex
+  \end{lstlisting} %%$
+  \alert{'M'} sign indicates that \typ{hg} has noticed change in that particular file.
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{Revisiting changes}
-  To view changes made \typ{hg} provides \typ{diff}:
-\begin{lstlisting}
+  To view changes made \typ{hg} provides \alert{\typ{diff}}:
+  \begin{small}      
+  \begin{lstlisting}
 $ hg diff
-diff -r a7912d45f47c feviStick.py
---- a/feviStick.py   Sun Aug 23 22:34:35 2009 +0530
-+++ b/feviStick.py   Sun Aug 23 22:47:49 2009 +0530
-@@ -1,1 +1,1 @@
--print 'Yeh Fevicol ka Majboot jod hai'
-+print 'Ab no more Chip Chip'
+diff -r 4a2d973a92de letter-personal.tex
+--- a/letter-personal.tex	Tue Feb 23 19:50:39 2010 +0530
++++ b/letter-personal.tex	Tue Feb 23 20:28:46 2010 +0530
+@@ -0,0 +1,11 @@
++\documentclass{letter}
++\begin{document}
++ 
++\begin{letter}{}
++\opening{Hello Jas,}
++  
++I really enjoyed meeting you in CS 101, 
+.
+.
   \end{lstlisting} %$
+  \end{small}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -527,16 +636,16 @@ diff -r a7912d45f47c feviStick.py
   We have to commit these changes.
   \begin{lstlisting}
 $ hg ci -u "Shantanu <shantanu@fossee.in>" 
-      -m "Changed tagline for feviStick.py."
+  -m "Added content to personal letter."
   \end{lstlisting} %$
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{Syncing two repos}
-  To bring both the repos at same stage we have to \typ{push} differences.
+  To bring both the repos at same stage we have to \alert{\typ{push}} changesets
   \begin{lstlisting}
 $ hg push 
-pushing to /home/baali/Fevicol
+pushing to /home/baali/letter
 searching for changes
 adding changesets
 adding manifests
@@ -547,13 +656,14 @@ added 1 changesets with 1 changes to 1 files
 
 \begin{frame}[fragile]
   \frametitle{Syncing cont...}
-  Same as pulling, pushing wont update the main directory by default.
+  Same as \typ{pull}, \typ{push} wont update the main directory by default.
   \begin{lstlisting}
-$ cd Fevicol
+$ cd letter
 $ hg tip    
-$ cat feviStick.py
-  \end{lstlisting}
-  \typ{tip} shows latest changeset, but content of file are not updated. We have to use \typ{up} on main branch
+$ cat letter-personal.tex
+  \end{lstlisting} %%$
+  \alert{\typ{tip}} shows latest changeset, but content of file are not updated.\\
+  We have to use \typ{up} on main branch
   \begin{lstlisting}
 $ hg up
 1 files updated, 0 files merged, 0 files removed, 0 files unresolved    
@@ -570,35 +680,71 @@ $ hg up
   \end{center}  
 \end{frame}
 
-\begin{frame}[fragile]
-  \frametitle{Making changes to one of repo}
-  \begin{lstlisting}
-$ cd Fevicol-pull
-$ echo "print 'Yeh Fevicol ka Majboot jod 
-        hai, tootega nahin'" > feviCol.py
-$ hg st
-M feviStick.py
-$ hg ci -u "Shantanu <shantanu@fossee.in>" 
-     -m "Updated tag line for feviCol.py."
-$ hg tip| grep changeset
-changeset:   3:caf986b15e05
-  \end{lstlisting} %$
+\begin{frame}
+  \frametitle{Scenario cont...}
+  \begin{block}{}
+  \begin{itemize}
+  \item To make this letter better, I ask for suggestions.
+  \item Friend of mine, clones this repo and edit things.
+  \item When he/she pushes changes, I can decide to use them or not.
+  \end{itemize}  
+  \end{block}  
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{In the meanwhile, other repo is ...}
+  \frametitle{Creating more clones for sharing}
+  I create a clone of repo which is accessible to my friend.
   \begin{lstlisting}
-$ cd Fevicol
-$ echo "print 'Jor laga ke hayyiya'" 
-        > firstAdd.py
-$ hg add 
-$ hg st
-A firstAdd.py
+$ hg clone letter letter-suggestion
+updating working directory
+2 files updated, 0 files merged, 0 files removed, 0 files unresolved
+  \end{lstlisting} %$
+\end{frame}
+
+%% here we can have introduction to concept of DVCS and CVCS?
+
+\begin{frame}[fragile]
+  \frametitle{Suggestions!}
+  He is convinced that using some colored text would be a good idea.
+  He just adds color to closing part.
+  %% a comment on how bad is this idea :P
+  \begin{small}      
+  \begin{lstlisting}
+$ hg dif
+diff -r 4a2d973a92de letter-personal.tex
+--- a/letter-personal.tex	Tue Feb 23 19:50:39 2010 +0530
++++ b/letter-personal.tex	Wed Feb 24 12:03:33 2010 +0530
+@@ -0,0 +1,12 @@
+ \documentclass{letter}
++\usepackage{color}
+ \begin{document}
+.
+-\closing{-Samarth}
++\closing{\textcolor{red}{-Samarth}}
+  \end{lstlisting} %%$
+  \end{small}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Committing the changes}
+  He is satisfied with his minor changes, so he commits.
+  \begin{lstlisting}
+$ hg ci 
+  -u "Vattam <vattam@fossee.in>"
+  -m "Added some suggestions."   
+  \end{lstlisting} %%$
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{The other good half of repo...}
+  It turns out, in this process, Jas is already dating, so we edit the letter for someone else from same class.
+  \begin{lstlisting}
 $ hg ci -u "Shantanu <shantanu@fossee.in>"
-        -m "Added firsAdd.py."
+        -m "Changed name."
 $ hg tip|grep changeset
 changeset:   3:fadbd6492cc4    
   \end{lstlisting}
+  %%\emphbar{\alert{moral:} Don't wait for it!}
 \end{frame}
 
 %%\hspace*{-0.5in} 
@@ -608,11 +754,11 @@ changeset:   3:fadbd6492cc4
   \begin{columns}
     \column{0.5\textwidth}    
     \begin{block}{\center{main directory}}
-      \includegraphics[height=2in, interpolate=true]{main}
+      \includegraphics[height=2in, interpolate=true]{glog-main}
     \end{block}
     \column{0.5\textwidth} 
     \begin{block}{\center{cloned directory}}
-      \includegraphics[height=2in, interpolate=true]{clone}
+      \includegraphics[height=2in, interpolate=true]{glog-suggestion}
     \end{block}
   \end{columns}
 \end{frame}
@@ -621,8 +767,8 @@ changeset:   3:fadbd6492cc4
   \frametitle{Merging}
   \emphbar{Lets sync both these branches!}
   \begin{lstlisting}
-$ hg pull ../Fevicol-pull
-pulling from ../Fevicol-pull
+$ hg pull ../letter-suggestion
+pulling from ../letter-suggestion
 searching for changes
 adding changesets
 adding manifests
@@ -632,7 +778,8 @@ added 1 changesets with 1 changes to 1 files (+1 heads)
   \end{lstlisting} %$
   \begin{itemize}
   \item \typ{pull} can be done from a branch explicitly also.
-  \item Output is already suggesting something!
+  \pause
+  \item \alert{Output is already suggesting something!}
   \end{itemize}  
 \end{frame}
 
@@ -642,18 +789,18 @@ added 1 changesets with 1 changes to 1 files (+1 heads)
   Since hg \typ{pull} don't update the files directly, our changes are still safe. \typ{hg} provides some commands to help understand such problems.
 \begin{tiny}
   \begin{lstlisting}
-$ hg heads
-changeset:   4:c5f40fda69cf
+$ hg heads 
+changeset:   4:71fd776d856b
 tag:         tip
-parent:      2:0b8286c48e88
-user:        Shantanu <shantanuc@fosse.in>
-date:        Fri Jan 22 19:43:46 2010 +0530
-summary:     Updated tagline for feviCol.py.
+parent:      2:a5d8cb2fac01
+user:        Vattam <vattam@fossee.in>
+date:        Wed Feb 24 12:54:31 2010 +0530
+summary:     Added some suggestions.
 
-changeset:   3:60edf0e499e7
-user:        Shantanu <shantanuc@fosse.in>
-date:        Fri Jan 22 19:47:58 2010 +0530
-summary:     Added firstAdd.py.
+changeset:   3:02b49a53063f
+user:        Shantanu <Shantanu@fossee.in>
+date:        Wed Feb 24 13:12:26 2010 +0530
+summary:     Changed name.
   \end{lstlisting} %%$
 \end{tiny}
   It shows current repository heads or show branch head
@@ -665,7 +812,7 @@ summary:     Added firstAdd.py.
 $ hg glog    
   \end{lstlisting} %%$
   \begin{center}
-  \includegraphics[height=2in]{glog}  
+  \includegraphics[height=2in]{heads}  
   \end{center}  
   It shows history alongside an ASCII revision graph.  
 \end{frame}
@@ -675,13 +822,14 @@ $ hg glog
   Because of different 'pasts', \typ{up} command fails.
   \begin{lstlisting}
 $ hg up
-abort: crosses branches (use 'hg merge' or 'hg update -C')
+abort: crosses branches (use 'hg merge' 
+       or 'hg update -C')
   \end{lstlisting} %$
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{Merging}
-  To deal such situations \typ{hg merge} command merge working directory with another revision.
+  To deal such situations \typ{hg} \alert{merge} command merge working directory with another revision.
   \begin{lstlisting}
 $ hg merge
  1 files updated, 0 files merged, 0 files removed, 0 files unresolved
@@ -703,6 +851,17 @@ $ hg ci -u "Shantanu <shantanu@fossee.in>"
 \end{frame}
 
 \begin{frame}[fragile]
+  \frametitle{Revisiting history!}
+  In case earlier girl is available again and you are still looking for date you can \alert{revert} back to previous letter!
+  \begin{lstlisting}
+$ hg revert -r 2 -a
+reverting letter-personal.tex    
+  \end{lstlisting} %%$
+  And the content changes. From here on you can further change your letter as you wish.
+  %% more options for revert are to explained here!
+\end{frame}
+
+\begin{frame}[fragile]
   \frametitle{More information}
   \begin{itemize}
   \item \typ{merge} fails if there are conflicting changes.
@@ -710,13 +869,18 @@ $ hg ci -u "Shantanu <shantanu@fossee.in>"
     \item Like two persons editing same file, same line and pushing it upstream.
     \end{itemize}
   \item In conflicts, one have to perform \typ{merge} manually.
-  \item \typ{hg} provides \typ{incoming} command, which checks the would-be imported changes
+  \item \typ{hg} provides \alert{\typ{incoming}} command, which checks the would-be imported changes
     \begin{itemize}
     \item To avoid conflicting changes before importing.
     \end{itemize}
   \end{itemize}
+  \inctime{10}
 \end{frame}
 
+%% Manual and force merge
+%% hgignore
+
+%% Reverting to previous versions!
 % Steps to follow to make life easier. How to avoid/handle manual merges.
 \section{Work flow: DOS and DON'Ts}
 
@@ -728,14 +892,7 @@ $ hg ci -u "Shantanu <shantanu@fossee.in>"
 \end{frame}
 
 \begin{frame}
-  \frametitle{Cheat Sheet}
-  \begin{center}
-  \includegraphics[height=2.8in]{mod}  
-  \end{center}  
-\end{frame}
-
-\begin{frame}
-  \frametitle{Steps to be followed}
+  \frametitle{Work-flow}
   \begin{itemize}
   \item Make changes.
   \item Commit.
@@ -743,7 +900,40 @@ $ hg ci -u "Shantanu <shantanu@fossee.in>"
   \item Merge(if required).
   \item Push.
   \end{itemize}
-  \inctime{20}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Cheat Sheet}
+  \begin{center}
+  \includegraphics[height=2.8in]{mod}  
+  \end{center}  
+  \inctime{15}
+\end{frame}
+
+%% Move it to end of session. Once introduction part is 
+%% over. Then mentioning about options and utility.
+\section{Use case and Options}
+
+\begin{frame}
+  \frametitle{Use cases}
+  \emphbar{For team of people working remotely(even different computers/machines) on a project, use of version control is inevitable!}
+  \vspace{0.15in}
+  \emphbar{For single person: managing projects and assignments becomes easy}
+  \vspace{0.15in}
+  \pause
+  \emphbar{\color{red}{It is a good habit!}}
+\end{frame}
+
+\begin{frame}
+  \frametitle{What are other options!}
+  \begin{itemize}
+  \item cvs (Concurrent Version System)
+  \item svn (Subversion)
+  \item hg (Mercurial)
+  \item bzr (Bazaar)
+  \item git
+  \end{itemize}
+  \inctime{5}
 \end{frame}
 
 \begin{frame}
@@ -759,6 +949,10 @@ $ hg ci -u "Shantanu <shantanu@fossee.in>"
   \end{itemize}
 \end{frame}
 \end{document}
+
+Some more suggestions from Nishanth:
+revert  
+resolve
 
 Notes
 -----

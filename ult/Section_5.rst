@@ -220,7 +220,7 @@ Hence one always sees files like xxxxx.tar.gz, to create a zip of whole director
     second.txt
     third.txt
 
-*Thats why gzip is designed as a complement to tar, not as a replacement.*
+*That's why gzip is designed as a complement to tar, not as a replacement.*
 
 gzip command comes with a option *`-l`* to view the compressed file contents: ::
 
