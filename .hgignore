@@ -1,0 +1,34 @@
+# use glob syntax.
+syntax: glob
+
+*.html
+*.aux
+*.dvi
+*.log
+*.nav
+*.snm
+*.toc
+*.pdf
+*.vrb
+*.out
+*.sty
+*.pyc
+*.zip
+*~
+.project
+.pydevproject
+app.yaml
+build
+tests/coverageResults
+*,cover
+tests/.coverage
+*.git
+*.egg-info
+eggs
+parts
+.installed.cfg
+bin
+develop-eggs
+.gitignore
+.DS_Store
+index.yaml
