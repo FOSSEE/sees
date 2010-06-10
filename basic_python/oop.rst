@@ -3,7 +3,7 @@ Classes and Objects
 
 In the previous sections we learnt about functions which provide certain level
 of abstraction to our code by holding the code which performs one or more
-specific functionalities. We were able to use this function as many times as we
+specific functionality. We were able to use this function as many times as we
 wanted. In addition to functions, Python also higher level of abstractions
 through *Classes* and *Objects*. *Objects* can be loosely defined as a
 collection of a set of data items and a set of methods. The data items can be
@@ -31,7 +31,7 @@ Each method of the class must take the same instance of the class(object) from
 which it was called as the first argument. It is conventionally given the name,
 *self*. Note that *self* is only a convention. You can use any other name, but
 the first argument to the method will always be the same object of the class
-from which the method was called. The data memebers that belong to the class are
+from which the method was called. The data members that belong to the class are
 called as *class attributes*. *Class attributes* are preceded by the object of
 the class and a dot. In the above example, *name* is a class attribute since it
 is preceded by the *self* object. *Class attributes* can be accessed from
@@ -70,3 +70,45 @@ accessing undefined variable::
       print e.name
   AttributeError: Employee instance has no attribute 'name'
 
+It is also possible to assign values to the attributes using the above notation::
+
+  >>> emp = Employee()
+  >>> emp.name = 'John'
+  >>> print emp.name
+  John
+
+Magic methods
+-------------
+
+Python reserves a number of names starting and ending with **__**. Note that it
+is a double underscore. We must not invent names of this kind in our programs.
+These methods are generally referred to as *Magic methods* or sometimes called
+as *Special Methods*. Each *Magic method* performs a specific function. One such
+magic method we will discuss now is **__init__** method. If you are from C++
+background, the **__init__** method is analogous to the class constructor. This
+method is called a constructor because, it is implicitly called everytime a new
+instance of the class is created. So effectively **__init__** method constructs
+the object from the class and sets up some initial values for the object. Other
+than the above special properties, the **__init__** method is similar to any other
+class method. The argument passing rules are same for **__init__** method. Although,
+since **__init__** is called when the object is created we need to pass the
+arguments to the class name we call while creating the object. It passes the
+arguments to the **__init__** method::
+
+  class Employee:
+    def __init__(self, name):
+      self.name = name
+
+    def getName(self):
+      return self.name
+
+  >>> emp = Employee('John')
+  >>> print emp.getName()
+  John
+
+
+Writing Object Oriented Code
+----------------------------
+
+Object oriented code mainly encompasses three components: Encapsulation, Inheritence and Polymorphism.
+Lets briefly look at each of them with examples.
