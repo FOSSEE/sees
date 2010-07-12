@@ -1,28 +1,12 @@
 Introducing Linux
 =================
 
-(Attribution : A significant chunk of the content under this section is based on data from Wikipedia and the Linux Documentation Project)
+We are here to welcome you to Linux. GNU/Linux is an operating system that is similar to the UNIX operating system, but is open source software. Being an open source program means that (if you wanted to) you could view the source code of the operating system and change it to suit your needs. 
 
-Linux (usually pronounced ˈlɪnəks') is a generic term referring to Unix-like computer operating systems based on the Linux kernel, where a kernel is the intermediate layer between the hardware and the applications. The kernel is, on an abstract level, the core of (most) operating systems, that manages the various system resources. The development of the Linux OS is considered the basis for Free and Open Source Software (FOSS) collaboration since typically the underlying source code can be used, modified freely, and redistributed by anyone under the terms of the GNU (a recursive acronym for "GNU's Not Unix!") Global Public License (GPL) and other free software licences. This freedom to access and reuse various components of a system, is one of the primary reasons for the popularity of Linux.
+The name "Linux" properly refers to an operating system "kernel", a single but key component of a complete operating system. In everyday use, the term "Linux" is frequently used to refer to a complete operating system which consists of the kernel and some of the thousands of other programs required to make an operating system useful. Much of the important system software that is typically installed on a Linux system comes from The GNU Project, a project to build an operating system made entirely of free software.
+The first Linux kernel was created by Linus Torvalds. It was started as an x86-only, single processor operating system, but grew to become one of the most ported pieces of software. Other parts of a complete GNU/Linux system come from other projects such as the GNU project, and are integrated into a complete GNU/Linux OS by your supplier. Usually your supplier will assign their own version number to the integrated whole.This collection of the kernal and programs maintained by vendor is called distro or distribution.
+The GNU Project is overseen by the Free Software Foundation. The Free Software Foundation was founded by Richard Stallman. Stallman believes that the people should use the term "GNU/Linux" to refer to such an operating system, because so many of the required programs were in fact, written as part of the GNU Project.
 
-Linux is installed on a variety of computer hardware, that include mobile phones, embedded devices and supercomputers, but is infamous for its use in servers.
-
-The name "Linux"  comes from the Linux kernel, originally written in 1991 by Linus Torvalds. The rest of the system usually comprises components such as the Apache HTTP Server, the X Window System, the GNOME and KDE desktop environments, and utilities and libraries from the GNU Project (announced in 1983 by Richard Stallman). Commonly-used applications with desktop Linux systems include the Mozilla Firefox web-browser and the OpenOffice.org office application suite. The GNU contribution is the basis for the Free Software Foundation's preferred name GNU/Linux. The kernel's mascot is a penguin named "Tux". Mozilla Firefox and OpenOffice.org are open-source projects which can be run on most Operating Systems, including proprietary ones.
-
-Historical Background
-----------------------
-
-Events leading to the creation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-- The Unix operating system was developed in the 1960s and released for public use in 1970. Its accessibility and portability caused it to be widely adopted, copied and modified by academic institutions and businesses. Its design became influential to authors of other systems. Other free operating systems include the Berkeley Software Distribution (BSD), developed at the University of California at Berkeley, and MINIX which was released by Andrew S. Tanenbaum. The development and adoption of BSD and MINIX were limited due to various reasons, and this lack of a widely-adopted and free kernel triggered Linus Torvalds into starting his project.
-
-- In 1983, Richard Stallman started the GNU project with the goal of creating a free UNIX-like operating system. As part of this work, he wrote the GNU General Public License (GPL). By the early 1990s there was almost enough available software to create a full operating system. However, the GNU kernel, called Hurd, failed to attract enough attention from developers leaving GNU incomplete.
-
-The Creation of Linux
-~~~~~~~~~~~~~~~~~~~~~~
-In 1991, Linus Torvalds began a project at the University of Helsinki that later became the Linux kernel. It was initially a terminal (command-line) emulator, which Torvalds used to access the large UNIX servers of the university. He wrote the program targeting just the hardware he was using and independent of an operating system because he wanted to use the functions of his computer with an 80386 processor. Development was done on Minix using the GNU C compiler. This application is still the main choice for compiling Linux today (although the code can be built with other compilers, such as the Intel C Compiler).
-
-Torvalds continues to direct the development of the kernel. Stallman heads the Free Software Foundation, which in turn supports the GNU components. Finally, individuals and corporations develop third-party non-GNU components, which constitute a vast body of work and including kernel modules, and user applications and libraries. Linux vendors and communities combine and distribute the kernel, GNU components, and non-GNU components, with additional package management software in the form of Linux distributions.
 
 
 Design and Implications
@@ -30,40 +14,9 @@ Design and Implications
 
 A Linux-based system is a modular Unix-like operating system, deriving much of its basic design from principles established in Unix earlier. Such a system uses a monolithic kernel, called the Linux kernel, which handles process control, networking, and peripheral and file system access. Device drivers are integrated directly with the kernel. Separate projects that interface with the kernel provide much of the system's higher-level functionality. The GNU userland is an important part of most Linux-based systems, providing the most common implementation of the C library, a popular shell, and many of the common Unix tools which carry out many basic operating system tasks. The graphical user interface (or GUI) used by most Linux systems is based on the "X Window System".
 
-User Interface
-~~~~~~~~~~~~~~
-Users can control a Linux-based system through a command line interface (or CLI), a graphical user interface (or GUI), or through controls attached to the associated hardware (this is common for embedded systems). For desktop systems, the default mode is usually the GUI. On desktop machines, "KDE", "GNOME" and "Xfce" are the most popular user interfaces,though a variety of additional user interfaces exist. Most popular user interfaces run on top of the "X Window System" (or X), which enables a graphical application running on one machine to be displayed and controlled from another in a network.
 
-A Linux system also provides a CLI of some sort through a shell, which is the traditional way of interacting with a Unix system. A Linux distribution specialized for servers may use the CLI as its only interface. A “headless system” (system run without even a monitor) can be controlled by the command line via a remote-control protocol such as SSH or telnet. The CLI is particularly suited for automation of repetitive or delayed tasks, and provides very simple inter-process communication. A graphical terminal emulator program is often used to access the CLI from a Linux desktop.
 
-Development
-~~~~~~~~~~~
-The primary difference between Linux and many other popular contemporary operating systems is that the Linux kernel and other components are free and open source software. Linux is not the only such operating system, although it is by far the most widely used. Some free and open source software licenses are based on the principle of "copyleft", a kind of reciprocity: any work derived from a copyleft piece of software must also be copyleft itself. The most common free software license, the GNU GPL, is a form of copyleft, and is used for the Linux kernel and many of the components from the GNU project.
 
-Linux based distributions are intended by developers for interoperability with other operating systems and established computing standards. Linux systems adhere to POSIX, SUS, ISO and ANSI standards where possible, although to date only one Linux distribution has been POSIX.1 certified, Linux-FT.Free software projects, although developed in a collaborative fashion, are often produced independently of each other. The fact that the software licenses explicitly permit redistribution, however, provides a basis for larger scale projects that collect the software produced by stand-alone projects and make it available all at once in the form of a Linux distribution.
-
-A Linux distribution, commonly called a "distro", is a project that manages a remote collection of system software and application software packages available for download and installation through a network connection. This allows the user to adapt the operating system to his/her specific needs. Distributions are maintained by individuals, loose-knit teams, volunteer organizations, and commercial entities. A distribution can be installed using a CD that contains distribution-specific software for initial system installation and configuration. A package manager such as Synaptic or YAST allows later package upgrades and installations. A distribution is responsible for the default configuration of the installed Linux kernel, general system security, and more generally integration of the different software packages into a coherent whole.
-
-Community
-~~~~~~~~~
-A distribution is largely driven by its developer and user communities. Some vendors develop and fund their distributions on a volunteer basis. Examples include Debian and the Debian-based, Ubuntu. Others maintain a community version of their commercial distributions, as Red Hat does with Fedora.
-
-In many cities and regions, local associations known as Linux Users Groups (LUGs) seek to promote their preferred distribution and by extension free software. They hold meetings and provide free demonstrations, training, technical support, and operating system installation to new users. Many Internet communities also provide support to Linux users and developers. Most distributions and free software / open source projects have IRC (Internet Relay Chat) chatrooms or newsgroups. Online forums are another means for support. Linux distributions host mailing lists; commonly there will be a specific topic such as usage or development for a given list. All these can be found simply by running an appropriate search on Google.
-
-Although Linux distributions are generally available without charge, several large corporations sell, support, and contribute to the development of the components of the system and of free software. These include Dell, IBM, HP, Oracle, Sun Microsystems, Novell, Nokia. A number of corporations, notably Red Hat, have built their entire business around Linux distributions.
-
-Can I make a profit out of running a business involving Linux?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The answer is, "Yes!". The free software licenses, on which the various software packages of a distribution built on the Linux kernel are based, explicitly accommodate and encourage commercialization; the relationship between a Linux distribution as a whole and individual vendors may be seen as symbiotic. One common business model of commercial suppliers is charging for support, especially for business users. A number of companies also offer a specialized business version of their distribution, which adds proprietary support packages and tools to administer higher numbers of installations or to simplify administrative tasks. Another business model is to give away the software in order to sell hardware. Examples of corporations that are extensively (and sometimes exclusively) open-source and Linux-powered , with successful revenue generation models involving these, are Google, SUN, Mozilla, etc.
-
-Programming on Linux
-~~~~~~~~~~~~~~~~~~~~
-Most Linux distributions support dozens of programming languages. The most common collection of utilities for building both Linux applications and operating system programs is found within the GNU toolchain, which includes the GNU Compiler Collection (GCC) and the GNU build system. Amongst others, GCC provides compilers for Ada, C, C++, Java, and Fortran. The Linux kernel itself is written to be compiled with GCC. Proprietary compilers for Linux include the Intel C++ Compiler, Sun Studio, and IBM XL C/C++ Compiler.
-
-Most distributions also include support for PHP, Perl, Ruby, Python and other dynamic languages. Examples of languages that are less common, but still supported, are C# via the Mono project, sponsored by Novell, and Scheme. A number of Java Virtual Machines and development kits run on Linux, including the original Sun Microsystems JVM (HotSpot), and IBM's J2SE RE, as well as many open-source projects like Kaffe.
-
-The two main frameworks for developing graphical applications are those of GNOME and KDE. These projects are based on the GTK+ and Qt widget toolkits, respectively, which can also be used independently of the larger framework. Both support a wide variety of languages. There are a number of Integrated Development Environments (IDEs) available including Anjuta, Code::Blocks, Eclipse, KDevelop, Lazarus, MonoDevelop, NetBeans, and Omnis Studio while the long-established editors Vim and Emacs remain popular.
 
 Reasons for Using Linux
 -----------------------
@@ -71,7 +24,7 @@ Reasons for Using Linux
 
 As in "free beer". Linux can be downloaded in its entirety from the Internet completely for free. No registration fees, no costs per user, free updates, and freely available source code in case you want to change the behavior of your system.
 Most of all, Linux is free as in "free speech":
-The license commonly used is the GNU Public License (GPL). The license says that anybody who may want to do so, has the right to change Linux and eventually to redistribute a changed version, on the one condition that the code is still available after redistribution. In practice, you are free to grab a kernel image and sell the new code, as long as your customers can still have a copy of that code.
+
 
 - Linux is portable to any hardware platform:
 
@@ -87,53 +40,21 @@ The security model used in Linux is based on the UNIX idea of security, which is
 
 - Linux is scalable:
 
-From a Palmtop with 2 MB of memory to a petabyte storage cluster with hundreds of nodes: add or remove the appropriate packages and Linux fits all. One does not need a supercomputer anymore,because you can use Linux to do big things using the building blocks provided with the system. If one wants to do little things, such as making an operating system for an embedded processor or just recycling your old 486, Linux will do that as well.
+From a Palmtop with 2 MB of memory to a petabyte storage cluster with hundreds of nodes: add or remove the appropriate packages and Linux fits all. 
 
-- The Linux OS and Linux applications have very short debug−times:
 
-Because Linux has been developed and tested by thousands of people, both errors and people to fix them are found very quickly. It often happens that there are only a couple of hours between discovery and fixing of a bug.
 
 Getting Started
 ================
 
 Logging in, activating the user interface and logging out
 ----------------------------------------------------------
-In order to work on a Linux system directly, one needs to provide a user name and password. You always need to authenticate to the system. Most PC−based Linux systems have two basic modes for a system to run in: either quick and clean in text console mode,which includes with mouse, multitasking and multi−user features, or in graphical console mode, which looks better but eats more system resources.
+In order to work on a Linux system directly, one needs to provide a user name and password. You always need to authenticate to the system. Most PC−based Linux systems have two basic modes for a system to run in: either quick and clean in text console mode,which includes with mouse, multitasking and multi−user features, or in graphical console mode.
 
-Graphical Mode
-~~~~~~~~~~~~~~
-This is the default nowadays on most desktop computers. You know you will be connecting to the system using graphical mode when you are first asked for your user name, and then to type your password.
 
-To log in, make sure the mouse pointer is in the login window, provide your user name and password to the system and click *OK* or press *Enter*.
-It is generally considered a bad idea to connect (graphically) using the root user name, the system adminstrator's account, since the use of graphics includes running a lot of extra programs, in root's case with a lot of extra permissions. To keep all risks as low as possible, use a normal user account to connect graphically. But there are enough risks to keep this in mind as a general advice, for all use of the root account: only log in as root when extra privileges are required.
-
-After entering your user name/password combination, it can take a little while before the graphical environment is started, depending on the CPU speed of your computer, on the software you use and on your personal settings.
-
-To continue, you will need to open a *terminal window* or *xterm* for short (X being the name for the underlying software supporting the graphical environment). This program can be found in the *Applications−>Utilities->System Tools* or *Internet menu*, depending on what window manager you are using. There might be icons that you can use as a shortcut to get an *xterm* window as well, and clicking the right mouse button on the desktop background will usually present you with a menu containing a terminal window application.
-
-While browsing the menus, you will notice that a lot of things can be done without entering commands via the keyboard. For most users, the good old point−n−click method of dealing with the computer will do. But for those who want to enter the "heart" of the system, a tool stronger than a mouse will be required to handle the various tasks. This tool is the shell, and when in graphical mode, we activate our shell by opening a terminal window.
-
-A terminal window should always show a command prompt when you open one. This terminal shows a standard prompt, which displays the user's login name, and the current working directory, represented by the twiddle (~)
-
-Another common form for a prompt is this one:
-[user@host dir]
-
-In the above example, *user* will be your login name, *hosts* the name of the machine you are working on, and *dir* an indication of your current location in the file system. Prompts can display all kinds of information, but they are not part of the commands you are giving to your system. To disconnect from the system in graphical mode, you need to close all terminal windows and other applications. After that, hit the *logout* icon or find *Log Out* in the menu. Closing everything is not really necessary, and the system can do this for you, but session management might put all currently open applications back on your screen when you connect again, which takes longer and is not always the desired effect. However, this behavior is configurable.
 
 When you see the login screen again, asking to enter user name and password, logout was successful.
 
-Text Mode
-~~~~~~~~~
-One is in text mode when the whole screen is black, showing (in most cases white) characters. A text mode login screen typically shows some information about the machine you are working on, the name of the machine and a prompt waiting for you to log in.
-
-The login is different from a graphical login, in that you have to hit the *Enter* key after providing your user name, because there are no buttons on the screen that you can click with the mouse. Then you should type your password, followed by another *Enter*. You will not see any indication that you are entering something, not even an asterisk, and you won't see the cursor move. But this is normal on Linux and is done for security
-reasons.
-
-When the system has accepted you as a valid user, you may get some more information, called the *message of the day*, which can be anything. Additionally, it is popular on UNIX systems to display a fortune cookie, which contains some general wise or unwise (this is up to you) thoughts. After that, you will be given a shell, indicated with the same prompt that you would get in graphical mode.
-
-Also in text mode: log in as root only to do setup and configuration that absolutely requires administrator privileges, such as adding users, installing software packages, and performing network and other system configuration. Once you are finished, immediately leave the special account and resume your work as a non−privileged user.
-
-Logging out is done by entering the *logout* command, followed by Enter. You are successfully disconnected from the system when you see the login screen again.Don't power−off the computer after logging out. It is not meant to be shut off without application of the proper procedures for halting the system. Powering it off without going through the halting process might cause severe damage!
 
 Basic Commands
 ===============
@@ -141,55 +62,18 @@ Basic Commands
 ls
 ---
 
-When invoked without any arguments, *ls* lists the files in the current working directory. A directory that is not the current working directory can be specified and ls will list the files there. The user also may specify any list of files and directories. In this case, all files and all contents of specified directories will be listed. The name *ls* is derived from *list segments* which was used in earlier systems.
+*ls* lists the files in the current working directory. A directory that is not the current working directory can be specified and ls will list the files there.::
 
-Files whose names start with "." are not listed, unless the *-a* flag is specified or the files are specified explicitly.
-
-Without options, *ls* displays files in a bare format. This bare format however makes it difficult to establish the type, permissions, and size of the files. The most common options to reveal this information or change the list of files are:
-
-    * *-l* long format, displaying Unix file types, permissions, number of hard links, owner, group, size, date, and filename
-    * *-F* appends a character revealing the nature of a file, for example, * for an executable, or / for a directory. Regular files have no suffix.
-    * *-a* lists all files in the given directory, including those whose names start with "." (which are hidden files in Unix). By default, these files are excluded from the list.
-    * *-R* recursively lists subdirectories. The command ls -R / would therefore list all files.
-    * *-d* shows information about a symbolic link or directory, rather than about the link's target or listing the contents of a directory.
-    * *-t* sort the list of files by modification time.
-    * *-h* print sizes in human readable format. (e.g., 1K, 234M, 2G, etc.)
-
-In some environments, providing the option *--color* (for GNU ls) or *-G* (FreeBSD ls) causes ls to highlight different types of files with different colors, instead of with characters as *-F* would. To determine what color to use for a file, GNU *ls* checks the Unix file type, the file permissions, and the file extension, while FreeBSD *ls* checks only the Unix file type and file permissions.::
 
 	$ ls
 	jeeves.rst psmith.html blandings.html
-	$ ls -l
-	drwxr--r--   1 plum  editors   4096  jeeves
-	-rw-r--r--   1 plum  editors  30405  psmith
-	-r-xr-xr-x   1 plum  plum      8460  blandings
-
-Here "$" actually is the beginning of the prompt. This is typical in most Unix-based systems.
-
-date
------
-
-The Unix date command displays the time and date. The super-user can use it to set the system clock.
-
-With no options, the date command displays the current date and time, including the abbreviated day name, abbreviated month name, day of the month, the time separated by colons, the timezone name, and the year. For example::
-
-	$date
-	Tue Sep  8 12:01:45 IST 2009
-
-On some systems to set the current date and time to September 8, 2004 01:22 you type::
-
-	$date --set="20040908 01:22"
-
-In order to view the various options for the *date* command, type::
-
-	$man date
-
-This will take you to the "Manual" page comprising of all the details on the *date* command. You can return to the terminal from the "man" page by pressing the *Esc* key in the keyboard and typing ":q" in that order. 
 
 cd
 ---
 
-This stands for "change directory". When one wants to go up to the parent directory, bypassing the tree of directories one has entered, “ cd ..” can be used.
+This stands for "change directory". When one wants to change the directory .
+
+       $cd Music 
 
 One dot '.' represents the current directory while two dots '..' represent the parent directory.
 
@@ -233,11 +117,7 @@ The *who* command is related to the command *w*, which provides the same informa
 
 The command can be invoked with the arguments *am i* or *am I* (so it is invoked as *who am i* or * who am I*), showing information about the current terminal only (see the *-m* option below, of which this invocation is equivalent).
 
-In order to find out the various options that can be appended to the *who* command, check the *man* page by typing out the following in the terminal::
 
-	$man who
-
-This will take you to the "Manual" page containing details about the *who* command
 
 mkdir
 -----
@@ -248,36 +128,35 @@ This command is used to make a new directory. Normal usage is as straightforward
 
 Where *name_of_directory* is the name of the directory one wants to create. When typed as above (ie. normal usage), the new directory would be created within the current directory. On Unix, multiple directories can be specified, and *mkdir* will try to create all of them.
 
-Options
-~~~~~~~
 
-On Unix-like operating systems, *mkdir* takes options. Three of the most common options are:
 
-    * *-p*: will also create all directories leading up to the given directory that do not exist already. If the given directory already exists, ignore the error.
-    * *-v*: display each directory that mkdir creates. Most often used with -p.
-    * *-m*: specify the octal permissions of directories created by mkdir.
 
-*-p* is most often used when using mkdir to build up complex directory hierarchies, in case a necessary directory is missing or already there. -m is commonly used to lock down temporary directories used by shell scripts.
+pwd
+----
+pwd is a Linux / Unix command which prints the current working directory. If you wish to know the full path of the  directory in which you are in from the Linux console, then the pwd command will come to your rescue. pwd stands for Print Working Directory.
 
-Examples
-~~~~~~~~
+pwd have one option called -P, which lists the current working directory with all the links resolved.
 
-An example of *-p* in action is::
+Usage of pwd command
 
-	$mkdir -p /tmp/a/b/c
+I have a directory called "Examples/" on my machine which is actually a soft link to the directory /usr/share/example-content/. 
 
-If */tmp/a* exists but */tmp/a/b* does not, mkdir will create */tmp/a/b* before creating */tmp/a/b/c*.
+I move into the "Examples" directory and run the pwd command to get the following output.
 
-And an even more powerful command, creating a full tree at once (this however is a Shell extension, nothing mkdir does itself)::
+$ cd Examples
+$ pwd
+/home/laf/Examples
 
-	$mkdir -p tmpdir/{trunk/sources/{includes,docs},branches,tags}
 
-This will create:
+FLAGS
+~~~~~
+The standard commands in Linux have a lot of options also called flags to change or provide some additional functionality to the command For example ::
+      
+       $ls -l 
+       
+       * *ls with flag -l* displays the result in long format, displaying Unix file types, permissions, number of hard links, owner, group, size, date, and filename
 
-tmpdir 	- branches
-	- tag
-	- trunk	- sources - includes
-			  - docs
+
 
 Getting Help
 ============
@@ -333,43 +212,12 @@ To read a manual page for a Unix command, one can use::
 
 at a shell prompt; for example, "man ftp". In order to simplify navigation through the output, *man* generally uses the less terminal pager.
 
-Pages are traditionally referred to using the notation "name(section)"; for example, ftp(1). The same page name may appear in more than one section of the manual, this can occur when the names of system calls, user commands, or macro packages coincide. Two examples are *man(1)* and *man(7)*, or *exit(2)* and *exit(3)*. The syntax for accessing the non-default manual section varies between different man implementations. On Linux and *BSD, for example, the syntax for reading *printf(3)* is::
-
-	$man 3 printf
-
-Another example::
+To see the manual on man itself do::
 
 	$man man
 
 The previous example will take you to the "Manual" page entry about manual pages!
 
-Layout
-~~~~~~
-
-All man pages follow a common layout that is optimized for presentation on a simple ASCII text display, possibly without any form of highlighting or font control. Sections present may include:
-
-NAME
-    The name of the command or function, followed by a one-line description of what it does.
-SYNOPSIS
-    In the case of a command, you get a formal description of how to run it and what command line options it takes. For program functions, a list of the parameters the function takes and which header file contains its definition. For experienced users, this may be all the documentation they need.
-DESCRIPTION
-    A textual description of the functioning of the command or function.
-EXAMPLES
-    Some examples of common usage.
-SEE ALSO
-    A list of related commands or functions.
-
-Other sections may be present, but these are not well standardized across man pages. Common examples include: OPTIONS, EXIT STATUS, ENVIRONMENT, KNOWN BUGS, FILES, AUTHOR, REPORTING BUGS, HISTORY and COPYRIGHT.
-
-These days virtually every Unix command line application comes with its man page, and many Unix users perceive a lack of man pages as a sign of low quality; indeed, some projects, such as Debian, go out of their way to write man pages for programs lacking one. Few alternatives to *man* have enjoyed much popularity, with the possible exception of the GNU project's "info" system, an early and simple hypertext system.
-
-However, the format of a single page for each application, the lack of classification within the sections and the relatively unsophisticated formatting facilities have motivated the development of alternative documentation systems, such as the previously mentioned "info" system.
-
-Most Unix GUI applications (particularly those built using the GNOME and KDE development environments) now provide end-user documentation in HTML and include embedded HTML viewers such as yelp for reading the help within the application.
-
-Usually the man pages are written in English. Translations into other languages can be also available on the system.
-
-The default format of the man pages is troff, with either the macro package man (appearance oriented) or on some systems mdoc (semantic oriented). This makes it possible to typeset a man page to PostScript, PDF and various other formats for viewing or printing.
 
 info
 -----
@@ -421,6 +269,7 @@ Most GNU commands support the --help, which gives a short explanation about how 
 	Report bugs to <bug-coreutils@gnu.org>.
 
 
+
 Basic file handling
 ===================
 
@@ -434,21 +283,19 @@ Usage
 
 To copy a file to another file::
 
-	$ cp [ -f ] [ -H ] [ -i ] [ -p ][ -- ] SourceFile TargetFile
+	$ cp  SourceFile TargetFile
 
 To copy a file to a directory::
 
-	$ cp [ -f ] [ -H ] [ -i ] [ -p ] [ -r | -R ] [ -- ] SourceFile ... 		TargetDirectory
-
+	$ cp  SourceFile  TargetDirectory
+ 
 To copy a directory to a directory::
 
-	$ cp [ -f ] [ -H ] [ -i ] [ -p ] [ -- ] { -r | -R } 
-	SourceDirectory ... TargetDirectory
+	$ cp  -r SourceDirectory  TargetDirectory
 
 Flags
 ~~~~~
 
-*-f* (force) – specifies removal of the target file if it cannot be opened for write operations. The removal precedes any copying performed by the cp command.
 
 *-P* – makes the cp command copy symbolic links. The default is to follow symbolic links, that is, to copy files to which symbolic links point.
 
@@ -527,7 +374,6 @@ Examples
 ::
 
 	$ mv myfile mynewfilename    renames a file
-	$ mv myfile otherfilename    renames a file and deletes the existing 		file "myfile"
 	$ mv myfile /myfile          moves 'myfile' from the current 		directory to the root directory
 	$ mv myfile dir/myfile       moves 'myfile' to 'dir/myfile' relative 		to the current directory
 	$ mv myfile dir              same as the previous command (the 		filename is implied to be the same)
@@ -572,32 +418,15 @@ When *rm* is used on a symbolic link, it deletes the link, but does not affect t
 
 Permissions
 ~~~~~~~~~~~
+Linux is a proper multi-user environment. In a multi-user environment, security of user and system data is very important. Access should be given only to users who need to access the data. Since Linux is essentially a server OS, good and efficient file security is built right . The permissions are based on whether one is allowed to read, write or execute a file.
 
 Usually, on most filesystems, deleting a file requires write permission on the parent directory (and execute permission, in order to enter the directory in the first place). (Note that, confusingly for beginners, permissions on the file itself are irrelevant. However, GNU rm asks for confirmation if a write-protected file is to be deleted, unless the -f option is used.)
 
-To delete a directory (with rm -r), one must delete all of its contents recursively. This requires that one must have read and write and execute permission to that directory (if it's not empty) and all non-empty subdirectories recursively (if there are any). The read permissions are needed to list the contents of the directory in order to delete them. This sometimes leads to an odd situation where a non-empty directory cannot be deleted because one doesn't have write permission to it and so cannot delete its contents; but if the same directory were empty, one would be able to delete it.
-
-If a file resides in a directory with the sticky bit set, then deleting the file requires one to be the owner of the file.
+To delete a directory (with rm -r), one must delete all of its contents recursively. This requires that one must have read and write and execute permission to that directory (if it's not empty) and all non-empty subdirectories recursively (if there are any).
 
 
-Command Line Arguments
-=======================
 
-In computer command line interfaces, a command line argument is an argument sent to a program being called. In general, a program can take any number of command line arguments, which may be necessary for the program to run, or may even be ignored, depending on the function of that program.
 
-For example, in Unix and Unix-like environments, an example of a command-line argument is::
-
-	rm file.s
-
-"file.s" is a command line argument which tells the program rm to remove the file "file.s".
-
-Programming languages such as C, C++ and Java allow a program to interpret the command line arguments by handling them as string parameters in the main function.
-
-A command line option or simply *option* (also known as a command line parameter, flag, or a switch) is an indication by a user that a computer program should change its default output.
-
-Long options are introduced via "--", and are typically whole words. For example, *ls --long --classify --all*. Arguments to long options are provided with "=", as *ls --block-size=1024*. Some Unix programs use long options with single dashes, for example MPlayer as in *mplayer -nosound*.
-
-Linux also uses "--" to terminate option lists. For example, an attempt to delete a file called *-file1* by using *rm -file1* may produce an error, since rm may interpret *-file1* as a command line switch. Using *rm -- -file1* removes ambiguity.
 
 Basic Text Processing
 ======================
@@ -617,21 +446,13 @@ This displays the first 5 lines of all files starting with *foo*::
 
 	$ head -n 5 foo*
 
-Some versions omit the n and just let you say -5.
+
 
 Flags
 ~~~~~
 ::
 
 	-c <x number of bytes> Copy first x number of bytes.
-
-Other options: *sed*
-
-Many early versions of Unix did not have this command, and so documentation and books had *sed* do this job::
-
-	sed 5q foo
-
-This says to print every line (implicit), and quit after the fifth.
 
 
 tail
@@ -655,12 +476,7 @@ This example shows all lines of filename from the second line onwards::
 
 	$ tail -n +2 filename
 
-Using an older syntax (still used in Sun Solaris as the -n option is not supported), the last 20 lines and the last 50 bytes of filename can be shown with the following command::
 
-	$ tail -20 filename
-	$ tail -50c filename
-
-However this syntax is now obsolete and does not conform with the POSIX 1003.1-2001 standard. Even if still supported in current versions, when used with other options (like -f, see below), these switches could not work at all.
 
 File monitoring
 ~~~~~~~~~~~~~~~
@@ -728,7 +544,7 @@ If the files contain:
 |  Jeeves   | London     |  March 19  |
 +-----------+------------+------------+	
 
-This creates the file named *www* containing::
+This creates the file named *www* containing ::
 
 	Batman            GothamCity       January 3
 	Trillian          Andromeda        February 4
@@ -743,7 +559,6 @@ The shell meta characters include:
 
 \ / < > ! $ % ^ & * | { } [ ] " ' ` ~ ; 
 
-Different shells may differ in the meta characters recognized.
 
 As an example,
 ::
@@ -760,17 +575,7 @@ run on the same directory would only list file.c because the ? only matches one 
 
 because the c* matches that long file name.
 
-Filenames containing metacharacters can pose many problems and should never be intentionally created. If you do find that you've created a file with metacharacters, and you would like to remove it, you have three options. You may use wildcards to match metacharacter, use the \  to directly enter the filename, or put the command in double quotes (except in the case of double quotes within the file name, these must be captured with one of the first two methods). For example, deleting a file named `"``*`|more`"` can be accomplished with::
-
-	$ rm ??more
-
-or::
-
-	$ rm $\backslash$*$\backslash$|more
-
-or::
-
-	$ rm ''*|more'' 
+Filenames containing metacharacters can pose many problems and should never be intentionally created.
 
 
 Looking At Files
@@ -785,57 +590,13 @@ The Single Unix Specification specifies the behavior that the contents of each o
 
 If the filename is specified as -, then *cat* will read from standard input at that point in the sequence. If no files are specified, *cat* will read from standard input entered.
 
-Jargon File Definition
-~~~~~~~~~~~~~~~~~~~~~~
+Usage ::
+        $ cat foo boo
+	This is file foo
+	
+	This is file boo.
 
-The Jargon File version 4.4.7 lists this as the definition of *cat*::
 
-   1. To spew an entire file to the screen or some other output sink without
- 	pause (syn. blast).
-
-   2. By extension, to dump large amounts of data at an unprepared target or
- 	with no intention of browsing it carefully. Usage: considered silly.
- 	Rare outside Unix sites. See also dd, BLT.
-
-	Among Unix fans, *cat(1)* is considered an excellent example of
- 	user-interface design, because it delivers the file contents without 
-	such verbosity as spacing or headers between the files, and because 
-	it does not require the files to consist of lines of text, but works 
-	with any sort of data.
-
-	Among Unix critics, *cat(1)* is considered the canonical example of 
-	bad user-interface design, because of its woefully unobvious name. 
-	It is far more often used to blast a single file to standard output 
-	than to concatenate two or more files. The name cat for the former 
-	operation is just as unintuitive as, say, LISP's cdr.
-
-	Of such oppositions are holy wars made...
-
-Useless Use of 'cat'
-~~~~~~~~~~~~~~~~~~~~
-
-UUOC (from comp.unix.shell on Usenet) stands for “Useless Use of cat”. As it is observed on *comp.unix.shell*, “The purpose of cat is to concatenate (or 'catenate') files. If it's only one file, concatenating it with nothing at all is a waste of time, and costs you a process.”
-
-Nevertheless one sees people doing::
-
-	$ cat file | some_command and its args ...
-
-instead of the equivalent and cheaper::
-
-	<file some_command and its args ...
-
-or (equivalently and more classically)::
-
-	some_command and its args ... <file
-
-Since 1995, occasional awards for UUOC have been given out. The activity of fixing instances of UUOC is sometimes called 'demoggification'.
-
-Amongst many, it is still considered safer to use *cat* for such cases given that the < and > keys are next to each other in many popular keyboard mappings. While the risk might be low, the impact of using > instead of < can be high and prohibitive.
-
-zcat
-~~~~~
-
-*zcat* is a Unix program similar to *cat*, that decompresses individual files and concatenates them to standard output. Traditionally *zcat* operated on files compressed by compress but today it is usually able to operate on *gzip* or even *bzip2* archives. On such systems, it is equivalent to *gunzip -c*
 
 more
 -----
@@ -855,7 +616,7 @@ Once *more* has obtained input, it displays as much as can fit on the current sc
 
 There are also other commands that can be used while navigating through the document; consult *more*'s *man* page for more details.
 
-*Options* are typically entered before the file name, but can also be entered in the environment variable *$MORE*. Options entered in the actual command line will override those entered in the *$MORE* environment variable. Available options may vary between Unix systems.
+
 
 less
 -----
@@ -869,7 +630,7 @@ Usage
 
 By default, *less* displays the contents of the file to the standard output (one screen at a time). If the file name argument is omitted, it displays the contents from standard input (usually the output of another command through a pipe). If the output is redirected to anything other than a terminal, for example a pipe to another command, less behaves like cat.
 
-The command-syntax is::
+The command-syntax is ::
 
 	$ less [options] file_name
 
@@ -915,6 +676,10 @@ Frequently Used Commands
 
     * q: Quit.
 
+
+
+-------------------------------------------------------------------
+
 Examples 
 ~~~~~~~~~
 ::
@@ -929,7 +694,7 @@ Directory Structure
 
 In the File Hierarchy Standard (FHS) all files and directories appear under the root directory "/", even if they are stored on different physical devices. Note however that some of these directories may or may not be present on a Unix system depending on whether certain subsystems, such as the X Window System, are installed.
 
-The majority of these directories exist in all UNIX operating systems and are generally used in much the same way; however, the descriptions here are those used specifically for the FHS, and are not considered authoritative for platforms other than Linux.
+The majority of these directories exist in all UNIX operating systems and are generally used in much the same way; however, the descriptions here are those used specifically for the FHS, and are not considered authoritative for platforms other thanmajor Linux distros.
 
 +---------------+------------------------------------------------+
 |   Directory   |             Description                        |
@@ -1010,10 +775,40 @@ This can be done after entering the required directory.
 Permissions and Ownership
 =========================
 
+let's check out the file permissions. File permissions are defined
+for users, groups and others. User would be the username that you are
+logging in as. Further more, users can be organized into groups for better
+administration and control. Each user will belong to at least one default
+group. Others includes anyone the above categories exclude.
+
+Given below is the result of an 'ls -l'
+
+drwxr-x--- 2 user group 4096 Dec 28 04:09 tmp
+-rw-r--r-- 1 user group 969 Dec 21 02:32 foo
+-rwxr-xr-x 1 user group 345 Sep 1 04:12 somefile
+
+Relevant information in the first column here is the file type followed by the file permissions. The third and the fourth column show the owner of the file and the group that the file belongs to.The fifth column is no bytes and sixth modification date .The first entry here is tmp. The first character in the first column is 'd', which means the tmp is a directory. The other entries here are files,as indicated by the '-'.
+
+d rwx r-x ---
+file type users group others
+
+The next 9 characters define the file permissions. These permissions are given in groups of 3 each. The first 3 characters are the permissions for the owner of the file or directory. The next 3 are permissions for the group that the file is owned by and the final 3 characters define the access permissions for everyone not part of the group. There are 3 possible attributes that make up file access permissions.
+
+r - Read permission. Whether the file may be read. In the case of a directory, this would mean the ability to list the contents of the directory.
+
+w - Write permission. Whether the file may be written to or modified. For a directory, this defines whether you can make any changes to the contents
+of the directory. If write permission is not set then you will not be able
+to delete, rename or create a file.
+
+x - Execute permission. Whether the file may be executed. In the case of a directory, this attribute decides whether you have permission to enter,run a search through that directory or execute some program from that directory.
+
+
+
+
 chmod
 ------
 
-The *chmod* command (abbreviated from 'change mode') is a shell command and C language function in Unix and Unix-like environments. When executed, it can change file system modes of files and directories. The modes include permissions and special modes.A chmod command first appeared in AT&T Unix version 1, and is still used today on Unix-like machines.
+The *chmod* command (abbreviated from 'change mode') is a shell command and C language function in Unix and Unix-like environments. When executed, it can change file system modes of files and directories. The modes include permissions and special modes.
 
 Usage
 ~~~~~
@@ -1160,24 +955,44 @@ The *chmod* command also accepts three and four-digit octal numbers representing
 	$ ls -l myfile
 	-rw-rw-r--  1   57 Jul  3 10:13  myfile
 
+Foe each one, you define the right like that :
+
+    * a read right correspond to 4
+    * a write right correspond to 2
+    * an execute right correspond to 1
+
+You want the user to have all the rights? : 4 + 2 + 1 = 7
+
+you want the group to have read and write rights : 4 + 2 = 6
+
+
+
 Since the *setuid*, *setgid* and *sticky* bits are not set, this is equivalent to:
 ::
 
 	$ chmod 0664 myfile
 
-Special modes
-+++++++++++++
 
-The *chmod* command is also capable of changing the additional permissions or special modes of a file or directory. The symbolic modes use **s** to represent the *setuid* and *setgid* modes, and **t** to represent the sticky mode. The modes are only applied to the appropriate classes, regardless of whether or not other classes are specified.
+chown
+~~~~~
+The chown command is used to change the owner and group of files, directories and links.
 
-Most operating systems support the specification of special modes using octal modes, but some do not. On these systems, only the symbolic modes can be used.
+By default, the owner of a filesystem object is the user that created it. The group is a set of users that share the same access permissions (i.e., read, write and execute) for that object.
+
+The basic syntax for using chown to change owners is
+
+    chown -v alice wonderland.txt
+
+
+
+
 
 Redirection and Piping
 =======================
 
 In computing, *redirection* is a function common to most command-line interpreters, including the various Unix shells that can redirect standard streams to user-specified locations.
 
-Programs do redirection with the *dup2(2)* system call, or its less-flexible but higher-level stdio analogues, *freopen(3)* and *popen(3)*.
+
 
 Redirecting standard input and standard output
 -----------------------------------------------
@@ -1200,7 +1015,7 @@ Piping
 -------
 
 Programs can be run together such that one program reads the output from another with no need for an explicit intermediate file:
-A pipeline of three programs run on a text terminal::
+A pipeline of two programs run on a text terminal::
 
 	$ command1 | command2
 
@@ -1240,7 +1055,7 @@ For example:
 
 executes *command1*, directing the standard error stream to *file1*.
 
-In shells derived from *csh* (the C shell), the syntax instead appends the & character to the redirect characters, thus achieving a similar result.
+
 
 Another useful capability is to redirect one standard file handle to another. The most popular variation is to merge standard error into standard output so error messages can be processed together with (or alternately to) the usual output. Example:
 ::
@@ -1332,47 +1147,6 @@ There are countless implementations and derivatives of *grep* available for many
 
 Other commands contain the word 'grep' to indicate that they search (usually for regular expression matches). The *pgrep* utility, for instance, displays the processes whose names match a given regular expression.
 
-tr
---
-
-*tr* (abbreviated from *translate* or *transliterate*) is a command in Unix-like operating systems.
-
-When executed, the program reads from the standard input and writes to the standard output. It takes as parameters two sets of characters, and replaces occurrences of the characters in the first set with the corresponding elements from the other set. For example,
-::
-
-	$ tr 'abcd' 'jkmn' 
-
-maps 'a' to 'j', 'b' to 'k', 'c' to 'm', and 'd' to 'n'.
-
-Sets of characters may be abbreviated by using character ranges. The previous example could be written:
-::
-
-	$ tr 'a-d' 'jkmn'
-
-In POSIX compliant versions of *tr* the set represented by a character range depends on the locale's collating order, so it is safer to avoid character ranges in scripts that might be executed in a locale different from that in which they were written. Ranges can often be replaced with POSIX character sets such as [:alpha:].
-
-The *-c* flag complements the first set of characters.
-::
-
-	$ tr -cd '[:alnum:]' 
-
-therefore removes all non-alphanumeric characters.
-
-The *-s* flag causes tr to compress sequences of identical adjacent characters in its output to a single token. For example,
-::
-
-	$ tr -s '\n' '\n'
-
-replaces sequences of one or more newline characters with a single newline.
-
-The *-d* flag causes tr to delete all tokens of the specified set of characters from its input. In this case, only a single character set argument is used. The following command removes carriage return characters, thereby converting a file in DOS/Windows format to one in Unix format.
-::
-
-	$ tr -d '\r'
-
-Most versions of *tr*, including GNU *tr* and classic Unix *tr*, operate on single byte characters and are not Unicode compliant. An exception is the Heirloom Toolchest implementation, which provides basic Unicode support.
-
-Ruby and Perl also have an internal *tr* operator, which operates analogously. Tcl's *string map* command is more general in that it maps strings to strings while *tr* maps characters to characters.
 
 Elementary Regex
 =================
@@ -1381,61 +1155,37 @@ In computing, regular expressions provide a concise and flexible means for ident
 
 Regular expressions are used by many text editors, utilities, and programming languages to search and manipulate text based on patterns. For example, Perl, Ruby and Tcl have a powerful regular expression engine built directly into their syntax. Several utilities provided by Unix distributions—including the editor *ed* and the filter *grep* — were the first to popularize the concept of regular expressions.
 
-Traditional Unix regular expression syntax followed common conventions but often differed from tool to tool. The IEEE POSIX *Basic Regular Expressions* (BRE) standard (released alongside an alternative flavor called Extended Regular Expressions or ERE) was designed mostly for backward compatibility with the traditional (Simple Regular Expression) syntax but provided a common standard which has since been adopted as the default syntax of many Unix regular expression tools, though there is often some variation or additional features. Many such tools also provide support for ERE syntax with command line arguments.
 
-In the BRE syntax, most characters are treated as literals — they match only themselves (i.e., a matches "a"). The exceptions, listed below, are called metacharacters or metasequences.
+Regular Expressions are a feature of UNIX. They describe a pattern to match, a sequence of characters, not words, within a line of text. Here is a quick summary of the special characters used in the grep tool and their meaning: 
 
-+-------------+------------------------------------------------------------+
-|Metacharacter|                            Description                     |
-+=============+============================================================+
-| .           | Matches any single character (many applications exclude    | 
-|             | newlines, and exactly which characters are considered      | 
-|             | newlines is flavor, character encoding, and platform       |
-|             | specific, but it is safe to assume that the line feed      |
-|             | character is included). Within POSIX bracket expressions,  |
-|             | the dot character matches a literal dot. For example, a.c  |
-|             | matches abc, etc., but [a.c] matches only a, ., or         |
-|             | c.                                                         |
-+-------------+------------------------------------------------------------+
-| [ ]         | A bracket expression. Matches a single character that is   | 
-|             | contained within the brackets. For example, [abc] matches  |
-|             | a, b, or c. [a-z] specifies a range which matches any      |
-|             | lowercase letter from a to z. These forms can be mixed:    |
-|             | [abcx-z] matches a, b, c, x, y, or z, as does              |
-|             | [a-cx-z]. The - character is treated as a literal character|
-|             | if it is the last or the first character within the        |
-|             | brackets, or if it is escaped with a backslash: [abc-],    |
-|             | [-abc], or [a\-bc].                                        |
-+-------------+------------------------------------------------------------+
-| [^ ]        | Matches a single character that is not contained within the|
-|             | brackets. For example, [^abc] matches any character other  |
-|             | than a, b, or c. [^a-z] matches any single character       |
-|             | that is not a lowercase letter from a to z. As above,      |
-|             | literal characters and ranges can be mixed.                |
-+-------------+------------------------------------------------------------+
-| ^           | Matches the starting position within the string. In        |
-|             | line-based tools, it matches the starting position of any  |
-|             | line.                                                      |
-+-------------+------------------------------------------------------------+
-| $           | Matches the ending position of the string or the position  |
-|             | just before a string-ending newline. In line-based tools,  |
-|             | it matches the ending position of any line.                |
-+-------------+------------------------------------------------------------+
-| `*`         | Matches the preceding element zero or more times. For      |
-|             | example, ab*c matches "ac", "abc", "abbbc", etc. [xyz]*    |
-|             | matches "", "x", "y", "z", "zx", "zyx", "xyzzy", and so on.|
-|             | \(ab\)* matches "", "ab", "abab", "ababab", and so on.     |
-+-------------+------------------------------------------------------------+
-| ?           | Matches the preceding element zero or one time. For        |
-|             | example, ba? matches "b" or "ba".                          |
-+-------------+------------------------------------------------------------+
-| `+`         | Matches the preceding element one or more times. For       |
-|             | example, ba+ matches "ba", "baa", "baaa", and so on.       |
-+-------------+------------------------------------------------------------+
-| `|`         | The choice (aka alternation or set union) operator matches |
-|             | either the expression before or the expression after the   |
-|             | operator. For example, abc|def matches "abc" or "def".     |
-+-------------+------------------------------------------------------------+
+* ^ (Caret)        =    match expression at the start of a line, as in ^A.
+* $ (Question)     =    match expression at the end of a line, as in A$.
+* \ (Back Slash)   =    turn off the special meaning of the next character, as in \^.
+* [ ] (Brackets)   =    match any one of the enclosed characters, as in [aeiou].
+                      Use Hyphen "-" for a range, as in [0-9].
+* [^ ]             =    match any one character except those enclosed in [ ], as in [^0-9].
+* . (Period)       =    match a single character of any value, except end of line.
+* * (Asterisk)     =    match zero or more of the preceding character or expression.
+* \{x,y\}          =    match x to y occurrences of the preceding.
+* \{x\}            =    match exactly x occurrences of the preceding.
+* \{x,\}           =    match x or more occurrences of the preceding.
+
+
+
+Here are some examples using grep:
+
+*    grep smug files         {search files for lines with 'smug'}
+*    grep '^smug' files      {'smug' at the start of a line}
+*    grep 'smug$' files      {'smug' at the end of a line}
+*    grep '^smug$' files     {lines containing only 'smug'}
+*    grep '\^s' files        {lines starting with '^s', "\" escapes the ^}
+*    grep '[Ss]mug' files    {search for 'Smug' or 'smug'}
+*    grep 'B[oO][bB]' files  {search for BOB, Bob, BOb or BoB }
+*    grep '^$' files         {search for blank lines}
+*   grep '[0-9][0-9]' file  {search for pairs of numeric digits}
+
+
+
 
 Lazy quantification
 --------------------
@@ -1465,49 +1215,15 @@ Certain dynamic scripting languages such as AWK, sed, and perl have traditionall
 
 The use of the phrase one-liner has been widened to also include program-source for any language that does something useful in one line.
 
-The word *One-liner* has two references in the index of the book *The AWK Programming Language* (the book is often referred to by the abbreviation TAPL). It explains the programming language AWK, which is part of the Unix operating system. The authors explain the birth of the One-liner paradigm with their daily work on early Unix machines:
-::
 
-    “The 1977 version had only a few built-in variables and predefined functions. It was designed for writing short programs [...] Our model was that an invocation would be one or two lines long, typed in and used immediately. Defaults were chosen to match this style [...] We, being the authors, knew how the language was supposed to be used, and so we only wrote one-liners.”
-
-Notice that this original definition of a One-liner implies immediate execution of the program without any compilation. So, in a strict sense, only source code for interpreted languages qualifies as a One-liner. But this strict understanding of a One-liner was broadened in 1985 when the IOCCC introduced the category of Best One Liner for C, which is a compiled language.
-
-The TAPL book contains 20 examples of One-liners (A Handful of Useful awk One-Liners) at the end of the book's first chapter.
-
-Here are the first few of them:
-
-   1. Print the total number of input lines:
-
-      END { print NR }
-
-   2. Print the tenth input line:
-
-      NR == 10
-
-   3. Print the last field of every input line:
-
-      { print $NF }
-
-One-liners are also used to show off the differential expressive power of programming languages. Frequently, one-liners are used to demonstrate programming ability. Contests are often held to see who can create the most exceptional one-liner.
-
-The following example is a C program (a winning entry in the "Best one-liner" category of the IOCCC, here split to two lines for presentation).::
-	
-	main(int c,char**v){return!m(v[1],v[2]);}m(char*s,char*t){return
-	*t-42?*s?63==*t|*s==*t&&m(s+1,t+1):!*t:m(s,t+1)||*s&&m(s+1,t);}
-
-This one-liner program is a *glob pattern matcher*. It understands the glob characters '*' meaning 'zero or more characters' and '?' meaning exactly one character, just like most Unix shells.
-
-Run it with two args, the string and the glob pattern. The exit status is 0 (shell true) when the pattern matches, 1 otherwise. The glob pattern must match the whole string, so you may want to use * at the beginning and end of the pattern if you are looking for something in the middle. Examples::
-
-	$ prog foo 'f??'; echo $?
-
-	$ prog 'best short program' '??st*o**p?*'; echo $?
 
 Here is a one line shell script to show directories:
 
 ::
 
-	$ ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/' 
+      $grep user * | cut -d":"  -f1|uniq
+
+This returns list of all files which has the word user in it .
 
 
 
