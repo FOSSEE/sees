@@ -6,8 +6,8 @@ development which banks on the idea of writing test cases that fail for the
 code that doesn't even exist yet. The actual code is written later to pass
 the test and then refactored.
 
-Writing tests
-=============
+First "Test"
+============
 
 Writing a test is simple. Writing a failing test? It is much more simple.
 Let us consider a very simple program which returns the Greatest Common
@@ -76,3 +76,9 @@ tests? So what else should we wait for? Let us write our first test!::
       exit(1)
 
   print "All tests passed!"
+
+More realistic "Tests"
+======================
+
+Now we have completed writing our first test. Let us start writing tests
+for more realistic
