@@ -4,14 +4,15 @@ def gcd(a, b):
     return a
 
 if __name__ == '__main__':
-    tc1 = gcd(48, 64)
-    if tc1 != 16:
-        print "Test failed for the case a=48 and b=64. Expected 16. Obtained %d instead." % tc1
-        exit(1)
+    for line in open('gcd_testcases.dat'):
+        values = line.split(', ')
+        a = int(values[0])
+        b = int(values[1])
+        g = int(values[2])
 
-    tc2 = gcd(44, 19)
-    if tc2 != 1:
-        print "Test failed for the case a=44 and b=19. Expected 1. Obtained %d instead." % tc2
-        exit(1)
+        tc = gcd(a, b)
+        if tc != g:
+            print "Test failed for the case a=%d and b=%d. Expected %d. Obtained %d instead." % (a, b, g, tc)
+            exit(1)
 
     print "All tests passed!"
