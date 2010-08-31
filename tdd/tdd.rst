@@ -226,41 +226,90 @@ unquenched! We want to do more and more tests! Not just write better
 code but also better tests! So let us keep building upon what we have
 learnt so far.
 
-Let us  start writing tests  for more realistic test  cases. Generally
-tests  are predetermined  as said  above, if  not the  code  itself is
-flawed. The predetermined tests are stored along with the test code in
-some  persistent way  like  in a  database,  a text  file,  a file  of
-specific format  like XML or  in other way.  Let us continue  with our
-example of  GCD function. We  will keep all  our test cases in  a text
-file,  which  is  indeed   persistent.  Let  our  file  have  multiple
-lines. Each line in this file  corresponds to a single test case. Each
-line consists of  three coloumns: first two coloumns  are the integers
-for  which the GCD  has to  be computed  and the  last coloumn  is the
-expected GCD  to the  preceding two  numbers. So how  do we  write our
-tests  to use  these  test cases?  Pretty  simple, let  us review  the
-machinery required first.
+Let us start writing tests for more realistic test cases. Generally
+tests are predetermined as said above, if not the software design in
+itself is flawed. The predetermined tests are stored along with the
+test code in some persistent format like in a database, a text file, a
+file of specific format like XML or in some other way. Let us continue
+with our example of GCD function. We will keep all our test cases in a
+text file, which is indeed persistent. Let us specify the format of
+the test data in our file as follows.
 
-  1. File reading: We already have learnt this in our chapters on
+  1. The file has multiple lines of test data.
+  2. Each line in this file corresponds to a single test case.
+  3. Each line consists of three comma separated coloumns:
+
+     i. First two coloumns are the integers for which the GCD has to
+        be computed
+     ii. Third coloumn is the expected GCD to the preceding two
+         numbers.
+
+So how do we write our tests to use these test cases? Pretty simple, let
+us review the machinery required first.
+
+  1. File reading: We already have learnt this in the modules on
      Basic Python.
-  2. Parsing read data from file: This just involves a for loop over
-     the data since we know that file contains lines which are
-     equivalent to file records and hence parse the data line by line
-     as strings as we iterate Over it and convert it to required data
-     type.
+  2. Parsing the read data from the file: This just involves a using a
+     **for** loop which iterates over the data line by line since we
+     know that the file contains each test case as a sepate line which
+     are equivalent to the file records and hence parse the data line
+     by line as strings as we iterate over it and convert it to the
+     required data type.
 
 Since we already have all the machinery required, let us proceed writing
-our test cases.
+our test cases. We do not need not make any changes to the gcd
+function so we will just write down the test here. Let us call our
+data file gcd_testcases.dat::
 
+  if __name__ == '__main__':
+      for line in open('gcd_testcases.dat'):
+          values = line.split(', ')
+          a = int(values[0])
+          b = int(values[1])
+          g = int(values[2])
 
+          tc = gcd(a, b)
+          if tc != g:
+              print "Test failed for the case a=%d and b=%d. Expected %d. Obtained %d instead." % (a, b, g, tc)
+              exit(1)
 
+      print "All tests passed!"
 
+When we execute the gcd.py script again we will notice that all the
+tests passed.
 
-%%%%%%%%% Much Later %%%%%%%%%%%%%%%%%
-The idea of placing the tests with in the Python scripts and to
-execute them when the script is run as a stand-alone script works well
-as long as we have our code in a single Python file or the tests for
-each script can be run separately. But in a more realistic software
-development scenario, often this is not the case. The code is spread
-around multiple Python scripts, each Python script also being called
-as a Python module, and across several Python packages. In such a
-scenario we may want to do more.
+Running at the **nose**
+=======================
+
+Not too far ahead we go we will start running at the nose saying of
+Python developers saying that this is not sufficient to write
+complicated tests in an efficient manner and writing tests for the
+programs are so important that Python should provide a tool for
+managing large tests. To further explain, the idea of placing the
+tests with in the Python scripts and to execute them when the script
+is run as a stand-alone script works well as long as we have our code
+in a single Python file or as long as the tests for each script can be
+run separately. But in a more realistic software development scenario,
+often this is not the case. The code is spread around multiple Python
+scripts, each script also called as a Python module, and also across
+several Python packages.
+
+In such a scenario what we would like to do is to create a separate
+directory for holding these test. The structure of this directory is
+the exact replica of the Python package hierarchy of our software to
+be tested. This structure is especially useful because of the fact
+that we have a one to one correspondence to our code and to its test.
+Hence it is easy for us to navigate through the tests as we maintain
+the existing tests and to add new tests as the code evolves. We have a
+collection of tests in the specified structure. Any collection of
+tests is called as the test suite for the *software package*. Hence we
+shall call this directory of tests as our test suite.
+
+Fine we have all these, but how do we make our tests aware that they
+are the tests for such and such a Python module or code and when
+executed must test that corresponding code? To make the lives of
+Python developers and testers easy Python provides a very handy tool
+called as **nose**. The name should have been pretty evident from the
+heading of this section! So in the rest of this module let us discuss
+how to use **nose** to write, maintain and extend our tests as the
+code evolves.
