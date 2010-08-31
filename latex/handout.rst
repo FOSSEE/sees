@@ -458,7 +458,7 @@ You can also include source code files directly into your latex document, using 
 This command includes the first 20 lines of the file ``lstexample.py`` into out LaTeX document. 
 
 Tables, Figures, Floats, & Referencing
----------------------------------------------
+--------------------------------------
 
 Tables
 ~~~~~~
@@ -537,6 +537,7 @@ A few ``optional arguments``:
 ::
 
   \includegraphics[scale=0.8, angle=30]{lion_orig.png}
+
 
 Floats
 ~~~~~~
