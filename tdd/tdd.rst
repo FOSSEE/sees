@@ -216,5 +216,51 @@ Much shorter and sweeter! And it passes all the tests!
 More realistic "Tests"
 ======================
 
-Now we have completed writing our first test. Let us start writing tests
-for more realistic
+
+Now we have successfully completed writing our first test, writing the
+relevant code and ensured the tests passed. We also refactored our
+code to perform better. With the knowledge of all these and some
+concepts and semantics like __main__ magic names we learnt we have
+come a long way with respect to writing tests. But our thirst is still
+unquenched! We want to do more and more tests! Not just write better
+code but also better tests! So let us keep building upon what we have
+learnt so far.
+
+Let us  start writing tests  for more realistic test  cases. Generally
+tests  are predetermined  as said  above, if  not the  code  itself is
+flawed. The predetermined tests are stored along with the test code in
+some  persistent way  like  in a  database,  a text  file,  a file  of
+specific format  like XML or  in other way.  Let us continue  with our
+example of  GCD function. We  will keep all  our test cases in  a text
+file,  which  is  indeed   persistent.  Let  our  file  have  multiple
+lines. Each line in this file  corresponds to a single test case. Each
+line consists of  three coloumns: first two coloumns  are the integers
+for  which the GCD  has to  be computed  and the  last coloumn  is the
+expected GCD  to the  preceding two  numbers. So how  do we  write our
+tests  to use  these  test cases?  Pretty  simple, let  us review  the
+machinery required first.
+
+  1. File reading: We already have learnt this in our chapters on
+     Basic Python.
+  2. Parsing read data from file: This just involves a for loop over
+     the data since we know that file contains lines which are
+     equivalent to file records and hence parse the data line by line
+     as strings as we iterate Over it and convert it to required data
+     type.
+
+Since we already have all the machinery required, let us proceed writing
+our test cases.
+
+
+
+
+
+%%%%%%%%% Much Later %%%%%%%%%%%%%%%%%
+The idea of placing the tests with in the Python scripts and to
+execute them when the script is run as a stand-alone script works well
+as long as we have our code in a single Python file or the tests for
+each script can be run separately. But in a more realistic software
+development scenario, often this is not the case. The code is spread
+around multiple Python scripts, each Python script also being called
+as a Python module, and across several Python packages. In such a
+scenario we may want to do more.
