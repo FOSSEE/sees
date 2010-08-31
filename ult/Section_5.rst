@@ -1,18 +1,3 @@
-Module Objectives:
-==================
-
-After successfully completing this module a participant will be able to: ::
-
-  - Understand
-    * What are archives and zipped files                              U
-    * What are environment variables				      U
-    * What are Shell Scripts					      U
-  - Able to use file comparison commands like 			      Ap
-    diff, cmp, comm
-  - Create and extract archives(.tar files) and zipped files(.gz)     Ap
-  - Set/Modify environment as per need	    	                      Ap
-  - Create shell scripts to automate tasks.			      Ap
-
 tar:
 ====
 
@@ -23,7 +8,7 @@ In world of Linux based distribution, *tarballs* is the term which pops up very 
 
 GNU tar creates and manipulates archives which are actually collections of many other files; the program provides users with an organized and systematic method for controlling a large amount of data. It is basically form of creating archive by concatenating one or more files. 
 
-Getting Started(go go go!):
+Getting Started:
 ---------------------------
 
 As mentioned previously and if not, *The best way to get started with any command line tool of Linux is to use "man".* ::
@@ -151,12 +136,6 @@ To extract any particular file from archive, mention the name of file after *x* 
    second.txt
    
     
-Further Reading for this section:
----------------------------------	
-	
-	* http://en.wikipedia.org/wiki/Tar_(file_format)
-	* http://www.gnu.org/software/tar/manual/tar.html 
-	* http://linuxreviews.org/beginner/
 
 GZip:
 =====
@@ -196,7 +175,7 @@ Similar to *tar* command, one can also use *`-v`* option here to see the output 
     second.txt:	 -4.8% -- replaced with second.txt.gz
     third.txt:	  3.8% -- replaced with third.txt.gz    
 
-For files of very small sizes and some other cases, one might end up with a zipped file whose size is greater then original file, but compression is always performed(so don't be disheartened in the above case, as files are larger :P). So unlike tar, here all files are zipped separately by default, to make them part of one single chunk one can use some *pipes* and *redirections* ::
+
 
     $ gzip -c *.txt > all.gz 
 
@@ -212,7 +191,9 @@ For creating a zip archive of a complete directory, one has to use *`-r`* option
     ./allfiles.tar:	 96.6% -- replaced with ./allfiles.tar.gz
     ./fourth.txt:	 -7.1% -- replaced with ./fourth.txt.gz
 
-Hence one always sees files like xxxxx.tar.gz, to create a zip of whole directory in a single file, first archive everything inside a folder and then use gzip on that. For zipping the files using tar itself, one has to use the option *`g`*. ::
+Hence one always sees files like something.tar.gz, to create a zip of whole directory in a single file, first archive everything inside a folder and then use gzip on that. For zipping the files using tar itself, one has to use the option *`g`*. ::
+
+
 
     $ tar -cvzf zipped.tar.gz *.txt 
     first.txt
@@ -228,7 +209,7 @@ gzip command comes with a option *`-l`* to view the compressed file contents: ::
              compressed        uncompressed  ratio uncompressed_name
                 332               10240      97.0% zipped.tar
 
-Other feature of gzip is option for mentioning the kind of compression one wants. There is a option of *`-n`* where *n varies from 0 to 9* which regulate the speed/quality of compression. With *`-1`* or *`--fast`* option it means the fastest compression method (less compression) and *`--best`* or *`-9`* indicates the slowest compression method, default compression level is *`-6`*.
+
 
 To decompress a already compressed file there are two options, either use *`gunzip`* command or use *`-d`* option with gzip command: ::
 
@@ -263,15 +244,7 @@ Linux based distributions also have some utilities for checking the content of f
 cmp:
 ----
 
-If one wants to compare two files whether they are same or not, one can use this handy tool. Let us consider some situation, we run find/locate command to locate some file, and it turns out that we have a file with same name in different location, and in case we want to run a quick check on there content, cmp is the right tool. For my system I perform these tasks to illustrate the use of this command: ::
-
-   $ find . -name quick.c
-   ./Desktop/programs/quick.c
-   ./c-folder/quick.c
-   $ cmp Desktop/programs/quick.c c-folder/quick.c
-   $
-
-For me it returns nothing, hence that means both the files are exact copy of each other, by default, cmp is silent if the files are the same. Make some changes in one of the file and rerun the command. For me it works like this: ::
+If one wants to compare two files whether they are same or not, one can use this handy tool. Let us consider some situation, we run find/locate command to locate some file, and it turns out that we have a file with same name in different location, and in case we want to run a quick check on there content, cmp is the right tool. Usage  ::
 
    $ cmp Desktop/programs/quick.c c-folder/quick.c
    Desktop/programs/quick.c c-folder/quick.c differ: byte 339, line 24
@@ -283,9 +256,9 @@ diff:
 
 Now there are situations when one wants to exactly know the differences among two files, for them, GNU diff can show whether files are different without detailing the differences. For simple and basic usage of this programs, consider following example: ::
 
-    $ echo -e "quick\nbrown\nfox\njumped\nover\nthe\nlazy\ndog" > allcharacters.txt
-    $ echo -e "quick\nbrown\nfox\njmuped\nover\nteh\nlzay\ndog" > problem.txt
-    $ diff problem.txt allcharacters.txt 
+    $ echo -e "quick\nbrown\nfox\njumped\nover\nthe\nlazy\ndog" > allcorrect.txt
+    $ echo -e "quick\nbrown\nfox\njmuped\nover\nteh\nlzay\ndog" > incorrect.txt
+    $ diff problem.txt allc.txt 
     4c4
     < jmuped
     ---
@@ -299,7 +272,7 @@ Now there are situations when one wants to exactly know the differences among tw
 
 Looking at results above mentioned it is very trivial to deduce that, diff if used on two separate text files will result in line by line results for all the lines which are different. So most common use case scenario can be, got some files in various location of system with same name and size, just run diff through them and remove all the redundant files. Other similar command which one can find more effective for this can be *sdiff*, for the same files using sdiff will result in: ::
 
-    $ sdiff problem.txt allcharacters.txt 
+    $ sdiff incorrect.txt allcorrect.txt 
     quick								quick
     brown								brown
     fox									fox
@@ -309,18 +282,13 @@ Looking at results above mentioned it is very trivial to deduce that, diff if us
     lzay							      |	lazy
     dog								      	dog   
 
-Some exercise for a change:
- 
-     * Try using diff for any binary file, does it work? 
-     * What are other equivalent for diff command based on needs/requirements?
-     * Can we use diff to compare two directories? If yes how?
 
 comm:
 -----
 
 This is one more command which proves handy at times, the short and sweet man page states "compare two sorted files line by line". Or this it compares sorted files and selects or rejects lines common to two files. For ex: ::
 
-   $ sort allcharacters.txt>sortedcharac.txt; sort problem.txt>sortedprob.txt
+   $ sort allcorrect.txt>sortedcharac.txt; sort incorrect.txt>sortedprob.txt
    $ comm sortedcharac.txt sortedprob.txt 
 		brown
 		dog
@@ -339,12 +307,12 @@ Environment Variables:
 
 These variables like HOME, OSTYPE,Variables are a way of passing information from the shell to programs when you run them. Programs look "in the environment" for particular variables and if they are found will use the values stored. Standard UNIX variables are split into two categories, environment variables and shell variables. In broad terms, shell variables apply only to the current instance of the shell and are used to set short-term working conditions; environment variables have a farther reaching significance, and those set at login are valid for the duration of the session.By convention, environment variables have UPPER CASE and shell variables have lower case names.  
 
-Some of examples of Environment variables are(result may vary!): ::
+Some of examples of Environment variables are: ::
 
    $ echo $OSTYPE 
    linux-gnu
    $ echo $HOME
-   /home/baali 
+   /home/user 
 
 To see all the variables and there values use any of following commands: ::
 
@@ -362,15 +330,8 @@ See the difference in value of PATH variable before and after modifying it. One 
 
 *set* command is used to define a variable for the current shell. Try opening a new shell and use the above mentioned command, it wont work as expected. The other child process wont be able to see these variables unless we *export* them. Repeat the above mentioned activity with *export* command. Now with all new shells, *$repo* will work.
 
-Again these changes are limited to current session. To make them permanent or get loaded each time you log in, just add those lines to *.bashrc* file. 
 
-Further Reading:
-----------------
 
-	* http://lowfatlinux.com/linux-environment-variables.html
-	* http://www.codecoffee.com/tipsforlinux/articles/030.html
-	* http://www.ee.surrey.ac.uk/Teaching/Unix/unix8.html
-	* http://en.wikipedia.org/wiki/Environment_variable	
 
 
 Shell Scripting:
@@ -382,7 +343,7 @@ Basics:
 Shell program or shell script,a sequence of commands to a text file and tell the shell to execute the text file instead of entering the commands. The first *"Hello World"* sample for shell scripting is as easy as it sounds: ::
 
    $ echo '#!/bin/sh' > my-script.sh
-   $ clear >> my-script.sh   
+   $ echo 'clear' >> my-script.sh   
    $ echo 'echo Hello World' >> my-script.sh
    $ chmod 755 my-script.sh
    $ ./my-script.sh
@@ -408,9 +369,9 @@ The $1 in the script is pertaining to command line argument. All arguments passe
    echo "Last modified: $last_modified"    
    $ ./search.sh fname
 
-Try giving some file you want to search in place of fname. Please note in second line *`* its a back-quote(other key mapped with tilda), it is specifically used to get the output of one command into a variable. In this particular case name is a User defined variables (UDV) which stores the value. We access value stored in any variable using *$* symbol before name of variable.
+Try giving some file you want to search in place of fname. Please note in second line *`* its a back-quote(other key mapped with tilda), it is specifically used to get the output of one command into a variable. In this particular case name is a User defined variables  which stores the value. We access value stored in any variable using *$* symbol before name of variable.
 
-naming conventions for variables?? do we need them??
+
 
 Shell Arithmetic:
 -----------------
@@ -483,7 +444,7 @@ This script will compare the first value passed as argument with 0 *if test var 
      fi
    fi
 
-One important thing to not in shell script is spacing, with many comparison and evaluation operation a wrongly placed space will spoil all the fun. So in previous example the expression *[ $# -eq 0 ]* will work properly, but if we remove those leading or trailing spaces like *[ $# -eq 0]*, it wont work as expected, or rather throw a warning. Both *test* and *[]* do the same task of testing a expression and returning true or false.
+One important thing to note in shell script is spacing, with many comparison and evaluation operation a wrongly placed space will spoil all the fun. So in previous example the expression *[ $# -eq 0 ]* will work properly, but if we remove those leading or trailing spaces like *[ $# -eq 0]*, it wont work as expected, or rather throw a warning. Both *test* and *[]* do the same task of testing a expression and returning true or false.
 
 Lets create something interesting using these if-else clause. Now we will create a script which will greet the user when he opens the shell. We will create the script, change the permission to make it executable and append the *.bashrc* file with *./greet.sh* line and we are done. The script is: ::
 
@@ -509,7 +470,7 @@ Lets create something interesting using these if-else clause. Now we will create
 
 For me when I open the shell the output is something like: ::
 
-   Good Morning baali, Have a nice day!
+   Good Morning user, Have a nice day!
    This is Wednesday 16 in September of 2009 (11:54:47 AM IST) 
 
 Loops
@@ -558,16 +519,16 @@ Now, we have each file printed on a separate line. Depending on the files that w
     echo "$i -> $j"
   done
 
-Now we just replace the echo command with a ``mv`` or a ``cp`` command. 
+Now we just replace the echo command with a ``mv``  command. 
 ::
 
   for i in *.mp3
   do 
     j=$(echo "$i"|grep -o "[A-Za-z'&. ]*.mp3")
-    cp "$i" "$j"
+    mv "$i" "$j"
   done
 
-As an exercise, you could try sorting the files in reverse alphabetical order and then prefix numbers to each of the filenames.  
+
 
 ``while``
 ~~~~~~~~~
@@ -646,14 +607,10 @@ Now lets try and use these above mentioned options provided by shell to write a 
 Functions
 ---------
 
-When a group of commands are repeatedly being used within a script, it is convenient to group them as a function. This saves a lot of time and you can avoid retyping the code again and again. Also, it will help you maintain your code easily. Let's see how we can define a simple function, ``hello-world``. Functions can be defined in bash, either using the ``function`` built-in followed by the function name or just the function name followed by a pair of parentheses. 
+When a group of commands are repeatedly being used within a script, it is convenient to group them as a function. This saves a lot of time and you can avoid retyping the code again and again. Also, it will help you maintain your code easily. Let's see how we can define a simple function, ``hello-world``. Function can be defined by using function name followed by a pair of parentheses. 
 ::
 
-  function hello-world
-  { 
-  echo "Hello, World."; 
-  }
-
+  
   hello-world () {
     echo "Hello, World.";
   }
@@ -664,21 +621,40 @@ When a group of commands are repeatedly being used within a script, it is conven
 Passing parameters to functions is similar to passing them to scripts. 
 ::
 
-  function hello-name
+
+  #! /bin/bash
+
+  hello-name()
+  {
+     echo  "hello ". $1
+        
+  }
+
+  hello-name $1
+
+
+  #!usr/bin/bash
+  hello-name
   { 
   echo "Hello, $1."; 
   }
 
-  $ hello-name 9
+  hello-name $1
+
+  save this in a file helloscipt.sh and give it execute permission
+  
+
+  $ ./helloscipt 9
   Hello, 9.
 
 Any variables that you define within a function, will be added to the global namespace. If you wish to define variables that are restricted to the scope of the function, define a variable using the ``local`` built-in command of bash.
 
+  
 We shall now write a function for the word frequency generating script that we had looked at in the previous session. 
 
 ::
 
-  function word_frequency {
+  word_frequency() {
     if [ $# -ne 1 ]
     then
       echo "Usage: $0 file_name"
@@ -691,13 +667,8 @@ We shall now write a function for the word frequency generating script that we h
     fi
   }
 
-As an exercise, modify the function to accept the input for the number of top frequency words to be shown (if none is given, assume 10).
+ word_frequency  $1
 
 
-Further Reading:
----------------- 
-	* http://www.freeos.com/guides/lsst/ 
-	* http://bash.cyberciti.biz/guide/Main_Page
-	* http://tldp.org/LDP/abs/html/
-	* http://tldp.org/LDP/Bash-Beginners-Guide/html/Bash-Beginners-Guide.html
+
 	

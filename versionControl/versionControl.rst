@@ -21,7 +21,7 @@ Suggested Reading:
 +---------+---------------------------------+---------+
 | Session | Topic  			    | Duration|
 +=========+=================================+=========+
-| 1	  | Introduction to Course          | 5 mts   |
+| 1	  | Introduction to Course          | 10 mts  |
 +---------+---------------------------------+---------+
 | 2	  | Why Revision Control?           | 5 mts   |
 |	  |	- Use case: for team	    |	      |
