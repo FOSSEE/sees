@@ -1,0 +1,133 @@
+% Created 2010-08-31 Tue 18:51
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{soul}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\providecommand{\alert}[1]{\textbf{#1}}
+
+\title{Lab Workbook --- \LaTeX}
+\author{FOSSEE}
+\date{August, 2010}
+
+\begin{document}
+
+\maketitle
+
+\setcounter{tocdepth}{3}
+\tableofcontents
+\vspace*{1cm}
+
+\section{Lab-1}
+\label{sec-1}
+
+
+\begin{enumerate}
+\item Compile and produce a pdf output of \texttt{example1.tex}.
+\item Modify \texttt{example1.tex} replacing \texttt{LaTeX} with \texttt{\textbackslash{}LaTeX}.
+\item Add a title, author and date to the document.
+\item What happens if \texttt{\textbackslash{}date} is replaced by \texttt{\textbackslash{}date\{IIT, Bombay\}} ?
+\item Debug and compile examples 2, 3, 4, 5
+\item Provide a document (pdf and source) with a TOC, but has been
+     compiled only once. Exercise for Debugging.
+\item What happens when you add the following \LaTeX{} code to the
+     document from the previous question? 
+     
+\begin{verbatim}
+      \renewcommand{\contentsname}{What is Here?}
+\end{verbatim}
+
+\item Experiment with setting the secnumdepth counter to 1, 0, -1.
+\item Debug and compile example 6.
+\item Experiment with the options of \texttt{\textbackslash{}documentclass}.
+
+\begin{itemize}
+\item 10pt, 11pt, 12pt sets the size of the text of the document.
+\item onecolumn, twocolumn
+\item draft --- makes \LaTeX{} highlight problems in typesetting to
+        be looked at by a human.
+\end{itemize}
+
+\end{enumerate}
+\section{Lab-2}
+\label{sec-2}
+
+
+\begin{enumerate}
+\item \texttt{\textbackslash{}newpage} command adds a page break. Add some page breaks to
+     example 6 and see how the command works.
+\item Try out the commands \texttt{\textbackslash{}pagestyle} and \texttt{\textbackslash{}thispagestyle} with the
+     following parameters and look at the outputs obtained.
+
+\begin{itemize}
+\item \texttt{empty},
+\item \texttt{plain},
+\item \texttt{heading}
+\end{itemize}
+
+\item Add the following description list describing the options to
+     \texttt{\textbackslash{}includegraphics} command to a document and look at the output. 
+
+\begin{verbatim}
+\begin{description}
+\item[{\texttt{width=x}, \texttt{height=x}}] 
+If only the height or width is specified, the image is scaled, maintaining the aspect ratio.
+
+\item[{\texttt{keepaspectratio}}]  
+This parameter can either be set to true or false. When set to true, the image is scaled according to both width and height, without changing the aspect ratio, so that it does not exceed both the width and the height dimensions.
+
+\item[{\texttt{angle=x}}] 
+This option can be used to rotate the image by \texttt{x} degrees, counter-clockwise.
+
+\end{description}
+\end{verbatim}
+\item \texttt{\textbackslash{}ldots} is used to get ellipsis in \LaTeX{} documents.
+\item Read the manual of listings package and learn how to include a
+     set of lines from a file into a \LaTeX{} document. Include a few
+     lines from your previous lab exercises of ULT.
+\item To change the line spacing of your document
+     \texttt{\textbackslash{}usepackage\{setspace\}} and then specify the line spacing of
+     your document, using \texttt{\textbackslash{}doublespace}, \texttt{\textbackslash{}onehalfspace}, etc.
+\item Debug and compile examples 9, 10
+\end{enumerate}
+\section{Lab-3}
+\label{sec-3}
+
+
+\begin{enumerate}
+\item Debug and compile example 7.
+\item BibTeX is another way of handling bibliography. Look at
+       bibtex.rst and change draft.tex to use BibTeX.
+\item As you would've already observed, \LaTeX{} compilation produces a
+       lot of other files along with the pdf output.
+
+\begin{itemize}
+\item .log --- gives a log of what happened during last
+         compilation.
+\item .toc --- stores section headers. Edit this file and observe
+         changes in this document to see how the compilation of \LaTeX{}
+         works and why two compilations are required for table of
+         contents to work.
+\item .aux --- used to share information between consecutive
+         compiler runs.
+\end{itemize}
+
+\item Prepare a presentation in beamer with solutions to any 10
+       problems from the Lab workbook.
+\item Debug and compile example 8.
+\item Finish the incomplete parts of the draft to obtain the complete
+       output of the sample document that we started out to prepare.
+\end{enumerate}
+
+\end{document}
