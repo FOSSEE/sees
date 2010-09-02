@@ -1,34 +1,24 @@
 Introducing Linux
 =================
 
-We are here to welcome you to Linux. GNU/Linux is an operating system that is similar to the UNIX operating system, but is open source software. Being an open source program means that (if you wanted to) you could view the source code of the operating system and change it to suit your needs. 
+GNU/Linux is an  operating system that uses the Linux Kernel. It is similar to the Unix operating system. It is an open source operating system which basically means you can view and change the code.  
 
-The name "Linux" properly refers to an operating system "kernel", a single but key component of a complete operating system. In everyday use, the term "Linux" is frequently used to refer to a complete operating system which consists of the kernel and some of the thousands of other programs required to make an operating system useful. Much of the important system software that is typically installed on a Linux system comes from The GNU Project, a project to build an operating system made entirely of free software.
-The first Linux kernel was created by Linus Torvalds. It was started as an x86-only, single processor operating system, but grew to become one of the most ported pieces of software. Other parts of a complete GNU/Linux system come from other projects such as the GNU project, and are integrated into a complete GNU/Linux OS by your supplier. Usually your supplier will assign their own version number to the integrated whole.This collection of the kernal and programs maintained by vendor is called distro or distribution.
-The GNU Project is overseen by the Free Software Foundation. The Free Software Foundation was founded by Richard Stallman. Stallman believes that the people should use the term "GNU/Linux" to refer to such an operating system, because so many of the required programs were in fact, written as part of the GNU Project.
-
-
+The Linux Kernel written by Linus Torvalds in 1991. Although written only for x86 architecture , it was ported to many other architectures.The whole operating system contains the kernel and several other system and application software contributed by many different projects. A major contributor has been the GNU project. GNU project was started by Richard Stallman in 1983. Richard Stallman wrote the GNU General Public License which gave the first impetus to the free software movement leading up do development of the family of Linux operating systems that we see today . 
 
 Design and Implications
 ------------------------
 
-A Linux-based system is a modular Unix-like operating system, deriving much of its basic design from principles established in Unix earlier. Such a system uses a monolithic kernel, called the Linux kernel, which handles process control, networking, and peripheral and file system access. Device drivers are integrated directly with the kernel. Separate projects that interface with the kernel provide much of the system's higher-level functionality. The GNU userland is an important part of most Linux-based systems, providing the most common implementation of the C library, a popular shell, and many of the common Unix tools which carry out many basic operating system tasks. The graphical user interface (or GUI) used by most Linux systems is based on the "X Window System".
-
-
-
-
+Linux is a modular operating system, deriving much of its basic design from principles established in Unix earlier. The kernel  manages the systems resources like process control, networking, peripherals and file system access. Application Software written on top of it gives higher level functionality. 
 
 Reasons for Using Linux
 -----------------------
 - Linux is free:
 
 As in "free beer". Linux can be downloaded in its entirety from the Internet completely for free. No registration fees, no costs per user, free updates, and freely available source code in case you want to change the behavior of your system.
-Most of all, Linux is free as in "free speech":
 
+- Linux can be deployed easily on clusters for parallel and distributed computing 
 
-- Linux is portable to any hardware platform:
-
-A vendor, who wants to sell a new type of computer and who does not know what kind of OS his/her new machine will run, can take a Linux kernel and make it work on his/her hardware, because documentation related to this activity is freely available.
+There are many distributions of Linux meant for clusters. One of the popular ones is Rocks Cluster Distribution.   
 
 - Linux was made to keep on running:
 
@@ -36,11 +26,11 @@ As with UNIX, a Linux system expects to run without rebooting all the time. That
 
 - Linux is secure and versatile:
 
-The security model used in Linux is based on the UNIX idea of security, which is known to be robust and of proven quality. But Linux is not only safe from attacks from the Internet: it will adapt equally to other situations, utilizing the same high standards for security.
+The security model used in Linux is based on the UNIX idea of security, which is known to be robust and of proven quality. 
 
-- Linux is scalable:
+- Linux contains a tools for scientific computing
 
-From a Palmtop with 2 MB of memory to a petabyte storage cluster with hundreds of nodes: add or remove the appropriate packages and Linux fits all. 
+Linux contains many tools like latex for reading and writing scientific text. It also contains many softwares like scilab , python and fortran used for scientific computing needs. 
 
 
 
@@ -49,27 +39,29 @@ Getting Started
 
 Logging in, activating the user interface and logging out
 ----------------------------------------------------------
-In order to work on a Linux system directly, one needs to provide a user name and password. You always need to authenticate to the system. Most PC−based Linux systems have two basic modes for a system to run in: either quick and clean in text console mode,which includes with mouse, multitasking and multi−user features, or in graphical console mode.
+Linux supports multiple users on a machine. Each user must log in with his or her username and password.
+
+In order to work on a Linux system directly, one needs to provide a username and password. You always need to authenticate to the system. After booting , you will see a login screen/prompt asking for username and password , enter the username and password , if it is correct you will be logged in . One can logout by typing logout on the prompt or navigating to logout button if using Graphical User Interface . 
 
 
-
-When you see the login screen again, asking to enter user name and password, logout was successful.
+When you see the login screen again, asking to enter username and password, logout was successful.
 
 
 Basic Commands
 ===============
 
-ls
----
+What files do I have on my computer?
+-------------------------------------
 
+All content in Linux  is kept on data structure called files.We can list those files to know what all is there.
 *ls* lists the files in the current working directory. A directory that is not the current working directory can be specified and ls will list the files there.::
 
 
 	$ ls
-	jeeves.rst psmith.html blandings.html
+	jeeves.rst psmith.html blandings.html Music
 
-cd
----
+How do I move around the file system?
+-------------------------------------
 
 This stands for "change directory". When one wants to change the directory .
 
@@ -77,50 +69,49 @@ This stands for "change directory". When one wants to change the directory .
 
 One dot '.' represents the current directory while two dots '..' represent the parent directory.
 
-“ cd -” will return you to the previous directory (a bit like an “undo”).
+“ cd -” will return you to the previous directory.
 
-You can also use cd absolute path or cd relative path (see below):
+You can also use cd [absolute path] or cd [relative path] (see below):
 
 Absolute paths:
 
-    An “ absolute path” is easily recognised from the leading forward slash, /. The / means that you start at the top level directory and continue down.
+Absolute Path is the path of the directory from root i.e / . / is the top most level in file system.
 
-For example to get to /boot/grub you would type::
+For example to get to /var/www you would type::
 
-	$cd /boot/grub
+	$cd /var/www
 
 This is an absolute path because you start at the top of the hierarchy and go downwards from there (it doesn't matter where in the filesystem you were when you typed the command).
 
 Relative paths:
 
-    A “ relative path” doesn't have a preceding slash. Use a relative path when you start from a directory below the top level directory structure. This is dependent on where you are in the filesystem.
+   Releative Path is path in relation to your current location . 
 
-    For example if you are in root's home directory and want to get to /root/music, you type::
+    For example if you are in Music directory and want to get to Rock directory inside Music, you type::
 
-	$ cd music
+	Music$ cd Rock
 
 Please note that there is no / using the above cd command. Using a / would cause this to be an absolute path, working from the top of the hierarchy downward.
 
-who
-----
+Linux is multiuser system so *who* all are using my system now?
+--------------------------------------------------------
 
-The standard Unix command *who* displays a list of users who are currently logged into a computer.
+The standard Unix command *who* displays a list of users who are currently logged into a computer.::
 
-The *who* command is related to the command *w*, which provides the same information but also displays additional data and statistics.::
+
 
 	$who
-	beeblebrox tty7         2009-09-08 10:50 (:0)
-	beeblebrox pts/0        2009-09-08 11:25 (:0.0)
+	user       tty7         2009-09-08 10:50 (:0)
+	harry      pts/0        2009-09-08 11:25 (:0.0)
 	dumbledore pts/1        2009-09-08 18:11 (potter.xyz.in)
-	beeblebrox pts/2        2009-09-08 18:53 (:0.0)
 
-
+The columns represent user, current terminal , date and time of login and the host from which he is logged in respectively. 
 The command can be invoked with the arguments *am i* or *am I* (so it is invoked as *who am i* or * who am I*), showing information about the current terminal only (see the *-m* option below, of which this invocation is equivalent).
 
 
 
-mkdir
------
+How do I organize my files?
+---------------------------
 
 This command is used to make a new directory. Normal usage is as straightforward as follows::
 
@@ -131,53 +122,43 @@ Where *name_of_directory* is the name of the directory one wants to create. When
 
 
 
-pwd
-----
+Where am I now in the filesystem?
+--------------
 pwd is a Linux / Unix command which prints the current working directory. If you wish to know the full path of the  directory in which you are in from the Linux console, then the pwd command will come to your rescue. pwd stands for Print Working Directory.
 
-pwd have one option called -P, which lists the current working directory with all the links resolved.
+Usage of pwd command::
 
-Usage of pwd command
-
-I have a directory called "Examples/" on my machine which is actually a soft link to the directory /usr/share/example-content/. 
-
-I move into the "Examples" directory and run the pwd command to get the following output.
-
-$ cd Examples
-$ pwd
-/home/laf/Examples
+      $ cd Examples
+      $ pwd
+      /home/user/Examples
 
 
-FLAGS
-~~~~~
+
+ I wish some commads were a bit smarter ? 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 The standard commands in Linux have a lot of options also called flags to change or provide some additional functionality to the command For example ::
       
        $ls -l 
        
-       * *ls with flag -l* displays the result in long format, displaying Unix file types, permissions, number of hard links, owner, group, size, date, and filename
+       * *ls with flag -l* displays the result in long format, displaying Unix file types, permissions, number of hard links, owner, group, size, date, and filename ::
+
+       $ls ­a 
+       * *ls with flag -a*  lists all files including hidden files
+
+
+Similarly, mkdir with -p option automatically creates parent directory even if it does not exist.::
+
+	   $mkdir -p this/path/never/existed/earlier/
+	    
 
 
 
 Getting Help
 ============
 
-apropos and whatis
--------------------
-
-This is a command to search the manual pages files in Unix and Unix-like operating systems. ::
-
-	$ apropos grep
-	egrep       egrep (1)       Search a file for a pattern using full regular expressions
-	fgrep       fgrep (1)       Search a file for a fixed-character	string
-	fmlgrep     fmlgrep (1)     Search a file for a pattern
-	grep        grep (1)        Search a file for a pattern
-	gzgrep      gzgrep (1)      Search a possibly compressed file for a regular expression
-	nisgrep     nismatch (1)    Utilities for searching NIS+ tables
-	pgrep       pgrep (1)       Find or signal a process by name or other attribute
-	zgrep       zgrep (1)       Search a possibly compressed file for a regular expression
-	...
-
-In this example, the user uses *apropos* to search for the string "grep", and apropos returns the indicated *man* pages that include the term "grep".
+How do I find what a command does?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A short index of explanations for commands is available using the *whatis* command, like in the examples below::
 
@@ -186,23 +167,8 @@ A short index of explanations for commands is available using the *whatis* comma
 
 This displays short information about a command, and the first section in the collection of man pages that contains an appropriate page.
 
-If you don't know where to get started and which man page to read, *apropos* gives more information. Say that you do not know how to start a browser, then you could enter the following command::
-
-	$apropos browser
-	gmusicbrowser (1)    - Jukebox for large collections of audio files
-	infobrowser (1)      - read Info documents
-	libsmbclient (7)     - An extension library for browsers and that 		can be used...
-	opera (1)            - a standards-compliant graphical Web browser
-	sensible-browser (1) - sensible editing, paging, and web browsing
-	smbtree (1)          - A text based smb network browser
-	tvtk_doc (1)         - A GUI based TVTK documentation search browser.
-	viewres (1)          - graphical class browser for Xt
-	w3m (1)              - a text based Web browser and pager
-	www-browser (1)      - a text based Web browser and pager
-	...
-
-man
-----
+More extensive Documentation
+----------------------------
 
 Man pages (short for "manual pages") are the extensive documentation that comes preinstalled with almost all substantial Unix and Unix-like operating systems. The Unix command used to display them is *man*. Each page is a self-contained document.
 
@@ -210,78 +176,52 @@ To read a manual page for a Unix command, one can use::
 
 	$ man <command_name>
 
-at a shell prompt; for example, "man ftp". In order to simplify navigation through the output, *man* generally uses the less terminal pager.
-
 To see the manual on man itself do::
 
 	$man man
 
 The previous example will take you to the "Manual" page entry about manual pages!
 
-
-info
------
-
-*info* is a software utility which forms a hypertextual, multipage documentation and help viewer working on a command line interface, useful when there is no GUI available.
-
-The syntax is ::
-	
-	$ info <command_name>
-
-*info* processes info files, which are Texinfo formatted files, and presents the documentation as a tree, with simple commands to traverse the tree and to follow cross references. For instance
-
-    - *n* goes to the next page.
-    - *p* goes to the previous page.
-    - *u* goes to the upper page.
-    - *l* goes to the last(visited) node
-    - To follow a cross reference, the cursor can be moved over a link (a word preceded by a `*`) and enter pressed.
-
-info was initially written for use with GNU/Linux and then ported to other Unix-like operating systems.
+Looking at man pages is a very good way to actually check flags and other help related to a command. 
 
 --help
 -------
 
-Most GNU commands support the --help, which gives a short explanation about how to use the command and a list of available options. Below is the output of this option with the *cat* command::
+Most GNU commands support the --help, which gives a short explanation about how to use the command and a list of available options. Below is the output of this option with the *mkdir* command::
 
-	$ userprompt@host: cat --help
-	Usage: cat [OPTION] [FILE]...
-	Concatenate FILE(s), or standard input, to standard output.
+	$ mkdir --help
+	
+	Usage: mkdir [OPTION]... DIRECTORY...
+        Create the DIRECTORY(ies), if they do not already exist.
 
-	  -A, --show-all           equivalent to -vET
-	  -b, --number-nonblank    number nonempty output lines
-	  -e                       equivalent to -vE
-	  -E, --show-ends          display $ at end of each line
-	  -n, --number             number all output lines
-	  -s, --squeeze-blank      suppress repeated empty output lines
-	  -t                       equivalent to -vT
-	  -T, --show-tabs          display TAB characters as ^I
-	  -u                       (ignored)
-	  -v, --show-nonprinting   use ^ and M- notation, except for LFD and 		  TAB
-	  --help     display this help and exit
-      	  --version  output version information and exit
+        Mandatory arguments to long options are mandatory for short options too.
+          -m, --mode=MODE   set file mode (as in chmod), not a=rwx - umask
+          -p, --parents     no error if existing, make parent directories as needed
+          -v, --verbose     print a message for each created directory
+          -Z, --context=CTX  set the SELinux security context of each created
+                            directory to CTX
+          --help     display this help and exit
+          --version  output version information and exit
 
-	With no FILE, or when FILE is -, read standard input.
-
-	Examples:
-	  cat f - g  Output f's contents, then standard input, then g's 	  contents.
-	  cat        Copy standard input to standard output.
-
-	Report bugs to <bug-coreutils@gnu.org>.
+        Report mkdir bugs to bug-coreutils@gnu.org
+        GNU coreutils home page: <http://www.gnu.org/software/coreutils/>
+        General help using GNU software: <http://www.gnu.org/gethelp/>
+        Report mkdir translation bugs to <http://translationproject.org/team/>
 
 
 
 Basic file handling
 ===================
 
-cp
----
+Copying Files
+-------------
 
-*cp* is the command entered in a Unix shell to copy a file from one place to another, possibly on a different filesystem. The original file remains unchanged, and the new file may have the same or a different name.
+*cp* is the command to copy a file from one place to another including different file system(#change? ellaborate). The original file remains unchanged, and the new file may have the same or a different name.
 
 Usage
 ~~~~~
 
-To copy a file to another file::
+To copy a file to another file ::
 
 	$ cp  SourceFile TargetFile
 
@@ -293,103 +233,61 @@ To copy a directory to a directory::
 
 	$ cp  -r SourceDirectory  TargetDirectory
 
+In case target Directory has a file of the same name::
+   	
+	TargetDirectory$ls
+	jeeves.rst psmith.html
+
+	SourceDirectory$ls
+	jeeves.rst index.html
+	
+	$cp -i 	jeeves.rst TargetDirectory/
+	cp: overwrite 'TargetDirectory/jeeves.rst'? 
+
+-i option is for interactive usage.
+
+
 Flags
 ~~~~~
-
-
-*-P* – makes the cp command copy symbolic links. The default is to follow symbolic links, that is, to copy files to which symbolic links point.
-
 *-i* (interactive) – prompts you with the name of a file to be overwritten. This occurs if the TargetDirectory or TargetFile parameter contains a file with the same name as a file specified in the SourceFile or SourceDirectory parameter. If you enter y or the locale's equivalent of y, the cp command continues. Any other answer prevents the cp command from overwriting the file.
 
-*-p* (preserve) – duplicates the following characteristics of each SourceFile/SourceDirectory in the corresponding TargetFile and/or TargetDirectory:
 
-    * The time of the last data modification and the time of the last access.
-    * The user ID and group ID (only if it has permissions to do this)
-    * The file permission bits and the SUID and SGID bits.
+*-r* (recursive) – copy directories (recursively copying all the contents)
 
-*-R* (recursive) – copy directories (recursively copying all the contents)
 
-Examples
+Moving Files
+------------
+
+*mv* (short for move) is a Unix command that moves one or more files or directories from one place to another. The original file is deleted, and the new file may have the same or a different name.An interesting usage of mv is actualy to rename it by moving it in same directory under a different name. 
+
+
+
+Usage
 ~~~~~~~~
 
-To make a copy of a file in the current directory, enter::
 
-    $ cp prog.c prog.bak
+To rename a file ::
 
-This copies prog.c to prog.bak. If the prog.bak file does not already exist, the cp command creates it. If it does exist, the cp command replaces it with a copy of the prog.c file.
+   $ mv myfile mynewfilename  
 
-To copy a file in your current directory into another directory, enter::
+To move to a different directory ::
+   $ mv myfile otherdir/     
 
-    $ cp zaphod /home/books/hhgg
+To move a directory ::
+   
+   $mv mydir otherdir
 
-This copies the jones file to /home/books/hhgg/zaphod.
 
-To copy a file to a new file and preserve the modification date, time, and access control list associated with the source file, enter::
+Using -i to avoid overwrite(just like cp)::
+   
+   $mv -i mydir otherdir
+   mv: overwrite `otherdir/mydir'?
 
-    $ cp -p martin_luther_king martin_luther_king.jr
 
-This copies the *martin_luther_king* file to the *martin_luther_king.jr* file. Instead of creating the file with the current date and time stamp, the system gives the *martin_luther_king.jr* file the same date and time as the *martin_luther_king* file. The *martin_luther_king.jr* file also inherits the *martin_luther_king* file's access control protection.
+Removing files
+--------------
 
-To copy all the files in a directory to a new directory, enter::
-
-    $ cp /home/galactica/clients/* /home/hhgg/customers
-
-This copies only the files in the clients directory to the customers directory.
-
-To copy a directory, including all its files and subdirectories, to another directory, enter:
-
-    $ cp -R /home/hhgg/clients /home/hhgg/customers
-
-This copies the clients directory, including all its files, subdirectories, and the files in those subdirectories, to the customers/clients directory.
-
-To copy a specific set of files of any extension to another directory, enter::
-
-    $ cp zaphod arthur ford /home/hhgg/clients
-
-This copies the *zaphod*, *arthur*, and *ford* files in your current working directory to the /home/hhgg/clients directory.
-
-To use pattern-matching characters to copy files, enter::
-
-    $ cp programs/*.py .
-
-This copies the files in the programs directory that end with *.py* to the current directory, signified by the single "." (dot). You must type a space between the *py* and the final dot.
-
-mv
----
-
-*mv* (short for move) is a Unix command that moves one or more files or directories from one place to another. The original file is deleted, and the new file may have the same or a different name. If possible (i.e. when the original and new files are on the same file system), *mv* will rename the file instead. Write permission is required on all directories being modified.
-
-Conflicting existing file
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-In all cases, when a file is moved to have the name of an existing file (in the same directory), the existing file is deleted. If the existing file is not writable but is in a directory that is writable, then the mv command asks for confirmation if possible (i.e. if run from a terminal) before proceeding, unless the -f (force) option is used.
-
-Differences with copy and delete
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Note that, usually, when moving files within the same volume, moving (and/or renaming) is not the same as simply copying and then deleting the original. When moving a file, the link is simply removed from the old parent directory and added to the new parent directory. However, the file itself is untouched (i.e. it has the same inodes and resides at the same place on the disk). For example, you cannot copy a file you cannot read, but you can move (and/or rename) it (provided you have write permission to its old and new parent directories). Also, suppose there is a non-empty directory you do not have write permission to. You cannot delete this directory (since you cannot delete its contents); but you can move (and/or rename) it. Also, since moving between filenames on a single volume does not involve copying, it is faster and does not place strain of lots of reads and writes on the disk. Moving files across different volumes, however, does necessitate copying and deleting.
-
-Examples
-~~~~~~~~
-::
-
-	$ mv myfile mynewfilename    renames a file
-	$ mv myfile /myfile          moves 'myfile' from the current 		directory to the root directory
-	$ mv myfile dir/myfile       moves 'myfile' to 'dir/myfile' relative 		to the current directory
-	$ mv myfile dir              same as the previous command (the 		filename is implied to be the same)
-	$ mv myfile dir/myfile2      moves 'myfile' to dir and renames it to 		'myfile2'
-	$ mv foo bar baz dir         moves multiple files to directory dir
-	$ mv --help                  shows a very concise help about the 		syntax of the command
-	$ man mv                     prints an extensive user manual for 		'mv' in the terminal
-
-In all cases, the file or files being moved or renamed can be a directory.
-
-Note that when the command is called with two arguments (as *mv name1 name2* or *mv name1 /dir/name2*), it can have three different effects, depending on whether *name2* does not exist, is an existing file, or is an existing directory. If the user intends to refer to an existing directory, */.* (or in some Unix versions */* is sufficient) may be appended to the name to force the system to check this. To move a file to a new directory, the directory must be created first.
-
-rm
----
-
-*rm* (short for "remove") is one of several basic Unix command lines that operates on files. It is used to delete files from a filesystem. The data is not actually destroyed. Only the index listing where the file is stored is destroyed, and the storage is made available for reuse. There are undelete utilities that will attempt to reconstruct the index and can bring the file back if the parts were not reused.
+*rm*  is used to delete files from a filesystem. 
 
 Here's example to remove a file named "foo" from a directory, here shown with the -i option::
 
@@ -406,15 +304,13 @@ Common options that rm accepts include:
     * *-f*, which ignores non-existent files and overrides any confirmation prompts ("force")
     * *-v*, which shows what is being removed as it happens ("verbose")
 
-*rm* is often aliased to "rm -i" so as to avoid accidental deletion of files. If a user still wishes to delete a large number of files without confirmation, they can manually cancel out the -i argument by adding the -f option (as the option specified later on the expanded command line "rm -i -f" takes precedence).
+*rm* is often aliased to "rm -i" so as to avoid accidental deletion of files. 
 
 *rm -rf* (variously, rm -rf /, rm -rf `*`, and others) is frequently used in jokes and anecdotes about Unix disasters. The rm -rf variant of the command, if run by a superuser on the root directory, would cause the contents of every writable mounted filesystem on the computer to be deleted.
 
-*rm* is often used in conjunction with xargs to supply a list of files to delete::
 
-	xargs rm < filelist
 
-When *rm* is used on a symbolic link, it deletes the link, but does not affect the target of the link.
+
 
 Permissions
 ~~~~~~~~~~~
@@ -428,8 +324,104 @@ To delete a directory (with rm -r), one must delete all of its contents recursiv
 
 
 
-Basic Text Processing
-======================
+Working with text
+=================
+
+How do I look into a file?
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+more
+-----
+
+In computing, *more* is a command to view  contents of a text file one screen at a time 
+
+Usage
+~~~~~
+
+The command-syntax is::
+
+	$ more [options] [file_name]
+
+Traversing the pages ::
+
+
+     SPACE       Display next k lines of text.  Defaults to current screen
+                 size.
+
+
+     RETURN      Display next k lines of text.  Defaults to 1.  Argument
+                 becomes new default.
+	       
+     /pattern    Search for kth occurrence of regular expression.  Defaults to
+                 1 .
+
+
+
+less
+-----
+
+*less*  is similar to *more* in the sense that it is used to view files , but has the extended capability of allowing both forward and backward navigation through the file. Unlike most Unix text editors/viewers, *less* does not need to read the entire file before starting, resulting in faster load times with large files.
+
+Usage
+~~~~~~
+
+*less* can be invoked with options to change its behaviour, for example, the number of lines to display on the screen. A few options vary depending on the operating system. While *less* is displaying the file, various commands can be used to navigate through the file. These commands are based on those used by both *more* and *vi*. It is also possible to search for character patterns in the file.
+
+By default, *less* displays the contents of the file to the standard output (one screen at a time). If the file name argument is omitted, it displays the contents from standard input (usually the output of another command through a pipe). If the output is redirected to anything other than a terminal, for example a pipe to another command, less behaves like cat.
+
+The command-syntax is ::
+
+	$ less [options] file_name
+
+
+
+Frequently Used Commands
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+    * [Arrows]/[Page Up]/[Page Down]/[Home]/[End]: Navigation.
+
+    * [Space bar]: Next page.
+
+    * b: Previous page.
+
+    * ng: Jump to line number n. Default is the start of the file.
+
+    * nG: Jump to line number n. Default is the end of the file.
+
+    * /pattern: Search for pattern. Regular expressions can be used.
+
+    * '^ or g: Go to start of file.
+
+    * '$ or G: Go to end of file.
+
+    * =: File information.
+
+    * h: Help.
+
+    * q: Quit.
+
+
+cat
+---
+
+The *cat* command is a standard Unix program used to concatenate and display files. The name is from "catenate", a synonym of *concatenate*.
+
+The Single Unix Specification specifies the behavior that the contents of each of the files given in sequence as arguments will be written to the standard output in the same sequence, and mandates one option, -u, where each byte is printed as it is read.
+
+If the filename is specified as -, then *cat* will read from standard input at that point in the sequence. If no files are specified, *cat* will read from standard input entered.
+
+Usage ::
+        $ cat foo boo
+	This is file foo
+	
+	This is file boo.
+
+Text Processing 
+---------------
+
+
+How do look at part of a file?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 head
 -----
@@ -442,17 +434,7 @@ By default, *head* will print the first 10 lines of its input to the standard ou
 
 	$ head -n 20 filename
 
-This displays the first 5 lines of all files starting with *foo*::
 
-	$ head -n 5 foo*
-
-
-
-Flags
-~~~~~
-::
-
-	-c <x number of bytes> Copy first x number of bytes.
 
 
 tail
@@ -468,9 +450,7 @@ By default, *tail* will print the last 10 lines of its input to the standard out
 
 	$ tail -n 20 filename
 
-This example shows the last 15 bytes of all files starting with *foo*::
 
-	$ tail -c 15 foo*
 
 This example shows all lines of filename from the second line onwards::
 
@@ -478,16 +458,42 @@ This example shows all lines of filename from the second line onwards::
 
 
 
-File monitoring
-~~~~~~~~~~~~~~~
+Monitoring a continously changing file(example: A log file) 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 *tail* has a special command line option *-f* (follow) that allows a file to be monitored. Instead of displaying the last few lines and exiting, tail displays the lines and then monitors the file. As new lines are added to the file by another process, tail updates the display. This is particularly useful for monitoring log files. The following command will display the last 10 lines of messages and append new lines to the display as new lines are added to messages::
 
-	$ tail -f /var/adm/messages
+	$ tail -f /var/log/dmesg
 
 To interrupt tail while it is monitoring, break-in with *Ctrl+C*. This command can be run "in the background" with &, see job control.
 
-If you have a command's result to monitor, you can use the *watch* command.
+More serious Text Processing:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Problem get the names of people in the following file
+-----------------------------------------------------
+::
+
+	Foot in Mouth:Bully:Fat:Peter
+	Rich:Simple:Peabrain:Lois
+	Self-concious:Wannabe:Adolescent:Meg
+	Dim-witted:Fat:evil-monkey:Chris
+	Matricidal:Over-Ambitious:Infant:Stewy
+	Anthropomorphic:Democrat:Sensible:Brian
+
+
+ 	$cut -d : -f 4- file
+	
+	Peter
+	Lois
+	Meg
+	Chris
+	Stewy
+	Brian
+
+
+		
+
 
 
 cut
@@ -495,33 +501,18 @@ cut
 
 In computing, *cut* is a Unix command line utility which is used to extract sections from each line of input — usually from a file.
 
-Extraction of line segments can typically be done by *bytes (-b), characters (-c)*, or *fields (-f)* separated by a *delimiter (-d — the tab character by default)*. A range must be provided in each case which consists of one of N, N-M, N- (N to the end of the line), or -M (beginning of the line to M), where N and M are counted from 1 (there is no zeroth value). Since version 6, an error is thrown if you include a zeroth value. Prior to this the value was ignored and assumed to be 1.
+Extraction of line segments can typically be done by  a *delimiter (-d — the tab character by default)*. A range must be provided in which consists of one of N, N-M, N- (N to the end of the line), or -M (beginning of the line to M), where N and M are counted from 1 (there is no zeroth value). 
 
-Assuming a file named file containing the lines::
 
-	foo:bar:baz:qux:quux
-	one:two:three:four:five:six:seven
-	alpha:beta:gamma:delta:epsilon:zeta:eta:teta:iota:kappa:lambda:mu
+Options
+-------
+::
 
-To output the fourth through tenth characters of each line::
+	
 
-	$ cut -c 4-10 file
+	
 
-This gives the output::
 
-	:bar:ba
-	:two:th
-	ha:beta
-
-To output the fifth field through the end of the line of each line using the colon character as the field delimiter::
-
-	$ cut -d : -f 5- file
-
-This gives the output::
-
-	quux
-	five:six:seven
-	epsilon:zeta:eta:teta:iota:kappa:lambda:mu
 
 paste
 ------
@@ -581,20 +572,6 @@ Filenames containing metacharacters can pose many problems and should never be i
 Looking At Files
 ================
 
-cat
----
-
-The *cat* command is a standard Unix program used to concatenate and display files. The name is from "catenate", a synonym of *concatenate*.
-
-The Single Unix Specification specifies the behavior that the contents of each of the files given in sequence as arguments will be written to the standard output in the same sequence, and mandates one option, -u, where each byte is printed as it is read.
-
-If the filename is specified as -, then *cat* will read from standard input at that point in the sequence. If no files are specified, *cat* will read from standard input entered.
-
-Usage ::
-        $ cat foo boo
-	This is file foo
-	
-	This is file boo.
 
 
 
@@ -667,10 +644,6 @@ Frequently Used Commands
     * '^ or g: Go to start of file.
 
     * '$ or G: Go to end of file.
-
-    * s: Save current content (got from another program like grep) in a file.
-
-    * =: File information.
 
     * h: Help.
 
