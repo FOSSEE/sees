@@ -214,12 +214,34 @@ if we use a recursive approach::
           return a
       return gcd(b, a%b)
 
-Much shorter and sweeter! And it passes all the tests!
+Much shorter and sweeter! And it passes all the tests! But there is
+one small problem yet. For the users of this function there is no way
+to determine how to use it, how many parameters it takes what it
+returns among other things. And same as well for those who read the
+code. So this function is not a very well written piece of code since
+it lacks documentation. So to make this function mode readable let us
+add the docstring for this function. Rewriting the function with the
+docstring looks like this::
 
+  def gcd(a, b):
+      """Returns the Greatest Common Divisor of the two integers
+      passed as arguments.
+
+      Args:
+        a: an integer
+        b: another integer
+
+      Returns: Greatest Common Divisor of a and b
+      """
+      if b == 0:
+          return a
+      return gcd(b, a%b)
+
+Now we have refactored our code enough to make it well written piece
+of code. Let us move on.
 
 More realistic "Tests"
 ======================
-
 
 Now we have successfully completed writing our first test, writing the
 relevant code and ensured the tests passed. We also refactored our
@@ -282,21 +304,244 @@ data file gcd_testcases.dat::
 When we execute the gcd.py script again we will notice that all the
 tests passed.
 
-Running at the **nose**
-=======================
+Python Testing Framework
+========================
 
-Not too far ahead we go we will start running at the nose saying of
-Python developers saying that this is not sufficient to write
-complicated tests in an efficient manner and writing tests for the
-programs are so important that Python should provide a tool for
-managing large tests. To further explain, the idea of placing the
-tests with in the Python scripts and to execute them when the script
-is run as a stand-alone script works well as long as we have our code
-in a single Python file or as long as the tests for each script can be
-run separately. But in a more realistic software development scenario,
+Python provides two ways to test the code we have written. One of them
+is the unittest framework and the the other is the doctest module.
+
+doctest
+~~~~~~~
+
+To start with let us discuss the doctest module. As we have already
+discussed a well written piece of code must always be accompanied by
+its documentation. For a function or a module we document them in their
+respective docstrings. In addition to this, we can also place the
+samples of using these functions or modules in the Python interactive
+interpreter in the docstrings. When we run the doctest module it picks
+up all such interactive session samples, executes them and determines
+if the documented piece of code runs as it is documented. Let us see
+how to write doctests for our gcd function::
+
+  def gcd(a, b):
+      """Returns the Greatest Common Divisor of the two integers
+      passed as arguments.
+
+      Args:
+        a: an integer
+        b: another integer
+
+      Returns: Greatest Common Divisor of a and b
+
+      >>> gcd(48, 64)
+      16
+      >>> gcd(44, 19)
+      1
+      """
+      if b == 0:
+          return a
+      return gcd(b, a%b)
+
+This is all a doctest is. To explain it in more simple terms tests
+which are written as part of the docstrings are called as
+doctests. Now how do we use our doctest module to execute this
+tests. That is fairly straight forward as well. All we need to do is
+tell the doctest module to execute. Let us place this piece of code at
+the same place where we placed our tests earlier. So putting all these
+together we have our gcd.py module which looks as follows::
+
+  def gcd(a, b):
+      """Returns the Greatest Common Divisor of the two integers
+      passed as arguments.
+
+      Args:
+        a: an integer
+        b: another integer
+
+      Returns: Greatest Common Divisor of a and b
+
+      >>> gcd(48, 64)
+      16
+      >>> gcd(44, 19)
+      1
+      """
+      if b == 0:
+          return a
+      return gcd(b, a%b)
+
+  if __name__ == "__main__":
+      import doctest
+      doctest.testmod()
+
+All we need to do is import the doctest module that is part of the
+Python's standard library. Call the testmod() function in this
+module. This function automatically checks for all the docstrings that
+have sample sessions from the interactive interpreter, if they exist
+it executes them and compares the output with the results as specified
+in the sample sessions. It complains if the results don't match as
+documented. When we execute this script as a stand-alone script we
+will get back the prompt with no messages which means all the tests
+passed::
+
+  madhu@madhu:~$ python gcd.py
+  madhu@madhu:~$ 
+
+If we further want to get a more detailed report of the tests that
+were executed we can run python with -v as the command line option
+to the script::
+
+  madhu@madhu:~$ python gcd.py -v
+  Trying:
+      gcd(48, 64)
+  Expecting:
+    16
+  ok
+  Trying:
+      gcd(44, 19)
+  Expecting:
+      1
+  ok
+  1 items had no tests:
+      __main__
+  1 items passed all tests:
+     2 tests in __main__.gcd
+  2 tests in 2 items.
+  2 passed and 0 failed.
+  Test passed.
+
+
+**Note:** We can have the sample sessions as test cases as long as the
+outputs of the test cases do not contain any blank lines. In such
+cases we may have to use the exact string *<BLANKLINE>*
+
+For the sake of illustrating a failing test case, let us assume that
+we made a small mistake in our code. Instead of returning **a** when b
+= 0 we typed it as return b when b = 0. So all the gcds returned will
+have the value of 0 in such a piece of code. The code looks as
+follows::
+
+  def gcd(a, b):
+      """Returns the Greatest Common Divisor of the two integers
+      passed as arguments.
+
+      Args:
+        a: an integer
+        b: another integer
+
+      Returns: Greatest Common Divisor of a and b
+
+      >>> gcd(48, 64)
+      16
+      >>> gcd(44, 19)
+      1
+      """
+      if b == 0:
+          return a
+      return gcd(b, a%b)
+
+Executing this code snippet without -v option to the script::
+
+  madhu@madhu:~$ python gcd.py
+  **********************************************************************
+  File "gcd.py", line 11, in __main__.gcd
+  Failed example:
+      gcd(48, 64)
+  Expected:
+      16
+  Got:
+      0
+  **********************************************************************
+  File "gcd.py", line 13, in __main__.gcd
+  Failed example:
+      gcd(44, 19)
+  Expected:
+      1
+  Got:
+      0
+  **********************************************************************
+  1 items had failures:
+     2 of   2 in __main__.gcd
+  ***Test Failed*** 2 failures.
+
+The output clearly complains that there were exactly two test cases
+that failed. If we want a more verbose report we can pass -v option to
+the script. This is pretty much about the doctest module in
+Python. doctest is extremely useful when we want to test each Python
+function or module individually. For more information about the
+doctest module refer to the Python library reference on doctest[0].
+
+unittest framework
+~~~~~~~~~~~~~~~~~~
+
+Not too far ahead we go we, we will start complaining that the doctest
+is not sufficient to write complicated tests especially when we want
+to automate our tests, write tests that need to test for more
+convoluted code pieces. For such scenarios Python provides a unittest
+framework.  unittest framework provides methods to efficiently
+automate tests, setup and teardown functionalities which helps to
+setup the initializing code and data for executing the specific tests
+and cleanly shutting them down once the tests are executed and ways to
+aggregate tests into collections and better way of reporting the
+tests.
+
+Let us continue testing our gcd function in the Python module named
+gcd.py. To get ourselves started, the unittest framework expects us to
+subclass TestCase class in unittest module and place all our test code
+as methods of this class. We will begin the name of the test method
+with **test_** so that the test runner knows which methods are to be
+executed as tests. We will use the test cases supplied by
+gcd_testcases.dat. Lastly, to illustrate the way to test Python code
+as a module let create a new file called test_gcd.py following the
+same convention used to name the test methods. We will place our test
+code within test_gcd.py module. Our test code looks like this::
+  
+  import gcd
+  import unittest
+
+  class TestGcdFunction(unittest.TestCase):
+
+      def setUp(self):
+          self.test_file = open('gcd_testcases.dat')
+          self.test_cases = []
+          for line in self.test_file:
+              values = line.split(', ')
+              a = int(values[0])
+              b = int(values[1])
+              g = int(values[2])
+
+              self.test_cases.append([a, b, g])
+
+      def test_gcd(self):
+          for case in self.test_cases:
+              a = case[0]
+              b = case[1]
+              g = case[2]
+              self.assertEqual(gcd.gcd(a, b), g)
+
+      def tearDown(self):
+          self.test_file.close()
+          del self.test_cases
+
+  if __name__ == '__main__':
+      unittest.main()
+
+
+
+ Since we don't want to read this file into memory each time we run a
+separate test method, we will read all the data in the file into
+Python lists in the setUp function and in the tearDown function of the
+
+
+
+
+To further explain the idea, the idea of placing tests with in the
+Python scripts and to execute them when the script is run as a
+stand-alone script works well as long as we have our code in a single
+Python file or as long as the tests for each script can be run
+separately. But in a more realistic software development scenario,
 often this is not the case. The code is spread around multiple Python
-scripts, each script also called as a Python module, and also across
-several Python packages.
+scripts, each script, also called as a Python module, and may be even
+across several Python packages.
 
 In such a scenario what we would like to do is to create a separate
 directory for holding these test. The structure of this directory is
@@ -317,3 +562,9 @@ called as **nose**. The name should have been pretty evident from the
 heading of this section! So in the rest of this module let us discuss
 how to use **nose** to write, maintain and extend our tests as the
 code evolves.
+
+Running at the **nose**
+=======================
+
+
+[0] - http://docs.python.org/library/doctest.html
