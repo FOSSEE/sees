@@ -115,7 +115,7 @@ here. This comes as an extremely handy feature especially when we want to
 test our modules individually. Now let us run our code as a stand-alone
 script.::
 
-  madhu@madhu:~/Desktop$ python gcd.py
+  $ python gcd.py
   Traceback (most recent call last):
     File "gcd.py", line 7, in <module> print "Test failed for the case a=48 and b=64. Expected 16. Obtained %d instead." % tc1
   TypeError: %d format: a number is required, not NoneType
@@ -153,7 +153,7 @@ things.
 Now let us run our script which already has the tests written in it
 and see what happens::
 
-  madhu@madhu:/media/python/sttp/tdd$ python gcd.py
+  $ python gcd.py
   All tests passed!
 
 Success! We managed to pass all the tests. But wasn't that code simple
@@ -383,14 +383,14 @@ documented. When we execute this script as a stand-alone script we
 will get back the prompt with no messages which means all the tests
 passed::
 
-  madhu@madhu:~$ python gcd.py
-  madhu@madhu:~$ 
+  $ python gcd.py
+  $ 
 
 If we further want to get a more detailed report of the tests that
 were executed we can run python with -v as the command line option
 to the script::
 
-  madhu@madhu:~$ python gcd.py -v
+  $ python gcd.py -v
   Trying:
       gcd(48, 64)
   Expecting:
@@ -441,7 +441,7 @@ follows::
 
 Executing this code snippet without -v option to the script::
 
-  madhu@madhu:~$ python gcd.py
+  $ python gcd.py
   **********************************************************************
   File "gcd.py", line 11, in __main__.gcd
   Failed example:
@@ -525,46 +525,89 @@ code within test_gcd.py module. Our test code looks like this::
   if __name__ == '__main__':
       unittest.main()
 
-
-
- Since we don't want to read this file into memory each time we run a
+Since we don't want to read this file into memory each time we run a
 separate test method, we will read all the data in the file into
-Python lists in the setUp function and in the tearDown function of the
+Python lists in the setUp method. The entire data file is kept in a
+list called test_cases which happens to be an attribute of the
+TestGCDFunction class. In the tearDown method of the class we
+will delete this attribute to free up the memory and close the
+opened file.
 
+Our actual test code sits in the method which begins with the name
+**test_** as said earlier, the test_gcd method. Note that we import
+the gcd Python module we have written at the top of this test file and
+from this test method we call the gcd function within the gcd module
+to be tested with the each set of **a** and **b** values in the
+attribute test_cases. Once we execute the function we obtain the
+result and compare it with the expected result as stored in the
+corresponding test_cases attribute using the assertEqual methods
+provided by our parent class TestCase in the unittest framework. There
+are several other assertion methods supplied by the unittest
+framework. For a more detailed information about this, refer to the
+unittest library reference at [1].
 
+nose
+====
 
+Now we know almost all the varities of tests we may have to use to
+write self-sustained, automated tests for our code. There is one last
+thing that is left. However one question remains, how do we easily
+organize choose and run the tests that is scattered around several
+files? 
 
-To further explain the idea, the idea of placing tests with in the
-Python scripts and to execute them when the script is run as a
-stand-alone script works well as long as we have our code in a single
-Python file or as long as the tests for each script can be run
-separately. But in a more realistic software development scenario,
-often this is not the case. The code is spread around multiple Python
-scripts, each script, also called as a Python module, and may be even
-across several Python packages.
+To further explain, the idea of placing tests with in the Python
+scripts and executing that test scripts themselves as stand-alone
+scripts works well as long as we have our code in a single Python file
+or as long as the tests for each script can be run separately. But in
+a more realistic software development scenario, often this is not the
+case. The code is spread around multiple Python modules and may be
+even across several Python packages.
 
-In such a scenario what we would like to do is to create a separate
-directory for holding these test. The structure of this directory is
-the exact replica of the Python package hierarchy of our software to
-be tested. This structure is especially useful because of the fact
-that we have a one to one correspondence to our code and to its test.
-Hence it is easy for us to navigate through the tests as we maintain
-the existing tests and to add new tests as the code evolves. We have a
-collection of tests in the specified structure. Any collection of
-tests is called as the test suite for the *software package*. Hence we
-shall call this directory of tests as our test suite.
+In such a such a scenario we wish we had a better tool to
+automatically aggregate these tests and execute them. Fortunately for
+us there exists a tool called nose. Although nose is not part of the
+standard Python distribution itself, it can be very easily installed
+by using easy_install command as follows::
 
-Fine we have all these, but how do we make our tests aware that they
-are the tests for such and such a Python module or code and when
-executed must test that corresponding code? To make the lives of
-Python developers and testers easy Python provides a very handy tool
-called as **nose**. The name should have been pretty evident from the
-heading of this section! So in the rest of this module let us discuss
-how to use **nose** to write, maintain and extend our tests as the
-code evolves.
+  $ easy_install nose
 
-Running at the **nose**
-=======================
+Or download the nose package from [2], extracting the archive and
+running the command from the extracted directory::
+
+  $ python setup.py install
+
+Now we have nose up and running, but how do we use it? It is very
+straight forward as well. We will use the command provided by nose
+called as nosetests. Run the following command in the top level
+directory of your code::
+
+  $ nosetests
+
+Thats all, nose automatically picks all the tests in all the
+directories and subdirectories in our code base and executes them
+all. However if we want to execute specific tests we can pass the test
+file names or the directories as arguments to nosetests command. For a
+detailed explanation about this, refer to [3]
+
+Conclusion
+==========
+
+Now we have all the trappings we want to write state-of-the art
+tests. To emphasize the same point again, any code which was written
+before writing the test and the testcases in hand is flawed by
+design. So it is recommended to follow the three step approach while
+writing code for any project as below:
+
+  1. Write failing tests with testcases in hand.
+  2. Write the code to pass the tests.
+  3. Refactor the code for better performance.
+
+This approach is very famously known to the software development world
+as "Red-Green-Refactor" approach[4].
 
 
 [0] - http://docs.python.org/library/doctest.html
+[1] - http://docs.python.org/library/unittest.html
+[2] - http://pypi.python.org/pypi/nose/
+[3] - http://somethingaboutorange.com/mrl/projects/nose/0.11.2/usage.html
+[4] - http://en.wikipedia.org/wiki/Test-driven_development
