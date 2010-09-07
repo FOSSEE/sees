@@ -122,7 +122,7 @@ Where *name_of_directory* is the name of the directory one wants to create. When
 
 
 
-Where am I now in the filesystem?
+Where am I now on the filesystem?
 --------------
 pwd is a Linux / Unix command which prints the current working directory. If you wish to know the full path of the  directory in which you are in from the Linux console, then the pwd command will come to your rescue. pwd stands for Print Working Directory.
 
@@ -210,7 +210,7 @@ Most GNU commands support the --help, which gives a short explanation about how 
 
 
 
-Basic file handling
+Working with Files
 ===================
 
 Copying Files
@@ -319,6 +319,252 @@ Linux is a proper multi-user environment. In a multi-user environment, security 
 Usually, on most filesystems, deleting a file requires write permission on the parent directory (and execute permission, in order to enter the directory in the first place). (Note that, confusingly for beginners, permissions on the file itself are irrelevant. However, GNU rm asks for confirmation if a write-protected file is to be deleted, unless the -f option is used.)
 
 To delete a directory (with rm -r), one must delete all of its contents recursively. This requires that one must have read and write and execute permission to that directory (if it's not empty) and all non-empty subdirectories recursively (if there are any).
+
+
+Is there a default organization system of files and Directories that Linux follows
+==================================================================================
+
+In the File Hierarchy Standard (FHS) all files and directories appear under the root directory "/", even if they are stored on different physical devices. Note however that some of these directories may or may not be present on a Unix system depending on whether certain subsystems, such as the X Window System, are installed.
+
+The majority of these directories exist in all UNIX operating systems and are generally used in much the same way; however, the descriptions here are those used specifically for the FHS, and are not considered authoritative for platforms other thanmajor Linux distros.
+
++---------------+------------------------------------------------+
+|   Directory   |             Description                        |
++===============+================================================+
+| /             | Primary hierarchy root and root directory of   |
+|               | the entire file system hierarchy.              |
++---------------+------------------------------------------------+
+| /bin/         | Essential command binaries that need to be     |
+|               | available in single user mode; for all users,  |
+|               | e.g., *cat*, *ls*, *cp*.                       |
++---------------+------------------------------------------------+
+| /boot/        | Boot loader files, e.g., *kernels*, *initrd*;  |
+|               | often a separate partition.                    |
++---------------+------------------------------------------------+
+| /dev/         | Essential devices, e.g., /dev/null             |
++---------------+------------------------------------------------+
+| /etc/         | Host-specific system-wide configuration files  |
+|               | (the name comes from *et cetera*)              |
++---------------+------------------------------------------------+
+| /home/        | User's home directories, containing saved      |
+|               | files, personal settings, etc.; often a        |
+|               | separate partition.                            |
++---------------+------------------------------------------------+
+| /lib/         | Libraries essential for the binaries in        |
+|               | */bin/* and */sbin/*                           |
++---------------+------------------------------------------------+
+| /media/       | Mount points for removable media such as       |
+|               | CD-ROMs, external hard disks, USB sticks, etc. |
++---------------+------------------------------------------------+
+| /mnt/         | Temporarily mounted file systems               |
++---------------+------------------------------------------------+
+| /opt/         | Optional application software packages         |
++---------------+------------------------------------------------+
+| /proc/        | Virtual filesystem documenting kernel and      |
+|               | process status as text files; e.g., uptime,    |
+|               | network. In Linux, corresponds to a *Procfs*   |
+|               | mount.                                         |
++---------------+------------------------------------------------+
+| /root/        | Home directory for the root user               |
++---------------+------------------------------------------------+
+| /sbin/        | Essential system binaries; e.g., *init*,       |
+|               | *route*, *mount*.                              |
++---------------+------------------------------------------------+
+| /srv/         | Site-specific data which is served by the      |
+|               | system.                                        |
++---------------+------------------------------------------------+
+| /tmp/         | Temporary files. Often not preserved between   |
+|               | system reboots.                                |
++---------------+------------------------------------------------+
+| /usr/         | Secondary hierarchy for read-only user data;   |
+|               | contains the majority of (multi-)user          |
+|               | utilities and applications.                    |
++---------------+------------------------------------------------+
+| /var/         | Variable files - files whose content is        |
+|               | expected to continually change during normal   |
+|               | operation of the system - such as logs, spool  |
+|               | files, and temporary e-mail files.             |
+|               | Sometimes a separate partition.                |
++---------------+------------------------------------------------+
+
+
+man hier
+---------
+
+This is the manual page on the UNIX filesystem. The syntax for this is::
+
+	$ man hier
+
+
+
+
+
+
+Permissions and Ownership
+=========================
+
+drwxr-x--- 2 user group 4096 Dec 28 04:09 tmp
+-rw-r--r-- 1 user group 969 Dec 21 02:32 foo
+-rwxr-xr-x 1 user group 345 Sep 1 04:12 somefile
+
+d - The file is a directory.
+
+r - Read permission. The file may be read. In the case of a directory, this would mean the ability to list the contents of the directory.
+
+w - Write permission.For a directory, this defines whether you can make any changes to the contents
+of the directory. If write permission is not set then you will not be able to delete, rename or create a file.
+
+x - Execute permission. Whether the file may be executed. In the case of a directory, this attribute decides whether you have permission to enter,run a search through that directory or execute some program from that directory.
+
+The Permission are read in the following manner::
+
+    | User | Group | Others |
+    |------+-------+--------|
+    | drwx | rwx   | rwx    |
+
+
+Problem: Given a file with only read permission, add execute permission to User, Group and Others.
+--------------------------------------------------------------------------------------------------
+
+Solution::
+	
+	$chmod a+x executablefile
+   	$ls -l executablefile
+
+Thats it .
+
+
+chmod
+------
+
+The *chmod* command changes the  file system modes of files and directories. The modes include permissions and special modes.
+ 
+Usage
+~~~~~
+
+The *chmod* command options are specified like this:
+::
+
+	$ chmod [options] mode[,mode] file1 [file2 ...]
+
+To view what the permissions currently are, type:
+::
+
+	$ ls -l file
+
+Command line options
+~~~~~~~~~~~~~~~~~~~~
+
+The *chmod* command has a number of command line options that affect its behavior. The most common options are:
+
+    * -R: Changes the modes of directories and files recursively
+
+    * -v: Verbose mode; lists all files as they are being processed
+
+Symbolic modes
++++++++++++++++
+
+To the *chmod* utility, all permissions and special modes are represented by its mode parameter. One way to adjust the mode of files or directories is to specify a symbolic mode. The symbolic mode is composed of three components, which are combined to form a single string of text:
+::
+
+	$ chmod [references][operator][modes] file1 ...
+
+The references (or classes) are used to distinguish the users to whom the permissions apply. If no references are specified it defaults to “all” but modifies only the permissions allowed by the umask. The references are represented by one or more of the following letters:
+
++--------------+--------+---------------------------------------------+
+| Reference    | Class  |                Description                  |
++==============+========+=============================================+
+|      u       | user   | the owner of the file                       |
++--------------+--------+---------------------------------------------+
+|      g       | group  | users who are members of the file's group   |
++--------------+--------+---------------------------------------------+
+|      o       | others | users who are not hte owner of the file or  |
+|              |        | members of the group                        |
++--------------+--------+---------------------------------------------+
+|      a       | all    | all three of the above; is the same as *ugo*|
++--------------+--------+---------------------------------------------+
+
+The *chmod* program uses an operator to specify how the modes of a file should be adjusted. The following operators are accepted:
+
++--------------+------------------------------------------------------+
+| Operator     |                      Description                     |
++==============+======================================================+
+| +            | adds the specified modes to the specified classes    |
++--------------+------------------------------------------------------+
+| -            | removes the specified modes from the specified       |
+|              | classes                                              |
++--------------+------------------------------------------------------+
+| =            | the modes specified are to be made the exact modes   |
+|              | for the specified classes                            |
++--------------+------------------------------------------------------+
+
+The modes indicate which permissions are to be granted or taken away from the specified classes. There are three basic modes which correspond to the basic permissions:
+
++-----+--------------+------------------------------------------------+
+|Mode |    Name      |                 Description                    |
++=====+==============+================================================+
+| r   | read         | read a file or list a directory's contents     |
++-----+--------------+------------------------------------------------+
+| w   | write        | write to a file or directory                   |   
++-----+--------------+------------------------------------------------+
+| x   | execute      | execute a file or recurse a directory tree     |
++-----+--------------+------------------------------------------------+
+
+Examples
++++++++++
+
+Add the 'read' and 'write' permissions to the 'user' and 'group' classes of a directory:
+::
+
+	$ chmod ug+rw mydir
+	$ ls -ld mydir
+	drw-rw----   2 starwars  yoda  96 Dec 8 12:53 mydir
+
+For a file, remove *write* permissions for all classes:
+::
+
+	$ chmod a-w myfile
+	$ ls -l myfile
+	-r-xr-xr-x   2 starwars  yoda 96 Dec 8 12:53 myfile
+
+Octal numbers
++++++++++++++
+
+The *chmod* command also accepts three and four-digit octal numbers representing modes. Using a three-digit octal number to set the modes of a file named myfile :
+::
+
+	$ chmod 664 myfile
+	$ ls -l myfile
+	-rw-rw-r--  1   57 Jul  3 10:13  myfile
+
+Foe each one, you define the right like that :
+
+    * a read right correspond to 4
+    * a write right correspond to 2
+    * an execute right correspond to 1
+
+You want the user to have all the rights? : 4 + 2 + 1 = 7
+
+you want the group to have read and write rights : 4 + 2 = 6
+
+
+Changing Ownership of Files
+===========================
+
+
+chown
+~~~~~
+The chown command is used to change the owner and group of files, directories and links.
+
+By default, the owner of a filesystem object is the user that created it. The group is a set of users that share the same access permissions (i.e., read, write and execute) for that object.
+
+The basic syntax for using chown to change owners is::
+
+    $chown -v alice wonderland.txt
+
+-v - For verbose Mode
+ 
+alice - Username of new owner 
 
 
 
@@ -430,9 +676,9 @@ head
 
 	$ head [options] <file_name>
 
-By default, *head* will print the first 10 lines of its input to the standard output. The number of lines printed may be changed with a command line option. The following example shows the first 20 lines of filename::
+By default, *head* will print the first 10 lines of its input to the standard output. The number of lines printed may be changed with a command line option. The following example shows the first 20 lines of somefile::
 
-	$ head -n 20 filename
+	$ head -n 20 somefile
 
 
 
@@ -446,15 +692,15 @@ The command-syntax is::
 
 	$ tail [options] <file_name>
 
-By default, *tail* will print the last 10 lines of its input to the standard output. With command line options the number of lines printed and the printing units (lines, blocks or bytes) may be changed. The following example shows the last 20 lines of filename::
+By default, *tail* will print the last 10 lines of its input to the standard output. With command line options the number of lines printed and the printing units (lines, blocks or bytes) may be changed. The following example shows the last 20 lines of somefile::
 
-	$ tail -n 20 filename
+	$ tail -n 20 somefile
 
 
 
-This example shows all lines of filename from the second line onwards::
+This example shows all lines of somefile from the second line onwards::
 
-	$ tail -n +2 filename
+	$ tail -n +2 somefile
 
 
 
@@ -470,7 +716,7 @@ To interrupt tail while it is monitoring, break-in with *Ctrl+C*. This command c
 More serious Text Processing:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Problem get the names of people in the following file
+Problem1. Get the names of people in the following file
 -----------------------------------------------------
 ::
 
@@ -481,7 +727,7 @@ Problem get the names of people in the following file
 	Matricidal:Over-Ambitious:Infant:Stewy
 	Anthropomorphic:Democrat:Sensible:Brian
 
-
+Soulution::
  	$cut -d : -f 4- file
 	
 	Peter
@@ -508,38 +754,287 @@ Options
 -------
 ::
 
+	-b   select on the basis of bytes
+
+        -c   select on the basis of characters
+			
+			
+	-f  select on  the basis of fields,also print any line that contains no delimiter character
+
+Problem2.Given two files of student name and marks merge them
+-------------------------------------------------------------
+
+File of students(students.txt) ::
+     
+     Hussain
+     Dilbert
+     Alex
+     Raul
+     Sven
+
+File of marks(marks.txt)::
+     
+
+     89
+     98
+     67
+     78
+     67
+
+Solution::
+
+	$paste students.txt marks.txt
+	Hussain	89
+	Dilbert	98
+ 	Alex	67
+ 	Raul	78
+ 	Sven	67
+
+
+	$paste -d : students.txt marks.txt
 	
+	Hussain:89
+	Dilbert:98
+	Alex:67
+ 	Raul:78
+ 	Sven:67
 
 	
+	$paste -s students.txt marks.txt
+
+	Hussain	  	 Dilbert	 Alex	 Raul	 Sven	
+	89		 98		 67	 78	 67
+
 
 
 
 paste
 ------
 
-*paste* is a Unix command line utility which is used to join files horizontally (parallel merging) by outputting lines consisting of the sequentially corresponding lines of each file specified, separated by tabs, to the standard output. It is effectively the horizontal equivalent to the utility *cat* command which operates on the vertical plane of two or more files.
+*paste* is a Unix command line utility which is used to join files horizontally (parallel merging) by outputting lines consisting of the sequentially corresponding lines of each file specified, separated by tabs, to the standard output. 
 
-To paste several columns of data together into the file *www* from files *who*, *where*, and *when*::
 
-	$ paste who where when > www
+Some frequently used Text Processing tools
+==========================================
 
-If the files contain:
+Given a file with names US presidents  . Sort the file  on the names . The contents of the file are mentioned below
+::
+      
+       
+       John%Kennedy
+       Bill%Clinton
+       Bill%Clinton
+       Franklin%Rosevelt
+       George%Bush 
+       Abraham%Lincoln
+       Abraham%Lincoln
+       George%Washington
+       George%Washington
+       
 
-+-----------+------------+------------+
-|   who     |   where    |    when    |
-+===========+============+============+
-|  Batman   | GothamCity | January 3  |
-+-----------+------------+------------+	
-| Trillian  | Andromeda  | February 4 |
-+-----------+------------+------------+
-|  Jeeves   | London     |  March 19  |
-+-----------+------------+------------+	
 
-This creates the file named *www* containing ::
+Solution:: 
+	
+	 $sort presidents.txt
 
-	Batman            GothamCity       January 3
-	Trillian          Andromeda        February 4
-	Jeeves            London           March 19
+       Abraham%Lincoln
+       Abraham%Lincoln
+       Bill%Clinton
+       Bill%Clinton       
+       Franklin%Rosevelt
+       George%Bush 
+       George%Washington
+       George%Washington
+       John%Kennedy
+
+
+Sort
+====
+sort command with the file name as a parameter sorts the lines of the file alphabetically and prints the output on the terminal.	
+
+
+To sort the same file using the last names     
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
+
+	$sort -t % -k 2 presidents.txt
+	
+	George%Bush 
+        Bill%Clinton
+        Bill%Clinton       
+        John%Kennedy
+        Abraham%Lincoln
+        Abraham%Lincoln
+        Franklin%Rosevelt
+        George%Washington
+        George%Washington
+
+
+
+	-t - specify the delimiter 
+	-k - specify the column 
+
+There are other options like -r to sort on reverse order etc ..
+
+
+
+Problem:Given a file remove all the duplicate lines in it ?
+===========================================================
+
+File ::
+     
+       Abraham%Lincoln
+       Abraham%Lincoln
+       Bill%Clinton
+       Bill%Clinton       
+       Franklin%Rosevelt
+       George%Bush 
+       George%Washington
+       George%Washington
+       John%Kennedy
+
+Solution::
+      
+      $uniq -c sortpresidents.txt
+
+
+      2 Abraham%Lincoln       
+      2 Bill%Clinton
+      1 Franklin%Rosevelt
+      1 George%Bush 
+      2 George%Washington
+      1 John%Kennedy
+
+
+uniq
+====
+
+
+``uniq`` command removes duplicate lines next to each other.
+
+-c - also gives the no. of repetitions .
+
+
+Redirection and Piping
+=======================
+
+In computing, *redirection* is a function common to most command-line interpreters, including the various Unix shells that can redirect standard streams to user-specified locations.
+
+
+
+Problem: Get a sorted list of all xml file in directory ?
+
+Soulition::
+	$ls | grep '.xml$' > xmllist
+
+
+This problem introduced a lot of concepts we shall look at them one by one .
+
+
+Redirecting standard input and standard output
+-----------------------------------------------
+
+Redirection refers to redirecting standard Input or output to a command or file .
+
+Ex::
+
+	$ command > file1
+
+This command executes *command1*, placing the output in file1. Note that this will truncate any existing data in *file1*. To append output to the end of the file, use the >> operator like this
+     	$ command >> file1
+	
+Ex2::
+	
+
+
+	$ command < file1
+
+executes *command1*, using *file1* as the source of input (as opposed to the keyboard).::
+
+	$ command1 < infile > outfile
+
+combines the two capabilities: *command1* reads from *infile* and writes to *outfile*
+
+
+In this example we see redirection in the end ::
+
+   $(some commands) > xmllist 
+
+
+
+
+Piping
+-------
+
+Programs can be run together such that one program reads the output from another with no need for an explicit intermediate file:
+A pipeline of two programs run on a text terminal::
+
+	$ command1 | command2
+
+executes *command1*, using its output as the input for *command2* (commonly called piping, since the '|' character is known as a "pipe").
+
+This is equivalent to using two redirects and a temporary file ::
+
+	$ command1 > tempfile
+	$ command2 < tempfile
+	$ rm tempfile
+
+In the above example we used piping in the following manner ::
+
+	$ echo
+
+This runs the ftp client with input user, press return, then pass.
+
+Redirecting to and from the standard file handles
+--------------------------------------------------
+
+In Unix shells derived from the original Bourne shell, the first two actions can be further modified by placing a number (the file descriptor) immediately before the character; this will affect which stream is used for the redirection. The Unix standard I/O streams are:
+
++------------+-------------+------------------------+
+|   Handle   |    Name     |      Description       |
++============+=============+========================+
+| 0          |   stdin     |    Standard input      |
++------------+-------------+------------------------+
+| 1          |   stdout    |    Standard output     |
++------------+-------------+------------------------+
+| 2          |   stderr    |    Standard error      |
++------------+-------------+------------------------+
+
+For example:
+::
+
+	$ command1 2> file1
+
+executes *command1*, directing the standard error stream to *file1*. 
+
+
+
+	$ find / -name .profile 2>&1 | less
+
+
+
+Chained pipelines
+------------------
+
+The redirection and piping tokens can be chained together to create complex commands. For example:
+::
+
+	$ ls | grep '\.sh' | sort > shlist
+
+lists the contents of the current directory, where this output is filtered to only contain lines which contain *.sh*, sort this resultant output lexicographically, and place the final output in *shlist*. This type of construction is used very commonly in shell scripts and batch files.
+
+Redirect to multiple outputs
+-----------------------------
+
+The standard command *tee* can redirect output from a command to several destinations.
+::
+
+	$ ls -lrt | tee xyz
+
+This directs the file list output to both standard output as well as to the file *xyz*.
+
+
 
 Shell Meta Characters
 ======================
@@ -566,521 +1061,10 @@ run on the same directory would only list file.c because the ? only matches one 
 
 because the c* matches that long file name.
 
-Filenames containing metacharacters can pose many problems and should never be intentionally created.
+filenames containing metacharacters can pose many problems and should never be intentionally created.
 
 
-Looking At Files
-================
 
-
-
-
-more
------
-
-In computing, *more* is a command to view (but not modify) the contents of a text file one screen at a time (terminal pager). It is available on Unix and Unix-like systems, DOS, OS/2 and Microsoft Windows. Programs of this sort are called pagers.
-
-Usage
-~~~~~
-
-The command-syntax is::
-
-	$ more [options] [file_name]
-
-If no file name is provided, *more* looks for input from stdin.
-
-Once *more* has obtained input, it displays as much as can fit on the current screen and waits for user input to advance, with the exception that a form feed (^L) will also cause *more* to wait at that line, regardless of the amount of text on the screen. In the lower-left corner of the screen is displayed the text "--More--" and a percentage, representing the percent of the file that *more* has paged through. (This percentage includes the text displayed on the current screen.) When *more* reaches the end of a file (100%) it exits. The most common methods of navigating through a file are *Enter*, which advances the output by one line, and *Space*, which advances the output by one screen.
-
-There are also other commands that can be used while navigating through the document; consult *more*'s *man* page for more details.
-
-
-
-less
------
-
-*less* is a terminal pager program on Unix, Windows and Unix-like systems used to view (but not change) the contents of a text file one screen at a time. It is similar to *more*, but has the extended capability of allowing both forward and backward navigation through the file. Unlike most Unix text editors/viewers, *less* does not need to read the entire file before starting, resulting in faster load times with large files.
-
-Usage
-~~~~~~
-
-*less* can be invoked with options to change its behaviour, for example, the number of lines to display on the screen. A few options vary depending on the operating system. While *less* is displaying the file, various commands can be used to navigate through the file. These commands are based on those used by both *more* and *vi*. It is also possible to search for character patterns in the file.
-
-By default, *less* displays the contents of the file to the standard output (one screen at a time). If the file name argument is omitted, it displays the contents from standard input (usually the output of another command through a pipe). If the output is redirected to anything other than a terminal, for example a pipe to another command, less behaves like cat.
-
-The command-syntax is ::
-
-	$ less [options] file_name
-
-Frequently Used Options
-~~~~~~~~~~~~~~~~~~~~~~~
-
-    * -g: Highlights just the current match of any searched string.
-
-    * -I: Case-insensitive searches.
-
-    * -M: Shows more detailed prompt, including file position.
-
-    * -N: Shows line numbers (useful for source code viewing).
-
-    * -S: Disables line wrap ("chop long lines"). Long lines can be seen by side scrolling.
-
-    * -?: Shows help.
-
-Frequently Used Commands
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-    * [Arrows]/[Page Up]/[Page Down]/[Home]/[End]: Navigation.
-
-    * [Space bar]: Next page.
-
-    * b: Previous page.
-
-    * ng: Jump to line number n. Default is the start of the file.
-
-    * nG: Jump to line number n. Default is the end of the file.
-
-    * /pattern: Search for pattern. Regular expressions can be used.
-
-    * '^ or g: Go to start of file.
-
-    * '$ or G: Go to end of file.
-
-    * h: Help.
-
-    * q: Quit.
-
-
-
--------------------------------------------------------------------
-
-Examples 
-~~~~~~~~~
-::
-
-	$ less -M readme.txt                     #Read "readme.txt."
-	$ less +F /var/log/mail.log              #Follow mode for log
-	$ file * | less                          #Easier file analysis.
-	$ grep -i void *.c | less -I -p void     #Case insensitive search 		                                          for "void" in all .c files
-
-Directory Structure
-====================
-
-In the File Hierarchy Standard (FHS) all files and directories appear under the root directory "/", even if they are stored on different physical devices. Note however that some of these directories may or may not be present on a Unix system depending on whether certain subsystems, such as the X Window System, are installed.
-
-The majority of these directories exist in all UNIX operating systems and are generally used in much the same way; however, the descriptions here are those used specifically for the FHS, and are not considered authoritative for platforms other thanmajor Linux distros.
-
-+---------------+------------------------------------------------+
-|   Directory   |             Description                        |
-+===============+================================================+
-| /             | Primary hierarchy root and root directory of   |
-|               | the entire file system hierarchy.              |
-+---------------+------------------------------------------------+
-| /bin/         | Essential command binaries that need to be     |
-|               | available in single user mode; for all users,  |
-|               | e.g., *cat*, *ls*, *cp*.                       |
-+---------------+------------------------------------------------+
-| /boot/        | Boot loader files, e.g., *kernels*, *initrd*;  |
-|               | often a separate partition.                    |
-+---------------+------------------------------------------------+
-| /dev/         | Essential devices, e.g., /dev/null             |
-+---------------+------------------------------------------------+
-| /etc/         | Host-specific system-wide configuration files  |
-|               | (the name comes from *et cetera*)              |
-+---------------+------------------------------------------------+
-| /home/        | User's home directories, containing saved      |
-|               | files, personal settings, etc.; often a        |
-|               | separate partition.                            |
-+---------------+------------------------------------------------+
-| /lib/         | Libraries essential for the binaries in        |
-|               | */bin/* and */sbin/*                           |
-+---------------+------------------------------------------------+
-| /media/       | Mount points for removable media such as       |
-|               | CD-ROMs, external hard disks, USB sticks, etc. |
-+---------------+------------------------------------------------+
-| /mnt/         | Temporarily mounted file systems               |
-+---------------+------------------------------------------------+
-| /opt/         | Optional application software packages         |
-+---------------+------------------------------------------------+
-| /proc/        | Virtual filesystem documenting kernel and      |
-|               | process status as text files; e.g., uptime,    |
-|               | network. In Linux, corresponds to a *Procfs*   |
-|               | mount.                                         |
-+---------------+------------------------------------------------+
-| /root/        | Home directory for the root user               |
-+---------------+------------------------------------------------+
-| /sbin/        | Essential system binaries; e.g., *init*,       |
-|               | *route*, *mount*.                              |
-+---------------+------------------------------------------------+
-| /srv/         | Site-specific data which is served by the      |
-|               | system.                                        |
-+---------------+------------------------------------------------+
-| /tmp/         | Temporary files. Often not preserved between   |
-|               | system reboots.                                |
-+---------------+------------------------------------------------+
-| /usr/         | Secondary hierarchy for read-only user data;   |
-|               | contains the majority of (multi-)user          |
-|               | utilities and applications.                    |
-+---------------+------------------------------------------------+
-| /var/         | Variable files - files whose content is        |
-|               | expected to continually change during normal   |
-|               | operation of the system - such as logs, spool  |
-|               | files, and temporary e-mail files.             |
-|               | Sometimes a separate partition.                |
-+---------------+------------------------------------------------+
-
-
-man hier
----------
-
-This is the manual page on the UNIX filesystem. The syntax for this is::
-
-	$ man hier
-
-ls -l
------
-
-Shows you huge amounts of information (permissions, owners, size, and when last modified) for folders and files. The syntax is ::
-
-	$ ls -l
-
-This can be done after entering the required directory. 
-
-Permissions and Ownership
-=========================
-
-let's check out the file permissions. File permissions are defined
-for users, groups and others. User would be the username that you are
-logging in as. Further more, users can be organized into groups for better
-administration and control. Each user will belong to at least one default
-group. Others includes anyone the above categories exclude.
-
-Given below is the result of an 'ls -l'
-
-drwxr-x--- 2 user group 4096 Dec 28 04:09 tmp
--rw-r--r-- 1 user group 969 Dec 21 02:32 foo
--rwxr-xr-x 1 user group 345 Sep 1 04:12 somefile
-
-Relevant information in the first column here is the file type followed by the file permissions. The third and the fourth column show the owner of the file and the group that the file belongs to.The fifth column is no bytes and sixth modification date .The first entry here is tmp. The first character in the first column is 'd', which means the tmp is a directory. The other entries here are files,as indicated by the '-'.
-
-d rwx r-x ---
-file type users group others
-
-The next 9 characters define the file permissions. These permissions are given in groups of 3 each. The first 3 characters are the permissions for the owner of the file or directory. The next 3 are permissions for the group that the file is owned by and the final 3 characters define the access permissions for everyone not part of the group. There are 3 possible attributes that make up file access permissions.
-
-r - Read permission. Whether the file may be read. In the case of a directory, this would mean the ability to list the contents of the directory.
-
-w - Write permission. Whether the file may be written to or modified. For a directory, this defines whether you can make any changes to the contents
-of the directory. If write permission is not set then you will not be able
-to delete, rename or create a file.
-
-x - Execute permission. Whether the file may be executed. In the case of a directory, this attribute decides whether you have permission to enter,run a search through that directory or execute some program from that directory.
-
-
-
-
-chmod
-------
-
-The *chmod* command (abbreviated from 'change mode') is a shell command and C language function in Unix and Unix-like environments. When executed, it can change file system modes of files and directories. The modes include permissions and special modes.
-
-Usage
-~~~~~
-
-The *chmod* command options are specified like this:
-::
-
-	$ chmod [options] mode[,mode] file1 [file2 ...]
-
-To view what the permissions currently are, type:
-::
-
-	$ ls -l file
-
-Command line options
-~~~~~~~~~~~~~~~~~~~~
-
-The *chmod* command has a number of command line options that affect its behavior. The most common options are:
-
-    * -R: Changes the modes of directories and files recursively
-
-    * -v: Verbose mode; lists all files as they are being processed
-
-Symbolic modes
-+++++++++++++++
-
-To the *chmod* utility, all permissions and special modes are represented by its mode parameter. One way to adjust the mode of files or directories is to specify a symbolic mode. The symbolic mode is composed of three components, which are combined to form a single string of text:
-::
-
-	$ chmod [references][operator][modes] file1 ...
-
-The references (or classes) are used to distinguish the users to whom the permissions apply. If no references are specified it defaults to “all” but modifies only the permissions allowed by the umask. The references are represented by one or more of the following letters:
-
-+--------------+--------+---------------------------------------------+
-| Reference    | Class  |                Description                  |
-+==============+========+=============================================+
-|      u       | user   | the owner of the file                       |
-+--------------+--------+---------------------------------------------+
-|      g       | group  | users who are members of the file's group   |
-+--------------+--------+---------------------------------------------+
-|      o       | others | users who are not hte owner of the file or  |
-|              |        | members of the group                        |
-+--------------+--------+---------------------------------------------+
-|      a       | all    | all three of the above; is the same as *ugo*|
-+--------------+--------+---------------------------------------------+
-
-The *chmod* program uses an operator to specify how the modes of a file should be adjusted. The following operators are accepted:
-
-+--------------+------------------------------------------------------+
-| Operator     |                      Description                     |
-+==============+======================================================+
-| +            | adds the specified modes to the specified classes    |
-+--------------+------------------------------------------------------+
-| -            | removes the specified modes from the specified       |
-|              | classes                                              |
-+--------------+------------------------------------------------------+
-| =            | the modes specified are to be made the exact modes   |
-|              | for the specified classes                            |
-+--------------+------------------------------------------------------+
-
-The modes indicate which permissions are to be granted or taken away from the specified classes. There are three basic modes which correspond to the basic permissions:
-
-+-----+--------------+------------------------------------------------+
-|Mode |    Name      |                 Description                    |
-+=====+==============+================================================+
-| r   | read         | read a file or list a directory's contents     |
-+-----+--------------+------------------------------------------------+
-| w   | write        | write to a file or directory                   |   
-+-----+--------------+------------------------------------------------+
-| x   | execute      | execute a file or recurse a directory tree     |
-+-----+--------------+------------------------------------------------+
-| X   | special      | which is not a permission in itself but rather |
-|     | execute      | can be used instead of 'x'. It applies execute |
-|     |              | permissions to directories regardless of their |
-|     |              | current permissions and applies execute        |
-|     |              | permissions to a file which already has at     |
-|     |              | least 1 execute permission bit already set     |
-|     |              | (either user, group or other). It is only      |
-|     |              | really useful when used with '+' and usually   |
-|     |              | in combination with the *-R* option for giving |
-|     |              | group or other access to a big directory tree  |
-|     |              | without setting execute permission on normal   |
-|     |              | files (such as text files), which would        |
-|     |              | normally happen if one just used 'chmod -R     |
-|     |              | a+rx .', whereas with 'X' one can do 'chmod -R |
-|     |              | a+rX .' instead.                               |
-+-----+--------------+------------------------------------------------+
-| s   | setuid/gid   | are Unix access rights flags that allow users  |
-|     |              | to run an executable with the permissions of   |
-|     |              | the executable's owner or group.They are often |
-|     |              | used to allow users on a computer system to run| 
-|     |              | programs with temporarily elevated privileges  | 
-|     |              | in order to perform a specific task. While the |
-|     |              | assumed user id or group id privileges provided|
-|     |              | are not always elevated, at a minimum they are | 
-|     |              | specific.They are needed for tasks that require|
-|     |              | higher privileges than those which a common    |
-|     |              | user has, such as changing his or her login    |  
-|     |              | password.                                      |
-+-----+--------------+------------------------------------------------+
-| t   | sticky       | The most common use of the sticky bit today is |
-|     |              | on directories, where, when set, items inside  |
-|     |              | the directory can be renamed or deleted only by|
-|     |              | the item's owner, the directory's owner, or the| 
-|     |              | superuser; without the sticky bit set, any user|
-|     |              | with write and execute permissions for the     |
-|     |              | directory can rename or delete contained files,| 
-|     |              | regardless of owner.                           |
-+-----+--------------+------------------------------------------------+
-
-The combination of these three components produces a string that is understood by the chmod command. Multiple changes can be specified by separating multiple symbolic modes with commas.
-
-Symbolic examples
-+++++++++++++++++
-
-Add the 'read' and 'write' permissions to the 'user' and 'group' classes of a directory:
-::
-
-	$ chmod ug+rw mydir
-	$ ls -ld mydir
-	drw-rw----   2 starwars  yoda  96 Dec 8 12:53 mydir
-
-For a file, remove *write* permissions for all classes:
-::
-
-	$ chmod a-w myfile
-	$ ls -l myfile
-	-r-xr-xr-x   2 starwars  yoda 96 Dec 8 12:53 myfile
-
-Set the permissions for the *u*ser and the *g*roup to read and execute only (no write permission) on *mydir*.
-::
-
-	$ chmod ug=rx mydir
-	$ ls -ld mydir
-	dr-xr-x---   2 starwars  yoda 96 Dec 8 12:53 mydir
-
-Octal numbers
-+++++++++++++
-
-The *chmod* command also accepts three and four-digit octal numbers representing modes. Using a three-digit octal number to set the modes of a file named myfile :
-::
-
-	$ chmod 664 myfile
-	$ ls -l myfile
-	-rw-rw-r--  1   57 Jul  3 10:13  myfile
-
-Foe each one, you define the right like that :
-
-    * a read right correspond to 4
-    * a write right correspond to 2
-    * an execute right correspond to 1
-
-You want the user to have all the rights? : 4 + 2 + 1 = 7
-
-you want the group to have read and write rights : 4 + 2 = 6
-
-
-
-Since the *setuid*, *setgid* and *sticky* bits are not set, this is equivalent to:
-::
-
-	$ chmod 0664 myfile
-
-
-chown
-~~~~~
-The chown command is used to change the owner and group of files, directories and links.
-
-By default, the owner of a filesystem object is the user that created it. The group is a set of users that share the same access permissions (i.e., read, write and execute) for that object.
-
-The basic syntax for using chown to change owners is
-
-    chown -v alice wonderland.txt
-
-
-
-
-
-Redirection and Piping
-=======================
-
-In computing, *redirection* is a function common to most command-line interpreters, including the various Unix shells that can redirect standard streams to user-specified locations.
-
-
-
-Redirecting standard input and standard output
------------------------------------------------
-
-Redirection is usually implemented by placing certain characters between commands. Typically, the syntax of these characters is as follows::
-
-	$ command1 > file1
-
-executes *command1*, placing the output in file1. Note that this will truncate any existing data in *file1*. To append output to the end of the file, use the >> operator.::
-
-	$ command1 < file1
-
-executes *command1*, using *file1* as the source of input (as opposed to the keyboard).::
-
-	$ command1 < infile > outfile
-
-combines the two capabilities: *command1* reads from *infile* and writes to *outfile*
-
-Piping
--------
-
-Programs can be run together such that one program reads the output from another with no need for an explicit intermediate file:
-A pipeline of two programs run on a text terminal::
-
-	$ command1 | command2
-
-executes *command1*, using its output as the input for *command2* (commonly called piping, since the "|" character is known as a "pipe").
-
-This is equivalent to using two redirects and a temporary file::
-
-	$ command1 > tempfile
-	$ command2 < tempfile
-	$ rm tempfile
-
-A good example for command piping is combining *echo* with another command to achieve something interactive in a non-interactive shell, e.g.::
-
-	$ echo -e "user\npass" | ftp localhost
-
-This runs the ftp client with input user, press return, then pass.
-
-Redirecting to and from the standard file handles
---------------------------------------------------
-
-In Unix shells derived from the original Bourne shell, the first two actions can be further modified by placing a number (the file descriptor) immediately before the character; this will affect which stream is used for the redirection. The Unix standard I/O streams are:
-
-+------------+-------------+------------------------+
-|   Handle   |    Name     |      Description       |
-+============+=============+========================+
-| 0          |   stdin     |    Standard input      |
-+------------+-------------+------------------------+
-| 1          |   stdout    |    Standard output     |
-+------------+-------------+------------------------+
-| 2          |   stderr    |    Standard error      |
-+------------+-------------+------------------------+
-
-For example:
-::
-
-	$ command1 2> file1
-
-executes *command1*, directing the standard error stream to *file1*.
-
-
-
-Another useful capability is to redirect one standard file handle to another. The most popular variation is to merge standard error into standard output so error messages can be processed together with (or alternately to) the usual output. Example:
-::
-
-	$ find / -name .profile > results 2>&1
-
-will try to find all files named *.profile*. Executed without redirection, it will output hits to *stdout* and errors (e.g. for lack of privilege to traverse protected directories) to *stderr*. If standard output is directed to file results, error messages appear on the console. To see both hits and error messages in file results, merge *stderr* (handle 2) into *stdout* (handle 1) using 2>&1 .
-
-It's possible use 2>&1 before ">" but it doesn't work. In fact, when the interpreter reads 2>&1, it doesn't know yet where standard output is redirected and then standard error isn't merged.
-
-If the merged output is to be piped into another program, the file merge sequence 2>&1 must precede the pipe symbol, thus:
-::
-
-	$ find / -name .profile 2>&1 | less
-
-A simplified form of the command:
-::
-
-	$ command > file 2>&1
-
-is:
-::
-
-	$ command &>file
-
-or:
-::
-
-	$command >&file
-
-Chained pipelines
-------------------
-
-The redirection and piping tokens can be chained together to create complex commands. For example:
-::
-
-	$ ls | grep '\.sh' | sort > shlist
-
-lists the contents of the current directory, where this output is filtered to only contain lines which contain *.sh*, sort this resultant output lexicographically, and place the final output in *shlist*. This type of construction is used very commonly in shell scripts and batch files.
-
-Redirect to multiple outputs
------------------------------
-
-The standard command *tee* can redirect output from a command to several destinations.
-::
-
-	$ ls -lrt | tee xyz
-
-This directs the file list output to both standard output as well as to the file *xyz*.
-
-More Text Processing
-====================
 
 grep
 -----
@@ -1199,4 +1183,374 @@ Here is a one line shell script to show directories:
 This returns list of all files which has the word user in it .
 
 
+Environment Variables:
+======================
+
+These variables like HOME, OSTYPE,Variables are a way of passing information from the shell to programs when you run them. Programs look "in the environment" for particular variables and if they are found will use the values stored. Standard UNIX variables are split into two categories, environment variables and shell variables. In broad terms, shell variables apply only to the current instance of the shell and are used to set short-term working conditions; environment variables have a farther reaching significance, and those set at login are valid for the duration of the session.By convention, environment variables have UPPER CASE and shell variables have lower case names.  
+
+Some of examples of Environment variables are: ::
+
+   $ echo $OSTYPE 
+   linux-gnu
+   $ echo $HOME
+   /home/user 
+
+To see all the variables and there values use any of following commands: ::
+
+   $ printenv | less
+   $ env
+
+The most commonly used environment variable is "PATH", it defines a list of directories to search through when looking for a command to execute. If you decide to put your own programs in a bin directory under your home directory, you'll have to modify the path to include that directory, or the system will never find your programs (unless you happen to be in that directory when you enter the command). Here's how to change your PATH variable so it includes your personal bin directory: ::
+
+   $ set PATH=$PATH:$HOME/bin
+
+See the difference in value of PATH variable before and after modifying it. One can also create its own variable to make things easier: ::
+
+   $ set repo = $HOME/Desktop/random/code
+   $ cd $repo
+
+*set* command is used to define a variable for the current shell. Try opening a new shell and use the above mentioned command, it wont work as expected. The other child process wont be able to see these variables unless we *export* them. Repeat the above mentioned activity with *export* command. Now with all new shells, *$repo* will work.
+
+
+
+
+
+Shell Scripting:
+================
+
+Basics:
+-------
+
+Shell program or shell script,a sequence of commands to a text file and tell the shell to execute the text file instead of entering the commands. The first *"Hello World"* sample for shell scripting is as easy as it sounds: ::
+
+   $ echo '#!/bin/sh' > my-script.sh
+   $ echo 'clear' >> my-script.sh   
+   $ echo 'echo Hello World' >> my-script.sh
+   $ chmod 755 my-script.sh
+   $ ./my-script.sh
+   Hello World
+
+The #! syntax(also known as shebang) is used in scripts to indicate an interpreter for execution under UNIX / Linux operating systems. The chmod is required to make the script executable. This script will just execute two commands, *clear* and *echo* one after another. One can also do the same task using a one liner command *clear; echo 'Hello World';* but as number of lines grows using a script file is helpful. 
+
+So lets create a script which gives us all the filenames for given initial alphabet or string in a directory. Let the name of script be *initial.sh*, open it with text editor, and write: ::
+
+   #!/bin/sh
+   ls > temp
+   grep ^$1 < temp
+   rm temp
+   $ chmod a+x initial.sh
+   $ ./initial.sh s
+
+The $1 in the script is pertaining to command line argument. All arguments passed via command line are accessed via *$#* with name of script being first member, that is $0. Now lets write a script for finding a file, and then checking when was it last modified: ::
+
+   #!/bin/sh
+   name=`find . -name $1 -print`
+   echo $name
+   last_modified=`stat -c %y $name| cut -f 1 -d " "`
+   echo "Last modified: $last_modified"    
+   $ ./search.sh fname
+
+Try giving some file you want to search in place of fname. Please note in second line *`* its a back-quote(other key mapped with tilda), it is specifically used to get the output of one command into a variable. In this particular case name is a User defined variables  which stores the value. We access value stored in any variable using *$* symbol before name of variable.
+
+
+
+Shell Arithmetic:
+-----------------
+
+Shell also provides support for basic arithmetic operations. The syntax is: ::
+
+   $ expr op1 math-operator op2
+
+Some of example which can be tried handily: ::
+   
+   $ expr -3 + 5
+   2
+   $ expr 10 % 3
+   1
+
+These spaces in between operator and operands is important, without them shell interpreter will raise the syntax error. ::
+
+   $ expr 2*3
+   expr: syntax error
+   
+One can use back-quotes(`) also to get value of expr. ::
+
+   $ echo `expr 6 + 3`
+   9
+   $ result=`expr 6 + 3`
+   $ echo $result
+   9
+
+Shell uses three kinds of quotes. Double quotes("), anything enclosed among them except from variable trailing after $, and characters after \ would be printed as it is. Single quotes('), anything enclosed within them is just same, no formulation/interpretation. Back quotes(`), anything inclosed is considered as command, or is executed. ::
+
+   $ echo "Today is date"
+   Today is date
+   $ echo "Today is `date`"
+   Today is Wed Sep 16 17:32:22 IST 2009
+   $ echo 'Today is `date`'
+   Today is `date`
+   $ echo "Today is \n `date`"
+   Today is \n Wed Sep 16 17:40:13 IST 2009
+   $ echo -e "Today is \n `date`"
+   Today is 
+    Wed Sep 16 17:41:13 IST 2009 
+
+if else construct:
+------------------
+
+One can have simple *if else if* constructs in shell scripts to check conditions. Lets take simple example of writing a script which returns back whether the argument passed is positive or not: ::
+
+   #!/bin/sh
+   if test $1 -gt 0
+   then
+     echo "number is positive"
+   else
+     echo "number is negative"
+   fi
+   $ ./sign.sh -11
+   number is negative
+
+This script will compare the first value passed as argument with 0 *if test var -gt val*, var being $1 and val being 0, gt meaning greater then. Now this program has some flaw, it will give same result for following input: (-11) and (-1, 5), as we are checking just $1 which is first argument and hence the result. For handling such situation we can include *if-else* clause which will warn user of correct usage of script. ::
+
+   #this is the case when no argument is passed  
+   if [ $# -eq 0 ]
+   then
+     echo "$0 : You must give/supply one integers"
+     exit 1
+   else 
+     if [ $# -gt 1 ]
+     then
+       echo "$0 : You must give one integer"
+       exit 1
+     fi
+   fi
+
+One important thing to note in shell script is spacing, with many comparison and evaluation operation a wrongly placed space will spoil all the fun. So in previous example the expression *[ $# -eq 0 ]* will work properly, but if we remove those leading or trailing spaces like *[ $# -eq 0]*, it wont work as expected, or rather throw a warning. Both *test* and *[]* do the same task of testing a expression and returning true or false.
+
+Lets create something interesting using these if-else clause. Now we will create a script which will greet the user when he opens the shell. We will create the script, change the permission to make it executable and append the *.bashrc* file with *./greet.sh* line and we are done. The script is: ::
+
+   #!/bin/sh
+   #Script to greet the user according to time of day
+   temph=`date | cut -c12-13`
+   dat=`date +"%A %d in %B of %Y (%r)"`
+   if [ $temph -lt 12 ]
+   then
+     mess="Good Morning $LOGNAME, Have a nice day!"
+   fi
+
+   if [ $temph -gt 12 -a $temph -le 16 ]
+   then
+     mess="Good Afternoon $LOGNAME"
+   fi
+
+   if [ $temph -gt 16 -a $temph -le 18 ]
+   then
+     mess="Good Evening $LOGNAME"
+   fi
+   echo -e "$mess\nThis is $dat"
+
+For me when I open the shell the output is something like: ::
+
+   Good Morning user, Have a nice day!
+   This is Wednesday 16 in September of 2009 (11:54:47 AM IST) 
+
+Loops
+-----
+
+Bash has three different commands for looping -- ``for``, ``while`` and ``until``. 
+
+``for`` loop
+~~~~~~~~~~~~
+
+Suppose we have a set of files, that have names beginning with numbers followed by their names - ``08 - Society.mp3``. We would like to rename these files to remove the numbering. How would we go about doing that? It is clear from the problem statement that we could use a ``for`` loop, to loop through the list of files and rename each of the files.  
+
+Let's first look at a simple ``for`` loop, to understand how it works. 
+::
+
+  for animal in rat cat dog man
+  do 
+    echo $animal
+  done
+
+We just wrote a list of animals, each animal's name separated by a space and printed each name on a separate line. The variable ``animal`` is a dummy variable and has no significance. You could use something as lame as ``i`` in place of ``animal``.  
+
+Now, we use a simple ``for`` loop to list the files that we are interested in. 
+::
+
+  ls *.mp3 > list
+  for i in `cat list`
+  do
+    echo "$i"
+  done
+
+If your filenames contain spaces, ``for`` assumes each space separated word to be a single item in the list and prints it in a separate line. We could change the script slightly to overcome this problem. 
+::
+
+  for i in *.mp3
+  do
+    echo "$i"
+  done
+
+Now, we have each file printed on a separate line. Depending on the files that we have we could use grep to get the relevant portion of the filenames and rename the files. 
+::
+
+  for i in *.mp3
+  do 
+    j=$(echo "$i"|grep -o "[A-Za-z'&. ]*.mp3")
+    echo "$i -> $j"
+  done
+
+Now we just replace the echo command with a ``mv``  command. 
+::
+
+  for i in *.mp3
+  do 
+    j=$(echo "$i"|grep -o "[A-Za-z'&. ]*.mp3")
+    mv "$i" "$j"
+  done
+
+
+
+``while``
+~~~~~~~~~
+
+The ``while`` command allows us to continuously execute a block of commands until the command that is controlling the loop is executing successfully. 
+
+Let's start with the lamest example of a while loop.
+::
+
+  while true
+  do
+    echo "True"
+  done
+
+This, as you can see, is an infinite loop that prints the ``True``. 
+
+Say we wish to write a simple program that takes user input and prints it back, until the input is ``quit``, which quits the program. 
+::
+
+  while [ "$variable" != "quit" ]
+  do
+    read variable
+    echo "Input - $variable"
+  done
+  exit 0
+
+``until``
+~~~~~~~~~
+
+The ``until`` loop is similar to the ``while`` loop, except that it executes until the conditional command does not execute properly. 
+
+The infinite loop changes to the following, when ``until`` is used.
+::
+
+  until false
+  do
+    echo "True"
+  done
+
+Now lets try and use these above mentioned options provided by shell to write a utility. Until now, when we try find or locate it looks through directories and files for result. But they wont search through tar archives and zipped files. Lets create a shell script for especially looking through these files
+::
+
+  #!/bin/sh
+
+  #To check number of arguments being passed.
+  if [ $# -eq 0 ] ; then
+  echo "Correct usage: $0 tar-archive filename \nOr $0 filename"
+  exit 1
+  else
+    if [ $# -eq 1 ] ; then
+      tar_archive=`find $PWD -name "*.tar*"`
+    else
+      tar_archive=`find $PWD -name $1`
+    fi
+  fi
+
+  #Search of particular file inside archives.
+  for archive in $tar_archive
+  do
+    echo $archive
+    variable=`tar -tf $archive`
+    for word in $variable
+    do
+      if [ $# -eq 1 ] ; then
+        echo "$word" | grep -q ".*$1"
+      else
+	echo "$word" | grep -q ".*$2"
+      fi
+    if [ $? -eq 0 ] ; then 
+      echo "File present in $archive!" 
+    fi  
+    done
+  done
+
+
+Functions
+---------
+
+When a group of commands are repeatedly being used within a script, it is convenient to group them as a function. This saves a lot of time and you can avoid retyping the code again and again. Also, it will help you maintain your code easily. Let's see how we can define a simple function, ``hello-world``. Function can be defined by using function name followed by a pair of parentheses. 
+::
+
+  
+  hello-world () {
+    echo "Hello, World.";
+  }
+
+  $ hello-world
+  Hello, World.
+
+Passing parameters to functions is similar to passing them to scripts. 
+::
+
+
+  #! /bin/bash
+
+  hello-name()
+  {
+     echo  "hello ". $1
+        
+  }
+
+  hello-name $1
+
+
+  #!usr/bin/bash
+  hello-name
+  { 
+  echo "Hello, $1."; 
+  }
+
+  hello-name $1
+
+  save this in a file helloscipt.sh and give it execute permission
+  
+
+  $ ./helloscipt 9
+  Hello, 9.
+
+Any variables that you define within a function, will be added to the global namespace. If you wish to define variables that are restricted to the scope of the function, define a variable using the ``local`` built-in command of bash.
+
+  
+We shall now write a function for the word frequency generating script that we had looked at in the previous session. 
+
+::
+
+  word_frequency() {
+    if [ $# -ne 1 ]
+    then
+      echo "Usage: $0 file_name"
+      exit 1
+    else 
+      if [ -f "$1" ]
+      then
+        grep  "[A-Za-z]*" -o "$1" | tr 'A-Z' 'a-z' | sort | uniq -c | sort -nr | less
+      fi
+    fi
+  }
+
+ word_frequency  $1
+
+
+
+	
 
