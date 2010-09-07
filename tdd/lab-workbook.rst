@@ -42,4 +42,18 @@ Lab - 2
 Lab -3
 ======
 
+  1. Move the tests that were written to GCD function in the examples
+     of this chapter to a separate function called test_gcd(). Do the
+     same for LCM function and num_of_days() function. Make sure when
+     the respective Python files are executed as stand alone scripts
+     these tests executed.
+  2. Put all these files in a single directory called utils and run
+     the nosetests command. Make a report of the results.
+  3. Write doctests to each of the above functions. Demonstrate and
+     report the results as executed by running the doctests using
+     doctest.testmod() function and using nosetests command.
+
+Lab - 4
+=======
+
   1. 
