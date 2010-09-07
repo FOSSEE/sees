@@ -525,13 +525,18 @@ code within test_gcd.py module. Our test code looks like this::
   if __name__ == '__main__':
       unittest.main()
 
-Since we don't want to read this file into memory each time we run a
-separate test method, we will read all the data in the file into
-Python lists in the setUp method. The entire data file is kept in a
-list called test_cases which happens to be an attribute of the
-TestGCDFunction class. In the tearDown method of the class we
-will delete this attribute to free up the memory and close the
-opened file.
+Please note that although we highly recommend to write a docstring for
+all the classes, functions and modules we have not done so to keep
+above code compact and we have left it as an exercise for the you to
+add them.
+
+Coming back to tests themselves, since we don't want to read this file
+into memory each time we run a separate test method, we will read all
+the data in the file into Python lists in the setUp method. The entire
+data file is kept in a list called test_cases which happens to be an
+attribute of the TestGCDFunction class. In the tearDown method of the
+class we will delete this attribute to free up the memory and close
+the opened file.
 
 Our actual test code sits in the method which begins with the name
 **test_** as said earlier, the test_gcd method. Note that we import
