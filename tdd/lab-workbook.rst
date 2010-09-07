@@ -25,7 +25,18 @@ Lab - 1
 Lab - 2
 =======
 
-  1. 
+  1. Write the stub function, followed by the tests(demonstrating the
+     failed tests), in turn followed by the code(demonstrating the
+     passing tests) to calculate the number of days between two
+     dates. Name your function num_of_days(). The function should take
+     two arguments, both being tuples. Each tuple represents the date
+     in the format of (dd, mm, yyyy) where dd, mm and yyyy are
+     integers.
+  2. Rewrite the num_of_days() function to take the start date as an
+     optional argument. If the start date is not specified calculate
+     the number of days between the only specified date since Unix
+     epoch. Prior to manipulating the code to do this, make sure you
+     change the tests, make them fail and then refactor the code.
 
 
 Lab -3
