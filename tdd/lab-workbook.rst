@@ -9,16 +9,17 @@ Lab - 1
 =======
 
   1. Write a stub function for calculating the LCM of two numbers.
+                                                            - U-level
   2. Write the tests for the LCM function, place the tests in if
      __name__ == '__main__': part of the Python file. Demonstrate that
-     the tests fail.
+     the tests fail.                                        - U-level
   3. Implement the code for the LCM function, using the gcd function
      provided in the examples in the chapter. Demonstrate the tests
-     pass. (For the algorithm refer to Wikipedia - [0])
+     pass. (For the algorithm refer to Wikipedia - [0])     - Ap-level
   4. Alternatively, build a set of test cases, preferably a large
      number of cases, place it in a text file and use these test cases
      to test your LCM function. Demonstrate that tests still continue
-     to pass.
+     to pass.                                               - U-level
 
 [0] - http://en.wikipedia.org/wiki/Least_common_multiple#Reduction_by_the_greatest_common_divisor
 
@@ -31,12 +32,14 @@ Lab - 2
      dates. Name your function num_of_days(). The function should take
      two arguments, both being tuples. Each tuple represents the date
      in the format of (dd, mm, yyyy) where dd, mm and yyyy are
-     integers.
+     integers.                                              - Ap-level
+
   2. Rewrite the num_of_days() function to take the start date as an
      optional argument. If the start date is not specified calculate
      the number of days between the only specified date since Unix
      epoch. Prior to manipulating the code to do this, make sure you
      change the tests, make them fail and then refactor the code.
+                                                            - Ap-level
 
 
 Lab -3
@@ -46,12 +49,12 @@ Lab -3
      of this chapter to a separate function called test_gcd(). Do the
      same for LCM function and num_of_days() function. Make sure when
      the respective Python files are executed as stand alone scripts
-     these tests executed.
+     these tests executed.                                  - U-level
   2. Put all these files in a single directory called utils and run
-     the nosetests command. Make a report of the results.
+     the nosetests command. Make a report of the results.   - U-level
   3. Write doctests to each of the above functions. Demonstrate and
      report the results as executed by running the doctests using
-     doctest.testmod() function and using nosetests command.
+     doctest.testmod() function and using nosetests command. -Ap-level
 
 Lab - 4
 =======
@@ -140,4 +143,4 @@ Lab - 4
                del self.data_len
 
      Fix the bug, run the tests to make sure the function passes the
-     tests and if possible refactor the code with a better approach.
+     tests and if possible refactor the code with a better approach. - An-level
