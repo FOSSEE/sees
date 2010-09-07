@@ -135,7 +135,7 @@ Usage of pwd command::
 
 
  I wish some commads were a bit smarter ? 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------------------
 
 The standard commands in Linux have a lot of options also called flags to change or provide some additional functionality to the command For example ::
       
@@ -158,7 +158,7 @@ Getting Help
 ============
 
 How do I find what a command does?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------
 
 A short index of explanations for commands is available using the *whatis* command, like in the examples below::
 
@@ -553,7 +553,7 @@ Changing Ownership of Files
 
 
 chown
-~~~~~
+-----
 The chown command is used to change the owner and group of files, directories and links.
 
 By default, the owner of a filesystem object is the user that created it. The group is a set of users that share the same access permissions (i.e., read, write and execute) for that object.
@@ -574,10 +574,10 @@ Working with text
 =================
 
 How do I look into a file?
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+--------------------------
 
 more
------
+----
 
 In computing, *more* is a command to view  contents of a text file one screen at a time 
 
@@ -667,7 +667,7 @@ Text Processing
 
 
 How do look at part of a file?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------
 
 head
 -----
@@ -854,7 +854,7 @@ sort command with the file name as a parameter sorts the lines of the file alpha
 
 
 To sort the same file using the last names     
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------------------
 
 ::
 
