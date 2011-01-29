@@ -5,630 +5,1104 @@ Version Control
 Introduction
 ============
 
-The following statement from a blog[1](http://karlagius.com/2009/01/09/version-control-for-the-masses/") aptly points usefulness of version control systems:
+Version control is just a way to track your files over time and share them.
+This allows you to go back to older versions when something goes wrong, see
+what changed when and why, collaborate on a single piece of work with a bunch
+of people. 
 
-"Version control is one of those weird, geeky things that never really gained much ground in non-geek fields, despite the fact that it’s blindingly useful.
+Like this
+`blog <http://karlagius.com/2009/01/09/version-control-for-the-masses/>`_
+aptly points out, "Version control is one of those weird, geeky things that
+never really gained much ground in non-geek fields, despite the fact that
+it’s blindingly useful." In this course, we are going to see a handful of
+such things, which are widely used in the programmer world, but not so much
+in the scientific computing world, even when if they would be very useful.
 
-Version control (or source control) is nothing more complex than keeping copies of work as we make changes. On the surface, it’s all straight-forward; make a copy of every file before making any changes to it. That way, if something seriously messes up, one can always fall back to something that worked before, or at least compare the broken copy with one that used to work so one can figure out where it went wrong."
-
-One probably cooks up their own version control system without realizing it had such a geeky name. For instances files with names oldxxxxxx.py and latestxxxxxx.py. Every time to make some change in a file, one save it with different name then the original one. Luckily there are like, loads of version control systems out there to do this heavy lifting.
+Version control is just a way of backing up your files, before making changes
+to it. Most people would have cooked up their own version control system,
+without realizing, there are tools built by others, which make this task much
+more organized and systematic. You surely would've saved your files, some
+time or the other as ``oldproject.py``, ``latestproject.py`` and so on, or
+date-tagging them as ``project-21-01-10.py``, ``project-20-02-10.py`` and so
+on. 
 
 Why Use Version Control
 =======================
  
-One of idea behind Version Control Tools was to build onto very first step which can be creating a empty file, or writing a first buggy program for assignment, rather than simply loose it. So here are some more reasons why is automated version control needed:
+We have seen that one of the main motivation to use a version system control
+system is the ability to go back to a working version of the file, when
+something stops working. Below are a few more advantages of using an
+automated version control system.
 
-    - It will track the history and evolution of a project, so one don't have to do it manually. It allows to track what changes where made, when were they made, by whom and why.
-    - For a team of people working on same project, revision control software makes it easier to collaborate. For example, when people more or less simultaneously make potentially incompatible changes, the software will help them to identify and resolve those conflicts.
-    - It can help to recover from mistakes. If a change made at some moment of time, turns out to be an error in future, one can revert to an earlier version of one or more files. In fact, a really good revision control tool will even help in efficiently figure out exactly when a problem was introduced.
+    - It tracks the history and evolution of a project. It allows you to
+      track what changes were made at what point of time, when and by whom. 
 
-Most of these reasons are equally valid for the project having one man show, or hundred people. Besides projects, even it can be used to maintain assignments related to one particular subject/course, it will help manage things in way much better way. These tools can be used for better *resources management*. All codes, documents, presentation, assignments related to one course maintained in such a inventory can help avoiding accidental lose of data(deletion) and Internet hosting for version control will make the work immune to local hard-disk crash.
+    - If you are collaborating, as a team on a project, a version control
+      system will make it much easier for you to collaborate. It allows you
+      to work simultaneously on the same file, without worrying about merging
+      your changes. 
+
+    - A good version control system will help you efficiently track down bugs
+      and pin-point the changes that introduced the bug, reducing your
+      debugging time. 
+
+Version control is as useful for a one man show, as it is for a big group of
+people working on a project. As a student, you can use it to maintain your
+course work, too. You could maintain a version controlled repository with all
+your code, assignments, and other documents. Keeping your stuff version
+controlled will help avoid accidental deletion of individual files etc.
+Hosting it on a remote server will protect you from a local hard disk crash. 
+
+Mercurial
+=========
 
 Some of Version Control Tools available and used widely are:
 
-     - cvs (Concurrent Version System)
-     - svn (Subversion)
-     - hg (Mercurial)
-     - bzr (Bazaar)
-     - git 
+  - ``cvs`` (Concurrent Versions System)
+  - ``svn`` (Subversion)
+  - ``hg`` (Mercurial)
+  - ``git`` 
 
-Each of above mentioned tools have sets of feature which it offers in unique way. For this session we are going to concentrate on hg (mercurial). After covering the basics of hg, one can easily try other tools, and use what-ever he/she is most comfortable with.
+Each of these tools have some unique functionality and their own merits and
+de-merits. In this course, we shall learn to use Mercurial or ``hg``.
+Once you know how to use ``hg``, you could easily try other tools and switch
+to one that you feel most comfortable with.
 
-Learning the Lingo
-==================
-
-Here are some of terms which are going to used through out the rest of session:
-
-Basic Setup
------------
-
-(should we include at all terms used by vcs's other than hg?)
-
-     Repository(repo):
-	The folder with all the files.
-     Server:
-	The system with the main(mother) repo.
-     Trunk/Main:
-	The “primary” location for code in the repo. Think of code as a family tree — the “trunk” is the main line. This is generally what is present on server.
-
-Basic Actions
--------------
-     
-     Add:
-	Put a file into the repo for the first time, i.e. begin tracking it with Version Control.
-     Head/Tip:
-	The latest version of the repo(Die Hard 4.1)
-     Revision:
-	What version a file is on.
-     Clone:
-     	Creating initial copy of the repo onto a local machine.
-     Commit:
-     	Committing the changes done to the repo in terms of contents of the files or adding/removing of the files.
-     Logs/History:
-	Logs of all the past changes done to the repo.
-     Update:
-        Updating the local repo with the main one, includes both, adding changing done by us or importing changes done by others.
-     Revert:
-        Going back to previous committed state of file.
-
-Advanced Actions:
------------------
-
-     Branch:
-	Create a separate copy of the repo for private use (bug fixing, testing, etc).
-     Diff/Change:
-	Finding the differences between two versions of a file.
-     Merge (or patch):
-     	Apply the changes from one branch to another, to bring it up-to-date.
-     Conflict:
-	When pending changes to a file contradict each other (both changes cannot be applied).
-     
-Types of Version Control:
--------------------------
-
-(should we have this part at all?)
-Based on how source/code management is carried out in a tool there are two categories of Version Control Systems(VCS):
-
-      - Centralized VCS: 
-      	In this kind of system all the revision control functions are performed on a shared server. If two developers try to change the same file at the same time, without some method of managing access the developers may end up overwriting each others work. Centralized revision control systems solve this problem in one of two different "source management models": file locking and version merging. Both svn and cvs follows this kind of management.
-   
-      - Distributed VCS:
-      	In a distributed model, every developer has their own repo. Diffs, commits, and reverts are all done locally, one needs Internet only to share the changes with others. It makes work faster, handles branching and merging in better way, with less management. hg, bzr and git uses this work flow.
-
-Get Going with Hg:
-==================
-
-Why hg?
--------
+Why ``hg`` ?
+------------
 
    - easy to learn and use.
    - lightweight.
    - scales excellently.
    - based on Python.
 
-A small point to notice here, hg cant track binary files for changes, one can add them to repo, but wont be able to track changes made to it. And hg considers, odt, pdf files as binary.
+Installation
+------------
 
-Installation:
--------------
-
-- For Linux based systems, hg is available in most of package management. So for say Ubuntu systems::
+- For Linux based systems, hg is available in most of package management. So
+  for say Ubuntu systems::
 
    $ sudo apt-get install mercurial
 
-  will be all you need to install hg. Similarly Fedora users can use yum to install hg. 
+  will be all you need to install hg. Similarly Fedora users can use yum to
+  install hg.
 
-- For Windows and Mac OS X systems the setup can be downloaded from http://mercurial.selenic.com/downloads/ and standard installation can be followed.
+- For Windows and Mac OS X systems the setup can be downloaded from
+  http://mercurial.selenic.com/downloads/ and standard installation can be
+  followed.
 
-Getting Started:
+Just say ``hg`` in your shell, to see some of the commands that ``hg``
+provides and say ``hg version`` to see the version of ``hg`` that has
+been installed on your system. 
+
+Let there be Repository
+=======================
+
+To start using Mercurial (or ``hg``) and get the benefits of using a version
+control system, we should first have a **repository**. A repository is a
+folder with all your files and a store of all the changes that were made to
+it. To save disk space, ``hg`` doesn't save all the files, but only saves
+only a series of changes made to the files.
+
+We have talked of an example of how we cook up our own version control
+systems. Mercurial does almost the same thing with one major difference. It
+doesn't keep track of individual files. It keeps snapshots of the whole
+directory (or repository), instead of individual files.
+
+A repository can either be started using an ``init`` command or an existing
+repository could be **cloned**.
+
+Let us look at creating our own repository, now. We can look at obtaining
+already existing repositories, at a later stage.
+
+Let's say we have a folder called ``book``, which has all the chapters of a
+book as text files. Let us convert that folder, into a ``hg`` repository.
+
+::
+
+    $ cd book/
+    $ ls -a
+    . .. chapter1.txt chapter2.txt chapter3.txt 
+    $ 
+    
+We have three chapters in the folder. We convert this folder into a mercurial
+repository using the ``hg init`` command
+
+::
+
+    $ hg init
+    $ ls -a
+    . .. .hg chapter1.txt chapter2.txt chapter3.txt 
+    $ 
+
+The ``.hg`` directory indicates that our book directory is now a ``hg``
+repository. Mercurial keeps all the history of the changes made, and a few
+other config files, etc. in this directory. The directory, ``book`` is called
+our **working directory**. 
+
+Adding Files
+------------
+
+We now have a fresh repository, but all our files are not being tracked or
+watched by ``mercurial``, yet. We need to explicitly ask it to watch the
+files, that we want it to.
+
+To see this use the ``hg status`` command. 
+::
+
+    $ hg status
+    ? chapter1.txt
+    ? chapter2.txt
+    ? chapter3.txt
+
+
+We see the three files for the chapters, but they are preceded by a ``?``
+mark. What does it mean?
+
+We use the ``help`` command to see what this means. 
+::
+
+    $ hg help status 
+    ...
+    The codes used to show the status of files are:
+
+      M = modified
+      A = added
+      R = removed
+      C = clean
+      ! = missing (deleted by non-hg command, but still tracked)
+      ? = not tracked
+      I = ignored
+        = origin of the previous file listed as A (added)
+    ...
+
+By looking at the codes, it is clear that our files are not *yet* being
+tracked by ``hg``. We now use the add command to ask ``hg`` to track these
+files.
+
+The ``status`` command gives the *status* of our working-directory at this
+point in time. Using this command after every ``hg`` command you use, is a
+good idea, at least until you are reasonably comfortable with the use of
+``hg``.
+
+::
+
+    $ hg add
+    adding chapter1.txt
+    adding chapter2.txt
+    adding chapter3.txt
+    $ hg status
+    A chapter1.txt
+    A chapter2.txt
+    A chapter3.txt
+    $
+
+This simply adds all the files in the (working) directory, to the repository.
+As expected, the ``status`` command shows an ``A`` before he file names.
+
+Taking Snapshots
 ----------------
 
-After installation is complete lets get started with using. First things first, lets pay our homage to *man* pages as per rituals: ::
-   
-   $ man hg
+We have added a set of new files to the repository, but we haven't told
+mercurial to remember these changes, i.e., to take a snapshot at this point
+in time. We do this by using the ``commit`` command.
 
-This will give us manuscript of all the options available with *hg*. We can either look through all of it, or a better way will be to use built-in help system of *hg*. Say to get brief list of all commands, along with a description of what each does we can use ::
+::
 
-   $ hg help
+    $ hg commit 
 
-   Mercurial Distributed SCM
-   list of commands:
-   add          add the specified files on the next commit
-   addremove	-----------------------
-   ------------------------------------
-   heads        show current repository heads or show branch heads
-   ------------------------------------
+We are now prompted with a new editor window. We type out our message here
+describing the changes that we have made.
 
-For specific command, just follow the command name after the help. ::
+::
 
-    $ hg help diff
-    hg diff [OPTION]... [-r REV1 [-r REV2]] [FILE]...
+    Initial Commit
 
-    diff repository (or selected files)
-    Show differences between revisions for the specified files.
-    Differences between files are shown using the unified diff format.
-    NOTE:____________
+    HG: Enter commit message.  Lines beginning with 'HG:' are removed.
+    HG: Leave message empty to abort commit.
 
-Let there be Repository:
-------------------------
+Mercurial has now taken a snapshot of our repository and has attached our
+description along with it. To see the status of the files in the repository,
+use the ``hg status`` command. 
 
-In Mercurial, everything happens inside a repository. The repository for a project contains all of the files that “belong to” that project, along with a historical record of the project's files. A repository is simply a directory which Mercurial treats as special.
+::
 
-There can be two ways to create a repo, either downloading a copy of existing repo available on Internet, or creating/starting a new repo. 
+    $ hg st
+    $
+    
+The command does not return anything, when there are no uncommitted changes.
+Also, notice that I have started getting lazy and used only a short name
+``st`` for the status command. Mercurial accepts short names, as long as they
+can be disambiguated (just like tab completion).
 
-Say we have a directory which we want to bring under version control, so we start a new repository using *hg init*: ::
+Viewing the History
+-------------------
 
-  $ ls -a circulate/
-  .  ..  lena.png  pendulum.txt  points.txt  pos.txt  sslc1.py  sslc1.txt
-  $ cd circulate/
-  $ hg init
-  $ ls -a
-  .  ..  .hg  lena.png  pendulum.txt  points.txt  pos.txt  sslc1.py  sslc1.txt
+To see the history of the changes to our repository, we use ``hg log``. We
+can view the change that we just made to our repository.
 
-*.hg* directory indicates that this new dir is now a repo.This is where Mercurial keeps all of its metadata for the repository.The contents of the .hg directory and its subdirectories are private to Mercurial. Rest all files are for the user to use them as they pleases.
-
-For getting already existing repo hg uses command *"clone"* ::
-
-      $ hg clone http://hg.serpentine.com/tutorial/hello localCopyhello
-
-      requesting all changes
-      adding changesets
-      adding manifests
-      adding file changes
-      added 5 changesets with 5 changes to 2 files
-      updating working directory
-      2 files updated, 0 files merged, 0 files removed, 0 files unresolved
-
-If clone succeeded, there would be a local directory called localCopyhello, with some files: ::
-
-      $ ls localCopyhello/
-      hello.c  Makefile
-
-Every Mercurial repository is complete, self-contained, and independent. It contains its own private copy of a project's files and history.
-
-Creating a branch of existing local repo is very easy via hg using clone command: ::
-	
-     $ hg clone localCopyhello newCopy
-    updating working directory
-    2 files updated, 0 files merged, 0 files removed, 0 files unresolved
-
-newCopy is exact copy of already existing repo. These local branches can prove really handy at times. It allows keep multiple copies of local branch for different purposes, say for debugging, testing, working version.
-	
-History or Logs:
-----------------
-
-For the new repo created, first thing which can be tried is to check the logs/history. What changes were made and when and why, answers to all those questions are stored in logs safely. So for the cloned repo the history can be viewed using command *"log"* (following commands are wrt localCopyhello repo). ::
+::
 
     $ hg log
-    changeset:   4:2278160e78d4
+    changeset:   0:cbf6e2a375b4
     tag:         tip
-    user:        Bryan O'Sullivan <bos@serpentine.com>
-    date:        Sat Aug 16 22:16:53 2008 +0200
-    summary:     Trim comments.
+    user:        punchagan@shrike.aero.iitb.ac.in
+    date:        Fri Jan 28 14:04:07 2011 +0530
+    summary:     Initial Commit
 
-    changeset:   3:0272e0d5a517
-    user:        Bryan O'Sullivan <bos@serpentine.com>
-    date:        Sat Aug 16 22:08:02 2008 +0200
-    summary:     Get make to generate the final binary from a .o file.
 
-    changeset:   2:fef857204a0c
-    user:        Bryan O'Sullivan <bos@serpentine.com>
-    date:        Sat Aug 16 22:05:04 2008 +0200
-    summary:     Introduce a typo into hello.c.
+As we already discussed, mercurial keeps track of the changes that are made
+to the files in the repository. Notice, that our ``log`` is showing a
+**changeset**. A change set is nothing but a set of changes made to the
+repository between two consecutive commits (the action of taking snapshots).
+Notice that ``hg`` also shows the date at which the commit was made and the
+description of the changeset.
 
-    changeset:   1:82e55d328c8c
-    user:        mpm@selenic.com
-    date:        Fri Aug 26 01:21:28 2005 -0700
-    summary:     Create a makefile
-
-    changeset:   0:0a04b987be5a
-    user:        mpm@selenic.com
-    date:        Fri Aug 26 01:20:50 2005 -0700
-    summary:     Create a standard "hello, world" program
-
-By default, this command prints a brief paragraph of output for each change to the project that was recorded.The fields in a record of output from hg log are as follows:
-
-   - changeset: This field is a identifier for the changeset. The hex string is a unique identifier.
-   - user: The identity of the person who created the changeset.
-   - date: The date and time on which the changeset was created.
-   - summary: The first line of the text message entered to describe the changeset.
-
-To narrow the output of hg log down to a single revision, use the -r option. ::
-   
-   $ hg log -r 3
-   changeset:   3:0272e0d5a517
-   user:        Bryan O'Sullivan <bos@serpentine.com>
-   date:        Sat Aug 16 22:08:02 2008 +0200
-   summary:     Get make to generate the final binary from a .o file.
-
-*range notation* can be used to get history of several revisions without having to list each one. ::
-
-   $  hg log -r 2:4
-   changeset:   2:fef857204a0c
-   user:        Bryan O'Sullivan <bos@serpentine.com>
-   date:        Sat Aug 16 22:05:04 2008 +0200
-   summary:     Introduce a typo into hello.c.
-
-   changeset:   3:0272e0d5a517
-   user:        Bryan O'Sullivan <bos@serpentine.com>
-   date:        Sat Aug 16 22:08:02 2008 +0200
-   summary:     Get make to generate the final binary from a .o file.
-
-   changeset:   4:2278160e78d4
-   tag:         tip
-   user:        Bryan O'Sullivan <bos@serpentine.com>
-   date:        Sat Aug 16 22:16:53 2008 +0200
-   summary:     Trim comments.
-
--v option with "log" gives some extra details related to a changeset.
-
-Making Changes:
----------------
-
-Lets follow a simple exercise of *managing letters* using hg. We create a new directory and start revision tracking on it.::
-
-  $  mkdir letter
-  $  cd letter
-  $  touch letter.tex
-  $  hg init
-
-Now lets try to create a local clone of this repository::
-
-  $  hg clone letter letter-clone
-  updating working directory
-  0 files updated, 0 files merged, 
-  0 files removed, 0 files unresolved 
-
-So here, message says 0 files updated but we have just created a *tex* file inside it. Lets try to see status of our main repository by using *status(st)* command::
-
-  $ cd letter  
-  $ hg st
-  ? letter.tex
-
-"?" sign in front of file indicates that this file is alien to hg, as in we have to *add* it to repo by::
-
-  $ hg add letter.tex
-  $ hg st
-  A letter.tex
-
-So file is now part of repository(A symbol). We *commit (alias ci)* it to repo and make changes effective ::
-
-   $ hg ci -u "Shantanu <shantanu@fossee.in>" 
-        -m "First commit."
-   $ hg log
-   changeset:   0:210664b4ed58
-   tag:         tip
-   user:        Shantanu <shantanu@fossee.in>
-   date:        Tue Feb 23 19:41:45 2010 +0530
-   summary:     First commit.
-
-Some arguments passed to *ci* command are worth noticing:
- - *u* is to provide name and email contact information of person making changes!
- - *m* is to provide one-line summary of changeset. 
-
-If we don't give these options, *ci* will take us to a default editor, there we have to specify a commit *message* in first line, then we can edit other information like username, once done just exit the editor and changes are committed to the repo. Now these changes will be visible in logs.
-
-Similar to add there are other commands available for file management in repo. *copy (alias cp)* command is used to mark files as copied for the next commit. ::
-
-   $ hg cp letter.tex letter-prof.tex
-
-*rename(alias mv)* rename files; equivalent of copy + remove. ::
-
-   $ hg rename letter.tex letter-personal.tex
-   $ hg st
-   A letter-personal.tex
-   A letter-pro.tex
-   R letter.tex
-   $ hg ci -u "Shantanu <shantanu@fossee.in>" -m "Renamed and added letters."
-           
-*tip* command shows newest revision in the repository. ::
-
-   $ hg tip
-   changeset:   1:4a2d973a92de
-   user:        Shantanu <shantanu@fossee.in>
-   date:        Tue Feb 23 19:50:39 2010 +0530
-   summary:     Renamed and added letters.
-
-Sharing Changes:
+User information
 ----------------
 
-Pulling from repo:
-~~~~~~~~~~~~~~~~~~
+But there is a slight problem with the user details that mercurial is saving.
+It saves my username with my machine name. It is a general good practice to
+use your full name with your email id. We set our username in the ``.hgrc``
+file in our Home folder. (``$HOME/.hgrc`` on Unix like systems and
+``%HOME%\.hgrc`` on Windows systems)
 
-As mentioned earlier that repositories in Mercurial are self-contained. This means that the changeset just created exists only in *letter* repository and not in previously cloned . There are a few ways that can be used to propagate this change into other repositories. *pull* command will download all changeset from main repo. ::
+We open the file in our favorite editor and add the username details. 
 
-   $ cd letter-clone
-   $ hg pull 
-   pulling from /home/baali/letter
-   requesting all changes
-   adding changesets
-   adding manifests
-   adding file changes
-   added 2 changesets with 2 changes to 2 files
-   (run 'hg update' to get a working copy)
+::
 
-*changeset* means a list of changes made to a file. In words of *hg help*, pull command is: ::
+    $ emacs ~/.hgrc  
+    [ui]
+    username = Puneeth Chaganti <punchagan@fossee.in>
 
-   pull changes from the specified source
+We have now set the username details for mercurial to use, in all our future
+commits. (Note: You can also set user preferences at the repository level.
+Exercise-N asks you to do that)
 
-   Pull changes from a remote repository to a local one.
+Let us now make another commit to see if this has taken effect. Let us
+add author information to all the chapters that we have. 
 
-   This finds all changes from the repository at the specified path
-   or URL and adds them to the local repository. By default, this
-   does not update the copy of the project in the working directory.
+::
 
-Some times, even before pulling changesets, one may need to see what changes would be pulled, Mercurial provides *hg incoming* to tell what changes *hg pull* would pull into repo, without actually pulling the changes. This command is really handy in case of avoiding unwanted changesets into the repo.
+    Author: Puneeth Chaganti <punchagan@fossee.in>
 
-As output of *pull* command suggests it does not(by default) update the working directory. By update we mean, content of files and directory structure still remains the same as prior to *pull* command. *hg up (alias update)* command updates repo by adding latest imported changesets and bringing it upto date. ::
 
-   $ ls -a
-   .  ..  .hg
-   $ hg up
-   2 files updated, 0 files merged, 
-   0 files removed, 0 files unresolved
-   $ ls -a
-   .  ..  .hg  letter-personal.tex  
-   letter-pro.tex
-    
-To update to specific version, give a version number to the *hg update* command.
+Once we have added this to all the files, let us commit this change. We again
+used the ``hg commit`` command to commit the changes that we have made.
 
-Making Changes:
-~~~~~~~~~~~~~~~
+::
 
-Lets start with adding content to letters. For start personal letter can be a letter to ask a boy/girl out! Using LaTeX to write letter, it would be straight forward, open the file in any text editor and add the following content to it ::
+    $ hg commit
 
-  \documentclass{letter}
-  \begin{document}
-  \begin{letter}{}
-  \opening{Hello xxxxxx,}
-  I really enjoyed meeting you in CS 101, 
-  but would love to know you better. 
-  How about a coffee on Thursday after class?
-  \closing{-xxxxx}
-  \end{letter}
-  \end{document}
+We are again prompted with the editor window to enter our commit message and
+we type out our commit message. There are some good practices when typing out
+a commit message too. It is a general practice to have a summary line in the
+commit message which is no longer than 60 to 65 characters giving a summary
+of the change we have made. This is followed up with an explanation of why
+this was changed, what is the effect of this change, known bugs/issues
+remaining, if any, etc.
 
-Replace "xxxxx" with proper names to suite yourself. Mercurial's hg status command will tell us what Mercurial knows about the files in the repository. 'M' sign in front of feviStick.py indicates that Mercurial has noticed change(modified). ::
+::
 
-  $ hg st
-  M letter-personal.tex
+    Add author info to all the chapters
 
-At times more information is needed on knowing exactly what changes were made to what files. To do this, use the *hg diff* command. ::
+    All the chapters must have an author info. Added Puneeth Chaganti
+    as the author. New authors can be added in newlines.              
+
+    HG: Enter commit message.  Lines beginning with 'HG:' are removed.
+    HG: Leave message empty to abort commit.
+
+``hg log`` should now show us both the changes that we have made. Notice that
+the username settings are being used and also, the summary of the changeset
+shows only the first line in the description that we have added. Also, notice
+that ``hg`` shows the commits in the reverse chronological order, which is
+useful.
+
+Mercurial Magic
+===============
+
+You must already be wondering, why we need all the overhead of
+``commit`` and ``log``, etc. What is all this fuss about? "Isn't it
+just a waste of time?"
+
+Reverting Changes
+-----------------
+
+While you were wondering, let's say your friend walks in and together you
+make a lot of changes.
+
+1. You replace all the occurrences of ``&`` in ``chapter1.txt`` with
+``and``. 
+2. You delete the ``chapter3.txt`` file. 
+
+::
+
+    $ rm chapter3.txt
+    $ hg st
+    M chapter1.txt
+    ! chapter3.txt
+    $ 
+
+
+But after a while, you realize that these changes are unwarranted. You
+want to go back to the previous state, undoing all the changes that
+you made, after your friend arrived. 
+
+The undo in your editor may allow undoing the first change (if you
+haven't closed it after making the changes) but there's no way you
+could get back your ``chapter3.txt`` file, using your editor. But
+don't worry. Mercurial to the rescue!
+
+We shall use the ``revert`` command of ``hg`` to undo all the changes
+after the last commit. As we want to undo all the changes, we use the
+``revert`` command with the ``--all`` argument. 
+
+::
+
+    $ hg revert --all
+    reverting chapter1.txt
+    reverting chapter3.txt
+    $ hg st
+    ? chapter1.txt.orig
+    $ ls
+    chapter1.txt  chapter1.txt.orig  chapter2.txt  chapter3.txt
+
+As you can see the ``chapter3.txt`` file has been restored. But ``hg``
+gives you a new file ``chapter1.txt.orig``. Mercurial actually doesn't
+like to delete any of the changes that you have made. So, it makes a
+back-up of the file ``chapter1.txt`` in the present state and gives
+you back the old file. 
+
+If we now decide, that we want to ``redo`` the changes that we had
+done to the ``chapter1``, we can just overwrite the ``chapter1.txt``
+file with the backed up file. 
+::
+
+    $ mv chapter1.txt.orig chapter1.txt
+    $ hg st
+    M chapter1.txt
+    $
+
+Viewing Changes
+---------------
+
+Let's say we now want to ``commit`` these changes, but we are not sure
+of all the changes that we have made to the file, since it's been a
+while after we made the changes. We could use the ``diff`` command to
+see all the changes that have been made in the file. 
+
+::
 
     $ hg diff
-    diff -r 4a2d973a92de letter-personal.tex
-    --- a/letter-personal.tex	Tue Feb 23 19:50:39 2010 +0530
-    +++ b/letter-personal.tex	Tue Jun 08 16:12:19 2010 +0530
-    @@ -0,0 +1,11 @@
-    +\documentclass{letter}
-    +\begin{document}
-    + 
-    +\begin{letter}{}
-    +\opening{Hello Jas,}
-    +  
-    +I really enjoyed meeting you in CS 101, but would love to know you better. How about a coffee on Thursday after class?
-    +
-    +\closing{-Samarth}
-    +\end{letter}
-    +\end{document}
-        
-We can modify files, build and test our changes, and use hg status and hg diff to review our changes, until we're satisfied with what we've done and arrive at a natural stopping point where we want to record our work in a new changeset. All the diffs prior to committing the changes would be done wrt earlier marked record.Then we use *hg commit* to create a new changeset
+    diff -r 3163b8db10bb chapter1.txt
+    --- a/chapter1.txt	Fri Jan 28 16:21:29 2011 +0530
+    +++ b/chapter1.txt	Fri Jan 28 16:22:41 2011 +0530
+    @@ -8,9 +8,9 @@
+       1 Session
+     Table of Contents
+     =================
+    -1 Introduction & Motivation 
+    -2 Creating & Getting repositories 
+    +1 Introduction and Motivation 
+    +2 Creating and Getting repositories 
+     3 Revision history 
+    -4 Making & sharing changes 
+    -5 Merges & Conflicts 
+    +4 Making and sharing changes 
+    +5 Merges and Conflicts 
 
-Mercurial records your name and email-address with each change that you commit, so that you and others will later be able to tell who made each change. It also tries to automatically figure out a sensible username to commit the change with. When we try to use *hg commit* there are various ways by which one can specify User name, some of those are:
-	  
-	  - Specify a -u option to the hg commit command on the command line, followed by a username, this is the procedure we used earlier.
-	  - set HGUSER environment variable::
+You see some cryptic output, but it's essentially giving you the list
+of changes made to the file. All the lines that were deleted are
+preceded by a ``-`` and all the new-lines are preceded by a ``+``. You
+can see that the ``&`` occurrences have been replaces with ``and``. 
 
-	    $ export HGUSER="xxxxx"	  
-	  - Edit hgrc file present in .hg folder to set this property, add following lines to that file and Mercurial will read those parameters from that location. ::
-	  
-		[ui]
-		username = Firstname Lastname <email.address@example.net>
+Let us now commit this change. 
+::
 
-	    For me the hgrc file for *letter* clone repo looks like this: ::
+    $ hg commit
 
-	        [paths]
-		default = /home/baali/letter
-		[ui]	
-		username = Shantanu Choudhary <shantanu@fossee.in>
+    Replace all occurrences of & with and
 
-Once this parameter is set, *hg commit* command drops us into a text editor, to enter a message that will describe the modifications we've made in this changeset. This is called the commit message. It will be a record for readers of what we did and why, and it will be printed by hg log after we've finished committing. ::
+    On the suggestion of Madhusudan C S. 
 
-    Added content to personal letter.
     HG: Enter commit message.  Lines beginning with 'HG:' are removed.
-    HG: --
-    HG: user: Shantanu Choudhary <shantanu@fossee.in>
-    HG: branch 'default'
-    HG: changed letter-personal.tex
-
-This would be your default system editor(for me it is vim, one can set it also), where you can enter the log message in first line, once you are done with log message quit the editor using *[ESC] key ":wq"*.Once we've finished the commit, we can use the hg tip command to display the changeset we just created. ::
-
-    $ hg tip
-    changeset:   2:a5d8cb2fac01
-    user:        Shantanu <shantanu@fossee.in>
-    date:        Tue Feb 23 20:34:12 2010 +0530
-    summary:     Added content to personal letter.
+    HG: Leave message empty to abort commit.
     
-One can do above mentioned procedure using following one line command: ::
+::
 
-    $ hg ci -u "Shantanu <shantanu@fossee.in>" -m "Added content to personal letter."
+    $ hg log    
 
-Sharing Changes:
-~~~~~~~~~~~~~~~~
+We can see the history of all the commits that we have made in our
+project. As you can see, the logs have started getting longer (and
+hence have been dropped from the output) and may even be getting out
+of our screens. Also, we are not very interested in all the commits in
+the project. We usually want to see the last few commits. 
 
-So now we have this *letter-clone* repo where we created above changes and committed them. But the main repo(*trunk*) that is *letter* wont be hinted of these changes. It will be still in older stage, same way as we pulled changes to this cloned repo from main branch at starting. To share changes from a cloned repo to main branch hg provides with *push* command. It is same as *pull* but instead of pulling it pushes the changes to trunk. ::
+Revision Numbering
+------------------
 
-    $ hg push ../Fevicol
-    pushing to ../Fevicol
+Let us now see how to get logs of specific commits and a range of
+commits. Have a look at the logs that the previous ``log`` command has
+printed and look at the ``changeset`` line. It shows a number followed
+by a semi-colon and some long hexa-decimal string. The number is
+called the **revision number**. It is an identifier for the commit,
+and can be along with various commands to specify the revision number,
+if required. 
+
+Let us now check the logs of the very first commit of the project.
+::
+
+    $ hg log -r0
+    changeset:   0:cbf6e2a375b4
+    tag:         tip
+    user:        punchagan@shrike.aero.iitb.ac.in
+    date:        Fri Jan 28 14:04:07 2011 +0530
+    summary:     Initial Commit
+
+Now, if we wish to get the logs of the latest commit only, how do we
+do it? We could specify the exact revision number of the commit (2) or
+just use -1 to start counting in the reverse chronological order. 
+::
+
+    $ hg log -r-1
+    changeset:   2:98f7f4a1bb4d
+    tag:         tip
+    user:        Puneeth Chaganti <punchagan@fossee.in>
+    date:        Fri Jan 28 16:24:42 2011 +0530
+    summary:     Replace all occurrences of & with and
+
+You could also specify a range of commits whose logs you would like to
+see. Say, we would like to see the last two commits, 
+::
+
+    $ hg log -r-1:-2
+
+This is equivalent to using the following     
+::
+
+        $ hg log -r2:1
+
+You could also see the changes made to a particular file, in the
+specified range of the commits. Say, we wish to see the changes made
+to the ``chapter2.txt`` file in the last two commits. 
+::
+
+    $ hg log -r-1:-2 chapter2.txt
+    changeset:   1:3163b8db10bb
+    user:        Puneeth Chaganti <punchagan@fossee.in>
+    date:        Fri Jan 28 16:21:29 2011 +0530
+    summary:     Add author info to all the chapters
+
+Notice that it shows only the logs of revision 1, since no changes
+were made to the specified file in the second commit. 
+
+You can do all of this with the ``diff`` command to see the exact
+changes made to the files, instead of seeing the ``log`` message. This
+will be a part of your exercises. 
+
+Collaborating with Mercurial
+============================
+
+When motivating the use of version control systems, we spoke a lot about
+collaboration and sharing our changes with our peers. Let us now see how we
+can share our project with our peers and collaborate with them. 
+
+Cloning Repositories
+--------------------
+
+For this purpose let us create a central repository, a copy of our
+repository, which is different from the one in which we are working. The
+``clone`` command is used to **clone** or replicate an existing repository.
+
+::
+
+    $ hg clone book book-repo
+
+This creates a copy of our repository, ``book``, with the name ``book-repo``.
+The syntax of the ``clone`` command is -- ``hg clone SOURCE [DEST]``, where
+the optional argument DEST is being represented in brackets. Here we are
+giving book-repo as the destination. 
+
+The clone command can be used to replicate already existing repositories,
+either on your own machine or on some remote machine somewhere on the
+network. Since, ``hg`` maintains a copy of the full repository with every
+copy of the repository, the two copies that we have are exactly equivalent.
+
+``book-repo`` is the repository we shall be using as a central repository
+and share it with our peers. 
+
+Sharing Repositories
+--------------------
+
+A mercurial repository can be shared in multiple ways. We shall use the
+``http`` protocol to share the repository. Mercurial comes inbuilt with a
+tiny server that can be used to share your repository over the network. To
+start sharing the repository, we say 
+
+::
+
+    $ cd ../book-repo
+    $ hg serve 
+
+This will start serving the repository on the network on the port 8000.
+Anybody in your network can access the repository in their browsers. Let us
+see how it looks, in our own browser. We open the url `http://localhost:8000`
+in our browser.     
+
+Let's say, our friend Madhu, now wants  to clone this repository. He will use
+our ip-address and the port on which  we are serving the repository, to clone
+the repository. Instead of using two machines, for the purposes of
+demonstration, we shall clone into our own machine, with a different name. 
+
+::
+
+    $ hg clone http://192.168.1.101:8000 book-madhu
+
+This will clone the repository to the folder, ``book-madhu``. The log of the
+repository will, obviously, be the same as our original repository. 
+
+::
+
+    $ hg log
+
+Sharing Changes
+---------------
+
+Let's say, Madhu now makes some changes to the repository. 
+
+1. He adds his name to the Authors list. 
+2. He moves down the Getting repositories part into a different section.  
+
+::
+
+    $ hg diff
+    diff -r 98f7f4a1bb4d chapter1.txt
+    --- a/chapter1.txt	Fri Jan 28 16:24:42 2011 +0530
+    +++ b/chapter1.txt	Fri Jan 28 23:03:37 2011 +0530
+    @@ -2,6 +2,7 @@
+                            =======================
+     
+     Author: Puneeth Chaganti <punchagan@fossee.in>
+    +        Madhusudan CS <madhusudancs@fossee.in>
+     Date: 2011-01-28 13:58:47 IST
+     
+     
+    @@ -9,8 +10,9 @@
+     Table of Contents
+     =================
+     1 Introduction and Motivation 
+    -2 Creating and Getting repositories 
+    +2 Creating 
+     3 Revision history 
+     4 Making and sharing changes 
+    -5 Merges and Conflicts 
+    +5 Getting repositories 
+    +6 Merges and Conflicts  
+    $
+
+He then commits these changes and **pushes** them to the central repository
+that we have created. 
+
+::
+
+    $ hg commit
+    $ hg push
+    pushing to http://192.168.1.101:8000 
+    searching for changes
+    ssl required
+
+The push failed, obviously, since we have not taken care of access rights
+etc. It doesn't make much sense to allow anybody to make changes to a public
+repository, by default. We will need to make changes to the settings of the
+repository to allow this. **Note**: This is obviously not a safe way to share
+your repository, but for our purposes, this is sufficient.
+
+We add the following lines to the ``.hg/hgrc`` of the ``book-repo``
+repository. 
+::
+
+    [web]
+    push_ssl=False
+    allow_push=*
+
+This will allow anybody to push to the repository, now. 
+
+Madhusudan can now push and his changes will appear in the central
+repository. 
+
+::
+
+    $ hg push
+    
+Let's confirm it in the web interface that we started with the ``hg serve``
+command. 
+
+Pulling Changes
+---------------
+
+Let us now **pull** these changes into our original repository ``book`` that
+we have been working with. Before pulling the changes, we can use the command
+``hg incoming`` to see the changes that have been made to the repository
+after our last **pull** and the changesets that will be coming into our
+repository after we do a **pull**. 
+
+::
+
+    $ hg incoming
+    abort: repository default not found!
+
+What is going on here? This is because, we didn't clone our repository
+``book`` from the central repository ``book-repo``. We can now add the
+location of the central repository to the ``hgrc`` file, of this project. 
+
+::
+
+    [paths]
+    default = /home/punchagan/book-repo
+
+Now, we can check the incoming changes. 
+
+::
+
+    $ hg incoming
+    searching for changes
+    changeset:   3:3cd54926dbea
+    tag:         tip
+    user:        Madhusudan CS <madhusudancs@fossee.in>
+    date:        Fri Jan 28 23:08:25 2011 +0530
+    summary:     Add my name to authors and move getting repositories section
+    to 5
+
+
+To now **pull** these changes, we use the ``pull`` command. 
+
+::
+
+    $ hg pull 
+    pulling from /home/punchagan/book-repo
     searching for changes
     adding changesets
     adding manifests
     adding file changes
     added 1 changesets with 1 changes to 1 files
+    (run 'hg update' to get a working copy)
 
-Same as with hg pull, the hg push command populates the changesets nothing more. ::
 
-   $ cd ../letter
-   $ hg tip
-   changeset:   2:a5d8cb2fac01
-   user:        Shantanu <shantanu@fossee.in>
-   date:        Tue Feb 23 20:34:12 2010 +0530
-   summary:     Added content to personal letter.
+*Note* that ``hg`` is giving us a message, asking us to run a ``hg update``
+ to get a working copy. Let us try to understand what this is. 
 
-The branch where changes are being pushed still need *up* to be updated or for inclusion of all the imported changesets ::
+As already explained, ``.hg`` folder has all the information about the
+changesets of the repository. When we do a ``pull`` the changesets from the
+remote repository are pulled to our repository, but our working directory is
+not affected by these changes. To see this, we could use the ``hg parent``
+command. 
 
-   $ hg up
-   1 files updated, 0 files merged, 0 files removed, 0 files unresolved
-   $ cat letter-personal.tex
-   \documentclass{letter}
-   \begin{document} 
-   \begin{letter}{}
-   \opening{Hello xxxx,}  
-   I really enjoyed meeting you in CS 101, but would love to know you better. How about a coffee on Thursday after class?
- 
-   \closing{-xxxx}
-   \end{letter}
-   \end{document}
+::
 
-Merging the Work:
-~~~~~~~~~~~~~~~~~
+    $ hg parent
+    changeset:   2:98f7f4a1bb4d
+    user:        Puneeth Chaganti <punchagan@fossee.in>
+    date:        Fri Jan 28 16:24:42 2011 +0530
+    summary:     Replace all occurrences of & with and
+    $ 
 
-This is next aspect of any version control, how to merge work done by various participants of project in a way that no one looses changes being made, and still remains updated. Here is simple case study which can help understanding why merging is required: 
+As we can see, the parent is still our last commit, and the changes made by
+Madhusudan are still not in our working directory. To get these changes we do
+the update as suggested by ``hg``. 
 
-Two persons, A and B are contributing on same project. Both starts from cloning the same online repo(lets say present state X), so that both have a working local repo. Now A edits one of file, commits the changes and pushes to the repo, hence changing the state of repo to Y, but B, have not updated his repo, makes a change in one of files and reaches to a different state Z. Now when A pulls repo from B, his repo will have multiple heads. This stage is clearly ambiguous, the repo of A is not consistent, it has multiple heads, and from here, whatever changes he makes can take whatsoever direction if it is not fixed, and hence A will have to merge changes so that everything becomes consistent again.
+::
 
-Lets see how this work with working repo, we will use letter and letter-clone repositories created earlier. For now, the status of both repo is: ::
-
-   $ cd letter-clone
-   $ hg tip
-   changeset:   2:a5d8cb2fac01
-   user:        Shantanu <shantanu@fossee.in>
-   date:        Tue Feb 23 20:34:12 2010 +0530
-   summary:     Added content to personal letter.
-
-We share(clones) this repo with a friend, he goes through the letter and just makes small change of adding color to clogins part of letter. ::
-
-   $ hg diff
-   diff -r 4a2d973a92de letter-personal.tex
-   --- a/letter-personal.tex	Tue Feb 23 19:50:39 2010 +0530
-   +++ b/letter-personal.tex	Wed Feb 24 12:03:33 2010 +0530
-   @@ -0,0 +1,12 @@
-   \documentclass{letter}
-   +\usepackage{color}
-   \begin{document}
-   .
-   -\closing{-Samarth}
-   +\closing{\textcolor{red}{-Samarth}}
-
-Here the "-" sign shows which lines are removed, and "+" indicates what lines are added. He is satisfied and commits the changes. ::
-
-    $ hg ci -u "Vattam <vattam@fossee.in>" -m "Added some suggestions."   
-    changeset:   3:71fd776d856b
-    parent:      2:a5d8cb2fac01
-    user:        Vattam <vattam@fossee.in>
-    date:        Wed Feb 24 12:54:31 2010 +0530
-    summary:     Added some suggestions.
-
-In the meanwhile, it seems, our "xxxx" is already dating someone else. So we also change the name to "yyyy" who is available, and we commit it ::
-
-    $ cd letter
-    $ hg ci -u "Shantanu <shantanu@fossee.in>" -m "Changed name."
-    $ hg tip
-    changeset:   3:02b49a53063f
-    user:        Shantanu <shantanu@fossee.in>
-    date:        Wed Feb 24 13:12:26 2010 +0530
-    summary:     Changed name.
+    $ hg up
+    1 files updated, 0 files merged, 0 files removed, 0 files unresolved
+    $ hg parent
+    changeset:   3:3cd54926dbea
+    tag:         tip
+    user:        Madhusudan CS <madhusudancs@fossee.in>
+    date:        Fri Jan 28 23:08:25 2011 +0530
+    summary:     Add my name to authors and move getting repositories section
+    to 5 
+    $
     
-So now we have two repo, who have different commit history and tree. 
+As expected the **update** command updates the parent to the latest changes
+that we just pulled from the remote repository. 
 
-.. image:: glog-main.png 
+The update command can also be used to go back into an older revision, by
+specifying the revision to which we want to go to. 
 
-.. image:: glog-suggestion.png
+::
 
-If we try to pull changes from one to another, this is how it goes(we are still in letter repo): ::
+    $ hg up -r1
+    1 files updated, 0 files merged, 0 files removed, 0 files unresolved
+    $ hg parent
+    changeset:   1:3163b8db10bb
+    user:        Puneeth Chaganti <punchagan@fossee.in>
+    date:        Fri Jan 28 16:21:29 2011 +0530
+    summary:     Add author info to all the chapters
+    $ hg cat chapter1.txt
+    # Displays the contents of the chapter1.txt file as in revision 1. 
 
-    $ hg pull ../letter-suggestion
-    pulling from ../letter-suggestion
+To return to the latest revision we just use the ``up`` or ``update`` command
+without specifying any revision number. 
+
+::
+
+    $ hg up
+    1 files updated, 0 files merged, 0 files removed, 0 files unresolved
+    $ hg parent
+    changeset:   3:3cd54926dbea
+    tag:         tip
+    user:        Madhusudan CS <madhusudancs@fossee.in>
+    date:        Fri Jan 28 23:08:25 2011 +0530
+    summary:     Add my name to authors and move getting repositories section
+    to 5 
+    $ 
+
+Simultaneous Changes
+--------------------
+
+Ok, we have been talking about collaboration, but this is a nice situation,
+where I was not changing anything while Madhusudan was changing the file,
+incidentally.  
+
+Now, let's say, both of us are editing the file at the same time, but
+different parts of it.  Say, I change the title of the section 2. 
+::
+
+    $ hg diff
+    diff -r 3cd54926dbea chapter1.txt
+    --- a/chapter1.txt	Fri Jan 28 23:08:25 2011 +0530
+    +++ b/chapter1.txt	Fri Jan 28 23:45:19 2011 +0530
+    @@ -10,7 +10,7 @@
+     Table of Contents
+     =================
+     1 Introduction and Motivation 
+    -2 Creating 
+    +2 Creating repositories
+     3 Revision history 
+     4 Making and sharing changes 
+     5 Getting repositories 
+    $ hg commit 
+    $ hg push
+    pushing to /home/punchagan/book-repo
+    searching for changes
+    adding changesets
+    adding manifests
+    adding file changes
+    added 1 changesets with 1 changes to 1 files
+    $ 
+    
+Also, let us assume Madhusudan adds an additional section called References. 
+::
+
+    $ hg diff
+    diff -r 3cd54926dbea chapter1.txt
+    --- a/chapter1.txt	Fri Jan 28 23:08:25 2011 +0530
+    +++ b/chapter1.txt	Fri Jan 28 23:47:05 2011 +0530
+    @@ -15,4 +15,4 @@
+     4 Making and sharing changes 
+     5 Getting repositories 
+     6 Merges and Conflicts 
+    -
+    +7 References
+    $ hg commit
+    $ hg log
+
+Let us now compare the logs of the two repositories. You can see that both
+the repositories have their topmost revision numbered as 4, but they are both
+different. The identification number given to each revision is a local
+identification. The hexadecimal string following that number is the actual
+unique identification of that changeset, which will be unique across
+repositories.
+
+What happens now, when Madhusudan tries to push his changes to the central
+repository? 
+
+::
+
+    $ hg push
+    pushing to http://192.168.1.101:8000 
+    searching for changes
+    abort: push creates new remote heads!
+    (did you forget to merge? use push -f to force)
+
+
+The push failed! This is because, both of us have made changes, and they need
+to be merged somehow. **Don't**, just for this one instance, take the advice
+given by ``mercurial``. Using the ``-f`` would be disastrous. We will leave
+out a discussion of that, for this course. 
+
+Madhusudan now needs to pull the new changes that have been pushed to the
+repository after his last pull and **merge** them with his changes. 
+
+::
+
+    $ hg pull 
+    pulling from http://192.168.1.101:8000 
     searching for changes
     adding changesets
     adding manifests
     adding file changes
     added 1 changesets with 1 changes to 1 files (+1 heads)
-    (run 'hg heads' to see heads, 'hg merge' to merge)    
-
-There we go, since both repo were on different track, hg pull command in last line gives some heading from here. *hg heads* command show current repository heads or show branch heads. ::
-
-    $ hg heads 
-    changeset:   4:71fd776d856b
-    tag:         tip
-    parent:      2:a5d8cb2fac01
-    user:        Vattam <vattam@fossee.in>
-    date:        Wed Feb 24 12:54:31 2010 +0530
-    summary:     Added some suggestions.
-    
-    changeset:   3:02b49a53063f
-    user:        Shantanu <Shantanu@fossee.in>
-    date:        Wed Feb 24 13:12:26 2010 +0530
-    summary:     Changed name.
-    
-To get better understanding of what is going on hg have a tool known as *glog* which shows revision history alongside an ASCII revision graph. ::
-     
-    $ hg glog
-
-.. image:: heads.png
-
-To bring repo on single track/branch once again we will have to merge these two branches. Without merging them even hg update wont work for obvious reason of confusing track record. ::
-
-    $ hg up
-    abort: crosses branches (use 'hg merge' or 'hg update -C')
-
-*hg merge* command merge working directory with another revision. ::
-
+    (run 'hg heads' to see heads, 'hg merge' to merge)
     $ hg merge
-    1 files updated, 0 files merged, 0 files removed, 0 files unresolved
-    (branch merge, don't forget to commit)   
+    merging chapter1.txt
+    0 files updated, 1 files merged, 0 files removed, 0 files unresolved
+    (branch merge, don't forget to commit)
 
-After merging two branches, until we commit the results of merge it will keep on showing two heads. ::
+We have now pull the changes from the central repository and merged them with
+the changes in our repository. But, ``hg`` is warning us not to forget to
+commit. Let's see what is the status of the repository at this point in time. 
 
-    $ hg ci -u "Shantanu <shantanu@fossee.in>" -m "Merged branches."
-    $ hg glog 
+::
 
-.. image:: glog-2.png
+    $ hg st
+    M chapter1.txt
+    $ hg diff
+    diff -r bd57162c31f6 chapter1.txt
+    --- a/chapter1.txt	Fri Jan 28 23:51:52 2011 +0530
+    +++ b/chapter1.txt	Sat Jan 29 00:00:39 2011 +0530
+    @@ -10,7 +10,7 @@
+     Table of Contents
+     =================
+     1 Introduction and Motivation 
+    -2 Creating 
+    +2 Creating repositories
+     3 Revision history 
+     4 Making and sharing changes 
+     5 Getting repositories 
 
-*And we are back on track.*
+As you can see, the changes pushed by us, changing the name of the section 2,
+have now been made in the repository of Madhusudan. We will now need to
+commit these changes. 
 
-Workflow:
-=========
-
-This is chain of steps which can be followed for working against a project that has a centralized copy, you may want to make sure you're up to date first. This means pulling its changes and then updating. 
-
-For example: ::
-    
-    $ hg pull
-    $ hg update
-
-This will grab the remote changes from the location you first cloned from. Then it will apply the changes. You can do this in one go with: ::
-
-    $ hg pull -u
-
-Now let's say you make some changes. You edit a file and you want to commit your change. You can do this with: ::
+::
 
     $ hg commit
+    
+We shall be using a commit message that makes it clear that we are merging.
+We can now push this changes to the central repository. We could also check
+the changes that will be pushed, before pushing them, using the ``hg
+outgoing`` command. 
+::
 
-An editor will pop-up asking you to write a message describing your change. When you're done for the day, and you have required changesets sitting in your repository. Before pushing to upstream make sure to pull and update and merge branches if required, once everything looks okay and you have single track, push the changes, ::
+    $ hg outgoing
+    tag:         tip
+    parent:      5:bd57162c31f6
+    parent:      4:5c88c36f60de
+    user:        Madhusudan CS <madhusudancs@fossee.in>
+    date:        Sat Jan 29 00:02:53 2011 +0530
+    summary:     Merge heads.
 
+    changeset:   5:bd57162c31f6
+    parent:      3:3cd54926dbea
+    user:        Madhusudan CS <madhusudancs@fossee.in>
+    date:        Fri Jan 28 23:51:52 2011 +0530
+    summary:     Add additional References section
+    $ hg push
+    pushing to http://192.168.1.101:8000 
+    searching for changes
+    adding changesets
+    adding manifests
+    adding file changes
+    added 2 changesets with 2 changes to 1 files
+
+The changes have now been successfully pushed! Let us look at the web
+interface of the repo, to see that the changes have actually taken place. Let
+us also have a look at the graph to, try and understand what has happened. 
+
+As we can see, a branch was created, when both of us started editing the file
+simultaneously, and was then merged by Madhusudan CS. 
+
+Simultaneous Conflicting Changes
+--------------------------------
+
+We were lucky this time, in that we were editing separate parts of the file.
+What will happen if we edited the same portion of the file, at the same time?
+How would merges work? This will be the last thing that we are going to see
+in this part of the course. 
+
+Let's say both of us edit the title of the section 6. 
+
+Let's say, I make the following changes, commit them and push them. 
+
+::
+
+    $ hg diff
+    diff -r ce3469a9446f chapter1.txt
+    --- a/chapter1.txt	Sat Jan 29 00:02:53 2011 +0530
+    +++ b/chapter1.txt	Sat Jan 29 10:30:21 2011 +0530
+    @@ -14,5 +14,5 @@
+     3 Revision history 
+     4 Making and sharing changes 
+     5 Getting repositories 
+    -6 Merges and Conflicts 
+    +6 Merging and resolving conflicts 
+     7 References
+    $ hg commit
+    $ hg push
+    ...
+    added 1 changesets with 1 changes to 1 files
+
+Meanwhile, let's say Madhusudan was changing the same section title, as
+follows.      
+
+::
+
+    $ hg diff
+    diff -r ce3469a9446f chapter1.txt
+    --- a/chapter1.txt	Sat Jan 29 00:02:53 2011 +0530
+    +++ b/chapter1.txt	Sat Jan 29 10:35:29 2011 +0530
+    @@ -14,5 +14,5 @@
+     3 Revision history 
+     4 Making and sharing changes 
+     5 Getting repositories 
+    -6 Merges and Conflicts 
+    +6 Simple Merges and Merges with Conflicts 
+     7 References
+    $ hg commit
+    $ hg push
+    pushing to http://192.168.1.101:8000 
+    searching for changes
+    abort: push creates new remote heads!
+    (did you forget to merge? use push -f to force)
+    $ hg pull 
+    ...
+    added 1 changesets with 1 changes to 1 files (+1 heads)
+    (run 'hg heads' to see heads, 'hg merge' to merge)
+    $ hg merge
+    0 files updated, 1 files merged, 0 files removed, 0 files unresolved
+    (branch merge, don't forget to commit)
+
+
+What happens now actually depends on how Mercurial is configured and the
+programs available in your machine. You will either get a diff view with 3
+panes or ``merge`` will insert markers in your file at the points where the
+conflicts occur.
+
+If you get a 3 pane view, the first pane is the actual file, where you make
+changes, to resolve the conflicts. The second pane shows the changes that you
+made, to the file. The last pane shows the changes that you pulled from the
+original repo. Once you are satisfied with the changes, save and quit. 
+
+If you have a very minimal system, you might end up getting a file with
+change markers, the original file being backed up. Open the file and resolve
+the conflicts, deleting the markers. Once you are done, you need to tell
+mercurial that you have resolved the conflicts manually. 
+
+::
+
+    $ hg resolve -m chapter1.txt
+
+Whatever be the process you have used for the merge, you will now need to
+commit your changes, just like the simple merge that we performed. 
+
+::
+
+    $ hg commit -m "Merge heads."
     $ hg push
 
-Cheatsheet
-==========
+*Note*, we have used a different way to commit. We have used the ``-m``
+argument with the commit message.
 
-.. image:: mod.png
+We could look at the graph of the changes, in our web interface, being served
+by the ``hg serve`` command. From the graph it is clear, how the merging has
+occurred. 
 
-Suggested Reading:
+That brings us to the end of this tutorial on Mercurial. What we have covered
+is nothing close to all the features of Mercurial. We've only scratched the
+surface, but let's hope that this will get you started and you will be able
+to organize your work and projects, better. 
+
+Additional Reading
 ==================
 
-	* http://karlagius.com/2009/01/09/version-control-for-the-masses/
-	* http://betterexplained.com/articles/a-visual-guide-to-version-control/
-	* http://en.wikipedia.org/wiki/Revision_control
-	* http://hgbook.red-bean.com/
-	* http://betterexplained.com/articles/intro-to-distributed-version-control-illustrated/
-	* http://wiki.alliedmods.net/Mercurial_Tutorial
+I strongly suggest you to go through the following topics, if and when you
+start using Mercurial on a day-to-day basis. 
+
+1. ``.hgignore`` 
+#. ``hg rollback`` 
+#. ``hg bisect`` 
+#. ``hg backout`` 
+
+
+References
+==========
+
+    - `A Visual Guide to Version Control <http://betterexplained.com/articles/a-visual-guide-to-version-control/>`_
+    - `Version Control for the Masses <http://karlagius.com/2009/01/09/version-control-for-the-masses/>`_
+    - `(Illustrated) Intro to Distributed Version Control <http://betterexplained.com/articles/intro-to-distributed-version-control-illustrated/>`_
+    - `Understanding Mercurial <http://mercurial.selenic.com/wiki/UnderstandingMercurial>`_
+    - `A Tutorial on Using Mercurial <http://mercurial.selenic.com/wiki/Tutorial>`_
+    - `Hg Init: a Mercurial tutorial <http://hginit.com/>`_
+    - `Beginners Guides <http://mercurial.selenic.com/wiki/BeginnersGuides>`_
+    - `Software Carpentry <http://software-carpentry.org/4_0/vc/>`_
+
+
+Appendix A - Definitions
+========================
+
+Definitions of a few commonly used terms. 
+
+Add
+    Begin tracking a file (or a set of files) with Version Control. 
+
+Branch
+    A diverged line of development. 
+
+Changeset
+    An atomic collection of changes to the files in a repository. 
+
+Clone 
+    Creating a copy of an existing repository; New repo is self-contained. 
+
+Commit
+    Taking a snapshot of the changes made in the repository (after the
+    previous snapshot) 
+
+Conflict 
+    Occurs when two changesets have overlapping sections that have been
+    modified.
+
+Head
+    A changeset with no child changesets. 
+
+History
+    Cumulative of all the changesets of a repository. 
+
+Merge 
+    Combining two separate changesets into one merge changeset. 
+
+Repository (repo) 
+    - Loosely speaking, the folder with all the files and a store
+      of the change history.
+    - Strictly speaking, only the ``.hg`` directory that contains the change
+      history. 
+
+Revert
+    Going back to previous committed state of working directory or a file.
+
+Revision
+    A particular changeset. 
+
+Server
+    A machine which serves the repository. 
+
+Tip 
+    Most recently changed head in a repository. 
+
+Update
+    Updating the working directory to a particular revision or to the tip
+    revision. 
+
+Working Directory
+    The directory where all of the files and directories of the project are
+    present. 
+
+.. 
+   Local Variables:
+   mode: rst
+   indent-tabs-mode: nil
+   sentence-end-double-space: nil
+   fill-column: 77
+   End:
+
