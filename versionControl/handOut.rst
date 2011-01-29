@@ -26,6 +26,12 @@ time or the other as ``oldproject.py``, ``latestproject.py`` and so on, or
 date-tagging them as ``project-21-01-10.py``, ``project-20-02-10.py`` and so
 on. 
 
+It is, in some ways, similar to playing a video game. We generally play games
+in stages, saving the game, each time we finish a stage or complete a task.
+We continue playing, but we could, if necessary, choose to go back to one of
+the saved states and start over. In this manner we could change the state of
+the game. 
+
 Why Use Version Control
 =======================
  
@@ -95,8 +101,8 @@ Just say ``hg`` in your shell, to see some of the commands that ``hg``
 provides and say ``hg version`` to see the version of ``hg`` that has
 been installed on your system. 
 
-Let there be Repository
-=======================
+Let there be a Repository
+=========================
 
 To start using Mercurial (or ``hg``) and get the benefits of using a version
 control system, we should first have a **repository**. A repository is a
@@ -173,7 +179,7 @@ We use the ``help`` command to see what this means.
       ! = missing (deleted by non-hg command, but still tracked)
       ? = not tracked
       I = ignored
-        = origin of the previous file listed as A (added)
+        = origin of the previous file listed as A (added)        
     ...
 
 By looking at the codes, it is clear that our files are not *yet* being
@@ -198,7 +204,13 @@ good idea, at least until you are reasonably comfortable with the use of
     $
 
 This simply adds all the files in the (working) directory, to the repository.
-As expected, the ``status`` command shows an ``A`` before he file names.
+As expected, the ``status`` command shows an ``A`` before he file names. We
+could also specify files individually, for example
+
+::
+    $ hg add chapter1.txt
+    adding chapter1.txt
+
 
 Taking Snapshots
 ----------------
@@ -235,8 +247,8 @@ Also, notice that I have started getting lazy and used only a short name
 ``st`` for the status command. Mercurial accepts short names, as long as they
 can be disambiguated (just like tab completion).
 
-Viewing the History
--------------------
+Snapshot's Thumbnail views
+--------------------------
 
 To see the history of the changes to our repository, we use ``hg log``. We
 can view the change that we just made to our repository.
@@ -265,7 +277,9 @@ But there is a slight problem with the user details that mercurial is saving.
 It saves my username with my machine name. It is a general good practice to
 use your full name with your email id. We set our username in the ``.hgrc``
 file in our Home folder. (``$HOME/.hgrc`` on Unix like systems and
-``%HOME%\.hgrc`` on Windows systems)
+``%HOME%\.hgrc`` on Windows systems) This is a global setting for all the
+projects that we are working on. We could also set the details, at a
+repository level. We shall look at this in due course. 
 
 We open the file in our favorite editor and add the username details. 
 
@@ -318,7 +332,7 @@ shows only the first line in the description that we have added. Also, notice
 that ``hg`` shows the commits in the reverse chronological order, which is
 useful.
 
-Mercurial Magic
+But why commit?
 ===============
 
 You must already be wondering, why we need all the overhead of
@@ -626,6 +640,9 @@ repository.
     allow_push=*
 
 This will allow anybody to push to the repository, now. 
+
+By the way, this ``hgrc`` is a repository level configuration file. We could
+also set the details of the user information in this file. 
 
 Madhusudan can now push and his changes will appear in the central
 repository. 
