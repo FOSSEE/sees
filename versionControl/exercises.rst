@@ -2,20 +2,32 @@
  Version Control -- Exercises
 ==============================
 
-1. Check out the repository from http://fossee.in:9000
+1. ``clone`` the repository from http://fossee.in:9000 into a directory
+   called sees. You should see a folder ``punchagan`` with a lone directory
+   ``01-mercurial`` inside that. The ``log`` should show you the lone commit
+   of the repository. 
 
-#. Set your username and email id in you global user preferences. 
+#. The next step is to create a folder for yourself inside the repository.
+   The idea is to create a central repository for the course, where every
+   participants files are put in his own folder (within a chapter
+   sub-folder). You are expected to commit future class-work to this
+   repository. 
 
-#. Add a copy of the folder, ``punchagan`` with your own name. The
-   ``01-mercurial`` folder needs to have only ``questions.txt``. You need not
-   copy the ``people.txt`` and ``story.txt`` file. Commit your changes with a
-   meaningful commit message and push them.
+   Before beginning this exercise, set your username in you global ``hgrc`` 
+
+#. Create a new sub-folder (at the same level as ``punchagan`` with your
+   name.) Add ``01-mercurial`` as a sub-folder to it. Copy the
+   ``questions.txt`` from ``punchagan/01-mercurial`` to
+   ``<your-name>/01-mercurial``. Now, commit your changes with a meaningful
+   commit message and ``push`` . If ``push`` fails, ``pull`` , ``merge``,
+   ``commit`` and then ``push``.
 
 #. Pull from the repo. Update. Use ``hg log`` to see the log history of the
    repository.
 
 #. Answer the questions in ``questions.txt``. Commit your changes with a
-   meaningful commit message and push them.
+   meaningful commit message and push them. (If required, ``pull`` ,
+   ``merge``, ``commit`` and then ``push``)
 
 #. Wait for your neighbor to finish making his/her changes. Help him/her if
    required. Once both of you are ready, pull changes from the repository and
