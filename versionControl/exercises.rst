@@ -2,8 +2,10 @@
 
 #. Set your username and email id in you global user preferences. 
 
-#. Add a copy of the folder, ``punchagan`` with your own name. Commit your
-   changes with a meaningful commit message and push them.
+#. Add a copy of the folder, ``punchagan`` with your own name. The
+   ``01-mercurial`` folder needs to have only ``questions.txt``. You need not
+   copy the ``people.txt`` and ``story.txt`` file. Commit your changes with a
+   meaningful commit message and push them.
 
 #. Pull from the repo. Update. Use ``hg log`` to see the log history of the
    repository.
@@ -23,13 +25,14 @@
 #. Answer the new questions that were added by your neighbor, both to his/her
    file and your file. Commit changes. Push.
 
-#. Edit the file ``people.txt``. Add your name, followed by a colon, followed
-   by a comma separated list of your interests. Commit your changes and push.
+#. Edit the file ``people.txt`` in ``punchagan/01-mercurial`` . Add your
+   name, followed by a colon, followed by a comma separated list of your
+   interests. Commit your changes and push.
 
-#. Edit the file ``story.txt`` in the folder ``punchagan`` and add one
-   sentence at the end of the present story. Commit your changes and push
-   them. Wait until at least 3 other people change the file, before you make
-   your next change. This can continue for as long as you like. ;)
+#. Edit the file ``story.txt`` in the folder ``punchagan/01-mercurial`` and
+   add one sentence at the end of the present story. Commit your changes and
+   push them. Wait until at least 3 other people change the file, before you
+   make your next change. This can continue for as long as you like. ;)
 
 .. 
    Local Variables:
