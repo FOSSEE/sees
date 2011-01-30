@@ -430,6 +430,10 @@ of changes made to the file. All the lines that were deleted are
 preceded by a ``-`` and all the new-lines are preceded by a ``+``. You
 can see that the ``&`` occurrences have been replaces with ``and``. 
 
+We should note here that, the ``diff`` wouldn't make much sense, if we had
+some binary files like ``.jpg`` or ``.pdf`` files. We would see some
+gibberish in the output. 
+
 Let us now commit this change. 
 ::
 
