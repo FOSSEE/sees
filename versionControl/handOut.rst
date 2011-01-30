@@ -212,6 +212,10 @@ could also specify files individually, for example
     adding chapter1.txt
 
 
+*Note*: If you have deleted files, ``hg status`` will show you the status
+ code ``!``. You can then, tell ``hg`` to stop tracking these files, using
+ the ``hg remove`` command. Look at ``hg help remove`` for more details. 
+
 Taking Snapshots
 ----------------
 
