@@ -1,3 +1,7 @@
+==============================
+ Version Control -- Exercises
+==============================
+
 1. Check out the repository from http://fossee.in:9000
 
 #. Set your username and email id in you global user preferences. 
