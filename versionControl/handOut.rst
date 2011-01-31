@@ -215,8 +215,8 @@ could also specify files individually, for example
 
 
 **Note**: If you have deleted files, ``hg status`` will show you the status
-code ``!``. You can then, tell ``hg`` to stop tracking these files, using the
-``hg remove`` command. Look at ``hg help remove`` for more details.
+code ``!``. You can, then, tell ``hg`` to stop tracking these files, using
+the ``hg remove`` command. Look at ``hg help remove`` for more details.
 
 Taking Snapshots
 ----------------
@@ -301,7 +301,7 @@ add author information to all the chapters that we have.
 
 ::
 
-    Author: Puneeth Chaganti <punchagan@fossee.in>
+    Author: Puneeth Chaganti
 
 
 Once we have added this to all the files, let us commit this change. We again
@@ -602,8 +602,8 @@ Let's say, Madhu now makes some changes to the repository.
     @@ -2,6 +2,7 @@
                             =======================
      
-     Author: Puneeth Chaganti <punchagan@fossee.in>
-    +        Madhusudan CS <madhusudancs@fossee.in>
+     Author: Puneeth Chaganti 
+    +        Madhusudan CS 
      Date: 2011-01-28 13:58:47 IST
      
      
@@ -692,8 +692,7 @@ Now, we can check the incoming changes.
     tag:         tip
     user:        Madhusudan CS <madhusudancs@fossee.in>
     date:        Fri Jan 28 23:08:25 2011 +0530
-    summary:     Add my name to authors and move getting repositories section
-    to 5
+    summary:     Add myself as author; Move getting repositories to section 5
 
 
 To now **pull** these changes, we use the ``pull`` command. 
@@ -740,8 +739,7 @@ the update as suggested by ``hg``.
     tag:         tip
     user:        Madhusudan CS <madhusudancs@fossee.in>
     date:        Fri Jan 28 23:08:25 2011 +0530
-    summary:     Add my name to authors and move getting repositories section
-    to 5 
+    summary:     Add myself as author; Move getting repositories to section 5
     
 As expected the **update** command updates the parent to the latest changes
 that we just pulled from the remote repository. 
@@ -773,8 +771,7 @@ without specifying any revision number.
     tag:         tip
     user:        Madhusudan CS <madhusudancs@fossee.in>
     date:        Fri Jan 28 23:08:25 2011 +0530
-    summary:     Add my name to authors and move getting repositories section
-    to 5 
+    summary:     Add myself as author; Move getting repositories to section 5
 
 Simultaneous Changes
 --------------------
