@@ -1,6 +1,5 @@
-==============================
- Version Control -- Exercises
-==============================
+Exercises
+=========
 
 1. ``clone`` the repository from http://fossee.in:9000 into a directory
    called sees. You should see a folder ``punchagan`` with a lone directory

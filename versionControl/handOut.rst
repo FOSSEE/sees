@@ -1118,6 +1118,8 @@ Working Directory
     The directory where all of the files and directories of the project are
     present. 
 
+.. include :: exercises.rst
+
 .. 
    Local Variables:
    mode: rst
