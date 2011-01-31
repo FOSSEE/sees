@@ -227,17 +227,12 @@ in time. We do this by using the ``commit`` command.
 
 ::
 
-    $ hg commit 
+    $ hg commit -u "Puneeth Chaganti <punchagan@gmail.com" -m "Initial Commit."
 
-We are now prompted with a new editor window. We type out our message here
-describing the changes that we have made.
-
-::
-
-    Initial Commit
-
-    HG: Enter commit message.  Lines beginning with 'HG:' are removed.
-    HG: Leave message empty to abort commit.
+The ``-u`` parameter allows us to specify the user details. It is a general
+good practice to use full name followed by the email id. The ``-m`` parameter
+allows us to give the commit message --- a message describing the changes
+that are being committed.
 
 Mercurial has now taken a snapshot of our repository and has attached our
 description along with it. To see the status of the files in the repository,
@@ -263,7 +258,7 @@ can view the change that we just made to our repository.
     $ hg log
     changeset:   0:cbf6e2a375b4
     tag:         tip
-    user:        punchagan@shrike.aero.iitb.ac.in
+    user:        Puneeth Chaganti <punchagan@fossee.in>
     date:        Fri Jan 28 14:04:07 2011 +0530
     summary:     Initial Commit
 
@@ -278,21 +273,24 @@ description of the changeset.
 User information
 ----------------
 
-But there is a slight problem with the user details that mercurial is saving.
-It saves my username with my machine name. It is a general good practice to
-use your full name with your email id. We set our username in the ``.hgrc``
-file in our Home folder. (``$HOME/.hgrc`` on Unix like systems and
-``%HOME%\.hgrc`` on Windows systems) This is a global setting for all the
-projects that we are working on. We could also set the details, at a
-repository level. We shall look at this in due course. 
+But there are two things, that can be changed. Firstly, it is unnecessary to
+keep typing the user information each and every time we make a commit.
+Secondly, it is not very convenient to enter a multi-line commit message from
+the terminal. To solve these problems, we set our user details and editor
+preferences in the ``.hgrc`` file in our home folder. (``$HOME/.hgrc`` on
+Unix like systems and ``%USERPROFILE%\.hgrc`` on Windows systems) This is a
+global setting for all the projects that we are working on. We could also set
+the details, at a repository level. We shall look at this in due course.
 
-We open the file in our favorite editor and add the username details. 
+We open the file in our favorite editor and add the username details and our
+editor preferences. 
 
 ::
 
     $ emacs ~/.hgrc  
     [ui]
     username = Puneeth Chaganti <punchagan@fossee.in>
+    editor = emacs
 
 We have now set the username details for mercurial to use, in all our future
 commits. (Note: You can also set user preferences at the repository level.
@@ -313,13 +311,14 @@ used the ``hg commit`` command to commit the changes that we have made.
 
     $ hg commit
 
-We are again prompted with the editor window to enter our commit message and
-we type out our commit message. There are some good practices when typing out
-a commit message too. It is a general practice to have a summary line in the
-commit message which is no longer than 60 to 65 characters giving a summary
-of the change we have made. This is followed up with an explanation of why
-this was changed, what is the effect of this change, known bugs/issues
-remaining, if any, etc.
+We are now prompted with a window of our favorite editor. We can now type out
+our commit message in the editor window. 
+
+There are some recommended practices for commit messages, too. It is a
+general practice to have a summary line in the commit message which is no
+longer than 60 to 65 characters giving a summary of the change committed.
+This is followed up with an explanation of why this was changed, what is the
+effect of this change, known bugs/issues remaining, if any, etc.
 
 ::
 
@@ -1020,9 +1019,6 @@ commit your changes, just like the simple merge that we performed.
 
     $ hg commit -m "Merge heads."
     $ hg push
-
-*Note*, we have used a different way to commit. We have used the ``-m``
-argument with the commit message.
 
 We could look at the graph of the changes, in our web interface, being served
 by the ``hg serve`` command. From the graph it is clear, how the merging has
