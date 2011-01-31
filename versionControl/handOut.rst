@@ -453,23 +453,63 @@ Let us now commit this change.
     $ hg log    
 
 We can see the history of all the commits that we have made in our
-project. As you can see, the logs have started getting longer (and
-hence have been dropped from the output) and may even be getting out
-of our screens. Also, we are not very interested in all the commits in
-the project. We usually want to see the last few commits. 
+project. This gives us a brief description of all the changes made, by
+showing us the summary line of all the commits. What if we want to get more
+details? 
+
+We can pass an additional argument, ``-v`` or ``--verbose``,  to ``hg log``
+to get the whole commit message, instead of just the summary. 
+
+::
+
+    $ hg log -v
+
+As you can see, the logs have started getting longer (and hence have been
+dropped from the output) and getting out of our screen. Also, we are not
+always, interested to see the whole history of the project. It would often
+suffice to see the last few commits. 
+
+To limit the output of ``hg log``, we could use the ``-l`` or ``--limit``
+argument 
+::
+
+    $ hg log -v -l3
+
+This will give us log of only the last three commits and not the whole
+history of the project. 
 
 Revision Numbering
 ------------------
 
-Let us now see how to get logs of specific commits and a range of
-commits. Have a look at the logs that the previous ``log`` command has
+Often, the level of detail provided by the commit messages is also not
+enough. We would want to see what *exactly* changed with a commit, probably
+as a ``diff``. We could do that using **revision numbers**.
+
+Have a look at the logs that the previous ``log`` command has
 printed and look at the ``changeset`` line. It shows a number followed
 by a semi-colon and some long hexa-decimal string. The number is
 called the **revision number**. It is an identifier for the commit,
 and can be along with various commands to specify the revision number,
 if required. 
 
-Let us now check the logs of the very first commit of the project.
+Let's say we wish to see the changes between revision 1 and revision 2. We
+shall use the ``diff`` command to do this. 
+::
+
+    $ hg diff -r1 -r2
+
+The diff command takes two revision numbers as arguments and gives the
+changes made from revision in the first argument to revision in the second
+argument. 
+::
+
+    $ hg diff -r0 -r2
+
+The above command will show all the changes made after revision 0 up to
+revision 2. 
+
+The revision number can also be passed as an argument to many other commands.
+For instance, we can check the logs of the very first commit, by saying 
 ::
 
     $ hg log -r0
@@ -479,35 +519,18 @@ Let us now check the logs of the very first commit of the project.
     date:        Fri Jan 28 14:04:07 2011 +0530
     summary:     Initial Commit
 
-Now, if we wish to get the logs of the latest commit only, how do we
-do it? We could specify the exact revision number of the commit (2) or
-just use -1 to start counting in the reverse chronological order. 
-::
-
-    $ hg log -r-1
-    changeset:   2:98f7f4a1bb4d
-    tag:         tip
-    user:        Puneeth Chaganti <punchagan@fossee.in>
-    date:        Fri Jan 28 16:24:42 2011 +0530
-    summary:     Replace all occurrences of & with and
-
 You could also specify a range of commits whose logs you would like to
 see. Say, we would like to see the last two commits, 
 ::
 
-    $ hg log -r-1:-2
-
-This is equivalent to using the following     
-::
-
-        $ hg log -r2:1
+    $ hg log -r0:2
 
 You could also see the changes made to a particular file, in the
 specified range of the commits. Say, we wish to see the changes made
 to the ``chapter2.txt`` file in the last two commits. 
 ::
 
-    $ hg log -r-1:-2 chapter2.txt
+    $ hg log -r0:2 chapter2.txt
     changeset:   1:3163b8db10bb
     user:        Puneeth Chaganti <punchagan@fossee.in>
     date:        Fri Jan 28 16:21:29 2011 +0530
@@ -515,10 +538,6 @@ to the ``chapter2.txt`` file in the last two commits.
 
 Notice that it shows only the logs of revision 1, since no changes
 were made to the specified file in the second commit. 
-
-You can do all of this with the ``diff`` command to see the exact
-changes made to the files, instead of seeing the ``log`` message. This
-will be a part of your exercises. 
 
 Collaborating with Mercurial
 ============================
