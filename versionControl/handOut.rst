@@ -131,7 +131,7 @@ book as text files. Let us convert that folder, into a ``hg`` repository.
     $ cd book/
     $ ls -a
     . .. chapter1.txt chapter2.txt chapter3.txt 
-    $ 
+
     
 We have three chapters in the folder. We convert this folder into a mercurial
 repository using the ``hg init`` command
@@ -141,7 +141,7 @@ repository using the ``hg init`` command
     $ hg init
     $ ls -a
     . .. .hg chapter1.txt chapter2.txt chapter3.txt 
-    $ 
+
 
 The ``.hg`` directory indicates that our book directory is now a ``hg``
 repository. Mercurial keeps all the history of the changes made, and a few
@@ -203,7 +203,6 @@ good idea, at least until you are reasonably comfortable with the use of
     A chapter1.txt
     A chapter2.txt
     A chapter3.txt
-    $
 
 This simply adds all the files in the (working) directory, to the repository.
 As expected, the ``status`` command shows an ``A`` before he file names. We
@@ -247,7 +246,6 @@ use the ``hg status`` command.
 ::
 
     $ hg st
-    $
     
 The command does not return anything, when there are no uncommitted changes.
 Also, notice that I have started getting lazy and used only a short name
@@ -362,7 +360,6 @@ make a lot of changes.
     $ hg st
     M chapter1.txt
     ! chapter3.txt
-    $ 
 
 
 But after a while, you realize that these changes are unwarranted. You
@@ -402,7 +399,6 @@ file with the backed up file.
     $ mv chapter1.txt.orig chapter1.txt
     $ hg st
     M chapter1.txt
-    $
 
 Viewing Changes
 ---------------
@@ -623,7 +619,6 @@ Let's say, Madhu now makes some changes to the repository.
     -5 Merges and Conflicts 
     +5 Getting repositories 
     +6 Merges and Conflicts  
-    $
 
 He then commits these changes and **pushes** them to the central repository
 that we have created. 
@@ -732,7 +727,6 @@ command.
     user:        Puneeth Chaganti <punchagan@fossee.in>
     date:        Fri Jan 28 16:24:42 2011 +0530
     summary:     Replace all occurrences of & with and
-    $ 
 
 As we can see, the parent is still our last commit, and the changes made by
 Madhusudan are still not in our working directory. To get these changes we do
@@ -749,7 +743,6 @@ the update as suggested by ``hg``.
     date:        Fri Jan 28 23:08:25 2011 +0530
     summary:     Add my name to authors and move getting repositories section
     to 5 
-    $
     
 As expected the **update** command updates the parent to the latest changes
 that we just pulled from the remote repository. 
@@ -783,7 +776,6 @@ without specifying any revision number.
     date:        Fri Jan 28 23:08:25 2011 +0530
     summary:     Add my name to authors and move getting repositories section
     to 5 
-    $ 
 
 Simultaneous Changes
 --------------------
@@ -817,7 +809,6 @@ different parts of it.  Say, I change the title of the section 2.
     adding manifests
     adding file changes
     added 1 changesets with 1 changes to 1 files
-    $ 
     
 Also, let us assume Madhusudan adds an additional section called References. 
 ::
@@ -875,11 +866,12 @@ repository after his last pull and **merge** them with his changes.
     $ hg merge
     merging chapter1.txt
     0 files updated, 1 files merged, 0 files removed, 0 files unresolved
-    (branch merge, don't forget to commit)
+    (branch merge, dont forget to commit)
+
 
 We have now pull the changes from the central repository and merged them with
 the changes in our repository. But, ``hg`` is warning us not to forget to
-commit. Let's see what is the status of the repository at this point in time. 
+commit. Let's see what is the status of the repository at this point in time.
 
 ::
 
@@ -999,7 +991,7 @@ follows.
     (run 'hg heads' to see heads, 'hg merge' to merge)
     $ hg merge
     0 files updated, 1 files merged, 0 files removed, 0 files unresolved
-    (branch merge, don't forget to commit)
+    (branch merge, dont forget to commit)
 
 
 What happens now actually depends on how Mercurial is configured and the
