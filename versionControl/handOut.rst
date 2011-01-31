@@ -227,7 +227,7 @@ in time. We do this by using the ``commit`` command.
 
 ::
 
-    $ hg commit -u "Puneeth Chaganti <punchagan@gmail.com" -m "Initial Commit."
+    $ hg commit -u "Puneeth Chaganti <punchagan@fossee.in>" -m "Initial Commit."
 
 The ``-u`` parameter allows us to specify the user details. It is a general
 good practice to use full name followed by the email id. The ``-m`` parameter
