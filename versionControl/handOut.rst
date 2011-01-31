@@ -208,6 +208,7 @@ As expected, the ``status`` command shows an ``A`` before he file names. We
 could also specify files individually, for example
 
 ::
+
     $ hg add chapter1.txt
     adding chapter1.txt
 
