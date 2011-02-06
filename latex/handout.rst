@@ -4,109 +4,204 @@ LaTeX
 Introduction
 ------------
 
-LaTeX is a typesetting program that produces excellently typeset
-documents. Typesetting is placing text onto a page with all the style
-formatting defined, so that content looks as intended. It is
-extensively used for producing high quality scientific and
-mathematical documents. It is also used for producing other kinds of
-documents, ranging from simple one page articles or letters to
-books. LaTeX is based on the TeX typesetting language.
+LaTeX is a typesetting program that produces excellently typeset documents.
+Typesetting is placing text onto a page with all the style formatting
+defined, so that content looks as intended. It is extensively used for
+producing high quality scientific and mathematical documents. It may also be
+used for producing other kinds of documents, ranging from simple one page
+articles to complete books. LaTeX is based on the TeX typesetting language.
 
-LaTeX is pronounced either as "Lah-tech" or "Lay-tech"
+LaTeX is pronounced either as "Lah-tech" or "Lay-tech". 
 
-In this course, we shall use the sample document, ``sample.pdf``, as a
-tool to learn various commands of LaTeX. By the end of the sessions on
-LaTeX, we will have produced a copy of that document, starting from
-scratch.
+
+Why LaTeX?
+~~~~~~~~~~
+
+A few reasons for using LaTeX - 
+
+  * It produces documents with excellent visual quality.
+  * It does the typesetting for you, leaving you - the author - to focus on
+    writing the content. You will appreciate this, as you learn more.
+  * It makes writing math just as easy as writing simple text.
+  * It's renowned for it's stability and a virtually bug free code base.
+  * It is light on your resources as compared to most of the word processors
+    available today.
+  * It uses plain text files as input and can give output in a variety of
+    formats including PDFs and html making it platform independent.
+  * It is free software (free as in freedom) and gratis too.
+  * It is widely used and has a large user community.
+
+
+Course Outline
+~~~~~~~~~~~~~~
+
+In this course, we will learn enough LaTeX to be a able to produce a simple
+document with text, tables, figures, math, references and bibliography. We
+will also briefly see how to create presentations using LaTeX, such as the
+one use for the slides of this course.
+
+The sample document, ``sample.pdf``, available in the course material, will
+serve as a teaching/learning tool to learn LaTeX. During the course, we shall
+reproduce this sample document, starting from scratch, in LaTeX
 
 A Look at the Sample Document
------------------------------
++++++++++++++++++++++++++++++
 
-Let's first look at the basic structure of the sample document.
+A look at the sample document gives us an idea about the various elements
+present in the document, that we will be learning during this course.
 
-Slides with screen shots of
+We shall be learning how to add the following elements to our LaTeX
+documents.
 
   * Title, Author, Date
   * Abstract
-  * Sections
-  * Subsections
-  * Appendix
+  * Sections & Subsections
+  * Appendices
   * References/Bibliography
   * Tables
   * Figures
   * Math
 
-Writing the source & compiling it
----------------------------------
 
-Let's begin with a simple hello world, to see how to write a LaTeX
-document and compile it.  Write the following code into the file
-``draft.tex``.  ::
+LaTeX is not a Word Processor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+What do we mean by LaTeX not being a Word Processor? Suppose we wanted to
+create a simple document as shown in the image below. If one used a normal
+word processor, the author would have to worry about setting the font sizes
+of the fonts, centering the title, date and author information, etc.
+
+.. image:: images/latex_not_wp.png
+   :alt: LaTeX is not a Word Processor
+
+To generate this document in LaTeX, we just tell it what we want as the
+title, author's name, date etc. and what we want as the content. LaTeX takes
+care of proper font size ratios and other presentation details.
+
+::
+
+  \documentclass{article}
+  \title{My First Document}
+  \author{FOSSEE}
+  \date{January 2011}
+  \begin{document}
+     \maketitle
+     Hello world!
+  \end{document}
+
+LaTeX can be considered to be a document based markup language. What we mean
+by a markup language is that you mark up pieces of your text to be particular
+elements of your document and then a typesetter or processor typesets your
+document based on a set of rules. What do we mean by being document-based? It
+means, that in LaTeX, you can change the structure of the whole document
+consistently, with a few changes in the preamble of the document, with-out
+having to change each element separately.
+
+First steps -- Typesetting a minimal document
+---------------------------------------------
+
+Let us start with a minimal example to learn how to write a LaTeX document
+and compile it to see the **typeset** output.
+
+To begin, type out the following code into your text editor and save it as
+``draft.tex``. ::
 
   \documentclass{article}
   \begin{document}
   SciPy is open-source software for mathematics, science, and engineering.   
   \end{document}
 
-To compile the document, do the following in your terminal::
+To compile your document, type the following command in your terminal::
 
-  $ pdfLaTeX draft.tex
+  $ pdflatex draft.tex
 
 This produces the output file ``draft.pdf``
 
-Note: The ``LaTeX`` command is often used, instead of ``pdfLaTeX`` to
-get the ``dvi`` output. But, throughout this course, we shall use
-pdfLaTeX to compile our documents.
+Note: The ``latex`` command is often used, instead of ``pdflatex`` to get the
+``dvi`` output. But, throughout this course, we shall use ``pdflatex`` to
+compile our documents.
+
+What does it mean?
+~~~~~~~~~~~~~~~~~~
+
+As we have already seen, LaTeX is a document based markup. The first line,
+``\documentclass{article}``, tells that our document is an article type
+document. LaTeX then, typesets the document accordingly. The documentclass
+command, defines the structure and formatting of our document.
+
+The ``begin`` and ``end`` document commands, mark the beginning and the end
+of the content of the LaTeX document. The text in between the begin and end
+commands is typeset in the output document. 
+
+A little digression
+~~~~~~~~~~~~~~~~~~~
+
+Just like in ``bash`` and ``Python``, the commands in LaTeX are
+case-sensitive. ``\Documentclass`` is therefore not a valid command. 
+
+All the commands in LaTeX begin with a ``\``. An environment begins with a
+``begin`` command and ends with an ``end`` command. In our minimal example,
+``document`` is an environment. Only the text enclosed by the begin and end
+commands is effected by the environment. 
+
+So, as expected LaTeX ignores anything that is written after the
+``\end{document}`` command. (The part of the file before the
+``\begin{document}`` command is called the preamble, and is used to
+*"configure"* the LaTeX typesetter and change various parameters for
+typesetting. Details later.)
+
+Essentially, anything written after the ``\end{document}`` command turns out
+to be a comment. But, how do we write comments with in the document. ``%`` is
+the character to indicate comments. Anything written after a ``%`` symbol in
+a line, is ignored. For example, we can add a comment to the minimal document
+saying, this is our first document in LaTeX, by saying ``% My First LaTeX
+document``. 
+
+But what if we wanted to insert the ``%`` symbol in the document? We can do
+so by escaping it with a ``\`` (backslash). ``%`` is one of the many special
+characters in LaTeX. The others are, ``~ # $ ^ & _ { } \``. All of them,
+except the ``\`` itself, can be inserted by escaping it with a ``\``. To
+insert a ``\`` in our document, we use the command ``\textbackslash``. 
+
+What would happen if we escape a ``\`` with a ``\``? Yes, you guessed it. A
+double backslash is actually another command. It inserts a new line in the
+typeset document. The ``\\`` command or ``\newline`` command is used to
+insert a newline in the output document. Line breaks in the input document,
+do not translate into line breaks in the output document. A single line break
+in the input document, doesn't cause any change in the output. A single empty
+line causes a change in paragraphs in the output. (Multiple empty lines are
+equivalent to a single empty line.) Similarly, multiple spaces are treated as
+a single space. 
+
+Adding Structure
+----------------
+
+Let us now, look at giving the document some basic structure, like title,
+sections, etc. 
 
 ``\documentclass``
-------------------
+~~~~~~~~~~~~~~~~~~
 
-The documentclass command, defines the structure and formatting of our
-document. LaTeX typsets the document, based on the documentclass.
+As we have already seen, the ``documentclass`` command tells LaTeX, the type
+of the document that we intend to create. Some of the available LaTeX classes
+are, ``article``, ``proc``, ``report``, ``book``, ``slides``, ``letter``.
+Each class has a few differences in how the content of the document is
+typeset.
 
-LaTeX is a document based markup language. 
+The ``documentclass`` command also accepts a few optional parameters. For
+example::
 
-First of all, a markup language is a system of annotating text or
-adding in extra information to the text that specifies it's structure
-or presentation.
+  \documentclass[12pt,a4paper,oneside,draft]{report}
 
-LaTeX is a document based markup and not an element based one. You
-generally don't have to worry about typesetting each of the elements
-of your document. Choosing an appropriate documentclass, gives you a
-suitable typesetting. You as an author can worry about the content of
-the document, rather than the appearance or presentation of the
-document.
+``12pt`` specifies the size of the main font in the document. The relative
+sizes of the various fonts is maintained, when the font size is changed. If
+no size is specified, ``10pt`` is assumed by default.
 
-Why should you use it?
-~~~~~~~~~~~~~~~~~~~~~~
+``a4paper`` specifies the size of the paper to be used for the document.
 
-A few reasons for using LaTeX - 
-
-  * It produces documents with excellent visual quality.
-  * It does the typesetting for you, leaving you - the author - to
-    focus on writing the content.
-  * It makes writing math just as easy as writing simple text.
-  * It's renowned for it's stability and a virtually bug free code
-    base.
-  * It is light on your resources as compared to most of the word
-    processors available today.
-  * It uses plain text files as input and can give output in a variety
-    of formats including PDFs and html making it platform independent.
-  * It is free software (free as in freedom) and gratis too.
-  * It is widely used and has a large user community. 
-
-
-``\begin`` and ``\end`` commands define environments. In our document,
-we have the document environment, which defines the beginning and end
-of the content of the document. We place all the content of the
-document within this environment.
-
-Also, as you may have noticed, all the commands in LaTeX begin with a
-``\``. Note that they are case sensitive. Command names in LaTeX
-usually have only alpha characters. Any characters other than alpha
-characters, terminate the command name. Parameters to commands are
-passed in ``{ }``.
-
+``draft`` marks the hyphenation and justification problems in the document
+with a small square in the right hand margin of the document, so that they
+can be easily spotted.
 
 Top Matter
 ----------
@@ -126,20 +221,21 @@ document.
   \end{document}
 
 We add the title, the author and the date to the document before the
-``\begin{document}`` directive. We compile the document to see if the
-details appear in the document, but they donot. These details do not
-appear in the document until we use the ``\maketitle`` command with
-the document environment to instruct LaTeX to place the top matter
-information into the document. Now the document has these details, on
-compiling again.
+``\begin{document}`` directive. We compile the document to see if the details
+appear in the document, but they donot. These details do not appear in the
+document until we use the ``\maketitle`` command with the document
+environment to instruct LaTeX to place the top matter information into the
+document. Now the document has these details, on compiling again.
 
 If no date is specified, LaTeX automatically inserts the current date.
 
 Abstract
 --------
 
-Next we shall add an abstract to our document. LaTeX provides an
-environment, for adding an abstract to the document.  ::
+Next we shall add an abstract to our document. LaTeX provides an environment,
+for adding an abstract to the document. 
+
+::
 
   \documentclass{article}
 
@@ -158,15 +254,15 @@ environment, for adding an abstract to the document.  ::
   SciPy is open-source software for mathematics, science, and engineering.   
   \end{document}
 
-The abstract environment is placed at the location where we wish it to
-appear in the document.
+The abstract environment is placed at the location where we wish it to appear
+in the document.
 
 Sections
 --------
 
-Now let's look at how to add (chapters,) sections and sub-sections to
-our document. Let's add the section headings and sub headings present
-in our sample document to the working copy of our document.
+Now let's look at how to add (chapters,) sections and sub-sections to our
+document. Let's add the section headings and sub headings present in our
+sample document to the working copy of our document.
 
 ``\section``, ``\subsection``, ``\subsubsection``
 
@@ -177,32 +273,33 @@ You may have noticed that LaTeX automatically numbers the sections. To
 prevent a section from getting numbered, an asterix is appended to the
 corresponding sectioning command.
 
-If the document was a longer document, we could have used a report or
-a book class. (Note: Books donot have the abstract environment.) Let's
-look at what happens to the document, when we change it to the report
-class.
+If the document was a longer document, we could have used a report or a book
+class. (Note: Books donot have the abstract environment.) Let's look at what
+happens to the document, when we change it to the report class.
 
-The numbering strangely begins from zero, now. This is because,
-chapters have an additional sectioning command called
-``\chapter``. The chapter is one level above a section and since, our
-document does not have a ``\chapter`` command, the sections are
-numbered from 0. To change this, we add a chapter command before the
-first section. We say::
+The numbering strangely begins from zero, now. This is because, chapters have
+an additional sectioning command called ``\chapter``. The chapter is one
+level above a section and since, our document does not have a ``\chapter``
+command, the sections are numbered from 0. To change this, we add a chapter
+command before the first section. We say
+
+::
 
   \chapter{One}
 
-Now, observe that we now have a chapter title appearing and the
-numbering starting from 1.
+Now, observe that we now have a chapter title appearing and the numbering
+starting from 1.
 
 Also, note that the subsubsections donot get a numbering now. This is
-controlled by a variable called the secnumdepth. By default it is set
-to 2. We can now, change it to 3 and get numbering for subsubsections
-also.  ::
+controlled by a variable called the secnumdepth. By default it is set to 2.
+We can now, change it to 3 and get numbering for subsubsections also. 
+
+::
 
   \setcounter{secnumdepth}{3}
 
-What do you expect to happen if we changed the secnumdepth to 1? What
-if it is 0? -1? {Lab excercise}
+What do you expect to happen if we changed the secnumdepth to 1? What if it
+is 0 or -1?
 
 
 Appendix
@@ -219,112 +316,106 @@ to our document.
 Table of Contents
 -----------------
 
-Our sample document is not long enough to warrant a table of contents,
-but let us learn to add a table of contents to a LaTeX document. If
-you ever tried adding a table of contents, to a document in a
-wordprocessor, you would know how much of a trouble it is. In LaTeX,
-it is a matter of just one command and placing the command at the
-location where you would want to have the table of contents. Let's now
-add a table of contents to our draft. Now, compile the document and
-look at the output document. It does not have the table of contents!
+Our sample document is not long enough to warrant a table of contents, but
+let us learn to add a table of contents to a LaTeX document. If you ever
+tried adding a table of contents, to a document in a wordprocessor, you would
+know how much of a trouble it is. In LaTeX, it is a matter of just one
+command and placing the command at the location where you would want to have
+the table of contents. Let's now add a table of contents to our draft. Now,
+compile the document and look at the output document. It does not have the
+table of contents!
 
-On the first compilation only the "Contents" heading appears in the
-document, but the actual table does not appear. You will need to
-compile your document once more, for the actual table to appear in
-your document. On the first run, LaTeX has gone through your document
-and generated a temporary file (``.toc``), with the entries that
-should go into the table of contents. These entries are made, when you
-compile your document for the second time.
+On the first compilation only the "Contents" heading appears in the document,
+but the actual table does not appear. You will need to compile your document
+once more, for the actual table to appear in your document. On the first run,
+LaTeX has gone through your document and generated a temporary file
+(``.toc``), with the entries that should go into the table of contents. These
+entries are made, when you compile your document for the second time.
 
-Note that any section/block that has been numbered automatically
-appears in the table of contents. It is possible to get un-numbered
-sections, for instance a Preface or a Foreword section to appear in
-the Table of Contents.
+Note that any section/block that has been numbered automatically appears in
+the table of contents. It is possible to get un-numbered sections, for
+instance a Preface or a Foreword section to appear in the Table of Contents.
 
-Let's change our Introduction section to be an un-numbered one and try
-to make it appear in the table-of-contents.  ::
+Let's change our Introduction section to be an un-numbered one and try to
+make it appear in the table-of-contents. ::
 
   \section*{Introduction}
   \addcontentsline{toc}{section}{Intro}
 
-We shall talk about adding and managing bibliographies, later in the
-course.
+We shall talk about adding and managing bibliographies, later in the course.
 
-Now, that we have the basic structure of the document, let's get into
-the content and the details of it.
+Now, that we have the basic structure of the document, let's get into the
+content and the details of it.
 
 Typesetting Text
 ----------------
 
-Let's begin with adding the second paragraph to the introduction
-section. Let's place the text of the second para, after the first
-line, that we already have. Now, compile the document. 
+Let's begin with adding the second paragraph to the introduction section.
+Let's place the text of the second para, after the first line, that we
+already have. Now, compile the document.
 
-Notice, that the second para appears in continuation with the previous
-line. To start a new paragraph in LaTeX, we need to insert an empty
-line. Multiple empty lines are considered as a single empty line. To
-start a new line, use the ``\newline`` or ``\\`` command. Notice the
-difference (in the output), in starting a new paragraph and starting a
-newline. A new paragraph is indented.
+As already discussed, we need to an insert an empty line, to insert a new
+paragraph in LaTeX. Also, notice that the new paragraph is indented.
 
 Quotation Marks
 ---------------
 
-Look at the quotation marks around the text, Sigh Pie. They are not
-formatted properly. To place quotation marks in LaTeX, you should use
-````` character for the left quote & ``'`` character for the right
-quote. For double quotes, they should be used twice.
+Look at the quotation marks around the text, Sigh Pie. They are not formatted
+properly. To place quotation marks in LaTeX, you should use ````` character
+for the left quote & ``'`` character for the right quote. For double quotes,
+they should be used twice.
 
 Fonts
 -----
 
-The names of the software tools, Scilab, Matlab, etc. appear in
-italics or emphasized as it is called in LaTeX. To emphasize text, the
-``\emph`` command is used.
+The names of the software tools, Scilab, Matlab, etc. appear in italics or
+emphasized as it is called in LaTeX. To emphasize text, the ``\emph`` command
+is used.
 
-Let's also add the contents of the subsection "Sub-packages of
-Scipy". We shall add the table as plain text, until we learn how to
-edit tables.
+Let's also add the contents of the subsection "Sub-packages of Scipy". We
+shall add the table as plain text, until we learn how to edit tables.
 
-Let's try and form a tabular structure by separating the left and
-right columns using spaces. On compiling we find that LaTeX doesn't
-add multiple spaces between words. Just like multiple empty lines,
-multiple spaces are considered as a single space.
+Let's try and form a tabular structure by separating the left and right
+columns using spaces. On compiling we find that LaTeX doesn't add multiple
+spaces between words. Just like multiple empty lines, multiple spaces are
+considered as a single space.
 
-The names of the sub-packages appear in a fixed width font in the
-sample document provided to us. The headings of the columns appear in
-bold-face. Let's make changes to this effect.
+Also, we notice that ``LaTeX`` starts a new paragraph at the beginning of the
+table. To avoid this, we use the ``flushleft`` environment.
 
-``\textbf`` is used to change text to bold face and ``\texttt`` is
-used to change text to fixed width font.
+The names of the sub-packages appear in a fixed width font in the sample
+document provided to us. The headings of the columns appear in bold-face.
+Let's make changes to this effect.
 
-We could also change the separating - (hyphen) to an em-dash (or
-en-dash) -- is em-dash and --- is an em-dash, to improve the
-appearance of the document.
+``\textbf`` is used to change text to bold face and ``\texttt`` is used to
+change text to fixed width font.
+
+We could also change the separating - (hyphen) to an em-dash (or en-dash) --
+is em-dash and --- is an em-dash, to improve the appearance of the document.
 
 Lists
 -----
 
-The section on Use of Scipy in this course, contains lists. Let's now
-add lists to our document. The ``enumerate`` environment adds numbered
-lists to our document and the ``itemize`` environment adds un-numbered
-lists. ``\item`` command adds a new entry to a list. Note, that LaTeX
-can easily handle nested lists. In fact most environments can be
-embedded within other environments, without any problems.
+The section on Use of Scipy in this course, contains lists. Let's now add
+lists to our document. The ``enumerate`` environment adds numbered lists to
+our document and the ``itemize`` environment adds un-numbered lists.
+``\item`` command adds a new entry to a list. Note, that LaTeX can easily
+handle nested lists. In fact most environments can be embedded within other
+environments, without any problems.
 
-LaTeX also has a description list, which shall be looked at, during
-the lab sessions.
+LaTeX also has a description list, which shall be an exercise, for you.
+
 
 Footnotes, Labels and References
 --------------------------------
 
-Let's now add the footnote to pylab. LaTeX provides a footnote command
-to add a footnote.
+Let's now add the footnote to pylab. LaTeX provides a footnote command to add
+a footnote.
 
-We added the footnote with Appendix A, as plain text. But, in case we
-added another Appendix before the section on using ``pylab``, the
-footnote will have to be edited. To avoid this, LaTeX provides a handy
-system of labels and referencing.
+We added the footnote with Appendix A, as plain text. But, in case we added
+another Appendix before the section on using ``pylab``, the footnote will
+have to be edited. To avoid this, LaTeX provides a handy system of labels and
+referencing.
 
 We first add a label to the section that we want to refer in this
 footnote. Then, we change the footnote, and add the reference to this
@@ -614,3 +705,10 @@ you need to give the frame an optional parameter ``[fragile]``.
 To achieve more with beamer, it is highly recommended that you look at
 the ``beameruserguide``.
 
+.. 
+   Local Variables:
+   mode: rst
+   indent-tabs-mode: nil
+   sentence-end-double-space: nil
+   fill-column: 77
+   End:
