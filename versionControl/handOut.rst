@@ -1,4 +1,4 @@
-.. highlight:: bash
+.. highlight:: console
 
 ===============
 Version Control
@@ -203,6 +203,7 @@ good idea, at least until you are reasonably comfortable with the use of
     A chapter1.txt
     A chapter2.txt
     A chapter3.txt
+    $
 
 This simply adds all the files in the (working) directory, to the repository.
 As expected, the ``status`` command shows an ``A`` before he file names. We
