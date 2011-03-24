@@ -705,6 +705,7 @@ you need to give the frame an optional parameter ``[fragile]``.
 To achieve more with beamer, it is highly recommended that you look at
 the ``beameruserguide``.
 
+.. include :: lab-workbook.rst
 .. 
    Local Variables:
    mode: rst
