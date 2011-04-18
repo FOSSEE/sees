@@ -1,0 +1,163 @@
+\section{Using Python modules}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{hello.py}}
+    \begin{itemize}
+    \item Script to print `hello world' -- \texttt{hello.py}
+    \end{itemize}
+    \begin{lstlisting}
+      print "Hello world!"
+    \end{lstlisting}
+    \begin{itemize}
+    \item We have been running scripts from IPython
+    \end{itemize}
+    \begin{lstlisting}
+      %run -i hello.py
+    \end{lstlisting}
+    \begin{itemize}
+    \item Now, we run from the shell using python
+    \end{itemize}
+    \begin{lstlisting}
+      $ python hello.py
+    \end{lstlisting} %$
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Simple plot}
+  \begin{itemize}
+  \item Save the following in \texttt{sine\_plot.py} 
+  \end{itemize}
+  \begin{lstlisting}
+    x = linspace(-2*pi, 2*pi, 100)
+    plot(x, sin(x))
+    show()
+  \end{lstlisting}
+  \begin{itemize}
+  \item Now, let us run the script
+  \end{itemize}
+  \begin{lstlisting}
+    $ python sine_plot.py
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item What's wrong?
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Importing}
+  \begin{itemize}
+  \item \texttt{-pylab} is importing a lot of functionality
+  \item Add the following to the top of your file
+  \end{itemize}
+  \begin{lstlisting}
+    from scipy import *
+  \end{lstlisting}
+  \begin{lstlisting}
+    $ python sine_plot.py
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item Now, plot is not found
+  \item Add the following as the second line of your script
+  \end{itemize}
+  \begin{lstlisting}
+    from pylab import *
+  \end{lstlisting}
+  \begin{lstlisting}
+    $ python sine_plot.py
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item It works!
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Importing \ldots}
+  \begin{itemize}
+  \item \texttt{*} imports everything from \texttt{scipy} and
+    \texttt{pylab}
+  \item But, It imports lot of unnecessary stuff
+  \item And two modules may contain the same name, causing a conflict
+  \item There are two ways out
+  \end{itemize}
+  \begin{lstlisting}
+    from scipy import linspace, pi, sin
+    from pylab import plot, show
+  \end{lstlisting}
+  \begin{itemize}
+  \item OR change the imports to following and 
+  \item Replace \texttt{pi} with \texttt{scipy.pi}, etc. 
+  \end{itemize}
+  \begin{lstlisting}
+    import scipy
+    import pylab
+  \end{lstlisting}
+\end{frame}
+
+\section{Writing modules}
+
+\begin{frame}[fragile]
+  \frametitle{GCD script}
+  \begin{itemize}
+  \item Function that computes gcd of two numbers
+  \item Save it as \texttt{gcd\_scrip.py}
+  \end{itemize}
+  \begin{lstlisting}
+    def gcd(a, b):
+        while b:
+            a, b = b, a%b
+        return a
+  \end{lstlisting}
+  \begin{itemize}
+  \item Also add the tests to the file
+  \end{itemize}
+  \begin{lstlisting}
+    if gcd(40, 12) == 4 and gcd(12, 13) == 1:
+        print "Everything OK"
+    else:
+        print "The GCD function is wrong"
+  \end{lstlisting}
+  \begin{lstlisting}
+    $ python gcd_script.py
+  \end{lstlisting} % $
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Python path}
+  \begin{itemize}
+  \item In IPython type the following
+  \end{itemize}
+  \begin{lstlisting}
+    import sys
+    sys.path
+  \end{lstlisting}
+  \begin{itemize}
+  \item List of locations where python searches for a module
+  \item \texttt{import sys} -- searches for file \texttt{sys.py} or
+    dir \texttt{sys} in all these locations
+  \item So, our own modules can be in any one of the locations
+  \item Current working directory is one of the locations
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{\_\_name\_\_}}
+  \begin{lstlisting}
+    import gcd_script
+  \end{lstlisting}
+  \begin{itemize}
+  \item The import is successful
+  \item But the test code, gets run
+  \item Add the tests to the following \texttt{if} block
+  \end{itemize}
+  \begin{lstlisting}
+    if __name__ == "__main__":
+  \end{lstlisting}
+  \begin{itemize}
+  \item Now the script runs properly 
+  \item As well as the import works; test code not executed
+  \item \texttt{\_\_name\_\_} is local to every module and is equal
+    to \texttt{\_\_main\_\_} only when the file is run as a script.
+  \end{itemize}
+\end{frame}
+
