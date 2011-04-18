@@ -1,0 +1,256 @@
+\section{Tuples}
+
+\begin{frame}[fragile]
+  \frametitle{Tuples -- Initialization}
+  \begin{lstlisting}
+    t = (1, 2.5, "hello", -4, "world", 1.24, 5)
+    t
+  \end{lstlisting}
+  \begin{itemize}
+  \item It is not always necessary to use parenthesis
+  \end{itemize}
+  \begin{lstlisting}
+    a = 1, 2, 3 
+    b = 1, 
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Indexing}
+  \begin{lstlisting}
+    t[3]
+    t[1:5:2]
+    t[2] = "Hello"
+  \end{lstlisting}
+  \begin{itemize}
+  \item \alert{Tuples are immutable!}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Swapping values}
+  \begin{lstlisting}
+    a = 5
+    b = 7
+
+    temp = a
+    a = b
+    b = temp
+  \end{lstlisting}
+  \begin{itemize}
+  \item Here's the Pythonic way of doing it
+  \end{itemize}
+  \begin{lstlisting}
+    a, b = b, a
+  \end{lstlisting}
+  \begin{itemize}
+  \item The variables can be of different data-types
+  \end{itemize}
+  \begin{lstlisting}
+    a = 2.5
+    b = "hello"
+    a, b = b, a
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Tuple packing \& unpacking}
+  \begin{lstlisting}
+    5,
+
+    5, "hello", 2.5
+  \end{lstlisting}
+  \begin{itemize}
+  \item Tuple packing and unpacking, when swapping
+  \end{itemize}
+  \begin{lstlisting}
+    a, b = b, a
+  \end{lstlisting}
+\end{frame}
+
+\section{Dictionaries}
+
+\begin{frame}[fragile]
+  \frametitle{Creating Dictionaries}
+  \begin{lstlisting}
+    mt_dict = {}
+
+    extensions = {'jpg' : 'JPEG Image', 
+                  'py' : 'Python script', 
+                  'html' : 'Html document', 
+                  'pdf' : 'Portable Document Format'}
+
+    extensions
+  \end{lstlisting}
+  \begin{itemize}
+  \item Key-Value pairs
+  \item \alert{ No ordering of keys! }
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Accessing Elements}
+  \begin{lstlisting}
+    print extensions['jpg']
+  \end{lstlisting}
+  \begin{itemize}
+  \item Values can be accessed using keys
+  \end{itemize}
+  \begin{lstlisting}
+    print extensions['zip']
+  \end{lstlisting}
+  \begin{itemize}
+  \item Values of non-existent keys cannot, obviously, be accessed
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Adding \& Removing Elements}
+  \begin{itemize}
+  \item Adding a new key-value pair
+  \end{itemize}
+  \begin{lstlisting}
+    extensions['cpp'] = 'C++ code'
+    extensions
+  \end{lstlisting}
+  \begin{itemize}
+  \item Deleting a key-value pair
+  \end{itemize}
+  \begin{lstlisting}
+    del extension['pdf']
+    extensions
+  \end{lstlisting}
+  \begin{itemize}
+  \item Assigning to existing key, modifies the value
+  \end{itemize}
+  \begin{lstlisting}
+    extensions['cpp'] = 'C++ source code'
+    extensions
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Containership}
+  \begin{lstlisting}
+    'py' in extensions
+    'odt' in extensions
+  \end{lstlisting}
+  \begin{itemize}
+  \item Allow checking for container-ship of keys; NOT values
+  \item Use the \texttt{in} keyword to check for container-ship
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Lists of Keys and Values}
+  \begin{lstlisting}
+    extensions.keys()
+    extensions.values()
+  \end{lstlisting}
+  \begin{itemize}
+  \item Note that the order of the keys and values match
+  \item That can be relied upon and used
+  \end{itemize}
+  \begin{lstlisting}
+    for each in extensions.keys():
+        print each, "-->", extensions[each]
+  \end{lstlisting}
+\end{frame}
+
+\section{Sets}
+
+\begin{frame}[fragile]
+  \frametitle{Creating Sets}
+  \begin{lstlisting}
+    a_list = [1, 2, 1, 4, 5, 6, 2]
+    a = set(a_list)
+    a
+  \end{lstlisting}
+  \begin{itemize}
+  \item Conceptually identical to the sets in mathematics
+  \item Duplicate elements not allowed
+  \item No ordering of elements exists
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Operations on Sets}
+  \begin{lstlisting}
+    f10 = set([1, 2, 3, 5, 8])
+    p10 = set([2, 3, 5, 7])
+  \end{lstlisting}
+  \begin{itemize}
+  \item Mathematical operations performed on sets, can be performed
+  \end{itemize}
+  \begin{itemize}
+  \item Union
+    \begin{lstlisting}
+      f10 | p10
+    \end{lstlisting}
+  \item Intersection
+    \begin{lstlisting}
+      f10 & p10
+    \end{lstlisting}
+  \item Difference
+    \begin{lstlisting}
+      f10 - p10
+    \end{lstlisting}
+  \item Symmetric Difference
+    \begin{lstlisting}
+      f10 ^ p10
+    \end{lstlisting}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Sub-sets}
+  \begin{itemize}
+  \item Proper Subset
+    \begin{lstlisting}
+      b = set([1, 2])
+      b < f10
+    \end{lstlisting}
+  \item Subsets
+    \begin{lstlisting}
+      f10 <= f10
+    \end{lstlisting}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Elements of sets}
+  \begin{itemize}
+  \item Containership
+    \begin{lstlisting}
+      1 in f10
+      4 in f10
+    \end{lstlisting}
+  \item Iterating over elements
+    \begin{lstlisting}
+      for i in f10:
+          print i,
+    \end{lstlisting}
+  \item Subsets
+    \begin{lstlisting}
+      f10 <= f10
+    \end{lstlisting}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Sets -- Example}
+  \begin{block}{}
+    Given a list of marks, \texttt{[20, 23, 22, 23, 20, 21, 23]} list
+    all the duplicates
+  \end{block}
+  \begin{lstlisting}
+    marks = [20, 23, 22, 23, 20, 21, 23] 
+    marks_set = set(marks)
+    for mark in marks_set:
+        marks.remove(mark)
+
+    # left with only duplicates
+    duplicates = set(marks)
+  \end{lstlisting}
+\end{frame}
+

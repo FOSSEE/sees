@@ -1,339 +1,420 @@
-Functional Approach
-===================
+Functions
+=========
 
-*Functions* allow us to enclose a set of statements and call the function again
-and again instead of repeating the group of statements everytime. Functions also
-allow us to isolate a piece of code from all the other code and provides the
-convenience of not polluting the global variables.
+We are now going to learn about functions in Python --- how to define
+them, passing arguments to them, docstrings, and return values.
 
-*Function* in python is defined with the keyword **def** followed by the name
-of the function, in turn followed by a pair of parenthesis which encloses the
-list of parameters to the function. The definition line ends with a ':'. The
-definition line is followed by the body of the function intended by one block.
-The *Function* must return a value::
+While writing code, fewer lines of code is a good thing, since it reduces the
+scope of error. Also, we would like to reduce duplication of code and
+abstract out pieces of code, wherever possible. Functions allow us to do all
+of this. 
 
-  def factorial(n):
-    fact = 1
-    for i in range(2, n):
-      fact *= i
+Now let us at functions in a greater detail, 
 
-    return fact
+Consider a mathematical function ``f(x) = x^2``. Here ``x`` is a variable and
+with different values of ``x`` the value of function will change. When ``x``
+is one f(1) will return the value 1 and f(2) will return us the value 4. Let
+us now see how to define the function f(x) in Python.
 
-The code snippet above defines a function with the name factorial, takes the
-number for which the factorial must be computed, computes the factorial and
-returns the value.
+::
 
-A *Function* once defined can be used or called anywhere else in the program. We
-call a fucntion with its name followed by a pair of parenthesis which encloses
-the arguments to the function.
+    def f(x):
+    	return x*x
 
-The value that function returns can be assigned to a variable. Let's call the
-above function and store the factorial in a variable::
+Well that defined the function, so before learning what we did let us
+see if it returns the expected values, try,
 
-  fact5 = factorial(5)
+::
 
-The value of fact5 will now be 120, which is the factorial of 5. Note that we
-passed 5 as the argument to the function.
+    f(1)
+    f(2)
 
-It may be necessary to document what the function does, for each of the function
-to help the person who reads our code to understand it better. In order to do
-this Python allows the first line of the function body to be a string. This
-string is called as *Documentation String* or *docstring*. *docstrings* prove
-to be very handy since there are number of tools which can pull out all the
-docstrings from Python functions and generate the documentation automatically
-from it. *docstrings* for functions can be written as follows::
+Yes, it returned 1 and 4 respectively. And now let us see what we did. We
+wrote two lines: The first line ``def f(x):`` defines the name of the
+function and specifies the parameters to the function. The second line
+specifies what the function is supposed to return. ``def`` is a keyword and
+``f`` is the name of the function and ``x`` the parameter of the function.
 
-  def factorial(n):
-    'Returns the factorial for the number n.'
-    fact = 1
-    for i in range(2, n):
-      fact *= i
+You can also have functions without any arguments. 
 
-    return fact
+Let us define a new function called ``greet`` which will print ``Hello
+World``. 
 
-An important point to note at this point is that, a function can return any
-Python value or a Python object, which also includes a *Tuple*. A *Tuple* is
-just a collection of values and those values themselves can be of any other
-valid Python datatypes, including *Lists*, *Tuples*, *Dictionaries* among other
-things. So effectively, if a function can return a tuple, it can return any
-number of values through a tuple
+::
 
-Let us write a small function to swap two values::
+    def greet():
+    	print "Hello World!"
 
-  def swap(a, b):
-    return b, a
+now try calling the function,
 
-  c, d = swap(a, b)
+::
 
-Function scope
----------------
-The variables used inside the function are confined to the function's scope
-and doesn't pollute the variables of the same name outside the scope of the
-function. Also the arguments passed to the function are passed by-value if
-it is of basic Python data type::
+   greet()
 
-  def cant_change(n):
-    n = 10
+Well that is a function which takes no arguments. Also note that it is not
+mandatory for a function to return values. The function ``greet`` isn't
+taking any argument. Also, it is not returning any value explicitly. But for
+such functions, Python returns a ``None`` object by default
 
-  n = 5
-  cant_change(n)
+Now let us see how to write functions with more than one argument.
 
-Upon running this code, what do you think would have happened to value of n
-which was assigned 5 before the function call? If you have already tried out
-that snippet on the interpreter you already know that the value of n is not
-changed. This is true of any immutable types of Python like *Numbers*, *Strings*
-and *Tuples*. But when you pass mutable objects like *Lists* and *Dictionaries*
-the values are manipulated even outside the function::
+::
 
-  >>> def can_change(n):
-  ...   n[1] = James
-  ...
+    def avg(a, b):
+    	return (a + b)/2
 
-  >>> name = ['Mr.', 'Steve', 'Gosling']
-  >>> can_change(name)
-  >>> name
-  ['Mr.', 'James', 'Gosling']
+If we want a function to accept more arguments, we just list them separated
+with a comma between the parenthesis after the function's name in the ``def``
+line.
 
-If nothing is returned by the function explicitly, Python takes care to return
-None when the funnction is called.
+It is always a good practice to document the code that we write, and
+for a function we define we should write an abstract of what the
+function does, and that is called a docstring. 
 
-Default Arguments
------------------
+Let us modify the function ``avg`` and add docstring to it. 
 
-There may be situations where we need to allow the functions to take the
-arguments optionally. Python allows us to define function this way by providing
-a facility called *Default Arguments*. For example, we need to write a function
-that returns a list of fibonacci numbers. Since our function cannot generate an
-infinite list of fibonacci numbers, we need to specify the number of elements
-that the fibonacci sequence must contain. Suppose, additionally, we want to the
-function to return 10 numbers in the sequence if no option is specified we can
-define the function as follows::
+::
 
-  def fib(n=10):
-    fib_list = [0, 1]
-    for i in range(n - 2):
-      next = fib_list[-2] + fib_list[-1]
-      fib_list.append(next)
-    return fib_list
+    def avg(a,b):
+        """ avg takes two numbers as input, and
+	returns their average"""
 
-When we call this function, we can optionally specify the value for the
-parameter n, during the call as an argument. Calling with no argument and
-argument with n=5 returns the following fibonacci sequences::
+	return (a+b)/2
 
-  fib()
-  [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
-  fib(5)
-  [0, 1, 1, 2, 3]
+Note that docstrings are entered in the line immediately after the function
+definition and put as a triple quoted string. 
 
-Keyword Arguments
------------------
+Now we try this in the IPython interpreter,
 
-When a function takes a large number of arguments, it may be difficult to
-remember the order of the parameters in the function definition or it may
-be necessary to pass values to only certain parameters since others take
-the default value. In either of these cases, Python provides the facility
-of passing arguments by specifying the name of the parameter as defined in
-the function definition. This is known as *Keyword Arguments*. 
+::
 
-In a function call, *Keyword arguments* can be used for each argument, in the
-following fashion::
+    avg?
 
-  argument_name=argument_value
-  Also denoted as: keyword=argument
+it displays the docstring as we gave it. Thus docstring has practical utility
+also, and is not just a good "practice". 
 
-  def wish(name='World', greetings='Hello'):
-    print "%s, %s!" % (greetings, name)
+Try to do this,
 
-This function can be called in one of the following ways. It is important to
-note that no restriction is imposed in the order in which *Keyword arguments*
-can be specified. Also note, that we have combined *Keyword arguments* with
-*Default arguments* in this example, however it is not necessary::
+::
 
-  wish(name='Guido', greetings='Hey')
-  wish(greetings='Hey', name='Guido')
+    greet?
 
-Calling functions by specifying arguments in the order of parameters specified
-in the function definition is called as *Positional arguments*, as opposed to
-*Keyword arguments*. It is possible to use both *Positional arguments* and 
-*Keyword arguments* in a single function call. But Python doesn't allow us to
-bungle up both of them. The arguments to the function, in the call, must always
-start with *Positional arguments* which is in turn followed by *Keyword
-arguments*::
+It doesn't have a docstring associated with it. Also we cannot infer anything
+from the function name, and thus we are forced to read the code to understand
+about the function.
 
-  def my_func(x, y, z, u, v, w):
-    # initialize variables.
-    ...
-    # do some stuff 
-    ...
-    # return the value
+Let's now write a function named ``circle`` which returns the area and
+perimeter of a circle given radius ``r``.
 
-It is valid to call the above functions in the following ways::
+The function needs to return two values instead of just one which was being
+returned until now. 
 
-  my_func(10, 20, 30, u=1.0, v=2.0, w=3.0)
-  my_func(10, 20, 30, 1.0, 2.0, w=3.0)
-  my_func(10, 20, z=30, u=1.0, v=2.0, w=3.0)
-  my_func(x=10, y=20, z=30, u=1.0, v=2.0, w=3.0)
+::
 
-Following lists some of the invalid calls::
+    def circle(r):
+    	"""returns area and perimeter of a circle given radius r"""
+	pi = 3.14
+	area = pi * r * r
+	perimeter = 2 * pi * r
+	return area, perimeter
 
-  my_func(10, 20, z=30, 1.0, 2.0, 3.0)
-  my_func(x=10, 20, z=30, 1.0, 2.0, 3.0)
-  my_func(x=10, y=20, z=30, u=1.0, v=2.0, 3.0)
+Similarly, you could have a function returning three or four or any number of
+values. A Python function can return any number of values and there is not
+restriction on it. 
 
-Parameter Packing and Unpacking
--------------------------------
+Let us call the function ``circle`` as,
 
-The positional arguments passed to a function can be collected in a tuple
-parameter and keyword arguments can be collected in a dictionary. Since keyword
-arguments must always be the last set of arguments passed to a function, the
-keyword dictionary parameter must be the last parameter. The function definition
-must include a list explicit parameters, followed by tuple paramter collecting
-parameter, whose name is preceded by a *****, for collecting positional
-parameters, in turn followed by the dictionary collecting parameter, whose name
-is preceded by a ****** ::
+::
 
-  def print_report(title, *args, **name):
-    """Structure of *args*
-    (age, email-id)
-    Structure of *name*
-    {
-        'first': First Name
-        'middle': Middle Name
-        'last': Last Name
-    }
-    """
-    
-    print "Title: %s" % (title)
-    print "Full name: %(first)s %(middle)s %(last)s" % name
-    print "Age: %d\nEmail-ID: %s" % args
+    a, p = circle(6)
+    print a
+    print p
 
-The above function can be called as. Note, the order of keyword parameters can
-be interchanged::
+Let us now do a little code reading, as opposed to writing. 
 
-  >>> print_report('Employee Report', 29, 'johny@example.com', first='Johny',
-                   last='Charles', middle='Douglas')
-  Title: Employee Report
-  Full name: Johny Douglas Charles
-  Age: 29
-  Email-ID: johny@example.com
+What does the function ``what`` do?
 
-The reverse of this can also be achieved by using a very identical syntax while
-calling the function. A tuple or a dictionary can be passed as arguments in
-place of a list of *Positional arguments* or *Keyword arguments* respectively
-using ***** or ****** ::
+::
 
-  def print_report(title, age, email, first, middle, last):
-    print "Title: %s" % (title)
-    print "Full name: %s %s %s" % (first, middle, last)
-    print "Age: %d\nEmail-ID: %s" % (age, email)
+    def what( n ):
+        if n < 0: n = -n
+        while n > 0:
+            if n % 2 == 1:
+                return False
+            n /= 10
+        return True
 
-  >>> args = (29, 'johny@example.com')
-  >>> name = {
-          'first': 'Johny',
-          'middle': 'Charles',
-          'last': 'Douglas'
-          }
-  >>> print_report('Employee Report', *args, **name)
-  Title: Employee Report
-  Full name: Johny Charles Douglas
-  Age: 29
-  Email-ID: johny@example.com
+The function returns ``True`` if all the digits of the number ``n`` are even,
+otherwise it returns ``False``.
 
-Nested Functions and Scopes
+::
+
+    def even_digits( n ):
+       """returns True if all the digits in the number n are even,
+       returns False if all the digits in the number n are not even"""
+        if n < 0: n = -n
+        while n > 0:
+            if n % 2 == 1:
+                return False
+            n /= 10
+        return True
+
+
+Now one more code reading exercise,
+
+What does this function ``what`` do?
+
+::
+
+    def what( n ):
+        i = 1
+        while i * i < n:
+            i += 1
+        return i * i == n, i
+
+The function returns ``True`` and the square root of ``n`` if n is a perfect
+square, otherwise it returns ``False`` and the square root of the next
+perfect square.
+
+::
+
+    def is_perfect_square( n ):
+        """returns True and square root of n, if n is a perfect square,
+        otherwise returns False and the square root of the 
+        next perfect square"""
+        i = 1
+        while i * i < n:
+            i += 1
+        return i * i == n, i
+
+Default & Keyword Arguments
 ---------------------------
 
-Python allows nesting one function inside another. This style of programming
-turns out to be extremely flexible and powerful features when we use *Python
-decorators*. We will not talk about decorators is beyond the scope of this
-course. If you are interested in knowing more about *decorator programming* in
-Python you are suggested to read:
+Let us now look at specifying default arguments to functions when defining
+them and calling functions using keyword arguments. 
 
-| http://avinashv.net/2008/04/python-decorators-syntactic-sugar/
-| http://personalpages.tds.net/~kent37/kk/00001.html
+Let's use the ``round`` function as an example to understand what a default
+value of an argument means. Let's type the following expressions in the
+terminal.
 
-However, the following is an example for nested functions in Python::
+::
 
-  def outer():
-    print "Outer..."
-    def inner():
-      print "Inner..."
-    print "Outer..."
-    inner()
-  
-  >>> outer()
+    round(2.484)
 
-map, reduce and filter functions
---------------------------------
+    round(2.484, 2)
 
-Python provides several built-in functions for convenience. The **map()**,
-**reduce()** and **filter()** functions prove to be very useful with sequences like
-*Lists*.
+Both the first expression and the second are calls to the ``round`` function,
+but the first calls it with only one argument and the second calls it with
+two arguments. By observing the output, we can guess that the first one is
+equivalent to call with the second argument being 0. 0 is the default value
+of the argument.
 
-The **map** (*function*, *sequence*) function takes two arguments: *function*
-and a *sequence* argument. The *function* argument must be the name of the
-function which in turn takes a single argument, the individual element of the
-*sequence*. The **map** function calls *function(item)*, for each item in the
-sequence and returns a list of values, where each value is the value returned
-by each call to *function(item)*. **map()** function allows to pass more than
-one sequence. In this case, the first argument, *function* must take as many
-arguments as the number of sequences passed. This function is called with each
-corresponding element in the each of the sequences, or **None** if one of the
-sequence is exhausted::
+::
 
-  def square(x):
-    return x*x
-  
-  >>> map(square, [1, 2, 3, 4])
-  [1, 4, 9, 16]
-  
-  def mul(x, y):
-    return x*y
-  
-  >>> map(mul, [1, 2, 3, 4], [6, 7, 8, 9])
+    s.split() # split on spaces. 
+    s.split(';') # split on ';' 
 
-The **filter** (*function*, *sequence*) function takes two arguments, similar to
-the **map()** function. The **filter** function calls *function(item)*, for each
-item in the sequence and returns all the elements in the sequence for which 
-*function(item)* returned True::
+    range(10) # returns a list with numbers from 0 to 9
+    range(1, 10) # returns a list with numbers from 1 to 9
+    range(1, 10, 2) # returns a list with odd numbers from 1 to 9
 
-  def even(x):
-    if x % 2:
-      return True
-    else:
-      return False
-  
-  >>> filter(even, range(1, 10))
-  [1, 3, 5, 7, 9]
+Let's now define a simple function that uses default arguments. We define a
+simple function that prints a welcome message to a person, given a greeting
+and his/her name.
 
-The **reduce** (*function*, *sequence*) function takes two arguments, similar to
-**map** function, however multiple sequences are not allowed. The **reduce**
-function calls *function* with first two consecutive elements in the sequence,
-obtains the result, calls *function* with the result and the subsequent element
-in the sequence and so on until the end of the list and returns the final result::
+::
 
-  def mul(x, y):
-    return x*y
+    def welcome(greet, name="World"):
+        print greet, name
 
-  >>> reduce(mul, [1, 2, 3, 4])
-  24
+Let us first call the function with two arguments, one for ``greet`` and
+other for ``name``.
 
-List Comprehensions
-~~~~~~~~~~~~~~~~~~~
+::
 
-List Comprehension is a convenvience utility provided by Python. It is a 
-syntatic sugar to create *Lists*. Using *List Comprehensions* one can create
-*Lists* from other type of sequential data structures or other *Lists* itself.
-The syntax of *List Comprehensions* consists of a square brackets to indicate
-the result is a *List* within which we include at least one **for** clause and
-multiple **if** clauses. It will be more clear with an example::
+    welcome("Hi", "Guido")          
 
-  >>> num = [1, 2, 3]
-  >>> sq = [x*x for x in num]
-  >>> sq
-  [1, 4, 9]
-  >>> all_num = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-  >>> even = [x for x in all_num if x%2 == 0]
+We get the expected welcome message, "Hi Guido". 
 
-The syntax used here is very clear from the way it is written. It can be 
-translated into english as, "for each element x in the list all_num, 
-if remainder of x divided by 2 is 0, add x to the list."
+Now let us call the function with just one argument "Hello". 
+
+::
+
+    welcome("Hello")
+
+"Hello" is treated as the ``greet`` and we get "Hello World" as the output.
+"World" is the default value for the argument ``name``.
+
+If we redefined the function ``welcome``, by interchanging it's arguments and
+placed the ``name`` argument with it's default value of "World" before the
+``greet`` argument, what happens?
+
+::
+
+    def welcome(name="World", greet):
+        print greet, name
+
+We get an error that reads ``SyntaxError: non-default argument follows
+default argument``. When defining a function all the argument with default
+values should come at the end.
+
+Let us now learn what keyword arguments or named arguments are. We shall
+refer to them as keyword arguments, henceforth.
+
+When you are calling functions in Python, you don't need to remember the
+order in which to pass the arguments. Instead, you can use the name of the
+argument to pass it a value. Let us understand this using the ``welcome``
+function that we have been using all along. Let us call it in different ways
+and observe the output to see how keyword arguments work.
+
+::
+
+    welcome()
+    welcome("Hello", "James")
+
+    welcome("Hi", name="Guido")
+
+When no keyword is specified, the arguments are allotted based on their
+position. So, "Hi" is the value of the argument ``greet`` and name is passed
+the value "Guido".
+
+::
+
+    welcome(name="Guido", greet="Hey! ")
+
+When keyword arguments are used, the arguments can be called in any order.
+
+::
+
+    welcome(name="Guido", "Hey")
+
+This call returns an error that reads, ``non keyword arg after keyword arg``.
+Python expects all the keyword to be present towards the end.
+
+That brings us to the end of what we wanted to learn about ``keyword``
+arguments.
+
+Before defining a function of your own, make sure that you check the standard
+library, for a similar function. Python is popularly called a "Batteries
+included" language, for the huge library that comes along with it. Refer
+`here <http://docs.python.org/library/functions.html>`_.
+
+Variable scope
+--------------
+
+Before we end the discussion on functions, a short note on the scope of
+variables in Python is in order. 
+
+Arguments passed to a function are local. They are not available outside of
+the function. 
+
+::
+
+    def change(q):
+        q = 10
+        print q
+
+    change(1)
+    print q
+
+The variables used inside a function definition are considered to be "local"
+variables and their existence is restricted to within the function. Global
+variables are those variables, which are accessible from anywhere within a
+Python program.
+
+Variables that are assigned to within a function, are treated as local
+variables by default.
+
+::
+
+    n = 5
+
+    def change():
+        n = 10
+        print n
+
+    change()
+    print n
+        
+As you can see, the value of n hasn't changed after the function ``change``
+was called. 
+
+To assign to global variables (or variables which can be accessed from
+outside the function), we need to use the global statement. We could redefine
+the change function as shown below.
+
+::
+
+    def change():
+        global n
+        n = 10
+        print n
+
+    change()
+    print n
+
+There is a subtle difference in the behavior when we assign not directly to a
+variable, but a list element or a list slice etc. In this case, Python looks
+up for the name, from the innermost scope (the function), outwards, until it
+finds the name. 
+
+For example
+
+::
+
+    name = ['Mr.', 'Steve', 'Gosling']
+    
+    def change_name():
+        name[0] = 'Dr.'
+
+    change_name()
+    print name
+
+As, you can see, even though there was no variable ``name`` within the scope
+of the function ``change_name``, calling it has changed the list ``name``. 
+
+Also, let us tweak the examples above to learn about the way values are
+passed to functions. 
+
+::
+
+    n = 5
+
+    def change(n):
+        n = 10
+        print "n = %s, inside change" %n
+
+    change(n)
+    print n
+
+::
+
+    name = ['Mr.', 'Steve', 'Gosling']
+    
+    def change_name(n):
+        n[0] = 'Dr.'
+        print "n = %s, inside change_name" %n
+
+    change_name(n)
+    print name
+
+
+Notice that the value of ``n`` does not get changed in the first case,
+because numbers are immutable datatypes and they cannot be modified. In the
+second case when a list was passed to the function ``change_name``, it is
+changed because a list is mutable and it's first element is chaned by the
+function. 
+
+That brings us to the end of this section on functions. We have learnt how to
+define functions, use them with default values and keyword arguments. We have
+also looked briefly at variables and their scopes. 
+
+.. 
+   Local Variables:
+   mode: rst
+   indent-tabs-mode: nil
+   sentence-end-double-space: nil
+   fill-column: 77
+   End:
+
+

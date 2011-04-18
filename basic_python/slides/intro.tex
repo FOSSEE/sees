@@ -1,0 +1,477 @@
+\section{The Language}
+\begin{frame}[fragile]
+  \frametitle{Python!}
+  \begin{itemize}
+  \item Programming Language
+  \item Powerful, High-level, Interpreted, Multi-Platform
+  \item Elegant and highly readable syntax
+  \item Efficient high-level data structures
+  \end{itemize}
+  \begin{itemize}
+  \item Easy to learn
+  \item Allows to concentrate on the problem instead of the language
+  \item Increased Productivity
+  \end{itemize}
+  \begin{itemize}
+  \item Guido van Rossum -- BDFL
+  \item Conceived in December 1989
+  \item Named after ``Monty Python's Flying Circus'', a 70s comedy
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Why Python?}
+  \begin{itemize}
+  \item Extremely readable; Forces programmers to write readable code. 
+  \item Interactive; Offers a very fast edit-test-debug cycle.
+  \item Doesn't get in your way; High-level data structures let you
+    focus on the problem
+  \item Handles memory management
+  \item Batteries included; Huge standard library for wide range of
+    tasks. 
+  \item Object-oriented.
+  \item C, C++ and FORTRAN interfacing allows use of legacy code
+  \item Your time is more valuable than machine time!
+  \end{itemize}
+\end{frame}
+
+\section{The Interpreter}
+\begin{frame}[fragile]
+  \frametitle{Python interpreter} 
+  \begin{itemize}
+  \item Let's get our hands dirty!
+  \item Start Python from your shell
+  \end{itemize}
+  \lstset{language=sh}
+  \begin{lstlisting}
+    $ python
+  \end{lstlisting} %$
+  \begin{lstlisting}
+Python 2.7.1 (r271:86832, Feb 21 2011, 01:28:26) 
+[GCC 4.5.2 20110127 (prerelease)] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
+  \end{lstlisting}
+  \begin{itemize}
+  \item First line shows Python version (2.7.1)
+  \item \verb+>>>+ the interpreter's prompt
+  \item The interpreter is ready and waiting for your command!
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Hello World!}
+  \begin{itemize}
+  \item Type\texttt{print `Hello World'} and hitting enter
+  \end{itemize}
+  \begin{lstlisting}
+    >>> print 'Hello, World!'
+    Hello, World!
+  \end{lstlisting}
+  \begin{itemize}
+  \item The interpreter prints out the words \emph{Hello World}
+  \end{itemize}
+  \begin{itemize}
+  \item Hit \texttt{Ctrl-D} to exit the interpreter
+  \item We shall look at IPython, an enhanced interpreter
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Versions}
+  Before moving on \ldots
+  \begin{itemize}
+  \item Currently has two stable branches or versions, 2.x and 3.x
+  \item 3.x is not backward compatible 
+  \item 3.x is deemed to be the future of Python
+  \item But, we shall stick to 2.x for this course
+  \item The ecosystem around Python 2.x hasn't yet moved to 3.x
+  \end{itemize}
+\end{frame}
+
+\subsection*{IPython}
+
+\begin{frame}[fragile]
+  \frametitle{Invoking IPython}
+  \begin{itemize}
+  \item An enhanced Python interpreter 
+  \item Tab-completion, Easier access to help, Better history
+  \end{itemize}
+  \lstset{language=sh}
+  \begin{lstlisting}
+    $ ipython
+  \end{lstlisting} %$
+  \alert{If \texttt{ipython is not installed}, you need to install it!}
+  \begin{itemize}
+  \item The prompt is \texttt{In [1]:} instead of \verb+>>>+
+  \item \texttt{In} stands for input, 1 indicates the command number
+  \item Try \texttt{Hello World}
+  \end{itemize}
+  \begin{lstlisting}
+    In []: print 'Hello, World!'
+    Out[]: Hello, World!
+  \end{lstlisting}
+  {\tiny the numbers have been omitted to avoid confusion}
+  \begin{itemize}
+  \item Hit \texttt{Ctrl-D} to exit \texttt{ipython}; Say \texttt{y}
+    when prompted. 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Getting comfortable}
+  \begin{itemize}
+  \item Let's try some simple math to get comfortable
+  \end{itemize}
+  \begin{lstlisting}
+    In []: 1 + 2
+    In []: 5 - 3
+    In []: 7 - 4
+    In []: 6 * 5
+  \end{lstlisting}
+  \begin{itemize}
+  \item We get back the expected output
+  \item Output is displayed with an \texttt{Out[]}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{History \& Arrow Keys}
+  \begin{itemize}
+  \item Change the \texttt{print 1+2}
+  \item Use <UP-Arrow> to go back to \texttt{1+2} command
+  \item Use <LEFT-Arrow> to get to start of line; type \texttt{print }
+  \item Hit <RETURN>
+  \end{itemize}
+  \begin{lstlisting}
+    In []: print 1 + 2
+  \end{lstlisting}
+  \begin{itemize}
+  \item Now, change the previous command to \texttt{print 10*2}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Tab-Completion}
+  \begin{itemize}
+  \item We want to use \texttt{round} function
+  \item Type \texttt{ro}, and hit <TAB>
+  \end{itemize}
+  \begin{lstlisting}
+    In []: ro<TAB>
+  \end{lstlisting}
+  \begin{itemize}
+  \item Type \texttt{r}, and hit <TAB>
+  \item All possibilities are listed out, when ambiguous
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{?} for Help}
+  \begin{itemize}
+  \item To get help for \texttt{abs} function
+  \end{itemize}
+  \begin{lstlisting}
+    In []: abs?
+    In []: abs(19)
+    In []: abs(-10.5)
+  \end{lstlisting}
+  \begin{itemize}
+  \item Look at documentation for \texttt{round}
+  \item Optional arguments are denoted with square brackets
+    \texttt{[]} 
+  \end{itemize}
+  \begin{lstlisting}
+    In []: round(2.484)
+    In []: round(2.484, 1)
+    In []: round(2.484, 2)
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{?} for Help}
+  \begin{itemize}
+  \item To get help for \texttt{abs} function
+  \end{itemize}
+  \begin{lstlisting}
+    In []: abs?
+    In []: abs(19)
+    In []: abs(-10.5)
+  \end{lstlisting}
+  \begin{itemize}
+  \item Look at documentation for \texttt{round}
+  \item Optional arguments are denoted with square brackets
+    \texttt{[]} 
+  \end{itemize}
+  \begin{lstlisting}
+    In []: round(2.484)
+    In []: round(2.484, 1)
+    In []: round(2.484, 2)
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Interrupting}
+  \begin{lstlisting}
+    In []: round(2.484
+      ...: 
+  \end{lstlisting}
+  \begin{itemize}
+  \item The \ldots prompt is the continuation prompt
+  \item It comes up, since we haven't completed previous command
+  \item Either complete by typing the missing \texttt{)}
+  \item OR hit \texttt{Ctrl-C} to interrupt the command
+  \end{itemize}
+  \begin{lstlisting}
+    In []: round(2.484
+      ...: ^C
+  \end{lstlisting}
+\end{frame}
+
+\section{Basic Datatypes and Operators}
+
+\begin{frame}[fragile]
+  \frametitle{Basic Datatypes}
+  \begin{itemize}
+  \item Numbers
+    \begin{itemize}
+    \item int
+    \item float
+    \item complex
+    \end{itemize}
+  \item Boolean
+  \item Sequence
+    \begin{itemize}
+    \item Strings
+    \item Lists
+    \item Tuples
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{int}}
+  \begin{lstlisting}
+    In []: a = 13
+    In []: a
+  \end{lstlisting}
+  \begin{itemize}
+  \item \texttt{a} is a variable of the \texttt{int} type
+  \item Use the \texttt{type} command to verify
+  \end{itemize}
+  \begin{lstlisting}
+    In []: type(a)
+  \end{lstlisting}
+  \begin{itemize}
+  \item Integers can be arbitrarily long
+  \end{itemize}
+  \begin{lstlisting}
+    In []: b = 9999999999999999999999999999
+    In []: b
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{float}}
+  \begin{lstlisting}
+    In []: p = 3.141592
+    In []: p
+  \end{lstlisting}
+  \begin{itemize}
+  \item Decimal numbers are represented using the \texttt{float} type
+  \item Notice the loss of precision
+  \item Floats have a fixed precision
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{complex}}
+  \begin{lstlisting}
+    In []: c = 3+4j
+  \end{lstlisting}
+  \begin{itemize}
+  \item A complex number with real part 3, imaginary part 4
+  \end{itemize}
+  \begin{lstlisting}
+    In []: c.real
+    In []: c.imag
+    In []: abs(c)
+  \end{lstlisting}
+  \begin{itemize}
+  \item It's a combination of two floats
+  \item \texttt{abs} gives the absolute value
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Operations on numbers}
+  \begin{lstlisting}
+    In []: 23 + 74
+    In []: 23 - 56
+    In []: 45 * 76
+
+    In []: 8 / 3 
+    In []: 8.0 / 3
+    In []: float(8) / 3
+  \end{lstlisting}
+  \begin{itemize}
+  \item The first division is an integer division
+  \item To avoid integer division, at least one number should be float
+  \item \texttt{float} function is changing int to float
+  \end{itemize}
+  \begin{lstlisting}
+    In []: 87 % 6
+    In []: 7 ** 8
+  \end{lstlisting} 
+  \begin{itemize}
+  \item \texttt{\%} is used for modulo operation
+  \item \texttt{**} is used for exponentiation
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Variables \& assignment}
+  \begin{itemize}
+  \item All the operations could be done on variables
+  \end{itemize}
+  \begin{lstlisting}
+    In []: a = 23 
+    In []: b = 74
+    In []: a * b  
+                  
+    In []: c = 8
+    In []: d = 8.0
+    In []: f = c / 3
+  \end{lstlisting}
+  \begin{itemize}
+  \item Last two commands show assignment
+  \end{itemize}
+  \begin{lstlisting}
+    In []: c = c / 3
+  \end{lstlisting}
+  An operation like the one above, may equivalently be written as
+  \begin{lstlisting}
+    In []: c /= 3
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Booleans \& Operations}
+  \begin{itemize}
+  \item All the operations could be done on variables
+  \end{itemize}
+  \begin{lstlisting}
+    In []: t = True
+    In []: t
+    In []: f = not t
+    In []: f
+    In []: f or t
+    In []: f and t
+  \end{lstlisting}
+  \begin{itemize}
+  \item Multiple operation in a single command
+  \item We use parenthesis for explicitly stating what we mean
+  \item No discussion of operator precedence
+  \end{itemize}
+  \begin{lstlisting}
+    In []: (f and t) or t
+    In []: f and (t or t)
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Sequences}
+  \begin{itemize}
+  \item Hold a bunch of elements in a sequence
+  \item Elements are accessed based on position in the sequence
+  \item The sequence data-types
+    \begin{itemize}
+    \item str
+    \item list
+    \item tuple
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Strings, Lists \& Tuples}
+  \begin{itemize}
+  \item Anything withing quotes is a string
+  \end{itemize}
+  \begin{lstlisting}
+    In []: greet_str = "hello"
+  \end{lstlisting}
+  \begin{itemize}
+  \item Items enclosed in \texttt{[ ]} and separated by \texttt{,}s
+    constitute a list
+  \end{itemize}
+  \begin{lstlisting}
+    In []: num_list = [1, 2, 3, 4, 5, 6, 7, 8]
+  \end{lstlisting}
+  \begin{itemize}
+  \item Items of a tuple are enclosed by \texttt{( )} instead of
+    \texttt{[ ]}  
+  \end{itemize}
+  \begin{lstlisting}
+    In []: num_tuple = num_tuple = (1, 2, 3, 4, 5, 6, 7, 8)
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Operations on Sequences}
+  \begin{itemize}
+  \item Accessing elements
+  \end{itemize}
+  \begin{lstlisting}
+    In []: num_list[2] 
+    In []: num_tuple[2]
+    In []: greet_str[2]
+  \end{lstlisting}
+  \begin{itemize}
+  \item Add two sequences of same type
+  \end{itemize}
+  \begin{lstlisting}
+    In []: num_list + [3, 4, 5, 6]
+    In []: greet_str + " world!"  
+  \end{lstlisting}
+  \begin{itemize}
+  \item Get the length of a sequence
+  \end{itemize}
+  \begin{lstlisting}
+    In []: len(num_list) 
+    In []: len(greet_str)
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Operations on Sequences \ldots}
+  \begin{itemize}
+  \item Check for container-ship of  elements
+  \end{itemize}
+  \begin{lstlisting}
+    In []: 3 in num_list
+    In []: 'h' in greet_str
+    In []: 'w' in greet_str
+    In []: 2 in num_tuple
+  \end{lstlisting}
+  \begin{itemize}
+  \item Finding maximum and minimum 
+  \end{itemize}
+  \begin{lstlisting}
+    In []: max(num_list)
+    In []: min(greet_str)
+  \end{lstlisting}
+  \begin{itemize}
+  \item Slice a sequence
+  \end{itemize}
+  \begin{lstlisting}
+    In []: num_list[1:5]
+  \end{lstlisting}
+  \begin{itemize}
+  \item Stride over a sequence
+  \end{itemize}
+  \begin{lstlisting}
+    In []: num_list[1:8:2]
+  \end{lstlisting}
+\end{frame}
+

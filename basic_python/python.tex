@@ -1,0 +1,54 @@
+\documentclass[12pt,presentation]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{soul}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\usepackage[english]{babel} \usepackage{ae,aecompl}
+\usepackage{mathpazo,courier,euler} \usepackage[scaled=.95]{helvet}
+\usepackage{listings}
+\lstset{language=Python, basicstyle=\ttfamily\bfseries,
+commentstyle=\color{red}\itshape, stringstyle=\color{green},
+showstringspaces=false, keywordstyle=\color{blue}\bfseries}
+\providecommand{\alert}[1]{\textbf{#1}}
+
+\title{SEES: Basic Python}
+\author{FOSSEE}
+
+\usetheme{Warsaw}\usecolortheme{default}\useoutertheme{infolines}\setbeamercovered{transparent}
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Outline}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}
+\frametitle{Outline}
+\setcounter{tocdepth}{3}
+\tableofcontents
+\end{frame}
+
+\include{slides/intro}
+\include{slides/strings_loops_lists}
+\include{slides/io_files_parsing}
+\include{slides/func}
+\include{slides/tuples_dicts_sets}
+
+\end{document}

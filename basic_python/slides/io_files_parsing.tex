@@ -1,0 +1,239 @@
+\section{I/O}
+
+\begin{frame}[fragile]
+  \frametitle{Printing}
+  \begin{lstlisting}
+    a = "This is a string"
+    a
+    print a
+  \end{lstlisting}
+  \begin{itemize}
+  \item Both \texttt{a}, and \texttt{print a} are showing the value
+  \item What is the difference?
+  \item Typing \texttt{a} shows the value; \texttt{print a} prints it
+  \item Typing \texttt{a} shows the value only in interpreter
+  \item In a script, it has no effect. 
+  \end{itemize}
+  \begin{lstlisting}
+    b = "A line \n New line"
+    b
+    print b
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{String formatting}
+  \begin{lstlisting}
+    x = 1.5
+    y = 2
+    z = "zed"
+    print "x is %2.1f y is %d z is %s" %(x, y, z)
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{print x} \& \texttt{print x,}}
+  \begin{itemize}
+  \item Open an editor
+  \item Type the following code
+  \item Save as \texttt{print\_example.py}
+  \end{itemize}
+  \begin{lstlisting}
+    print "Hello"
+    print "World"
+
+    print "Hello",
+    print "World"
+  \end{lstlisting}
+  \begin{itemize}
+  \item Run the script using \texttt{\% run print\_example.py}
+  \item \texttt{print x} adds a newline whereas \texttt{print x,} adds
+    a space
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{raw\_input}}
+  \begin{lstlisting}
+    ip = raw_input()    
+  \end{lstlisting}
+  \begin{itemize}
+  \item The cursor is blinking; waiting for input
+  \item Type \texttt{an input} and hit <ENTER>
+  \end{itemize}
+  \begin{lstlisting}
+    print ip
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{raw\_input} \ldots}
+  \begin{lstlisting}
+    c = raw_input()
+    5.6
+    c
+    type(c)
+  \end{lstlisting}
+  \begin{itemize}
+  \item \alert{\texttt{raw\_input} always takes a string}
+  \end{itemize}
+  \begin{lstlisting}
+    name = raw_input("Please enter your name: ")
+    George
+  \end{lstlisting}
+  \begin{itemize}
+  \item \texttt{raw\_input} can display a prompt string for the user
+  \end{itemize}
+\end{frame}
+
+\section{Files}
+
+\begin{frame}[fragile]
+  \frametitle{Opening files}
+  \begin{lstlisting}
+    pwd # present working directory
+    cd /home/fossee # go to location of the file
+  \end{lstlisting}
+  {\tiny The file is in our present working directory}
+  \begin{lstlisting}
+    f = open('pendulum.txt')
+    f
+  \end{lstlisting}
+  \begin{itemize}
+  \item \texttt{f} is a file object
+  \item Shows the mode in which the file is open (read mode)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Reading the whole file}
+  \begin{lstlisting}
+    pend = f.read()
+    print pend
+  \end{lstlisting}
+  \begin{itemize}
+  \item We have read the whole file into the variable \texttt{pend}
+  \end{itemize}
+  \begin{lstlisting}
+    type(pend)
+    pend_list = pend.splitlines()
+    pend_list
+  \end{lstlisting}
+  \begin{itemize}
+  \item  \texttt{pend} is a string variable
+  \item We can split it at the newline characters into a list of
+    strings
+  \item Close the file, when done; Also, if you want to read again
+  \end{itemize}
+  \begin{lstlisting}
+    f.close()
+    f
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Reading line-by-line}
+  \begin{lstlisting}
+    for line in open('pendulum.txt'):
+        print line
+  \end{lstlisting}
+  \begin{itemize}
+  \item The file object is an ``iterable''
+  \item We iterate over it and print each line
+  \item Instead of printing, collect lines in a list
+  \end{itemize}
+  \begin{lstlisting}
+    line_list = [ ]
+    for line in open('pendulum.txt'):
+        line_list.append(line)
+  \end{lstlisting}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{File parsing -- Problem}
+  \begin{lstlisting}
+    A;010002;ANAND R;058;037;42;35;40;212;P;;
+  \end{lstlisting}
+  \begin{itemize}
+  \item File with records like the one above is given
+  \item Each record has fields separated by ;
+  \item region code; roll number; name; 
+  \item marks --- $1^{st}$ L; $2^{nd}$ L; math; science; social; total
+  \item pass/fail indicated by P/F; W if withheld and else empty
+    \end{itemize}
+
+  \begin{itemize}
+  \item We wish to calculate mean of math marks in region B
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Tokenization}
+  \begin{lstlisting}
+    line = "parse this           string"
+    line.split()
+  \end{lstlisting}
+  \begin{itemize}
+  \item Original string is split on white-space (if no argument)
+  \item Returns a list of strings
+  \item It can be given an argument to split on that argrument
+  \end{itemize}
+  \begin{lstlisting}
+    record = "A;015163;JOSEPH RAJ S;083;042;47;AA;72;244;;;"
+    record.split(';')
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Tokenization \ldots}
+  \begin{itemize}
+  \item Since we split on commas, fields may have extra spaces at ends
+  \item We can strip out the spaces at the ends
+  \end{itemize}
+  \begin{lstlisting}
+    word = "     B    "
+    word.strip()
+  \end{lstlisting}
+  \begin{itemize}
+  \item \texttt{strip} is returning a new string 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{str} to \texttt{float}}
+  \begin{itemize}
+  \item After tokenizing, the marks we have are strings
+  \item We need numbers to perform math operations
+  \end{itemize}
+  \begin{lstlisting}
+    mark_str = "1.25"
+    mark = int(mark_str)
+    type(mark_str)
+    type(mark)
+  \end{lstlisting}
+  \begin{itemize}
+  \item \texttt{strip} is returning a new string 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{File parsing -- Solution}
+  \begin{lstlisting}
+    math_B = [] # empty list to store marks
+    for line in open("sslc1.txt"):
+        fields = line.split(";")
+
+        reg_code = fields[0]
+        reg_code_clean = reg_code.strip()
+
+        math_mark_str = fields[5]
+        math_mark = float(math_mark_str)
+
+        if reg_code == "B":
+            math_B.append(math_mark)
+
+    math_B_mean = sum(math_B) / len(math_B)
+    math_B_mean
+  \end{lstlisting}
+\end{frame}

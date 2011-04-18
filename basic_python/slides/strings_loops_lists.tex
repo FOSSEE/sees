@@ -1,0 +1,456 @@
+\section{Strings}
+
+\begin{frame}[fragile]
+  \frametitle{What are Strings?}
+  \begin{itemize}
+  \item Anything quoted is a string
+  \item Single quotes, double quotes or triple single/double quotes
+  \item Any length --- single character, null string, \ldots
+  \end{itemize}
+  \begin{lstlisting}
+    'This is a string'
+    "This is a string too'
+    '''This is a string as well'''
+    """This is also a string"""
+    ''  # empty string
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Why so many?}
+  \begin{itemize}
+  \item Reduce the need for escaping 
+  \end{itemize}
+  \begin{lstlisting}
+    "Python's strings are powerful!"
+    'He said, "I love Python!"'
+  \end{lstlisting}
+  \begin{itemize}
+  \item Triple quoted strings can be multi-line
+  \item Used for doc-strings
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Assignment \& Operations}
+  \begin{lstlisting}
+    a = 'Hello'
+    b = 'World'
+    c = a + ', ' + b + '!'
+  \end{lstlisting}
+  \begin{itemize}
+  \item Strings can be multiplied with numbers
+  \end{itemize}
+  \begin{lstlisting}
+    a = 'Hello'
+    a * 5
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Accessing Elements}
+  \begin{lstlisting}
+    print a[0], a[4], a[-1], a[-4]
+  \end{lstlisting}
+  \begin{itemize}
+  \item Can we change the elements?
+  \end{itemize}
+  \begin{lstlisting}
+    a[0] = 'H'
+  \end{lstlisting}
+  \begin{itemize}
+  \item Strings are immutable!
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Problem - Day of the Week?}
+  \begin{itemize}
+  \item Strings have methods to manipulate them
+  \end{itemize}
+  \begin{block}{Problem}
+    Given a list, \texttt{week}, containing names of the days of the
+    week and a string \texttt{s}, check if the string is a day of the
+    week. We should be able to check for any of the forms like,
+    \emph{sat, saturday, Sat, Saturday, SAT, SATURDAY}
+  \end{block}
+  \begin{itemize}
+  \item Get the first 3 characters of the string
+  \item Convert it all to lower case
+  \item Check for existence in the list, \texttt{week}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Slicing}
+  \begin{lstlisting}
+    q = "Hello World"
+    q[0:3]
+    q[:3]
+    q[3:]
+    q[:]
+    q[-1:1]
+    q[1:-1]
+  \end{lstlisting}
+  \begin{itemize}
+  \item One or both of the limits, is optional
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Striding}
+  \begin{lstlisting}
+    q[0:5:1]
+    q[0:5:2]
+    q[0:5:3]
+    q[0::2]
+    q[2::2]
+    q[::2]
+    q[5:0:-1]
+    q[::-1]
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{String Methods} 
+  \begin{lstlisting}
+    s.lower()
+    s.upper()
+    s.<TAB>
+  \end{lstlisting}
+  \begin{itemize}
+  \item \alert{Strings are immutable!}
+  \item A new string is being returned
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Solution - Day of the Week?}
+  \begin{lstlisting}
+    s.lower()[:3] in week
+  \end{lstlisting}
+  OR
+  \begin{lstlisting}
+    s[:3].lower() in week
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{join} a list of strings}
+  \begin{itemize}
+  \item Given a list of strings
+  \item We wish to join them into a single string
+  \item Possibly, each string separated by a common token
+  \end{itemize}
+  \begin{lstlisting}
+    email_list = ["info@fossee.in", 
+                  "enquiries@fossee.in",
+                  "help@fossee.in"]
+  \end{lstlisting}
+  \begin{lstlisting}
+    '; '.join(email_list)
+    ', '.join(email_list)
+  \end{lstlisting}
+\end{frame}
+
+\section{Conditionals}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{if-else} block}
+  \begin{lstlisting}
+    a = 5
+    if a % 2 == 0:
+        print "Even"
+    else:
+        print "Odd"
+  \end{lstlisting}
+  \begin{itemize}
+  \item A code block -- \texttt{:} and indentation
+  \item Exactly one block gets executed in the \texttt{if-else}
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{if-elif-else}}
+  \begin{lstlisting}
+    if a > 0:           
+        print "positive"
+    elif a < 0:         
+        print "negative"
+    else:               
+        print "zero"    
+  \end{lstlisting}
+  \begin{itemize}
+  \item Only one block gets executed, depending on \texttt{a}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{else} is optional}
+  \begin{lstlisting}
+    if user == 'admin':         
+        admin_Operations()
+    elif user == 'moderator':   
+        moderator_operations()
+    elif user == 'client':      
+        customer_operations()
+  \end{lstlisting}
+  \begin{itemize}
+  \item Note that there is no \texttt{else} block
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Ternary operator}
+  \begin{itemize}
+  \item \texttt{score\_str} is either \texttt{'AA'} or a string of one
+    of the numbers in the range 0 to 100. 
+  \item We wish to convert the string to a number using \texttt{int}
+  \item Convert it to 0, when it is \texttt{'AA'}
+  \item \texttt{if-else} construct or the ternary operator
+  \end{itemize}
+  \begin{lstlisting}
+    if score_str != 'AA':
+        score = int(score_str)
+    else:
+        score = 0
+  \end{lstlisting}
+  \begin{lstlisting}
+    score = int(score_str) if score_str != 'AA' else 0
+  \end{lstlisting}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{pass}}
+  \begin{itemize}
+  \item \texttt{pass} is a syntactic filler
+  \item When a certain block has no statements, a \texttt{pass} is
+    thrown in
+  \item Mostly, when you want to get back to that part, later.
+  \end{itemize}
+\end{frame}
+
+\section{Loops}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{while}}
+  \begin{itemize}
+  \item Print squares of all odd numbers less than 10 using
+    \texttt{while} 
+  \end{itemize}
+  \begin{lstlisting}
+    i = 1
+
+    while i<10:
+        print i*i
+        i += 2
+  \end{lstlisting}
+  \begin{itemize}
+  \item The loops runs as long as the condition is \texttt{True}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{for}}
+  \begin{itemize}
+  \item Print squares of all odd numbers less than 10 using
+    \texttt{for}
+  \end{itemize}
+  \begin{lstlisting}
+    for n in [1, 2, 3]:
+        print n
+  \end{lstlisting}
+  \begin{itemize}
+  \item \texttt{for} iterates over each element of a sequence
+  \end{itemize}
+  \begin{lstlisting}
+    for n in [1, 3, 5, 7, 9]: 
+        print n*n
+
+    for n in range(1, 10, 2):
+        print n*n
+  \end{lstlisting}
+  \begin{itemize}
+  \item \alert{range([start,] stop[, step])}
+  \item Returns a list; Stop value is not included. 
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{break}}
+  \begin{itemize}
+  \item breaks out of the innermost loop.
+  \item Squares of odd numbers below 10 using \texttt{while} \&
+    \texttt{break}
+  \end{itemize}
+  \begin{lstlisting}
+    i = 1
+
+    while True:
+        print i*i
+        i += 2
+        if i<10:
+            break
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{continue}}
+  \begin{itemize}
+  \item Skips execution of rest of the loop on current iteration
+  \item Jumps to the end of this iteration
+  \item Squares of all odd numbers below 10, not multiples of 3
+  \end{itemize}
+  \begin{lstlisting}
+    for n in range(1, 10, 2):
+        if n%3 == 0:
+            continue      
+        print n*n
+  \end{lstlisting}
+\end{frame}
+
+
+\section{Lists}
+
+\begin{frame}[fragile]
+  \frametitle{Creating Lists}
+  \begin{lstlisting}
+    empty = [] 
+
+    p = ['spam', 'eggs', 100, 1.234]
+    q = [[4, 2, 3, 4], 'and', 1, 2, 3, 4]
+  \end{lstlisting}
+  \begin{itemize}
+  \item Lists can be empty, with no elements in them
+  \item Lists can be heterogeneous -- every element of different kind
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Accessing Elements}
+  \begin{lstlisting}
+    print p[0], p[1], p[3]
+
+    print p[-1], p[-2], p[-4]
+    print p[10]
+  \end{lstlisting}
+  \begin{itemize}
+  \item Indexing starts from 0
+  \item Indexes can be negative
+  \item Indexes should be in the valid range
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Accessing Elements \& length}
+  \begin{lstlisting}
+    print p[0], p[1], p[3]
+
+    print p[-1], p[-2], p[-4]
+    print len(p)
+    print p[10]
+  \end{lstlisting}
+  \begin{itemize}
+  \item Indexing starts from 0
+  \item Indexes can be negative
+  \item Indexes should be within the \texttt{range(0, len(p))}
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Adding \& Removing Elements}
+  \begin{itemize}
+  \item The append method adds elements to the end of the list
+  \end{itemize}
+  \begin{lstlisting}
+    p.append('onemore')
+    p
+    p.append([1, 6])
+    p
+  \end{lstlisting}
+  \begin{itemize}
+  \item Elements can be removed based on their index OR
+  \item based on the value of the element
+  \end{itemize}
+  \begin{lstlisting}
+    del p[1]
+    p.remove(100)
+  \end{lstlisting}
+  \begin{itemize}
+  \item \alert{When removing by value, first element is removed}
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Concatenating lists}
+  \begin{lstlisting}
+    a = [1, 2, 3, 4]
+    b = [4, 5, 6, 7]
+    a + b
+    print a+b, a, b
+  \end{lstlisting}
+  \begin{itemize}
+  \item A new list is returned; None of the original lists change
+  \end{itemize}
+  \begin{lstlisting}
+    c = a + b
+    c
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Slicing \& Striding}
+  \begin{lstlisting}
+    primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
+    primes[4:8]
+    primes[:4]
+
+    num = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+    num[1:10:2]
+    num[:10]
+    num[10:]
+    num[::2]
+    num[::-1]
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Sorting}
+  \begin{lstlisting}
+    a = [5, 1, 6, 7, 7, 10]
+    a.sort()
+    a
+  \end{lstlisting}
+  \begin{itemize}
+  \item \texttt{sort} method sorts the list in-place
+  \item Use \texttt{sorted} if you require a new list
+  \end{itemize}
+  \begin{lstlisting}
+    a = [5, 1, 6, 7, 7, 10]
+    sorted(a)
+    a
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Reversing}
+  \begin{lstlisting}
+    a = [5, 1, 6, 7, 7, 10]
+    a.reverse()
+    a
+  \end{lstlisting}
+  \begin{itemize}
+  \item \texttt{reverse} method reverses the list in-place
+  \item Use \texttt{[::-1]} if you require a new list
+  \end{itemize}
+  \begin{lstlisting}
+    a = [5, 1, 6, 7, 7, 10]
+    a[::-1]
+    a
+  \end{lstlisting}
+\end{frame}

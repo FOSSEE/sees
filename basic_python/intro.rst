@@ -1,716 +1,584 @@
-============
-Basic Python
-============
-
-This document is intended to be handed out at the end of the workshop. It has
-been designed for Engineering students who are Python beginners and have basic
-programming skills. The focus is on basic numerics and plotting using Python.
-
-The system requirements:
-  * Python - version 2.5.x or newer.
-  * IPython
-  * Text editor - scite, vim, emacs or whatever you are comfortable with.
-
 Introduction
 ============
 
-The Python programming language was created by a dutch named Guido van Rossum.
-The idea of Python was conceived in December 1989. The name Python has nothing
-to do with the reptilian, but its been named after the 70s comedy series 
-"Monty Python's Flying Circus", since it happens to be Guido's favourite 
-TV series. 
+Python in a powerful, high-level, interpreted and multi-platform programming
+language with an elegant and readable syntax, efficient high-level data
+structures and a simple but effective approach to object programming. 
 
-Current stable version of Python is 2.6.x, although Python 3.0 is also the stable
-version, it is not backwards compatible with the previous versions and is hence
-not entirely popular at the moment. This material will focus on the 2.6.x series.
-  
-Python is licensed under the Python Software Foundation License (PSF License) 
-which is GPL compatible Free Software license (excepting license version 1.6 and 2.0)
-It is a no strings attached license, which means the source code is free to modify
-and redistribute.
+Python is easy to learn. It has been designed to help the programmer
+concentrate on solving the problem at hand and not worry about the
+programming language idiosyncrasies. Programmers often fall in love with
+Python, for the increased productivity it brings.
 
-The Python docs define Python as "Python is an interpreted, object-oriented, 
-high-level programming language with dynamic semantics." A more detailed summary
-can be found at http://www.python.org/doc/essays/blurb.html. Python is a language that
-has been designed to help the programmer concentrate on solving the problem at hand
-and not worry about the programming language idiosyncrasies.
+Python was created by Guido van Rossum. The idea of Python was conceived in
+December 1989. The name Python comes from the 70s comedy series "Monty
+Python's Flying Circus" and has nothing to do with the reptilian.
 
-Python is a highly cross platform compatible language on account of it being an 
-interpreted language. It is highly scalable and hence has been adapted to run on 
-the Nokia 60 series phones. Python has been designed to be readable and easy to use
+Why Python?
+-----------
 
-**Resources available for reference**
+* Python code is extremely readable. It has no braces and semi-colons and
+  uses indentation, instead, for defining code blocks. This forces the
+  programmers to write readable code. 
 
-* Web: http://www.python.org
-* Doc: http://www.python.org/doc
-* Free Tutorials:
-    * Official Python Tutorial: http://docs.python.org/tut/tut.html
-    * Byte of Python: http://www.byteofpython.info/
-    * Dive into Python: http://diveintopython.org/
+* It is interactive and the interactive environment offers a very fast
+  edit-test-debug cycle. 
 
-**Advantages of Python - Why Python??**
+* It has a good set of high-level data structures and has been designed to
+  let the programmer focus on the problem, rather than worry about the
+  idiosyncrasies of the language.  
 
-* Python has been designed for readability and ease of use. Its been designed in 
-  such a fashion that it imposes readability on the programmer. Python does away
-  with the braces and the semicolons and instead implements code blocks based on 
-  indentation, thus enhancing readability. 
+* It handles memory management and takes the burden, of allocating and
+  de-allocating memory to variables off the programmer. 
 
-* Python is a high level, interpreted, modular and object oriented language.
-  Python performs memory management on its own, thus the programmer need not bother
-  about allocating and deallocating memory to variables. Python provides extensibility
-  by providing modules which can be easily imported similar to headers in C and 
-  packages in Java. Python is object oriented and hence provides all the object oriented
-  characteristics such as inheritance, encapsulation and polymorphism.
+* It is a Batteries included language. It comes with a huge standard library
+  that allows us to do a wide range of tasks. 
 
-* Python offers a highly powerful interactive programming interface in the form
-  of the 'Interactive Interpreter' which will be discussed in more detail in the 
-  following sections.
+* It is object-oriented. 
 
-* Python provides a rich standard library and an extensive set of modules. The 
-  power of Python modules can be seen in this slightly exaggerated cartoon
-  http://xkcd.com/353/
+* It interfaces with other programming languages such as C, C++ and FORTRAN.
+  This allows us to use legacy code available in these languages. 
 
-* Python interfaces well with most other programming languages such as C, C++ 
-  and FORTRAN.
-
-Although, Python has one setback. Python is not fast as some of the compiled 
-languages like C or C++. Yet, the amount of flexibility and power more than make
-up for this setback.
+* It not as fast as some of the compiled languages like C or C++. But, we
+  think that the programmer's time is more valuable than machine time. Given
+  the flexibility and power that Python gives the programmer, Python is a
+  valuable tool to learn.
 
 
-The Python Interpreter
-======================
+The Interpreter
+===============
 
-The Interactive Interpreter
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Typing *python* at the shell prompt on any standard Unix/Gnu-Linux system and
-hitting the enter key fires up the Python 'Interactive Interpreter'. The Python
-interpreter is one of the most integral features of Python. The prompt obtained
-when the interactive interpreter is similar to what is shown below. The exact
-appearance might differ based on the version of Python being used. The ``>>>``
-thing shown is the python prompt. When something is typed at the prompt and the
-enter key is hit, the python interpreter interprets the command entered and
-performs the appropriate action. All the examples presented in this document are
-to be tried hands on, on the interactive interpreter.
+Let us get our hands dirty, right away. Typing ``python`` at the terminal,
+will start up the Python interpreter. You should see something like this, if
+you do have Python installed. 
 
 ::
 
-  Python 2.5.2 (r252:60911, Oct  5 2008, 19:24:49) 
-  [GCC 4.3.2] on linux2
-  Type "help", "copyright", "credits" or "license" for more information.
-  >>> 
+    Python 2.7.1 (r271:86832, Feb 21 2011, 01:28:26) 
+    [GCC 4.5.2 20110127 (prerelease)] on linux2
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>> 
 
-Lets try with an example, type ``print 'Hello, World!'`` at the prompt and hit
-the enter key. 
+The first line shows the version of Python that we are using. In this example
+the version of Python being used is 2.7.1
+
+``>>>`` is called the prompt and it implies that the interpreter is ready and
+waiting for your command!
+
+Let's write our first line of Python code, the ubiquitous ``Hello World``. 
 
 ::
 
   >>> print 'Hello, World!'
   Hello, World!
 
-This example was quite straight forward, and thus we have written our first
-line of Python code. Now let us try typing something arbitrary at the prompt.
-For example: 
+Typing ``print 'Hello World'`` and hitting enter, printed out the words
+*Hello World*. 
+
+Let us now exit the interpreter. Hitting ``Ctrl-D``, exits the python
+interpreter. 
+
+Now we shall learn to use IPython, an enhanced interpreter, instead of the
+vanilla interpreter, which we just saw. 
+
+A note on Versions
+------------------
+
+Before we continue, a not on the versions of Python is in order. Python
+currently has two stable branches or versions, 2.x and 3.x. 3.x branch was
+created with the idea of cleaning up some areas of Python, to make it more
+consistent, without bothering about backward compatibility with older
+versions. So, 3.x is not compatible with 2.x, and is deemed to be the future
+of Python. But, we shall use 2.x for this course, since the ecosystem around
+3.x is still growing and a lot of packages don't yet work with Python 3.x.
+  
+IPython - An enhanced interactive Python interpreter
+----------------------------------------------------
+
+IPython is an enhanced Python interpreter that provides features like
+tabcompletion, easier access to help and lot of other functionality which are
+not available in the vanilla Python interpreter.
+
+invoking IPython
+~~~~~~~~~~~~~~~~
+
+First let us see how to invoke the ``ipython`` interpreter.
+
+We type
+::
+
+  ipython
+
+at the terminal prompt to invoke the ipython interpreter.
+
+The prompt is now, ``In [1]:`` instead of the ``>>>`` in the vanilla Python
+interpreter. We also get the same information about the version of Python
+installed. But additionally, we get some IPython help information, instead of
+the vanilla interpreter's help. 
+
+``In`` stands for input and the number in the brackets indicates the number
+of the current command in this session. We shall see how it's useful in a
+short while. 
+
+If you get an error saying something like ``ipython is not installed``,
+install it and continue with the course. 
+
+Let's try out the same ``Hello World`` in ``ipython``. 
 
 ::
-  
-  >>> arbit word
-    File "<stdin>", line 1
-      arbit word
-              ^
-  SyntaxError: invalid syntax
-  >>>
     
-The interpreter gave an error message saying that 'arbit word' was invalid
-syntax which is valid. The interpreter is an amazing tool when learning to
-program in Python. The interpreter provides a help function that provides the
-necessary documentation regarding all Python syntax, constructs, modules and
-objects. Typing *help()* at the prompt gives the following output:
+    print 'Hello World!'
+
+Now, to quit the ipython interpreter, type Ctrl-D. You are prompted asking if
+you really want to exit, type y to say yes and quit ipython.
+
+Start ipython again, as you did before.
+
+History and Arrow Keys
+~~~~~~~~~~~~~~~~~~~~~~
+
+Now let us see, how we can type some commands into the interpreter.
+
+Start with the simplest thing, addition.
+
+Let's type 
+
+::
+
+    1 + 2 
+
+at the prompt. IPython promptly gives back the output as 3.  Notice
+that the output is displayed with an ``Out[1]`` indication.
+
+Let's try out few other mathematical operations.
+
+::
+
+    5 - 3
+    7 - 4
+    6 * 5
+
+Now let's ``print 1+2``. Instead of typing the whole thing, we make use of
+the fact that IPython remembers the history of the commands that you have
+already used. We use the up arrow key to go back the command ``1+2``. We then
+use the left-arrow key to navigate to the beginning of the line and add the
+word ``print`` and a space. Then hit enter and observe that the interpreter
+prints out the value as 3, without the Out[] indication.
+
+Now, let's change the previous command ``print 1+2`` to ``print 10*2``. We
+use the up arrow again to navigate to the previous command and use the left
+arrow key to move the cursor on to the + symbol and then use the delete key
+to remove it and type 0 and * to change the expression as required. We hit
+enter to see the output of ``print``.
+
+Tab-completion
+~~~~~~~~~~~~~~
+
+Now, let's say we want to use the function ``round``. We type ``ro`` at the
+prompt and hit the tab key. As you can see, IPython completes the command.
+This feature is called the tab-completion.
+
+Now, we remove all the characters and just type ``r`` and then hit tab.
+IPython does not complete the command since there are many possibilities. It
+just lists out all the possible completions.
+
+Now, let's see what these functions are used for. We will use the help
+features of ipython to find this out.
+
+Help using ?
+~~~~~~~~~~~~
+
+To get the help of any function, we first type the function, ``abs`` in our
+case and then add a ? at the end and hit enter.
+
+As the documentation says, ``abs`` accepts a number as an input and returns
+it's absolute value.
+
+We say,
+
+::
+
+    abs(-19)
+
+    abs(19)
+
+We get 19, as expected, in both the cases.
+
+Does it work for decimals (or floats)? Let's try typing abs(-10.5) and we do
+get back 10.5.
+
+Let us look at the documentation of the ``round`` function. 
+
+::
+
+    round?
+
+If you notice, there are extra square brackets around the ``ndigits``. This
+means that ``ndigits`` is optional and 0 is the default value. Optional
+parameters are shown in square brackets anywhere in Python documentation.
+
+The function ``round``, rounds a number to a given precision.
+
+::
+
+    round(2.48)
+    round(2.48, 1)
+    round(2.48, 2)
+
+    round(2.484)
+    round(2.484, 1)
+    round(2.484, 2)
+
+We get 2.0, 2.5 and 2.48, which are what we expect. 
+
+Interrupting
+~~~~~~~~~~~~
+
+Let's now see how to correct typing errors that we make while typing at the
+terminal. As already shown, if we haven't hit the enter key already, we could
+navigate using the arrow keys and make deletions using delete or backspace
+key and correct the errors.
+
+Let's now type ``round(2.484`` and hit enter, without closing the
+parenthesis. We get a prompt with dots. This prompt is the continuation
+prompt of ``ipython``. It appears, the previous line is incomplete in some
+way. We now complete the command by typing, the closing parenthesis and
+hitting enter. We get the expected output of 2.5.
+
+In other instances, if we commit a typing error with a longer and more
+complex expression and end up with the continuation prompt, we can type
+Ctrl-C to interrupt the command and get back the ``ipython`` input prompt.
+
+For instance, 
 
 ::
   
-  >>> help()
-  
-  Welcome to Python 2.5!  This is the online help utility.
-  
-  If this is your first time using Python, you should definitely check out
-  the tutorial on the Internet at http://www.python.org/doc/tut/.
-  
-  Enter the name of any module, keyword, or topic to get help on writing
-  Python programs and using Python modules.  To quit this help utility and
-  return to the interpreter, just type "quit".
-  
-  To get a list of available modules, keywords, or topics, type "modules",
-  "keywords", or "topics".  Each module also comes with a one-line summary
-  of what it does; to list the modules whose summaries contain a given word
-  such as "spam", type "modules spam".
-  
-  help> 
+    round(2.484 
+    ^C
+
+    round(2.484, 2)
   
 
-As mentioned in the output, entering the name of any module, keyword or topic
-will provide the documentation and help regarding the same through the online
-help utility. Pressing *Ctrl+d* exits the help prompt and returns to the
-python prompt. 
+Now that we know how to use the interpreter, we shall move look at the basic
+data-types Python provides, and basic operators. 
 
-Let us now try a few examples at the python interpreter. 
+Basic Datatypes and Operators
+=============================
 
-Eg 1:
-::
-  
-  >>> print 'Hello, python!'
-  Hello, python!
-  >>>
-  
-Eg 2:
-::
-  
-  >>> print 4321*567890
-  2453852690
-  >>> 
-  
-Eg 3:
-::
-  
-  >>> 4321*567890
-  2453852690L
-  >>>
+Python provides the following basic datatypes. 
 
-::
-  
-  Note: Notice the 'L' at the end of the output. The 'L' signifies that the
-  output of the operation is of type *long*. It was absent in the previous
-  example because we used the print statement. This is because *print* formats
-  the output before displaying.
-  
-Eg 4:
-::
-  
-  >>> big = 12345678901234567890 ** 3
-  >>> print big
-  1881676372353657772490265749424677022198701224860897069000
-  >>> 
+  * Numbers
 
-::
-  
-  This example is to show that unlike in C or C++ there is no limit on the
-  value of an integer.
+    * int 
+    * float 
+    * complex 
 
-Try this on the interactive interpreter:
-``import this``
-
-*Hint: The output gives an idea of Power of Python*
-
-*ipython* - An enhanced interactive Python interpreter
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The power and the importance of the interactive interpreter was the highlight
-of the previous section. This section provides insight into the enhanced
-interpreter with more advanced set of features called **ipython**. Entering
-*ipython* at the shell prompt fires up the interactive interpreter. 
-
-::
-  
-  $ ipython
-  Python 2.5.2 (r252:60911, Oct  5 2008, 19:24:49) 
-  Type "copyright", "credits" or "license" for more information.
-  
-  IPython 0.8.4 -- An enhanced Interactive Python.
-  ?         -> Introduction and overview of IPython's features.
-  %quickref -> Quick reference.
-  help      -> Python's own help system.
-  object?   -> Details about 'object'. ?object also works, ?? prints more.
-  
-  In [1]: 
-  
-This is the output obtained upon firing ipython. The exact appearance may
-change based on the Python version installed. The following are some of the
-various features provided by **ipython**:
-  
-    Suggestions - ipython provides suggestions of the possible methods and
-    operations available for the given python object.
-
-Eg 5:
-  
-::
-  
-  In [4]: a = 6
-  
-  In [5]: a.
-  a.__abs__           a.__divmod__        a.__index__         a.__neg__          a.__rand__          a.__rmod__          a.__rxor__
-  a.__add__           a.__doc__           a.__init__          a.__new__          a.__rdiv__          a.__rmul__          a.__setattr__
-  a.__and__           a.__float__         a.__int__           a.__nonzero__      a.__rdivmod__       a.__ror__           a.__str__
-  a.__class__         a.__floordiv__      a.__invert__        a.__oct__          a.__reduce__        a.__rpow__          a.__sub__
-  a.__cmp__           a.__getattribute__  a.__long__          a.__or__           a.__reduce_ex__     a.__rrshift__       a.__truediv__
-  a.__coerce__        a.__getnewargs__    a.__lshift__        a.__pos__          a.__repr__          a.__rshift__        a.__xor__
-  a.__delattr__       a.__hash__          a.__mod__           a.__pow__          a.__rfloordiv__     a.__rsub__          
-  a.__div__           a.__hex__           a.__mul__           a.__radd__         a.__rlshift__       a.__rtruediv__      
-
-In this example, we initialized 'a' (a variable - a concept that will be
-discussed in the subsequent sections.) to 6. In the next line when the *tab* key
-is pressed after typing '*a.*' ipython displays the set of all possible methods
-that are applicable on the object 'a' (an integer in this context). Ipython
-provides many such datatype specific features which will be presented in the
-further sections as and when the datatypes are introduced.
-
-Editing and running a python file
-=================================
-
-The previous sections focused on the use of the interpreter to run python code.
-While the interpeter is an excellent tool to test simple solutions and
-experiment with small code snippets, its main disadvantage is that everything
-written in the interpreter is lost once its quit. Most of the times a program is 
-used by people other than the author. So the programs have to be available in 
-some form suitable for distribution, and hence they are written in files. This 
-section will focus on editing and running python files. Start by opening a text 
-editor ( it is recommended you choose one from the list at the top of this page ).
-In the editor type down python code and save the file with an extension **.py** 
-(python files have an extension of .py). Once done with the editing, save the 
-file and exit the editor. 
-
-Let us look at a simple example of calculating the gcd of 2 numbers using Python:
-
-**Creating the first python script(file)**
-::
-
-  $ emacs gcd.py
-    def gcd(x,y):
-      if x % y == 0:
-        return y
-      return gcd(y, x%y)
-  
-    print gcd(72, 92)
-
-To run the script, open the shell prompt, navigate to the directory that 
-contains the python file and run ``python <filename.py>`` at the prompt ( in this 
-case filename is gcd.py )
-
-**Running the python script**
-::
-  
-  $ python gcd.py
-  4
-  $ 
-
-Another method to run a python script would be to include the line
-
-``#! /usr/bin/python``
-
-at the beginning of the python file and then make the file executable by 
-
-$ chmod a+x *filename.py*
-
-Once this is done, the script can be run as a standalone program as follows:
-
-$ ./*filename.py*
-
-Basic Datatypes and operators in Python
-=======================================
-
-Python provides the following set of basic datatypes.
-
-  * Numbers: int, float, long, complex
-  * Strings
   * Boolean
+  * Sequence
+
+    * Strings
+    * Lists
+    * Tuples
+
 
 Numbers
-~~~~~~~
+-------
 
-Numbers were introduced in the examples presented in the interactive interpreter
-section. Numbers include types as mentioned earlier viz., int (integers), float 
-(floating point numbers), long (large integers), complex (complex numbers with 
-real and imaginary parts). Python is not a strongly typed language, which means 
-the type of a variable need not mentioned during its initialization. Let us look
-at a few examples.
+We shall start with exploring the Python data types in the domain of numbers.
 
-Eg 6:
+There are three built-in data types in python to represent numbers, namely:
+
+  * int 
+  * float 
+  * complex 
+
+Let us first talk about ``int`` 
+
 ::
+
+    a = 13
+    a
+
+
+Now, we have our first ``int`` variable ``a``.
+
+To verify this, we say
+
+::
+
+     type(a)
+     <type 'int'>
+
+``int`` data-type can hold integers of any size lets see this by an example.
+
+::
+
+    b = 99999999999999999999
+    b
+
+As you can see, even when we put a value of 9 repeated 20 times Python did
+not complain. 
+
+Let us now look at the ``float`` data-type. Decimal numbers in Python are
+represented by the ``float`` data-type 
+
+::
+
+    p = 3.141592
+    p
+
+If you notice the value of output of ``p`` isn't exactly equal to ``p``. This
+is because floating point values have a fixed precision (or bit-length) and
+it is not possible to represent all numbers within the given precision. Such
+numbers are approximated and saved. This is why we should never rely on
+equality of floating point numbers in a program.
+
+Finally, let us look at the ``complex`` data-type. 
+
+::
+
+    c = 3+4j
+
+gives us a complex number, ``c`` with real part 3 and imaginary part 4.
+
+To get the real and imaginary parts of ``c``, we say
+
+::
+
+    c.real
+    c.imag
+
+Note that complex numbers are a combination of two floats, i.e., the real and
+the imaginary parts, 3 and 4 are floats and not integers. 
+
+::
+
+    type(c.real)
+    type(c.imag)
+
+We can get the absolute value of c, by
+
+::
+ 
+    abs(c)
+
+Let's now look at some operators common operations on these data-types.
+
+::
+
+    23 + 74
+    23 - 56
+    45 * 76
+
+    8 / 3 
+    8.0 / 3
+
+The first division, 8/3 is an integer division and results in an integer
+output. In the second division, however, the answer is a float. To avoid
+integer division, at least one of the operands should be a float.
+
+``%`` is used for the modulo operation. 
+
+::
+
+    87 % 6
+
+and ``**`` is for exponentiation. 
+
+::
+
+    7 ** 8
+
+All of the above operations can be performed with variables, as well. 
+
+::
+
+    a = 23 
+    b = 74
+    a * b
+
+    c = 8 
+    d = 8.0 
+    f = c / 3
+    g = d / 3  
+
+In the last two commands, the results of the operations are being assigned to
+new variables.
+
+In case, we wish to assign the result of an operation on the
+variable to itself, we can use a special kind of assignment.
+
+::
+
+    c /= 3
+
+is the same as 
+
+::
+   
+    c = c / 3
+
+Booleans
+--------
+
+Now let us look at the Boolean data-type. 
+
+::  
   
-  >>> a = 1 #here a is an integer variable
+    t = True
 
-Eg 7:
-::
-
-  >>> lng = 122333444455555666666777777788888888999999999 #here lng is a variable of type long
-  >>> lng
-  122333444455555666666777777788888888999999999L #notice the trailing 'L'
-  >>> print lng
-  122333444455555666666777777788888888999999999 #notice the absence of the trailing 'L'
-  >>> lng+1
-  122333444455555666666777777788888889000000000L
-
-
-Long numbers are the same as integers in almost all aspects. They can be used in
-operations just like integers and along with integers without any distinction.
-The only distinction comes during type checking (which is not a healthy practice).
-Long numbers are tucked with a trailing 'L' just to signify that they are long.
-Notice that in the example just lng at the prompt displays the value of the variable
-with the 'L' whereas ``print lng`` displays without the 'L'. This is because print 
-formats the output before printing. Also in the example, notice that adding an 
-integer to a long does not give any errors and the result is as expected. So for
-all practical purposes longs can be treated as ints.
-
-Eg 8:
-::
-
-  >>> fl = 3.14159 #fl is a float variable
-  >>> e = 1.234e-4 #e is also a float variable, specified in the exponential form
-  >>> a = 1
-  >>> b = 2
-  >>> a/b #integer division
-  0
-  >>> a/fl #floating point division
-  0.31831015504887655
-  >>> e/fl
-  3.9279473133031364e-05
-
-
-Floating point numbers, simply called floats are real numbers with a decimal point.
-The example above shows the initialization of a float variable. Shown also in this
-example is the difference between integer division and floating point division.
-'a' and 'b' here are integer variables and hence the division gives 0 as the quotient.
-When either of the operands is a float, the operation is a floating point division,
-and the result is also a float as illustrated.
-
-Eg 9:
-::
-
-  >>> cplx = 3 + 4j #cplx is a complex variable
-  >>> cplx
-  (3+4j)
-  >>> print cplx.real #prints the real part of the complex number
-  3.0
-  >>> print cplx.imag #prints the imaginary part of the complex number
-  4.0
-  >>> print cplx*fl  #multiplies the real and imag parts of the complex number with the multiplier
-  (9.42477+12.56636j)
-  >>> abs(cplx) #returns the absolute value of the complex number
-  5.0
-
-Python provides a datatype for complex numbers. Complex numbers are initialized 
-as shown in the example above. The *real* and *imag* operators return the real and
-imaginary parts of the complex number as shown. The *abs()* returns the absolute
-value of the complex number.
-
-Variables
-~~~~~~~~~
-
-Variables are just names that represent a value. Variables have already been 
-introduced in the various examples from the previous sections. Certain rules about
-using variables:
-
-  * Variables have to be initialized or assigned a value before being used.
-  * Variable names can consist of letters, digits and underscores(_).
-  * Variable names cannot begin with digits, but can contain digits in them.
-
-In reference to the previous section examples, 'a', 'b', 'lng', 'fl', 'e' and 'cplx'
-are all variables of various datatypes.
-
-::
+creates a boolean variable ``t``, whose value is ``True``. Note that T in
+true is capitalized.
   
-  Note: Python is not a strongly typed language and hence an integer variable can at a
-  later stage be used as a float variable as well.
+You can apply different Boolean operations on ``t`` now. 
 
-Strings
-~~~~~~~
-
-Strings are one of the essential data structures of any programming language.
-The ``print "Hello, World!"`` program was introduced in the earlier section, and
-the *"Hello, World!"* in the print statement is a string. A string is basically 
-a set of characters. Strings can be represented in various ways shown below:
+For example 
 
 ::
 
-  s = 'this is a string'              # a string variable can be represented using single quotes
-  s = 'This one has "quotes" inside!' # The string can have quotes inside it as shown
-  s = "I have 'single-quotes' inside!"
-  l = "A string spanning many lines\
-  one more line\
-  yet another"                        # a string can span more than a single line.
-  t = """A triple quoted string does  # another way of representing multiline strings.
-  not need to be escaped at the end and
-  "can have nested quotes" etc."""
+    f = not t 
+    f
+    f or t
+    f and t   
 
-Try the following on the interpreter:
-``s = 'this is a string with 'quotes' of similar kind'``
-
-**Exercise: How to use single quotes within single quotes in a string as shown 
-in the above example without getting an error?**
-
-String operations
------------------
-
-A few basic string operations are presented here. 
-
-**String concatenation**
-String concatenation is done by simple addition of two strings.
+What if you want to use multiple operators? Here's an example. 
 
 ::
 
-  >>> x = 'Hello'
-  >>> y = ' Python'
-  >>> print x+y
-  Hello Python
+    (f and t) or t
 
-*Try this yourself:*
+Note that we have used parenthesis, to explicitly state what we want to do.
+We are not going to discuss operator precedence and shall use parenthesis,
+when using multiple operators.
 
-::
-  
-  >>> somenum = 13
-  >>> print x+somenum
-
-The problem with the above example is that here a string variable and an integer
-variable are trying to be concantenated. To obtain the desired result from the 
-above example the str(), repr() and the `` can be used.
-
-**str()** simply converts a value to a string in a reasonable form.
-**repr()** creates a string that is a representation of the value.
-
-The difference can be seen in the example shown below:
-
-::
-  
-  >>> str(1000000000000000000000000000000000000000000000000L)
-  '1000000000000000000000000000000000000000000000000'
-  >>> repr(1000000000000000000000000000000000000000000000000L)
-  '1000000000000000000000000000000000000000000000000L'
-
-It can be observed that the 'L' in the long value shown was omitted by str(), 
-whereas repr() converted that into a string too. An alternative way of using 
-repr(value) is ```value```. 
-
-A few more examples:
-::
-  
-  >>> x = "Let's go \nto Pycon"
-  >>> print x
-  Let's go 
-  to Pycon
-
-In the above example, notice that the '\n'(newline) character is formatted and 
-the string is printed on two lines. The strings discussed until now were normal 
-strings. Other than these there are two other types of strings namely, raw strings
-and unicode strings.
-
-**Raw strings** are strings which are unformatted, that is the backslashes(\) are 
-not parsed and are left as it is in the string. Raw strings are represented with
-an 'r' at the start of a string. 
-Let us look at an example
+The following expression, for instance is different from the one above.  
 
 ::
   
-  >>> x = r"Let's go \nto Pycon"
-  >>> print x
-  Let's go \nto Pycon
+    f and (t or t) 
 
-Note: The '\n' is not being parsed into a new line and is left as it is.
+Sequences
+---------
 
-*Try this yourself:*
+Let's now discuss the sequence data types in Python. The data-types which
+hold a bunch of elements in them, in a sequential order are called sequence
+data-types. The elements can be accessed using their position in the
+sequence. 
+
+The sequence datatypes in Python are -
+
+  * str
+  * list
+  * tuple
+
+::
+
+    greet_str = "hello"
+
+``greet_str`` is now a string variable with the value ``hello`` 
+
+Anything within quotes is a string.
+
+Items enclosed in square brackets separated by commas constitute a list.
+
+:: 
+  
+    num_list = [1, 2, 3, 4, 5, 6, 7, 8]
+    num_list
+
+To create a tuple we use parentheses ('(') instead of square brackets ('[')
+
+::
+
+    num_tuple = (1, 2, 3, 4, 5, 6, 7, 8)
+  
+Operations on sequences
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Due to their sequential nature, there are certain kind of operations, which
+can be performed on all of them. 
+
+Firstly, accessing elements. Elements in sequences can be accessed using
+indexes. 
+
+::
+
+    num_list[2]
+    num_tuple[2]
+    greet_str[2]
+
+As you can see, indexing starts from 0. 
+
+Secondly, you can add two sequences of the same type, to each other to give
+new sequences.
+
+::
+
+    num_list + [3, 4, 5, 6]
+    greet_str + " world!"  
+
+
+Thirdly, you can get the length of a sequence, by using the ``len`` function.
+
+:: 
+
+    len(num_list)
+    len(greet_str)
+
+
+Fourthly, we can check the containership of an element using the ``in``
+keyword 
+
+::
+
+    3 in num_list
+    'h' in greet_str
+    'w' in greet_str
+    2 in num_tuple  
+
+We see that it gives True and False accordingly.
+
+Next, we can find the maximum and minimum elements from a sequence. 
+
+::
+
+    max(num_tuple)
+    min(greet_str)
+
+As a consequence of their order, we can access a group of elements in a
+sequence. They are called called slicing and striding.
+
+First lets discuss slicing, on the list ``num_list``. We can access a part of
+this sequence by slicing the sequence. Lets say we want elements starting
+from 2 and ending in 5.
+
+::
+
+    num_list[1:5]
+
+Note that the elements starting from the first index to the last one, the
+last one not included are being returned. We shall look at the details,
+later. 
+
+Striding is similar to slicing except that the step size here is not one.
 
 ::
   
-  >>> x = r"Let's go to Pycon\"
-
-**Unicode strings** are strings where the characters are Unicode characters as 
-opposed to ASCII characters. Unicode strings are represented with a 'u' at the 
-start of the string.
-Let us look at an example:
-
-::
-  
-  >>> x = u"Let's go to Pycon!"
-  >>> print x
-  Let's go to Pycon!
-
-Boolean
-~~~~~~~
-
-Python also provides special Boolean datatype. A boolean variable can assume a 
-value of either *True* or *False* (Note the capitalizations). 
-
-Let us look at examples:
-
-::
-
-  >>> t = True
-  >>> f = not t
-  >>> print f
-  False
-  >>> f or t
-  True
-  >>> f and t
-  False
-
-The **while** loop
-==================
+    num_list[1:8:2]
 
 
-The Python **while** loop is similar to the C/C++ while loop. The syntax is as
-follows:
+The colon two added in the end signifies all the alternate elements. This is
+why we call this concept striding because we move through the list with a
+particular stride or step. The step in this example being 2.
 
-::
+This brings us to the end of our discussion on basic data-types and
+operations on them. 
 
-  statement 0
-  while condition:
-    statement 1 #while block
-    statement 2 #while block
-  statement 3 #outside the while block.
-
-Let us look at an example:
-
-::
-
-    >>> x = 1  
-    >>> while x <= 5:
-    ...   print x
-    ...   x += 1
-    ... 
-    1
-    2
-    3
-    4
-    5
-
-The **if** conditional
-======================
-
-The Python **if** block provides the conditional execution of statements. 
-If the condition evaluates as true the block of statements defined under the if 
-block are executed.
-
-If the first block is not executed on account of the condition not being satisfied,
-the set of statements in the **else** block are executed.
-
-The **elif** block provides the functionality of evaluation of multiple conditions
-as shown in the example.
-
-The syntax is as follows:
-
-::
-
-  if condition :
-      statement_1
-      statement_2
-
-  elif condition:
-      statement_3
-      statement_4
-  else:
-      statement_5
-      statement_6
-
-Let us look at an example:
-
-::
-  
-   >>> n = raw_input("Input a number:")
-   >>> if n < 0:
-         print n," is negative"
-         elif n > 0:
-         print n," is positive"
-         else:
-         print n, " is 0"
-
-**raw_input()**
-===============
-
-In the previous example we saw the call to the raw_input() subroutine. 
-The **raw_input()** method is used to take user inputs through the console.
-Unlike **input()** which assumes the data entered by the user as a standard python
-expression, **raw_input()** treats all the input data as raw data and converts
-everything into a string. To illustrate this let us look at an example.
-
-::
-
-  >>> input("Enter a number thats a palindrome:")
-  Enter a number thats a palindrome:121
-  121
-
-  >>> input("Enter your name:")
-  Enter your name:PythonFreak
-  Traceback (most recent call last):
-    File "<stdin>", line 1, in <module>
-    File "<string>", line 1, in <module>
-  NameError: name 'PythonFreak' is not defined
-
-As shown above the **input()** assumes that the data entered is a valid Python
-expression. In the first call it prompts for an integer input and when entered
-it accepts the integer as an integer, whereas in the second call, when the string
-is entered without the quotes, **input()** assumes that the entered data is a valid
-Python expression and hence it raises and exception saying PythonFreak is not 
-defined.
-
-::
-
-  >>> input("Enter your name:")
-  Enter your name:'PythonFreak'
-  'PythonFreak'
-  >>> 
-
-Here the name is accepted because its entered as a string (within quotes). But
-its unreasonable to go on using quotes each time a string is entered. Hence the
-alternative is to use **raw_input()**.
-
-Let us now look at how **raw_input()** operates with an example.
-
-::
-
-  >>> raw_input("Enter your name:")
-  Enter your name:PythonFreak
-  'PythonFreak'
-
-Observe that the **raw_input()** is converting it into a string all by itself.
-
-::
-
-  >>> pal = raw_input("Enter a number thats a palindrome:")
-  Enter a number thats a palindrome:121
-  '121'
-
-Observe that **raw_input()** is converting the integer 121 also to a string as 
-'121'. Let us look at another example:
-
-::
-  
-  >>> pal = raw_input("Enter a number thats a palindrome:")
-  Enter a number thats a palindrome:121
-  >>> pal + 2
-  Traceback (most recent call last):
-    File "<stdin>", line 1, in <module>
-  TypeError: cannot concatenate 'str' and 'int' objects
-  >>> pal
-  '121'
-
-Observe here that the variable *pal* is a string and hence integer operations
-cannot be performed on it. Hence the exception is raised.
-
-**int()** method
-================
-
-Generally for computing purposes, the data used is not strings or raw data but 
-on integers, floats and similar mathematical data structures. The data obtained
-from **raw_input()** is raw data in the form of strings. In order to obtain integers
-from strings we use the method **int()**. 
-
-Let us look at an example.
-
-::
-
-  >>> intpal = int(pal)
-  >>> intpal
-  121
-
-In the previous example it was observed that *pal* was a string variable. Here
-using the **int()** method the string *pal* was converted to an integer variable.
-
-*Try This Yourself:*
-
-::
-
-  >>> stringvar = raw_input("Enter a name:")
-  Enter a name:Guido Van Rossum
-  >>> stringvar
-  'Guido Van Rossum'
-  >>> numvar = int(stringvar)
+.. 
+   Local Variables:
+   mode: rst
+   indent-tabs-mode: nil
+   sentence-end-double-space: nil
+   fill-column: 77
+   End:
 
