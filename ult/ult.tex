@@ -1,0 +1,1698 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Using Linux Tools
+%
+% Author: FOSSEE 
+% Copyright (c) 2009, FOSSEE, IIT Bombay
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt,compress]{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+  \useoutertheme{infolines}
+  \setbeamercovered{transparent}
+}
+
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+%\usepackage{times}
+\usepackage[T1]{fontenc}
+
+% Taken from Fernando's slides.
+\usepackage{ae,aecompl}
+\usepackage{mathpazo,courier,euler}
+\usepackage[scaled=.95]{helvet}
+
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+
+\usepackage{listings}
+\lstset{language=sh,
+    basicstyle=\ttfamily\bfseries,
+    commentstyle=\color{red}\itshape,
+  stringstyle=\color{darkgreen},
+  showstringspaces=false,
+  keywordstyle=\color{blue}\bfseries}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Macros
+\setbeamercolor{emphbar}{bg=blue!20, fg=black}
+\newcommand{\emphbar}[1]
+{\begin{beamercolorbox}[rounded=true]{emphbar} 
+      {#1}
+ \end{beamercolorbox}
+}
+\newcounter{time}
+\setcounter{time}{0}
+\newcommand{\inctime}[1]{\addtocounter{time}{#1}{\tiny \thetime\ m}}
+
+\newcommand{\typ}[1]{\lstinline{#1}}
+
+\newcommand{\kwrd}[1]{ \texttt{\textbf{\color{blue}{#1}}}  }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title page
+\title[Using Linux Tools]{SEES: Using Linux Tools}
+
+\author[FOSSEE] {FOSSEE}
+
+\institute[IIT Bombay] {Department of Aerospace Engineering\\IIT Bombay}
+\date[]{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\pgfdeclareimage[height=0.75cm]{iitmlogo}{iitmlogo}
+%\logo{\pgfuseimage{iitmlogo}}
+
+
+%% Delete this, if you do not want the table of contents to pop up at
+%% the beginning of each subsection:
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Outline}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command: 
+%\beamerdefaultoverlayspecification{<+->}
+
+%%\includeonlyframes{current,current1,current2,current3,current4,current5,current6}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DOCUMENT STARTS
+\begin{document}
+
+\begin{frame}
+  \maketitle
+\end{frame}
+
+% CREATING TOC 
+\begin{frame}
+  \frametitle{Outline}
+  \tableofcontents
+  % You might wish to add the option [pausesections]
+\end{frame}
+
+
+\section{Introduction}
+\begin{frame}[fragile]
+  \begin{block}{What is the Linux OS?}
+    \begin{itemize}
+    \item Free Open Source Operating System
+      \begin{description}
+        \item[Free] 
+          Free as in Free Speech, not Free Beer
+        \item[Open-Source]
+          Permit modifications and redistribution of source code
+      \end{description}
+    \item Unix-inspired
+    \item Linux Kernel + Application software
+    \item Runs on a variety of hardware
+    \item Also called GNU/Linux
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Why Linux?}
+    \begin{itemize}
+    \item Free as in Free Beer
+    \item Secure \& versatile
+    \end{itemize}
+
+    \begin{block}{Why Linux for Scientific Computing?}
+      \begin{itemize}
+        \item Free as in Free Speech
+        \item Can run for \emph{ever}
+        \item Libraries
+        \item Parallel Computing
+      \end{itemize}
+    \end{block}
+\end{frame}
+
+\section{Getting Started} 
+\begin{frame}[fragile]
+  \frametitle{Logging in}
+  \begin{itemize}
+  \item GNU/Linux does have a GUI
+  \item Command Line for this module
+  \item Hit \texttt{Ctrl + Alt + F1}
+  \item Login 
+  \item \texttt{logout} command logs you out
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Where am I?}
+  \begin{itemize}
+  \item Logged in. Where are we?
+  \item \texttt{pwd} command gives the present working directory
+  \end{itemize} 
+  \begin{lstlisting}
+    $ pwd
+    /home/user
+  \end{lstlisting} % $
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{What is in there?}
+  \begin{itemize}
+  \item \texttt{ls} command lists contents of \texttt{pwd}
+  \end{itemize}
+  \begin{lstlisting}
+    $ ls
+    jeeves.rst psmith.html blandings.html Music
+  \end{lstlisting} %$
+  \begin{itemize}
+  \item Can also pass directory as argument 
+  \end{itemize}
+  \begin{lstlisting}
+    $ ls Music
+    one.mp3 two.mp3 three.mp3
+  \end{lstlisting} %$
+  \begin{itemize}
+  \item   \alert{the Unix world is case sensitive}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{New folders}
+  \begin{itemize}
+  \item \texttt{mkdir} creates new directories
+  \end{itemize}
+  \begin{lstlisting}
+    $ mkdir sees
+    $ ls
+  \end{lstlisting}
+  \begin{itemize}
+  \item Special characters need to be escaped OR quoted
+  \end{itemize}
+  \begin{lstlisting}
+    $ mkdir software\ engineering
+    $ mkdir "software engg"
+  \end{lstlisting} 
+  \begin{itemize}
+  \item Generally, use hyphens or underscores instead of spaces in names
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Moving around}
+  \begin{itemize}
+  \item \texttt{cd} command changes the \texttt{pwd}
+  \end{itemize}
+  \begin{lstlisting}
+    $ cd sees
+    $ pwd 
+    /home/user/sees/
+  \end{lstlisting}
+  \begin{itemize}
+  \item Alternately written as \texttt{cd ./sees}
+  \item Specifying path relative to \texttt{pwd}
+  \item \texttt{..} takes one level up the directory structure
+  \end{itemize}
+  \begin{lstlisting}
+    $ cd ..
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item We could use absolute path instead of relative
+  \end{itemize}
+  \begin{lstlisting}
+    $ cd /home/user/sees/
+  \end{lstlisting} % $
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{New files}
+  \begin{itemize}
+  \item \texttt{touch} command creates a blank file
+  \end{itemize}
+  \begin{lstlisting}
+    $ pwd
+    /home/user
+    $ cd sees
+    $ touch first
+    $ ls 
+    first
+  \end{lstlisting} % $
+\end{frame}
+
+\section{Getting Help}
+\begin{frame}[fragile]
+  \frametitle{What does a command do?}
+
+  \begin{itemize}
+  \item \texttt{whatis} gives a quick description of a command
+  \end{itemize}
+  \begin{lstlisting}
+    $ whatis touch
+    touch (1) - change file timestamps
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item \texttt{man} command gives more detailed description
+  \end{itemize}
+  \begin{lstlisting}
+    $ man touch
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item Shows all tasks that the command can perform
+  \item Hit \texttt{q} to quit the \texttt{man} page
+  \item For more, see the \texttt{man} page of \texttt{man}
+  \end{itemize}
+  \begin{lstlisting}
+    $ man man
+  \end{lstlisting} % $
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Using additional options}
+
+  \begin{itemize}
+  \item \texttt{-h} or \texttt{--help} give summary of command usage
+  \end{itemize}
+  \begin{lstlisting}
+    $ ls --help
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item List out all files within a directory, recursively
+  \end{itemize}
+  \begin{lstlisting}
+    $ ls -R
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item Create a new directory along with parents, if required
+  \end{itemize}
+  \begin{lstlisting}
+    $ pwd
+    /home/user/
+    $ ls sees/
+    $ mkdir -p sees/linux-tools/scripts
+  \end{lstlisting} % $
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Searching for a command}
+
+  \begin{itemize}
+  \item \texttt{apropos} searches commands based on their descriptions
+  \end{itemize}
+
+  \begin{lstlisting}
+    $ apropos remove
+  \end{lstlisting} % $
+
+  \begin{itemize}
+  \item Returns a list of all commands that contain the search term
+  \item In this case, we are interested in \texttt{rm}, \texttt{rmdir}
+  \end{itemize}
+\end{frame}
+
+\section{Basic File Handling}
+\begin{frame}[fragile]
+  \frametitle{Removing files}
+
+  \begin{itemize}
+  \item   \texttt{rm} is used to delete files
+  \end{itemize}
+
+  \begin{lstlisting}
+    $ rm foo
+  \end{lstlisting} % $
+
+  \begin{itemize}
+  \item \alert{\texttt{rm} works only for files; not directories}
+  \end{itemize}
+
+  \begin{itemize}
+  \item Additional arguments required to remove a directory 
+  \item \texttt{-r} stands for recursive. 
+  \item Removes directory and all of it's content 
+  \end{itemize}
+
+  \begin{lstlisting}
+    $ rm -r bar
+  \end{lstlisting} % $
+
+  \begin{itemize}
+  \item \alert{\texttt{rmdir} can also be used; Explore} 
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Copying Files}
+
+  \begin{itemize}
+  \item \texttt{cp} copies files from one location to another
+  \end{itemize}
+
+  \begin{lstlisting}
+    $ cp linux-tools/scripts/foo linux-tools/
+  \end{lstlisting} % $
+
+  \begin{itemize}
+  \item New file-name can be used at target location
+  \item \texttt{foo} copied to new location with the name \texttt{bar} 
+  \end{itemize}
+
+  \begin{lstlisting}
+    $ cp linux-tools/scripts/foo linux-tools/bar
+  \end{lstlisting} % $
+
+  \begin{itemize}
+  \item \texttt{cp} overwrites files, unless explicitly asked not to
+  \item To prevent this, use the \texttt{-i} flag 
+  \end{itemize}
+  
+  \begin{lstlisting}
+    $ cp -i linux-tools/scripts/foo linux-tools/bar
+    cp: overwrite `bar'?
+  \end{lstlisting} % $
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Copying Directories}
+
+  \begin{itemize}
+  \item \texttt{-r} is required to copy a directory and all it's
+    content
+  \item Copying directories is similar to copying files
+  \end{itemize}
+
+  \begin{lstlisting}
+    $ cd /home/user
+    $ cp -ir sees course
+  \end{lstlisting}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+  \frametitle{Moving Files}
+  \begin{itemize}
+  \item \texttt{cp} and \texttt{rm} would be one way
+  \item \texttt{mv} command does the job
+  \item Also takes \texttt{-i} option to prompt before overwriting
+  \end{itemize}
+
+  \begin{lstlisting}
+    $ cd /home/user
+    # Assume we have course directory already created
+    $ mv -i sees/ course/
+  \end{lstlisting}
+  \begin{itemize}
+  \item No prompt! Why?
+  \end{itemize}
+  \begin{lstlisting}
+    $ ls course
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item \texttt{sees} became a sub-directory of \texttt{course} 
+  \item \texttt{mv} command doesn't over-write directories
+  \item \texttt{-i} option is useful when moving files around
+  \item \texttt{mv} to rename --- move to same location with new name
+  \end{itemize}
+\end{frame}
+
+\section{Linux File Hierarchy, Permissions \& Ownership}
+\begin{frame}
+  \frametitle{Linux File Hierarchy}
+  \begin{itemize}
+  \item \texttt{/} is called the root directory
+  \item It is the topmost level of the hierarchy
+  \item For details \texttt{man hier}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Permissions and Access control}
+
+  \begin{itemize}
+  \item In a multi-user environment, access control is vital
+  \item Look at the output of \texttt{ls -l}
+  \end{itemize}
+
+  \begin{lstlisting}
+    drwxr-xr-x   5 root users  4096 Jan 21 20:07 home
+  \end{lstlisting} % $
+
+  \begin{itemize}
+  \item The first column shows the permission information
+  \item First character specifies type of the file
+  \item Files have \texttt{-}; Directories have \texttt{d}
+  \item 3 sets of 3 characters --- for user, group and others
+  \item \texttt{r}, \texttt{w}, \texttt{x} --- for read, write, execute
+  \item Either the corresponding character or \texttt{-} is present
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Changing the permissions}
+  \begin{itemize}
+  \item Permissions can be changed by owner of the file
+  \item \texttt{chmod} command is used
+  \item \texttt{-R} option to recursively change for all content of a
+    directory
+  \end{itemize}
+  \begin{itemize}
+  \item Change permissions of \texttt{foo.sh} from
+    \texttt{-rw-r-{}-r-{}-} to \texttt{-rwxr-xr-{}-}
+  \end{itemize}
+  \begin{lstlisting}
+    $ ls -l foo.sh
+    $ chmod ug+x foo.sh
+    $ ls -l foo.sh
+  \end{lstlisting} % $
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Symbolic modes}
+  \begin{small}
+    \begin{center}
+      \begin{tabular}{lll}
+        Reference  &  Class   &  Description                                                      \\
+        \hline
+        u          &  user    &  the owner of the file                                            \\
+        g          &  group   &  users who are members of the file's group                        \\
+        o          &  others  &  users who are not hte owner of the file or members of the group  \\
+        a          &  all     &  all three of the above; is the same as \emph{ugo}                \\
+      \end{tabular}
+    \end{center}
+
+    \begin{center}
+      \begin{tabular}{ll}
+        Operator  &  Description                                                                   \\
+        \hline
+        +         &  adds the specified modes to the specified classes                             \\
+        -         &  removes the specified modes from the specified classes                        \\
+        =         &  the modes specified are to be made the exact modes for the specified classes  \\
+      \end{tabular}
+    \end{center}
+
+    \begin{center}
+      \begin{tabular}{lll}
+        Mode  &  Name     &  Description                                 \\
+        \hline
+        r     &  read     &  read a file or list a directory's contents  \\
+        w     &  write    &  write to a file or directory                \\
+        x     &  execute  &  execute a file or recurse a directory tree  \\
+      \end{tabular}
+    \end{center}
+  \end{small}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Changing Ownership of Files}
+  \begin{itemize}
+  \item \texttt{chown} changes the owner and group
+  \item By default, the user who creates file is the owner
+  \item The default group is set as the group of the file
+  \end{itemize}
+  \begin{lstlisting}
+    $ chown alice:users wonderland.txt
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item Did it work? \alert{Not every user can change ownership}
+  \item Super-user or \texttt{root} user alone is empowered
+  \end{itemize}
+\end{frame}
+
+\section{Looking at files}
+\begin{frame}[fragile]
+  \frametitle{\texttt{cat}}
+  \begin{itemize}
+  \item Displays the contents of files
+  \end{itemize}
+  \begin{lstlisting}
+    $ cat foo.txt
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item Concatenates the text of multiple files
+  \end{itemize}
+  \begin{lstlisting}
+    $ cat foo.txt bar.txt
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item Not-convenient to view long files
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{less}}
+  \begin{itemize}
+  \item View contents of a file one screen at a time
+  \end{itemize}
+
+  \begin{lstlisting}
+    $ less wonderland.txt
+  \end{lstlisting} % $
+
+  \begin{itemize}
+  \item q: Quit
+  \item Arrows/Page Up/Page Down/Home/End: Navigation
+  \item ng: Jump to line number n
+  \item /pattern: Search. Regular expressions can be used
+  \item h: Help
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{wc}}
+  \begin{itemize}
+  \item Statistical information about the file
+  \item the number of lines in the file
+  \item the number of words 
+  \item the number of characters
+  \end{itemize}
+
+  \begin{lstlisting}
+    $ wc wonderland.txt
+  \end{lstlisting} % $
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{head} \& \texttt{tail}}
+  \begin{itemize}
+  \item let you see parts of files, instead of the whole file
+  \item \texttt{head} -- start of a file; \texttt{tail} -- end of a
+    file 
+  \item show 10 lines by default
+  \end{itemize}
+  \begin{lstlisting}
+    $ head wonderland.txt
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item \texttt{-n} option to change the number of lines
+  \end{itemize}
+  \begin{lstlisting}
+    $ head -n 1 wonderland.txt
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item \texttt{tail} is commonly used to monitor files
+  \item \texttt{-f} option to monitor the file
+  \item \texttt{Ctrl-C} to interrupt
+  \end{itemize}
+  \begin{lstlisting}
+    $ tail -f /var/log/dmesg
+  \end{lstlisting} % $
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{cut}}
+  \begin{itemize}
+  \item Allows you to view only certain sections of lines
+  \item Let's take \texttt{/etc/passwd} as our example 
+  \end{itemize}
+  \begin{lstlisting}
+    root:x:0:0:root:/root:/bin/bash
+  \end{lstlisting}
+  \begin{itemize}
+  \item View only user names of all the users (first column)
+  \end{itemize}
+  \begin{lstlisting}
+    $ cut -d : -f 1 /etc/passwd
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item \texttt{-d} specifies delimiter between fields (default TAB)
+  \item \texttt{-f} specifies the field number
+  \item Multiple fields bye separating field numbers with comma
+  \end{itemize}
+  \begin{lstlisting}
+    $ cut -d : -f 1,5,7 /etc/passwd
+  \end{lstlisting} % $
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{cut}}
+  \begin{itemize}
+  \item Allows choosing on the basis of characters or bytes
+  \item Example below gets first 4 characters of \texttt{/etc/passwd}
+  \end{itemize}
+  \begin{lstlisting}
+    $ cut -c 1-4 /etc/passwd
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item One of the limits of the range can be dropped
+  \item Sensible defaults are assumed in such cases
+  \end{itemize}
+  \begin{lstlisting}
+    $ cut -c -4 /etc/passwd
+    $ cut -c 10- /etc/passwd
+  \end{lstlisting} % $
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{paste}}
+  \begin{itemize}
+  \item Joins corresponding lines from two different files
+    \begin{center}
+      \begin{tabular}{l|l}
+        \verb~students.txt~  &  \verb~marks.txt~  \\
+        Hussain              &  89 92 85          \\
+        Dilbert              &  98 47 67          \\
+        Anne                 &  67 82 76          \\
+        Raul                 &  78 97 60          \\
+        Sven                 &  67 68 69          \\
+      \end{tabular}
+    \end{center}
+  \end{itemize}
+  \begin{lstlisting}
+    $ paste students.txt marks.txt 
+    $ paste -s students.txt marks.txt
+  \end{lstlisting}
+  \begin{itemize}
+  \item \texttt{-s} prints content, one below the other
+  \item If first column of marks file had roll numbers? We need to use
+    \texttt{cut} \& \texttt{paste} together. How?
+  \end{itemize}
+\end{frame}
+
+\section{The Command Shell}
+
+\begin{frame}[fragile]
+  \frametitle{Redirection and Piping}
+  \begin{lstlisting}
+    $ cut -d " " -f 2- marks.txt \
+    | paste -d " " students.txt -
+  \end{lstlisting} % $
+
+  or
+
+  \begin{lstlisting}
+    $ cut -d " " -f 2- marks.txt \
+    > /tmp/m_tmp.txt
+    $ paste -d " " students.txt m_tmp.txt
+  \end{lstlisting} % $
+
+  \begin{itemize}
+  \item The second solution uses Redirection
+  \item The first solution used Piping
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Redirection} 
+
+  \begin{itemize}
+  \item The standard output (stdout) stream goes to the display
+  \item Not always, what we need
+  \item Second solution, redirects output to a file
+  \item \texttt{>} states that output is redirected; It is
+    followed by location to redirect
+  \end{itemize}
+  \begin{lstlisting}
+    $ command > file1
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item \texttt{>} creates a new file at specified location
+  \item \texttt{>>} appends to a file at specified location
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Redirection \ldots} 
+  \begin{itemize}
+  \item Similarly, the standard input (stdin) can be redirected
+  \end{itemize}
+  \begin{lstlisting}
+    $ command < file1
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item input and the output redirection could be combined
+  \end{itemize}
+  \begin{lstlisting}
+    $ command < infile > outfile
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item Standard error (stderr) is the third standard stream
+  \item All error messages come through this stream
+  \item \texttt{stderr} can also be redirected
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Redirection \ldots} 
+  \begin{itemize}
+  \item Following example shows \texttt{stderr} redirection
+  \item Error is printed out in the first case
+  \item Error message is redirected, in the second case
+  \end{itemize}
+  \begin{lstlisting}
+    $ cut -d " " -c 2- marks.txt \
+      > /tmp/m_tmp.txt
+
+    $ cut -d " " -f 2- marks.txt 1> \
+      /tmp/m_tmp.txt 2> /tmp/m_err.txt
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item \texttt{1>} redirects \texttt{stdout}; \texttt{2>} redirects
+    \texttt{stderr} 
+  \end{itemize}
+  \begin{lstlisting}
+    $ paste -d " " students.txt m_tmp.txt
+  \end{lstlisting} % $
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Piping}
+  \begin{lstlisting}
+    $ cut -d " " -f 2- marks.txt \
+      | paste -d " " students.txt -
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item \texttt{-} instead of FILE asks \texttt{paste} to read from
+    \texttt{stdin}
+  \item \texttt{cut} command is a normal command
+  \item the \texttt{|} seems to be joining the two commands
+  \item Redirects output of first command to \texttt{stdin}, which
+    becomes input to the second command
+  \item This is called piping; \texttt{|} is called a pipe
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Piping}
+  \begin{itemize}
+  \item Roughly same as -- 2 redirects and a temp. file
+  \end{itemize}
+  \begin{lstlisting}
+    $ command1 > tempfile
+    $ command2 < tempfile
+    $ rm tempfile
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item Any number of commands can be piped together
+  \end{itemize}
+\end{frame}
+
+\subsection{Features of the Shell}
+
+\begin{frame}[fragile]
+  \frametitle{Tab-completion}
+  \begin{itemize}
+  \item Hit tab to complete an incompletely typed word
+  \item Tab twice to list all possibilities when ambiguous completion
+  \item Bash provides tab completion for the following.
+    \begin{enumerate}
+    \item File Names
+    \item Directory Names
+    \item Executable Names
+    \item User Names (when they are prefixed with a \~{})
+    \item Host Names (when they are prefixed with a @)
+    \item Variable Names (when they are prefixed with a \$)
+    \end{enumerate}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{History}
+  \begin{itemize}
+  \item Bash saves history of commands typed
+  \item Up and down arrow keys allow to navigate history
+  \item \texttt{Ctrl-r} searches for commands used
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Shell Meta Characters}
+  \begin{itemize}
+  \item ``meta characters''  are special command directives
+  \item File-names shouldn't have meta-characters
+  \item   \verb+/<>!$%^&*|{}[]"'`~;+
+  \end{itemize}
+  \begin{lstlisting}
+    $ ls file.*
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item Lists \texttt{file.ext} files, where \texttt{ext} can be
+    anything
+  \end{itemize}
+  \begin{lstlisting}
+    $ ls file.?
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item Lists \texttt{file.ext} files, where \texttt{ext} is only one
+    character 
+  \end{itemize}
+\end{frame}
+
+\section{More text processing}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{sort}}
+  \begin{itemize}
+  \item \texttt{sort} can be used to get sorted content
+  \item Command below prints student marks, sorted by name
+  \end{itemize}
+  \begin{lstlisting}
+    $ cut -d " " -f 2- marks.txt \
+      | paste -d " " students.txt - \
+      | sort
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item The default is sort based on the whole line
+  \item \texttt{sort} can sort based on a particular field
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{sort} \ldots}
+  \begin{itemize}
+  \item The command below sorts based on marks in first subject
+  \end{itemize}
+  \begin{lstlisting}
+    $ cut -d " " -f 2- marks.txt \
+      | paste -d " " students.txt -\
+      | sort -t " " -k 2 -rn
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item \texttt{-t} specifies the delimiter between fields
+  \item \texttt{-k} specifies the field to use for sorting
+  \item \texttt{-n} to choose numerical sorting
+  \item \texttt{-r} for sorting in the reverse order
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{grep}}
+  \begin{itemize}
+  \item \texttt{grep} is a command line text search utility
+  \item Command below searches \& shows the marks of Anne alone 
+  \end{itemize}
+  \begin{lstlisting}
+    $ cut -d " " -f 2- marks.txt \
+    | paste -d " " students.txt - 
+    | grep Anne
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item \texttt{grep} is case-sensitive by default
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{grep} \ldots}
+  \begin{itemize}
+  \item \texttt{-i} for case-insensitive searches
+  \end{itemize}
+  \begin{lstlisting}
+    $ cut -d " " -f 2- marks.txt \
+    | paste -d " " students.txt - 
+    | grep -i Anne
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item \texttt{-v} inverts the search
+  \item To see everyone's marks except Anne's
+  \end{itemize}
+  \begin{lstlisting}
+    $ cut -d " " -f 2- marks.txt \
+    | paste -d " " students.txt - 
+    | grep -iv Anne
+  \end{lstlisting} % $
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{tr}}
+  \begin{itemize}
+  \item \texttt{tr} translates or deletes characters
+  \item Reads from \texttt{stdin} and outputs to \texttt{stdout}
+  \item Given, two sets of characters, replaces one with other
+  \item The following, replaces all lower-case with upper-case 
+  \end{itemize}
+  \begin{lstlisting}
+    $ cat students.txt | tr a-z A-Z
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item \texttt{-s} compresses sequences of identical adjacent
+    characters in the output to a single one
+  \item Following command removes empty newlines
+  \end{itemize}
+  \begin{lstlisting}
+    $ tr -s '\n' '\n'
+  \end{lstlisting} % $
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{tr} \ldots}
+  \begin{itemize}
+  \item \texttt{-d} deletes all specified characters
+  \item Only a single character set argument is required
+  \item The following command removes carriage return characters
+    (converting file in DOS/Windows format to the Unix format)
+  \end{itemize}
+  \begin{lstlisting}
+    $ cat foo.txt | tr -d '\r' > bar.txt
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item \texttt{-c} complements the first set of characters
+  \item The following command removes all non-alphanumeric characters
+  \end{itemize}
+  \begin{lstlisting}
+    $ tr -cd '[:alnum:]'
+  \end{lstlisting} % $
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{uniq}}
+  \begin{itemize}
+  \item \texttt{uniq} command removes duplicates from \alert{sorted} input
+  \end{itemize}
+  \begin{lstlisting}
+    $ sort items.txt | uniq
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item \texttt{uniq -u} gives lines which do not have any duplicates
+  \item \texttt{uniq -d} outputs only those lines which have duplicates
+  \item \texttt{-c} displays the number of times each line occurs 
+  \end{itemize}
+  \begin{lstlisting}
+    $ sort items.txt | uniq -u 
+    $ sort items.txt | uniq -dc
+  \end{lstlisting} % $
+\end{frame}
+
+\section{Simple Shell Scripts}
+
+\begin{frame}[fragile]
+  \frametitle{Shell scripts}
+  \begin{itemize}
+  \item Simply a sequence of shell commands in a file
+  \item To save results of students in \texttt{results.txt} in
+    \texttt{marks} dir
+  \end{itemize}
+  \begin{lstlisting}
+    #!/bin/bash
+    mkdir ~/marks
+    cut -d " " -f 2- marks.txt \
+    | paste -d " " students.txt - \
+    | sort > ~/marks/results.txt
+  \end{lstlisting} % $
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Shell scripts \ldots}
+  \begin{itemize}
+  \item Save the script as \texttt{results.sh}
+  \item Make file executable and then run
+  \end{itemize}
+  \begin{lstlisting}
+    $ chmod u+x results.sh
+    $ ./results.sh
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item What does the first line in the script do?
+  \item Specify the interpreter or shell which should be used to
+    execute the script; in this case \texttt{bash}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{echo}}
+  \begin{itemize}
+  \item \texttt{echo} command prints out messages
+  \end{itemize}
+  \begin{lstlisting}
+    #!/bin/bash
+    mkdir ~/marks
+    cut -d " " -f 2- marks.txt \
+    | paste -d " " students.txt - \
+    | sort > ~/marks/results.txt
+    echo "Results generated."
+  \end{lstlisting} % $
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Command line arguments}
+  \begin{itemize}
+  \item Shell scripts can be given command line arguments
+  \item Following code allows to specify the results file
+  \end{itemize}
+  \begin{lstlisting}
+    #!/bin/bash
+    mkdir ~/marks
+    cut -d " " -f 2- marks.txt \
+    | paste -d " " students.txt - \
+    | sort > ~/marks/$1
+    echo "Results generated."
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item \texttt{\$1} corresponds to first command line argument 
+  \item \texttt{\$n} corresponds to $n{th}$ command line argument
+  \item It can be run as shown below
+  \end{itemize}
+  \begin{lstlisting}
+    $ ./results.sh grades.txt
+  \end{lstlisting} % $
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{PATH}}
+  \begin{itemize}
+  \item The shell searches in a set of locations, for the command 
+  \item Locations are saved in ``environment'' variable called PATH
+  \item \texttt{echo} can show the value of variables
+  \end{itemize}
+  \begin{lstlisting}
+    $ echo $PATH
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item Put \texttt{results.sh} in one of these locations
+  \item It can then be run without \texttt{./} 
+  \end{itemize}
+\end{frame}
+
+\section{Control structures and Operators}
+\begin{frame}[fragile]
+  \frametitle{Control Structures}
+  \begin{itemize}
+  \item \texttt{if-else}
+  \item \texttt{for} loops
+  \item \texttt{while} loops
+  \end{itemize}
+  \begin{itemize}
+  \item \texttt{test} command to test for conditions
+  \item A whole range of tests that can be performed
+    \begin{itemize}
+    \item \texttt{STRING1 = STRING2} -- string equality
+    \item \texttt{INTEGER1 -eq INTEGER2} -- integer equality
+    \item \texttt{-e FILE} -- existence of FILE 
+    \end{itemize}
+  \item \texttt{man} page of \texttt{test} gives list of various tests
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{if}}
+  \begin{itemize}
+  \item Print message if directory exists in \texttt{pwd}
+  \end{itemize}
+  \begin{lstlisting}
+    #!/bin/bash
+    if test -d $1
+    then
+    echo "Yes, the directory" \
+    $1 "is present"
+    fi
+  \end{lstlisting} % $
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{if}-\texttt{else}}
+  \begin{itemize}
+  \item Checks whether argument is negative or not
+  \end{itemize}
+  \begin{lstlisting}
+    #!/bin/bash
+    if test $1 -lt 0
+    then
+    echo "number is negative"
+    else
+    echo "number is non-negative"
+    fi
+  \end{lstlisting} % $
+  \begin{lstlisting}
+    $ ./sign.sh -11
+  \end{lstlisting} % $
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{[ ]} - alias for \texttt{test}}
+  \begin{itemize}
+  \item Square brackets (\texttt{[]}) can be used instead of
+    \texttt{test}
+  \item 
+  \end{itemize}
+  \begin{lstlisting}
+    #!/bin/bash
+    if [ $1 -lt 0 ]
+    then
+    echo "number is negative"
+    else
+    echo "number is non-negative"
+    fi
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item \alert{spacing is important, when using the square brackets}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{if}-\texttt{else}}
+  \begin{itemize}
+  \item An example script to greet the user, based on the time
+  \end{itemize}
+  \begin{lstlisting}
+    #!/bin/sh
+    # Script to greet the user 
+    # according to time of day
+    hour=`date | cut -c12-13`
+    now=`date +"%A, %d of %B, %Y (%r)"`
+    if [ $hour -lt 12 ]
+    then
+    mess="Good Morning \
+    $LOGNAME, Have a nice day!"
+    fi
+  \end{lstlisting} %$
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{if}-\texttt{else} \ldots}
+  \begin{lstlisting}
+    if [ $hour -gt 12 -a $hour -le 16 ]
+    then
+    mess="Good Afternoon $LOGNAME"
+    fi
+    if [ $hour -gt 16 -a $hour -le 18 ]
+    then
+    mess="Good Evening $LOGNAME"
+    fi
+    echo -e "$mess\nIt is $now"
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item \texttt{\$LOGNAME} has login name (env. variable) 
+  \item backquotes store commands outputs into variables
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{for}}
+  \begin{block}{Problem}
+    Given a set of \texttt{.mp3} files, that have names beginning with
+    numbers followed by their names --- \texttt{08 - Society.mp3} ---
+    rename the files to have just the names. Also replace any spaces
+    in the name with hyphens. 
+  \end{block}
+  \begin{itemize}
+  \item Loop over the list of files
+  \item Process the names, to get new names
+  \item Rename the files
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{for}} 
+  \begin{itemize}
+  \item A simple example of the \texttt{for} loop
+  \end{itemize}
+  \begin{lstlisting}
+    for animal in rat cat dog man
+    do 
+    echo $animal
+    done
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item List of animals, each animal's name separated by a space
+  \item Loop over the list; \texttt{animal} is a dummy variable
+  \item Echo value of \texttt{animal} ---  each name in list
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{for}}
+  \begin{itemize}
+  \item Let's start with echoing the names of the files
+  \end{itemize}
+  \begin{lstlisting}
+    for i in `ls *.mp3`
+    do
+    echo "$i"
+    done
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item Spaces in names cause trouble!
+  \item The following works better
+  \end{itemize}
+  \begin{lstlisting}
+    for i in *.mp3
+    do
+    echo "$i"
+    done
+  \end{lstlisting} % $
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{tr} \& \texttt{cut}}
+  \begin{itemize}
+  \item Replace all spaces with hyphens using \texttt{tr -s}
+  \item Use cut \& keep only the text after the first hyphen
+  \end{itemize}
+  \begin{lstlisting}
+  for i in *.mp3
+  do 
+  echo $f|tr -s " " "-"|cut -d - -f 2-
+  done
+  \end{lstlisting} % $
+  Now \texttt{mv}, instead of just echoing
+  \begin{lstlisting}
+    for i in *.mp3
+    do 
+    mv $i `echo $f|tr -s " " "-"\
+    |cut -d - -f 2-`
+    done
+  \end{lstlisting} % $
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{while}}
+  \begin{itemize}
+  \item Continuously execute a block of commands until condition
+    becomes false
+  \end{itemize}
+
+  \begin{itemize}
+  \item program that takes user input and prints it back, until the
+    input is \texttt{quit}
+  \end{itemize}
+
+  \begin{lstlisting}
+    while [ "$variable" != "quit" ]
+    do
+    read variable
+    echo "Input - $variable"
+    done
+    exit 0
+  \end{lstlisting} % $
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Environment Variables}
+  \begin{itemize}
+  \item Pass information from shell to programs run in it
+  \item behavior of programs can change based on values of variables
+  \item Environment variables vs. Shell variables
+  \item Shell variables -- only current instance of the shell
+  \item Environment variables -- valid for the whole session
+  \item Convention -- Environment variables are UPPER CASE
+  \end{itemize}
+  \begin{lstlisting}
+    $ echo $OSTYPE 
+    linux-gnu
+    $ echo $HOME
+    /home/user
+  \end{lstlisting} % $
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Environment Variables \ldots}
+  \begin{itemize}
+  \item The following commands show values of all the environment
+    variables
+  \end{itemize}
+  \begin{lstlisting}
+    $ printenv | less
+    $ env
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item Use \texttt{export} to change Environment variables
+  \item The new value is available to all programs started from the shell
+  \end{itemize}
+  \begin{lstlisting}
+    $ export PATH=$PATH:$HOME/bin
+  \end{lstlisting} % $
+\end{frame}
+
+\section{Miscellaneous Tools}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{find}}
+  \begin{itemize}
+  \item Find files in a directory hierarchy
+  \item Offers a very complex feature set
+  \item Look at the \texttt{man} page!
+  \end{itemize}
+  \begin{itemize}
+  \item Find all \texttt{.pdf} files, in current dir and sub-dirs
+    \begin{lstlisting}
+      $ find . -name ``*.pdf''
+    \end{lstlisting} % $
+  \item List all the directory and sub-directory names
+    \begin{lstlisting}
+      $ find . -type d
+    \end{lstlisting} % $
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{cmp}}
+  \begin{itemize}
+  \item Compare two files
+  \end{itemize}
+  \begin{lstlisting}
+    $ find . -name quick.c
+    ./Desktop/programs/quick.c
+    ./c-folder/quick.c
+    $ cmp Desktop/programs/quick.c \
+    c-folder/quick.c
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item No output when the files are exactly the same
+  \item Else, gives location where the first difference occurs 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{diff}}
+  \begin{itemize}
+  \item We know the files are different, but want exact differences
+  \end{itemize}
+  \begin{lstlisting}
+    $ diff Desktop/programs/quick.c \
+    c-folder/quick.c
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item line by line difference between files
+  \item \texttt{>} indicates content only in second file
+  \item \texttt{<} indicates content only in first file
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{\texttt{tar}}
+\begin{itemize}
+\item \emph{tarball} -- essentially a collection of files
+\item May or may not be compressed
+\item Eases the job of storing, backing-up \& transporting files
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Extracting an archive}
+
+\begin{lstlisting}
+$ mkdir extract 
+$ cp allfiles.tar extract/ 
+$ cd extract 
+$ tar -xvf allfiles.tar
+\end{lstlisting} %$
+
+\begin{itemize}
+\item \texttt{-x} --- Extract files within the archive
+\item \texttt{-f} --- Specify the archive file
+\item \texttt{-v} --- Be verbose
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Creating an archive}
+\begin{lstlisting}
+$ tar -cvf newarchive.tar *.txt
+\end{lstlisting} % $
+\begin{itemize}
+\item \texttt{-c} --- Create archive
+\item Last argument is list of files to be added to archive
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Compressed archives}
+  \begin{itemize}
+  \item \texttt{tar} can create and extract compressed archives
+  \item Supports compressions like gzip, bzip2, lzma, etc.
+  \item Additional option to handle compressed archives
+    \begin{center}
+      \begin{tabular}{ll}
+        Compression      &  Option   \\
+        gzip   &  \texttt{-z}        \\
+        bzip2  &  \texttt{-j}        \\
+        lzma   &  \texttt{-{}-lzma}  \\
+      \end{tabular}
+    \end{center}
+  \end{itemize}
+  \begin{lstlisting}
+    $ tar -cvzf newarchive.tar.gz *.txt
+  \end{lstlisting} % $
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Customizing your shell}
+\begin{itemize}
+\item Bash reads \texttt{/etc/profile},
+  \texttt{\textasciitilde{}/.bash\_profile},
+  \texttt{\textasciitilde{}/.bash\_login}, and
+  \texttt{\textasciitilde{}/.profile} in that order, when starting
+  up as a login shell. 
+\item \texttt{\textasciitilde{}/.bashrc} is read, when not a login
+  shell 
+\item Put any commands that you want to run when bash starts, in this
+  file. 
+\end{itemize}
+\end{frame}
+
+%% THE DOCUMENT ENDS HERE
+\end{document}
+%%%%%%%%%%%%%%%%%%%%
+
+\section{Basic editing and editors}
+\begin{frame}[fragile]
+\frametitle{vim}
+
+
+Vim is a very powerful editor. It has a lot of commands, and all of them
+cannot be explained here. We shall try and look at a few, so that you
+can find your way around in vim.
+
+To open a file in vim, we pass the filename as a parameter to the \texttt{vim}
+command. If a file with that filename does not exist, a new file is
+created.
+
+\begin{lstlisting}
+$ vim first.txt
+\end{lstlisting} % $
+
+To start inserting text into the new file that we have opened, we need
+to press the \texttt{i} key. This will take us into the \emph{insert} mode from the
+\emph{command} mode. Hitting the \texttt{esc} key, will bring us back to the
+\emph{command} mode. There is also another mode of vim, called the \emph{visual}
+mode which will be discussed later in the course.
+
+In general, it is good to spend as little time as possible in the insert
+mode and extensively use the command mode to achieve various tasks.
+
+To save the file, use \texttt{:w} in the command mode. From here on, it is
+understood that we are in the command mode, whenever we are issuing any
+command to vim.
+
+To save a file and continue editing, use \texttt{:w FILENAME} The file name is
+optional. If you do not specify a filename, it is saved in the same file
+that you opened. If a file name different from the one you opened is
+specified, the text is saved with the new name, but you continue editing
+the file that you opened. The next time you save it without specifying a
+name, it gets saved with the name of the file that you initially opened.
+
+To save file with a new name and continue editing the new file, use
+\texttt{:saveas FILENAME}
+
+To save and quit, use \texttt{:wq}
+
+To quit, use \texttt{:q}
+
+To quit without saving, use \texttt{:q!}
+\begin{itemize}
+
+\item Moving around\\
+While you are typing in a file, it is in-convenient to keep moving your
+fingers from the standard position for typing to the arrow keys. Vim,
+therefore, provides alternate keys for moving in the document. Note
+again that, you should be in the command mode, when issuing any commands
+to vim.
+
+The basic cursor movement can be achieved using the keys, \texttt{h} (left),
+\texttt{l} (right), \texttt{k} (up) and \texttt{j} (down).
+
+\begin{lstlisting}
+^
+k
+\end{lstlisting} % $
+
+\begin{quote}
+
+\begin{description}
+\item[< h l >] j v
+\end{description}
+
+\end{quote}
+
+Note: Most commands can be prefixed with a number, to repeat the
+command. For instance, \texttt{10j} will move the cursor down 10 lines.
+
+
+\item Moving within a line\\
+\begin{center}
+\begin{tabular}{ll}
+ Cursor Movement                    &  Command                      \\
+\hline
+ Beginning of line                  &  \texttt{0}                   \\
+ First non-space character of line  &  \texttt{\textasciicircum{}}  \\
+ End of line                        &  \texttt{\$}                  \\
+ Last non-space character of line   &  \texttt{g\_}                 \\
+\end{tabular}
+\end{center}
+
+
+
+
+\item Moving by words and sentences\\
+\begin{center}
+\begin{tabular}{ll}
+ Cursor Movement                &  Command      \\
+\hline
+ Forward, word beginning        &  \texttt{w}   \\
+ Backward, word beginning       &  \texttt{b}   \\
+ Forward, word end              &  \texttt{e}   \\
+ Backward, word end             &  \texttt{ge}  \\
+ Forward, sentence beginning    &  \texttt{)}   \\
+ Backward, sentence beginning   &  \texttt{(}   \\
+ Forward, paragraph beginning   &  \texttt{\}}  \\
+ Backward, paragraph beginning  &  \texttt{\{}  \\
+\end{tabular}
+\end{center}
+
+
+
+
+\item More movement commands\\
+\begin{center}
+\begin{tabular}{ll}
+ Cursor Movement                                   &  Command          \\
+\hline
+ Forward by a screenful of text                    &  \texttt{C-f}     \\
+ Backward by a screenful of text                   &  \texttt{C-b}     \\
+ Beginning of the screen                           &  \texttt{H}       \\
+ Middle of the screen                              &  \texttt{M}       \\
+ End of the screen                                 &  \texttt{L}       \\
+ End of file                                       &  \texttt{G}       \\
+ Line number \texttt{num}                          &  \texttt{[num]G}  \\
+ Beginning of file                                 &  \texttt{gg}      \\
+ Next occurrence of the text under the cursor      &  \texttt{*}       \\
+ Previous occurrence of the text under the cursor  &  \texttt{\#}      \\
+\end{tabular}
+\end{center}
+
+
+
+Note: \texttt{C-x} is \texttt{Ctrl} + \texttt{x}
+
+
+\item The visual mode\\
+The visual mode is a special mode that is not present in the original vi
+editor. It allows us to highlight text and perform actions on it. All
+the movement commands that have been discussed till now work in the
+visual mode also. The editing commands that will be discussed in the
+future work on the visual blocks selected, too.
+
+
+\item Editing commands\\
+The editing commands usually take the movements as arguments. A movement
+is equivalent to a selection in the visual mode. The cursor is assumed
+to have moved over the text in between the initial and the final points
+of the movement. The motion or the visual block that's been highlighted
+can be passed as arguments to the editing commands.
+
+
+\begin{center}
+\begin{tabular}{ll}
+ Editing effect           &  Command     \\
+\hline
+ Cutting text             &  \texttt{d}  \\
+ Copying/Yanking text     &  \texttt{y}  \\
+ Pasting copied/cut text  &  \texttt{p}  \\
+\end{tabular}
+\end{center}
+
+
+
+The cut and copy commands take the motions or visual blocks as arguments
+and act on them. For instance, if you wish to delete the text from the
+current text position to the beginning of the next word, type \texttt{dw}. If
+you wish to copy the text from the current position to the end of this
+sentence, type \texttt{y)}.
+
+Apart from the above commands, that take any motion or visual block as
+an argument, there are additional special commands.
+
+
+\begin{center}
+\begin{tabular}{ll}
+ Editing effect                                          &  Command      \\
+\hline
+ Cut the character under the cursor                      &  \texttt{x}   \\
+ Replace the character under the cursor with \texttt{a}  &  \texttt{ra}  \\
+ Cut an entire line                                      &  \texttt{dd}  \\
+ Copy/yank an entire line                                &  \texttt{yy}  \\
+\end{tabular}
+\end{center}
+
+
+
+Note: You can prefix numbers to any of the commands, to repeat them.
+
+
+\item Undo and Redo\\
+You can undo almost anything using \texttt{u}.
+
+To undo the undo command type \texttt{C-r}
+
+
+\item Searching and Replacing\\
+\begin{center}
+\begin{tabular}{ll}
+ Finding                                        &  Command                        \\
+\hline
+ Next occurrence of \texttt{text}, forward      &  \texttt{\textbackslash{}text}  \\
+ Next occurrence of \texttt{text}, backward     &  \texttt{?text}                 \\
+ Search again in the same direction             &  \texttt{n}                     \\
+ Search again in the opposite direction         &  \texttt{N}                     \\
+ Next occurrence of \texttt{x} in the line      &  \texttt{fx}                    \\
+ Previous occurrence of \texttt{x} in the line  &  \texttt{Fx}                    \\
+\end{tabular}
+\end{center}
+
+
+
+
+\begin{center}
+\begin{tabular}{ll}
+ Finding and Replacing                                                                                             &  Command                   \\
+\hline
+ Replace the first instance of \texttt{old} with \texttt{new} in the current line.                                 &  \texttt{:s/old/new}       \\
+ Replace all instances of \texttt{old} with \texttt{new} in the current line.                                      &  \texttt{:s/old/new/g}     \\
+ Replace all instances of \texttt{old} with \texttt{new} in the current line, but ask for confirmation each time.  &  \texttt{:s/old/new/gc}    \\
+ Replace the first instance of \texttt{old} with \texttt{new} in the entire file.                                  &  \texttt{:\%s/old/new}     \\
+ Replace all instances of \texttt{old} with \texttt{new} in the entire file.                                       &  \texttt{:\%s/old/new/g}   \\
+ Replace all instances of \texttt{old} with \texttt{new} in the entire file but ask for confirmation each time.    &  \texttt{:\%s/old/new/gc}  \\
+\end{tabular}
+\end{center}
+
+
+
+\end{itemize} % ends low level
+\end{frame}
+\begin{frame}
+\frametitle{SciTE}
+
+
+SciTE is a \emph{source code} editor, that has a feel similar to the commonly
+used GUI text editors. It has a wide range of features that are
+extremely useful for a programmer, editing code. Also it aims to keep
+configuration simple, and the user needs to edit a text file to
+configure SciTE to his/her liking.
+
+Opening, Saving, Editing files with SciTE is extremely simple and
+trivial. Knowledge of using a text editor will suffice.
+
+SciTE can syntax highlight code in various languages. It also has
+auto-indentation, code-folding and other such features which are useful
+when editing code.
+
+SciTE also gives you the option to (compile and) run your code, from
+within the editor.
+\end{frame}
+
+
+
