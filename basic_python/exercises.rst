@@ -8,6 +8,11 @@ Exercises
 
 #. Print out the fibonacci sequence less than 30
 
+#. Write a program that prints the numbers from 1 to 100. But for multiples
+   of three print "Fizz" instead of the number and for the multiples of five
+   print "Buzz". For numbers which are multiples of both three and five print
+   "FizzBuzz". This is famously known as the FizzBuzz test. 
+
 #. Write a program that displays all three digit numbers that are equal to
    the sum of the cubes of their digits. That is, print numbers :math:`$abc$`
    that have the property :math:`$abc = a^3 + b^3 + c^3$` These are called
@@ -24,8 +29,7 @@ Exercises
    Write a program that accepts the starting value and prints out the Collatz
    sequence.
 
-
-#. Kaprekar’s constant                                             
+#. Kaprekar's constant                                             
                                                                    
    #. Take a four digit number–with at least two digits different. 
    #. Arrange the digits in ascending and descending order, giving A and D
@@ -65,7 +69,6 @@ Exercises
    should include 6400 but not 8100 (one digit is odd) or 4248 (not a perfect
    square).
 
-
 #. The aliquot of a number is defined as: the sum of the *proper* of the
    number. 
 
@@ -83,6 +86,72 @@ Exercises
 #. Given an empty chessboard and one Bishop placed in any square, say (r, c),
    generate the list of all squares the Bishop could move to.
 
+
+#. Write a program to display the following pyramid. The number of lines
+   in the pyramid should not be hard-coded. It should be obtained from
+   the user. The pyramid should appear as close to the centre of the
+   screen as possible.
+
+   ::
+
+                            *
+                           ***
+                          *****
+                         *******
+               
+
+#. Write a program to display the following pyramid. The number of lines
+   in the pyramid should not be hard-coded. It should be obtained from
+   the user. The pyramid should appear as close to the centre of the
+   screen as possible.
+
+   ::
+
+                            *
+                           * *
+                          * * *
+                         * * * *
+               
+
+#. Write a program to display the following pyramid. The number of lines
+   has to be a parameter obtained from the user. The pyramid must appear
+   aligned to the left edge of the screen.
+
+   ::
+
+               1
+               2 2
+               3 3 3
+               4 4 4 4
+               
+
+#. Write a program to display the following pyramid. The number of lines
+   has to be a parameter obtained from the user. The pyramid must appear
+   aligned to the left edge of the screen.
+
+   ::
+
+                 1
+                 2   4
+                 3   6   9
+                 4   8  12  16
+                 5  10  15  20  25
+               
+
+#. Write a program to display the following output. The last number
+   where the program will stop printing has to be a parameter obtained
+   from the user. The pyramid must appear aligned to the left edge of
+   the screen. Note that depending on the last number, the base of the
+   pyramid may be smaller than the line above it.
+
+   ::
+
+                 1
+                 2   3
+                 4   5   6
+                 7   8   9  10
+                11  12  
+               
 #. Given a string like, "1, 3-7, 12, 15, 18-21", produce the list
    ``[1,3,4,5,6,7,12,15,18,19,20,21]``
 
@@ -98,6 +167,7 @@ Exercises
 
 #. Given a string of the form "4-7, 9, 12, 15" find the numbers missing in
    this list for a given range.
+
 
 
 .. 
