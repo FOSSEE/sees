@@ -1,0 +1,206 @@
+\section{Functional programming}
+
+\begin{frame}[fragile]
+  \frametitle{List Comprehensions}
+  \begin{itemize}
+  \item A different style of Programming
+  \item Functions `emulate' mathematical functions
+  \item Output depends only on input arguments
+  \item There is no `state' associated with the program
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{List Comprehensions}
+  \begin{block}{}
+    Given a list of weights of people, and we need to
+    calculate the corresponding weights on the moon. Return a new
+    list, with each of the values divided by 6.0. 
+  \end{block}
+
+  \begin{itemize}
+  \item Solution using \texttt{for} loop is shown
+  \end{itemize}
+  \begin{lstlisting}
+    weights = [30, 45.5, 78, 81, 55.5, 62.5]
+    weights_moon = []
+    for w in weights:
+        weights_moon.append(w/6.0)
+    print weights_moon
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{List Comprehensions \ldots}
+  \begin{itemize}
+  \item List comprehensions are compact and readable
+  \end{itemize}
+  \begin{lstlisting}
+    [ w/6.0 for w in weights ]
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{List Comprehensions \ldots}
+  \begin{itemize}
+  \item Return the weight on moon, only if weight on earth > 50
+  \end{itemize}
+  \begin{lstlisting}
+    weights = [30, 45.5, 78, 81, 55.5, 62.5]
+    weights_moon = []
+    for w in weights:
+        if w > 50:
+            weights_moon.append(w/6.0)
+
+    print weights_moon
+  \end{lstlisting}
+  \begin{itemize}
+  \item List comprehension that checks for a condition
+  \end{itemize}
+  \begin{lstlisting}
+    [ w/6.0 for w in weights if w>50 ]
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{List Comprehensions \ldots}
+  \begin{itemize}
+  \item if weight > 50, return weight/6.0
+  \item else, return weight*3.0
+  \end{itemize}
+  \begin{lstlisting}
+    weights = [30, 45.5, 78, 81, 55.5, 62.5]
+    weights_migrate = []
+    for w in weights:
+        if w > 50:
+            weights_migrate.append(w/6.0)
+        else:
+            weights_migrate.append(w * 3.0)
+
+    print weights_migrate
+  \end{lstlisting}
+  \begin{itemize}
+  \item This problem \alert{CANNOT} be solved using list
+    comprehensions
+  \item Try \texttt{map}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{map}}
+  \begin{itemize}
+  \item Takes a function and a sequence as arguments
+  \item Calls function with each element of sequence as argument
+  \item Returns a sequence with all the results as elements
+  \item We solve the easier problem first, using \texttt{map}
+  \end{itemize}
+
+  \begin{lstlisting}
+    def moonize(weight):
+        return weight/6.0
+
+    map(moonize, weights)
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{map} \ldots}
+  \begin{itemize}
+  \item Takes a function and a sequence as arguments
+  \item Calls function with each element of sequence as argument
+  \item Returns a sequence with all the results as elements
+  \item We solve the easier problem first, using \texttt{map}
+  \end{itemize}
+
+  \begin{lstlisting}
+    def moonize(weight):
+        return weight/6.0
+
+    map(moonize, weights)
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{map} \ldots}
+  \begin{lstlisting}
+    def migrate(weight):
+        if weight < 50:
+            return weight*3.0
+        else:
+            return weight/6.0
+  \end{lstlisting}
+
+  \begin{itemize}
+  \item \texttt{migrate} compares weight with 50 and returns the
+    required value.
+  \item We can now use \texttt{map}
+  \end{itemize}
+  \begin{lstlisting}
+    map(migrate, weights)
+  \end{lstlisting}
+  \begin{itemize}
+  \item Now, we wish to get away with the function definition
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{lambda}}
+  \begin{itemize}
+  \item Allows function definition, anonymously
+  \end{itemize}
+  \begin{lstlisting}
+    map(lambda x: x/6.0, weights)
+  \end{lstlisting}
+  \begin{itemize}
+  \item \texttt{lambda} actually returns a function which we could in
+    fact assign to a name and use later.
+  \end{itemize}
+  \begin{lstlisting}
+    l_moonize = lambda x: x/6.0
+    map(l_moonize, weights)
+  \end{lstlisting}
+  \begin{lstlisting}
+    l_migrate = lambda x: x*3.0 if x < 50 else x/6.0
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{filter}}
+
+  \begin{itemize}
+  \item We avoided discussion of problem of returning new weights only
+    when actual weight is more than 50. 
+  \item \texttt{filter} can be used to filter out ``bad'' weights
+  \item Later, we could use \texttt{map}
+  \end{itemize}
+  \begin{lstlisting}
+    filter(lambda x: x > 50, weights)
+  \end{lstlisting}
+  \begin{itemize}
+  \item Takes a function and a sequence
+  \item Returns a sequence, containing only those elements of the
+    original sequence, for which the function returned \texttt{True}
+  \end{itemize}
+  \begin{lstlisting}
+    map(lambda x: x/6.0, filter(lambda x: x > 50, weights))
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{reduce}}
+  \begin{itemize}
+  \item ``reduces'' a sequence
+  \end{itemize}
+  \begin{lstlisting}
+    reduce(lambda x,y: x*y, [1, 2, 3, 4])
+  \end{lstlisting}
+  \begin{itemize}
+  \item Takes function and sequence as arguments; the function should
+    take two arguments
+  \item Passes first two elements of sequence, and continues to move
+    over the sequence, passing the output in the previous step and the
+    current element as the arguments
+  \item The function above essentially calculates $((1*2)*3)*4$ 
+  \end{itemize}
+\end{frame}
+

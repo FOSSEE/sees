@@ -39,6 +39,13 @@ Exercises
 #. Create a sequence of images in which the damped oscillator
    (:math:`$e^{-x/10}sin(x)$`) slowly evolves over time.
 
+#. Given a list of numbers, find all the indices at which 1 is present.
+   numbers = [1, 1, 3, 4, 3, 6, 7, 8, 1, 2, 4, 1]
+
+#. Given a list of numbers, find all the indices at which 1 is present.
+   numbers = [1, 1, 3, 4, 3, 6, 7, 8, 1, 2, 4, 1]. Solve the problem using a
+   functional approach.
+
 .. 
    Local Variables:
    mode: rst
