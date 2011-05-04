@@ -296,7 +296,7 @@ as the array sizes are small.
 
 But this may turn out to be slower, when the number of objects gets larger.
 This discussion is not in the scope of this course. Look at
-`EricsBroadcastingDoc<http://www.scipy.org/EricsBroadcastingDoc>`_ for more
+`EricsBroadcastingDoc <http://www.scipy.org/EricsBroadcastingDoc>`_ for more
 detail.
 
 
