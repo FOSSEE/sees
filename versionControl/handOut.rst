@@ -4,6 +4,15 @@
 Version Control
 ===============
 
+At the end of this session, you will be able to:
+
+  -  Understand what Version Control is, and the need for it
+  -  Create and use repository on a daily basis
+  -  Clone existing repositories, from the web
+  -  View the history of a repository
+  -  Make changes to a repository and commit them
+  -  Work collaboratively with a team
+
 Introduction
 ============
 
@@ -103,8 +112,24 @@ Just say ``hg`` in your shell, to see some of the commands that ``hg``
 provides and say ``hg version`` to see the version of ``hg`` that has
 been installed on your system. 
 
+In this section, we have seen 
+
+  - the motivation to use version control
+  - an analogy of version control with playing a video game
+  - how to check if mercurial is installed, and it's version using ``hg
+    version`` 
+
 Let there be a Repository
 =========================
+
+At the end of this section, you will be able to - 
+
+  - initialize a new repository,
+  - obtain the status of a repository,
+  - add new files to a repository,
+  - take snapshots of a repository,
+  - view the history of a repository, 
+  - and set your user information for ``hg`` 
 
 To start using Mercurial (or ``hg``) and get the benefits of using a version
 control system, we should first have a **repository**. A repository is a
@@ -337,8 +362,26 @@ shows only the first line in the description that we have added. Also, notice
 that ``hg`` shows the commits in the reverse chronological order, which is
 useful.
 
+In this section, we have learn to - 
+
+  - initialize a new repository using ``hg init``, 
+  - get the status of a repository using ``hg status``,
+  - make sense out of the various status codes in the output of ``hg
+    status``,
+  - use the ``hg help`` to get help about any ``hg`` command, 
+  - make commits of changes to files, using ``hg commit`` 
+  - view the history of the repository using the ``hg log`` command,
+  - and, set our user information in the global ``hgrc`` file. 
+
 But why commit?
 ===============
+
+At the end of this section, you will be able to - 
+
+  - undo changes to your repository,
+  - view the differences between any two states of a repository,
+  - understand how revisions are numbered and use it as arguments to
+    commands, 
 
 You must already be wondering, why we need all the overhead of
 ``commit`` and ``log``, etc. What is all this fuss about? "Isn't it
@@ -540,8 +583,20 @@ to the ``chapter2.txt`` file in the last two commits.
 Notice that it shows only the logs of revision 1, since no changes
 were made to the specified file in the second commit. 
 
+In this section, we have learnt to -
+
+  - undo changes to the repository using ``hg revert``,
+  - view changes done to the repository using ``hg diff`` 
+  - use revision numbers as arguments to different ``hg`` commands
+
 Collaborating with Mercurial
 ============================
+
+At the end of this section, you will be able to - 
+
+  - clone existing repositories,
+  - share your repositories with peers, 
+  - use version control for collaborating with your peers,
 
 When motivating the use of version control systems, we spoke a lot about
 collaboration and sharing our changes with our peers. Let us now see how we
@@ -1046,11 +1101,23 @@ is nothing close to all the features of Mercurial. We've only scratched the
 surface, but let's hope that this will get you started and you will be able
 to organize your work and projects, better. 
 
+In this section, we have learnt how to - 
+
+  - clone repositories, using ``hg clone``, 
+  - serve our repositories via ``http`` using ``hg serve``,
+  - push changes to a repository using ``hg push``,
+  - check the changesets in a repository after last pull, using ``hg
+    incoming``, 
+  - pull changes from a repository using ``hg pull`` ,
+  - update the working directory, using ``hg update``,
+  - merge two heads, using ``hg merge``, 
+  - and resolve conflicts using ``hg resolve``. 
+
 Additional Reading
 ==================
 
-I strongly suggest you to go through the following topics, if and when you
-start using Mercurial on a day-to-day basis. 
+It is strongly recommended that you to go through the following topics, once
+you are comfortable with using Mercurial on a day-to-day basis.
 
 1. ``.hgignore`` 
 #. ``hg rollback`` 
