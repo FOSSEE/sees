@@ -1,3 +1,7 @@
+=================
+ Advanced Python
+=================
+
 .. include :: plotting.rst
 .. include :: arrays.rst
 .. include :: scipy.rst

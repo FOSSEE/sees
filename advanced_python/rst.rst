@@ -1,4 +1,3 @@
-====
 ReST
 ====
 
@@ -10,23 +9,23 @@ The Pythonic way to Document
 .. date: 2010-07-22 Thu
 
 
-What is ReST? 
-==============
+What is ReST?
+-------------
 
   + Sage Docs - Linear Algebra | Sources
   + ReST is a lightweight markup language. 
   + Developed by the Python community 
   + Heavily used in documentation of Python code 
 
-Why ReST? 
-==========
+Why ReST?
+---------
 
   + Highly readable source format. 
   + Easy to learn and write. 
   + Simple yet Powerful markup that can produce html/LaTeX output. 
 
-Tools used 
-===========
+Tools used
+----------
 
   + You will need python-docutils to compile your ReST documents::
 
@@ -37,8 +36,8 @@ Tools used
 
       sudo apt-get install python-sphinx
 
-Generating output 
-==================
+Generating output
+-----------------
 
   + html::
 
@@ -52,8 +51,8 @@ Generating output
 
       rst2s5 source.rst destination.html
 
-Paragraph 
-==========
+Paragraph
+---------
 
   + The most basic structural element 
   + Just a chunk of text separated by blank lines. 
@@ -65,8 +64,8 @@ Paragraph
       e.g., the characteristic polynomial, echelon form, trace, 
       decomposition, etc., of a matrix.
 
-Section Headings 
-=================
+Section Headings
+----------------
 
   + Single line of text with adornment 
   + Adornment is underline alone or an over- and underline 
@@ -85,8 +84,8 @@ Section Headings
       ---------------------
 
 
-Text Styles 
-============
+Text Styles
+-----------
 
      =======================    ====================
       Markup text                Resulting text    
@@ -98,8 +97,8 @@ Text Styles
 
 
 
-Code Samples 
-=============
+Code Samples
+------------
 
   + To include code, end the prior paragraph with =::= 
   + Code needs to be indented one level 
@@ -113,8 +112,8 @@ Code Samples
         plot(y)            # plot y using x as index array 0..N-1
         plot(y, 'r+')      # ditto, but with red plusses
 
-Math 
-=====
+Math
+----
 
   + ReST in itself doesn't support math 
   + Sphinx has support for math using ~jsmath~ or ~pngmath~ 
@@ -126,8 +125,8 @@ Math
   
        \sum_{n=0}^N x_n = y
 
-Lists 
-======
+Lists
+-----
 
   + Three flavors - Enumerated, Bulleted, Definition 
   + Always start as a new paragraph --- preceeded by a new line 
@@ -145,8 +144,8 @@ Lists
       (I) more roman numerals
 
 
-Lists ... 
-==========
+Lists ...
+---------
 
   + Bulleted lists
 
@@ -162,8 +161,8 @@ Lists ...
   
       - another item
 
-Lists ... 
-==========
+Lists ...
+---------
 
   + Definition Lists 
 
@@ -175,8 +174,8 @@ Lists ...
   what
     Definition lists associate a term with a definition.
 
-Tables 
-=======
+Tables
+------
 
   + Simple Tables 
 
@@ -197,11 +196,11 @@ Tables
   ============ ============ ===========
   
 
-Tables... 
-==========
+Tables...
+---------
 
-Grid Tables 
-------------
+Grid Tables
+~~~~~~~~~~~
 
 ::
 
@@ -217,8 +216,8 @@ Grid Tables
     body row 4                - blocks.  
   +------------+------------+-----------+
 
-Links 
-======
+Links
+-----
 
   + External links 
   
@@ -247,8 +246,9 @@ Links
          This is an :ref: `example` link.
             
 
-Footnotes 
-==========
+Footnotes
+---------
+
 ::
 
   This[#]_ gives auto-numbered[#]_ footnotes. 
@@ -262,8 +262,8 @@ Footnotes
 
 
 
-References 
-===========
+References
+----------
 
     + An Introduction to reStructured Text -- David Goodger
     + Quick reStructuredText
