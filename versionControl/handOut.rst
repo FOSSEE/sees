@@ -6,12 +6,12 @@ Version Control
 
 At the end of this session, you will be able to:
 
-  -  Understand what Version Control is, and the need for it
-  -  Create and use repository on a daily basis
-  -  Clone existing repositories, from the web
-  -  View the history of a repository
-  -  Make changes to a repository and commit them
-  -  Work collaboratively with a team
+-  Understand what Version Control is, and the need for it
+-  Create and use repository on a daily basis
+-  Clone existing repositories, from the web
+-  View the history of a repository
+-  Make changes to a repository and commit them
+-  Work collaboratively with a team
 
 Introduction
 ============
@@ -1103,15 +1103,15 @@ to organize your work and projects, better.
 
 In this section, we have learnt how to - 
 
-  - clone repositories, using ``hg clone``, 
-  - serve our repositories via ``http`` using ``hg serve``,
-  - push changes to a repository using ``hg push``,
-  - check the changesets in a repository after last pull, using ``hg
-    incoming``, 
-  - pull changes from a repository using ``hg pull`` ,
-  - update the working directory, using ``hg update``,
-  - merge two heads, using ``hg merge``, 
-  - and resolve conflicts using ``hg resolve``. 
+- clone repositories, using ``hg clone``, 
+- serve our repositories via ``http`` using ``hg serve``,
+- push changes to a repository using ``hg push``,
+- check the changesets in a repository after last pull, using ``hg
+  incoming``,
+- pull changes from a repository using ``hg pull`` ,
+- update the working directory, using ``hg update``,
+- merge two heads, using ``hg merge``, 
+- and resolve conflicts using ``hg resolve``. 
 
 Additional Reading
 ==================
