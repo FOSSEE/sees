@@ -1,0 +1,226 @@
+\section{Object Oriented Programming}
+
+\begin{frame}[fragile]
+  \frametitle{Objectives}
+  At the end of this section, you will be able to -
+  \begin{itemize}
+  \item Understand the differences between Object Oriented Programming
+    and Procedural Programming
+  \item Appreciate the need for Object Oriented Programming
+  \item Read and understand Object Oriented Programs
+  \item Write simple Object Oriented Programs
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Example: Managing Talks}
+  \begin{itemize}
+  \item A list of talks at a conference
+  \item We want to manage the details of the talks
+  \end{itemize}
+  \begin{lstlisting}
+    talk = {'Speaker': 'Guido van Rossum', 
+            'Title': 'The History of Python'
+            'Tags': 'python,history,C,advanced'} 
+
+    def get_first_name(talk):
+        return talk['Speaker'].split()[0]
+
+    def get_tags(talk):
+        return talk['Tags'].split(',')
+  \end{lstlisting}
+  \begin{itemize}
+  \item Not convenient to handle large number of talks
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Objects and Methods}
+  \begin{itemize}
+  \item Objects group data with the procedures/functions
+  \item A single entity called \texttt{object}
+  \item Everything in Python is an object
+  \item Strings, Lists, Functions and even Modules
+  \end{itemize}
+  \begin{lstlisting}
+    s = "Hello World"
+    s.lower()
+
+    l = [1, 2, 3, 4, 5]
+    l.append(6)
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Objects \ldots}
+  \begin{itemize}
+  \item Objects provide a consistent interface
+  \end{itemize}
+  \begin{lstlisting}
+    for element in (1, 2, 3):
+        print element
+    for key in {'one':1, 'two':2}:
+        print key
+    for char in "123":
+        print char
+    for line in open("myfile.txt"):
+        print line
+    for line in urllib2.urlopen('http://site.com'):
+        print line
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Classes}
+  \begin{itemize}
+  \item A new string, comes along with methods
+  \item A template or a blue-print, where these definitions lie
+  \item This blue print for building objects is called a
+    \texttt{class}
+  \item \texttt{s} is an object of the \texttt{str} class
+  \item An object is an ``instance'' of a class
+  \end{itemize}
+  \begin{lstlisting}
+    s = "Hello World"
+    type(s)
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Defining Classes}
+  \begin{itemize}
+  \item A class equivalent of the talk dictionary
+  \item Combines data and methods into a single entity
+  \end{itemize}
+  \begin{lstlisting}
+    class Talk:
+        """A class for the Talks."""
+
+        def __init__(self, speaker, title, tags):
+            self.speaker = speaker
+            self.title = title
+            self.tags = tags
+
+        def get_speaker_firstname(self):
+            return self.speaker.split()[0]
+
+        def get_tags(self):
+            return self.tags.split(',')
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{class} block}
+  \begin{itemize}
+  \item Defined just like a function block
+  \item \texttt{class} is a keyword
+  \item \texttt{Talk} is the function name
+  \item Classes also come with doc-strings
+  \item All the statements of within the class are inside the block
+  \end{itemize}
+  \begin{lstlisting}
+    class Talk:
+        """A class for the Talks."""
+
+        def __init__(self, speaker, title, tags):
+            self.speaker = speaker
+            self.title = title
+            self.tags = tags
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{self}}
+  \begin{itemize}
+  \item Every method has an additional first argument, \texttt{self}
+  \item \texttt{self} is a reference to the object itself, of which
+    the method is a part of
+  \item Variables of the class are referred to as \texttt{self.variablename}
+  \end{itemize}
+  \begin{lstlisting}
+        def get_speaker_firstname(self):
+            return self.speaker.split()[0]
+
+        def get_tags(self):
+            return self.tags.split(',')
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Instantiating a Class}
+  \begin{itemize}
+  \item Creating objects or instances of a class is simple
+  \item We call the class name, with arguments as required by it's
+    \texttt{\_\_init\_\_} function. 
+  \end{itemize}
+  \begin{lstlisting}
+    bdfl = Talk('Guido van Rossum', 
+                'The History of Python', 
+                'python,history,C,advanced')
+  \end{lstlisting}
+  \begin{itemize}
+  \item We can now call the methods of the Class
+  \end{itemize}
+  \begin{lstlisting}
+    bdfl.get_tags()
+    bdfl.get_speaker_firstname()
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{\_\_init\_\_} method}
+  \begin{itemize}
+  \item A special method 
+  \item Called every time an instance of the class is created
+  \end{itemize}
+  \begin{lstlisting}
+    print bdfl.speaker
+    print bdfl.tags
+    print bdfl.title
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile, allowframebreaks]
+  \frametitle{Inheritance}
+  \begin{itemize}
+  \item Suppose, we wish to write a \texttt{Tutorial} class
+  \item It's almost same as \texttt{Talk} except for minor differences
+  \item We can ``inherit'' from \texttt{Talk}
+  \end{itemize}
+  \begin{lstlisting}
+    class Tutorial(Talk):
+        """A class for the tutorials."""
+
+        def __init__(self, speaker, title, tags, handson=True):
+            Talk.__init__(self, speaker, title, tags)
+            self.handson = handson
+
+        def is_handson(self):
+            return self.handson
+  \end{lstlisting}
+  \begin{itemize}
+  \item Modified \texttt{\_\_init\_\_} method
+  \item New \texttt{is\_handson} method
+  \item It also has, \texttt{get\_tags} and
+    \texttt{get\_speaker\_firstname} 
+  \end{itemize}
+  \begin{lstlisting}
+    numpy = Tutorial('Travis Oliphant', 
+                     'Numpy Basics', 
+                     'numpy,python,beginner')
+    numpy.is_handson()
+    numpy.get_speaker_firstname()
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Summary}
+  In this section we have learnt,
+  \begin{itemize}
+  \item the fundamental difference in paradigm, between Object Oriented
+    Programming and Procedural Programming
+  \item to write our own classes
+  \item to write new classes that inherit from existing classes
+  \end{itemize}
+\end{frame}
+
