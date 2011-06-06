@@ -1,0 +1,514 @@
+\documentclass[12pt,presentation]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{soul}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\usepackage[english]{babel} \usepackage{ae,aecompl}
+\usepackage{mathpazo,courier,euler} \usepackage[scaled=.95]{helvet}
+\usepackage{listings}
+\lstset{language=Python, basicstyle=\ttfamily\bfseries,
+commentstyle=\color{red}\itshape, stringstyle=\color{green},
+showstringspaces=false, keywordstyle=\color{blue}\bfseries}
+\providecommand{\alert}[1]{\textbf{#1}}
+
+\title{SEES: Test Driven Development}
+\author{FOSSEE}
+
+\usetheme{Warsaw}\usecolortheme{default}\useoutertheme{infolines}\setbeamercovered{transparent}
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Outline}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}
+\frametitle{Outline}
+\setcounter{tocdepth}{3}
+\tableofcontents
+\end{frame}
+
+\section{Introduction}
+
+\begin{frame}
+  \frametitle{Objectives}
+  At the end of this section, you will be able to:
+  \begin{itemize}
+  \item Write your code using the TDD paradigm.
+  \item Use doctests to test your Python code.
+  \item Use unittests to test your Python code.
+  \item Use the nose module to test your code.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{What is TDD?}
+  The basic steps of TDD are roughly as follows --
+  \begin{enumerate}
+  \item Decide upon the feature to implement and the methodology of
+    testing it.
+  \item Write the tests for the feature decided upon.
+  \item Just write enough code, so that the test can be run, but it fails.
+  \item Improve the code, to just pass the test and at the same time
+    passing all previous tests.
+  \item Run the tests to see, that all of them run successfully.
+  \item Refactor the code you've just written -- optimize the algorithm,
+    remove duplication, add documentation, etc.
+  \item Run the tests again, to see that all the tests still pass.
+  \item Go back to 1.
+  \end{enumerate}
+\end{frame}
+
+\section{First Test}
+
+\begin{frame}[fragile]
+  \frametitle{First Test -- GCD}
+  \begin{itemize}
+  \item simple program -- GCD of two numbers
+  \item What are our code units?
+    \begin{itemize}
+    \item Only one function \texttt{gcd}
+    \item Takes two numbers as arguments
+    \item Returns one number, which is their GCD
+    \end{itemize}
+\begin{lstlisting}
+c = gcd(44, 23)
+\end{lstlisting}
+  \item c will contain the GCD of the two numbers.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Test Cases}
+  \begin{itemize}
+  \item Important to have test cases and expected outputs even before
+    writing the first test!
+  \item $a=48$, $b=48$, $GCD=48$
+  \item $a=44$, $b=19$, $GCD=1$
+  \item Tests are just a series of assertions
+  \item True or False, depending on expected and actual behavior
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Test Cases -- Code}
+\begin{lstlisting}
+tc1 = gcd(48, 64)
+if tc1 != 16:
+    print "Failed for a=48, b=64. Expected 16. \
+    Obtained %d instead." % tc1
+    exit(1)
+
+tc2 = gcd(44, 19)
+if tc2 != 1:
+    print "Failed for a=44, b=19. Expected 1. \
+    Obtained %d instead." % tc2
+    exit(1)
+
+print "All tests passed!"
+\end{lstlisting}
+\begin{itemize}
+\item The function \texttt{gcd} doesn't even exist!
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Stubs}
+  \begin{itemize}
+  \item First write a very minimal definition of \texttt{gcd}
+    \begin{lstlisting}
+def gcd(a, b):
+    pass
+    \end{lstlisting}
+  \item Written just, so that the tests can run
+  \item Obviously, the tests are going to fail
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{gcd.py}}
+\begin{lstlisting}
+def gcd(a, b):
+    pass
+
+if __name__ == '__main__':
+    tc1 = gcd(48, 64)
+    if tc1 != 16:
+        print "Failed for a=48 and b=64. \
+        Expected 16. Obtained %d instead." % tc1
+        exit(1)
+    tc2 = gcd(44, 19)
+    if tc2 != 1:
+        print "Failed for a=44 and b=19. \
+        Expected 1. Obtained %d instead." % tc2
+        exit(1)
+    print "All tests passed!"
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{First run}
+\begin{lstlisting}
+$ python gcd.py
+Traceback (most recent call last):
+  File "gcd.py", line 7, in <module> 
+  print "Failed for a=48 and b=64. Expected 16. 
+  Obtained %d instead." % tc1
+TypeError: %d format: 
+a number is required, not NoneType
+\end{lstlisting} %$
+
+  \begin{itemize}
+  \item We have our code unit stub, and a failing test. 
+  \item The next step is to write code, so that the test just passes.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Euclidean Algorithm}
+  \begin{itemize}
+  \item Modify the \texttt{gcd} stub function
+  \item Then, run the script to see if the tests pass.
+  \end{itemize}
+\begin{lstlisting}
+def gcd(a, b):
+    if a == 0:
+        return b
+    while b != 0:
+        if a > b:
+            a = a - b
+        else:
+            b = b - a
+    return a
+\end{lstlisting}
+\begin{lstlisting}
+$ python gcd.py
+All tests passed!
+\end{lstlisting} %$
+  \begin{itemize}
+  \item \alert{Success!}
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Euclidean Algorithm -- Modulo}
+  \begin{itemize}
+  \item Repeated subtraction can be replaced by a modulo
+  \item modulo of \texttt{a\%b} is always less than b
+  \item when \texttt{a < b}, \texttt{a\%b} equals \texttt{a}
+  \item Combine these two observations, and modify the code
+\begin{lstlisting}
+def gcd(a, b):
+    while b != 0:
+        a, b = b, a % b
+    return a
+\end{lstlisting}
+  \item Check that the tests pass again
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Euclidean Algorithm -- Recursive}
+  \begin{itemize}
+  \item Final improvement -- make \texttt{gcd} recursive
+  \item More readable and easier to understand
+\begin{lstlisting}
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a%b)
+\end{lstlisting}
+  \item Check that the tests pass again
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Document \texttt{gcd}}
+  \begin{itemize}
+  \item Undocumented function is as good as unusable
+  \item Let's add a docstring \& We have our first test!
+  \end{itemize}
+\begin{lstlisting}
+def gcd(a, b):
+    """Returns the Greatest Common Divisor of the 
+    two integers passed as arguments.
+
+    Args:
+      a: an integer
+      b: another integer
+
+    Returns: Greatest Common Divisor of a and b
+    """
+    if b == 0:
+        return a
+    return gcd(b, a%b)
+\end{lstlisting}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Persistent Test Cases}
+  \begin{itemize}
+  \item Tests should be pre-determined and written, before the code
+  \item Test Data is repeatedly used; Hence, saved in persistent
+    format
+  \item Let's save data for GCD tests in a text file. 
+  \item The file shall have multiple lines of test data
+  \item Each line corresponds to a single test case
+  \item Each line consists of three comma separated values --
+    \begin{itemize}
+    \item First two coloumns are the integers for which the GCD has to be
+      computed
+    \item Third coloumn is the expected GCD to the preceding two
+      numbers.
+    \end{itemize}
+  \item Let us call our data file \texttt{gcd\_testcases.dat}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Modify \texttt{gcd.py}}
+\begin{lstlisting}
+if __name__ == '__main__':
+    for line in open('gcd_testcases.dat'):
+        values = line.split(', ')
+        a = int(values[0])
+        b = int(values[1])
+        g = int(values[2])
+
+        tc = gcd(a, b)
+        if tc != g:
+            print "Failed for a=%d and b=%d.\
+            Expected %d. Obtained %d instead."\
+            % (a, b, g, tc)
+            exit(1)
+
+    print "All tests passed!"
+\end{lstlisting}
+\end{frame}
+
+\section{Python Testing Frameworks}
+
+\begin{frame}[fragile]
+  \frametitle{Python Testing Frameworks}
+  \begin{itemize}
+  \item Testing frameworks essentially, ease the job of the user
+  \item Python provides two frameworks for testing code
+    \begin{itemize}
+    \item \texttt{unittest} framework
+    \item \texttt{doctest} module
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\subsection{\texttt{doctest} module}
+
+\begin{frame}[fragile]
+  \frametitle{doctest}
+  \begin{itemize}
+  \item Documentation always accompanies a well written piece of code
+  \item Use \texttt{docstring} to document functions or modules
+  \item Along with description and usage, examples can be added
+  \item Interactive interpreter session inputs and outputs are
+    copy-pasted 
+  \item \texttt{doctest} module picks up all such interactive examples
+  \item Executes them and determines if the code runs, as documented
+  \end{itemize}
+  Let's use the \texttt{doctest} module for our \texttt{gcd} function
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{doctest for \texttt{gcd.py}}
+\begin{tiny}
+\begin{lstlisting}
+def gcd(a, b):
+    """Returns the Greatest Common Divisor of the two integers
+    passed as arguments.
+
+    Args:
+      a: an integer
+      b: another integer
+
+    Returns: Greatest Common Divisor of a and b
+
+    >>> gcd(48, 64)
+    16
+    >>> gcd(44, 19)
+    1
+    """
+    if b == 0:
+        return a
+    return gcd(b, a%b) 
+\end{lstlisting}
+\end{tiny}
+\begin{itemize}
+\item We have added examples to the \texttt{docstring}
+\item Now we need to tell the \texttt{doctest} module to execute
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{doctest for \texttt{gcd.py} \ldots}
+\begin{lstlisting}
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+\end{lstlisting}
+\begin{itemize}
+\item \texttt{testmod} automatically picks all sample sessions
+\item Executes them and compares output with documented output
+\item It doesn't give any output, when all the results match 
+\item Complains only when one or more tests fail. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{doctest} -- Execution}
+  \begin{itemize}
+  \item Run the doctests by running \texttt{gcd.py}
+\begin{lstlisting}
+$ python gcd.py
+\end{lstlisting} %$
+  \item All the tests pass, and doctest gives no output
+  \item For a more detailed report we can run with -v argument
+\begin{lstlisting}
+$ python gcd.py -v
+\end{lstlisting} %$
+  \item If the output contains a blank line, use \texttt{<BLANKLINE>}
+  \item To see a failing test case, replace \texttt{return a} with \texttt{b}
+  \end{itemize}
+\end{frame}
+
+\subsection{\texttt{unittest} framework}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{unittest}}
+  \begin{itemize}
+  \item It won't be long, before we complain about the power of
+    \texttt{doctest} 
+  \item \texttt{unittest} framework can efficiently automate tests
+  \item Easily initialize code and data for executing the specific
+    tests
+  \item Cleanly shut them down once the tests are executed
+  \item Easily aggregate tests into collections and improved reporting
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{unittest}}
+  \begin{itemize}
+  \item It won't be long, before we complain about the power of
+    \texttt{doctest} 
+  \item \texttt{unittest} framework can efficiently automate tests
+  \item Easily initialize code and data for executing the specific
+    tests
+  \item Cleanly shut them down once the tests are executed
+  \item Easily aggregate tests into collections and improved reporting
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{unittest}ing \texttt{gcd.py}}
+  \begin{itemize}
+  \item Subclass the \texttt{TestCase} class in \texttt{unittest}
+  \item Place all the test code as methods of this class
+  \item Use the test cases present in \texttt{gcd\_testcases.dat}
+  \item Place the code in \texttt{test\_gcd.py} 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,allowframebreaks]
+  \frametitle{\texttt{test\_gcd.py}}
+\small
+\begin{lstlisting}
+import gcd
+import unittest
+
+class TestGcdFunction(unittest.TestCase):
+
+    def setUp(self):
+        self.test_file = open('gcd_testcases.dat')
+        self.test_cases = []
+        for line in self.test_file:
+            values = line.split(', ')
+            a = int(values[0])
+            b = int(values[1])
+            g = int(values[2])
+
+            self.test_cases.append([a, b, g])
+
+    def test_gcd(self):
+        for case in self.test_cases:
+            a = case[0]
+            b = case[1]
+            g = case[2]
+            self.assertEqual(gcd.gcd(a, b), g)
+
+    def tearDown(self):
+        self.test_file.close()
+        del self.test_cases
+
+if __name__ == '__main__':
+    unittest.main()
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{test\_gcd.py}}
+  \begin{itemize}
+  \item \texttt{setUp} -- we read all the test data and store it in a
+    list
+  \item \texttt{tearDown} -- delete the data to free up memory and
+    close open file
+  \item \texttt{test\_gcd} -- actual test code
+  \item \texttt{assertEqual} -- compare actual result with expected one
+  \item Write documentation for above code. 
+  \end{itemize}
+\end{frame}
+
+\section{\texttt{nose}}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{nose} tests}
+  \begin{itemize}
+  \item It is not easy to organize, choose and run tests scattered
+    across multiple files. 
+  \item \texttt{nose} module aggregate these tests automatically
+  \item Can aggregate \texttt{unittests} and \texttt{doctests}
+  \item Allows us to pick and choose which tests to run
+  \item Helps output the test-results and aggregate them in various
+    formats
+  \item Not part of the Python distribution itself
+\begin{lstlisting}
+$ easy_install nose
+\end{lstlisting} %$
+  \item Run the following command in the top level directory
+\begin{lstlisting}
+$ nosetests
+\end{lstlisting} %$
+  \end{itemize}
+\end{frame}
+
+\end{document}
