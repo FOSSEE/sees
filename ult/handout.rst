@@ -980,7 +980,7 @@ The Command Shell
 Redirection and Piping
 ----------------------
 
-Let's say the contents of ``marks.txt`` are as follows, 
+Let's say the contents of ``marks1.txt`` are as follows, 
 
 ::
 
@@ -994,13 +994,13 @@ The solution would be as below
 
 ::
 
-    $ cut -d " " -f 2- marks.txt | paste -d " " students.txt -
+    $ cut -d " " -f 2- marks1.txt | paste -d " " students.txt -
 
 or 
 
 ::
 
-    $ cut -d " " -f 2- marks.txt > /tmp/m_tmp.txt
+    $ cut -d " " -f 2- marks1.txt > /tmp/m_tmp.txt
     $ paste -d " " students.txt m_tmp.txt
 
 
@@ -1051,7 +1051,7 @@ before. We change the ``-f`` option to ``-c``
 
 ::
 
-    $ cut -d " " -c 2- marks.txt > /tmp/m_tmp.txt
+    $ cut -d " " -c 2- marks1.txt > /tmp/m_tmp.txt
 
 This prints an error that says the delimiter option should be used with the
 fields option only, and you can verify that the ``m_tmp.txt`` file is
@@ -1060,7 +1060,7 @@ showing it on the display.
 
 ::
 
-    $ cut -d " " -f 2- marks.txt 1> /tmp/m_tmp.txt 2> /tmp/m_err.txt
+    $ cut -d " " -f 2- marks1.txt 1> /tmp/m_tmp.txt 2> /tmp/m_err.txt
 
 The above command redirects all the errors to the ``m_err.txt`` file
 and the output to the ``m_tmp.txt`` file. When redirecting, 1 stands
@@ -1084,7 +1084,7 @@ Let us now look at the first solution.
 
 ::
 
-    $ cut -d " " -f 2- marks.txt | paste -d " " students.txt -
+    $ cut -d " " -f 2- marks1.txt | paste -d " " students.txt -
 
 First of all, the hyphen at the end is to ask the paste command to read the
 standard input, instead of looking for a FILE. The ``man`` page of ``paste``
@@ -1244,7 +1244,7 @@ We just pipe the previous output to the ``sort`` command.
 
 ::
 
-    $ cut -d " " -f 2- marks.txt | paste -d " " students.txt -| sort
+    $ cut -d " " -f 2- marks1.txt | paste -d " " students.txt -| sort
 
 Let's say we wished to sort the names, based on the marks in the first
 subject (first column after the name). ``sort`` command also allows us to
@@ -1254,7 +1254,7 @@ is used to specify the field.
 
 ::
 
-    $ cut -d " " -f 2- marks.txt | paste -d " " students.txt -| sort -t " " -k 2
+    $ cut -d " " -f 2- marks1.txt | paste -d " " students.txt -| sort -t " " -k 2
 
 The above command give us a sorted output as required. But, it would be
 nicer to have the output sorted in the reverse order. ``-r`` option allows
@@ -1263,7 +1263,7 @@ to choose a numerical sorting.
 
 ::
 
-    $ cut -d " " -f 2- marks.txt | paste -d " " students.txt -| sort -t " " -k 2 -rn    
+    $ cut -d " " -f 2- marks1.txt | paste -d " " students.txt -| sort -t " " -k 2 -rn    
 
 ``grep``
 --------
@@ -1282,7 +1282,7 @@ names and search for Anne in that.
 
 ::
 
-    $ cut -d " " -f 2- marks.txt | paste -d " " students.txt - | grep Anne 
+    $ cut -d " " -f 2- marks1.txt | paste -d " " students.txt - | grep Anne 
 
 This will give you only the line containing the word Anne as the output.
 The grep command is by default case-sensitive. So, you wouldn't have got
@@ -1292,14 +1292,14 @@ to do case-insensitive searches by using the ``-i`` option.
 
 ::
 
-    $ cut -d " " -f 2- marks.txt | paste -d " " students.txt - | grep -i Anne 
+    $ cut -d " " -f 2- marks1.txt | paste -d " " students.txt - | grep -i Anne 
 
 Now, in another scenario, if you wished to print all the lines, which do
 not contain the word Anne, you could use the ``-v`` option. 
 
 ::
 
-    $ cut -d " " -f 2- marks.txt | paste -d " " students.txt - | grep -iv Anne
+    $ cut -d " " -f 2- marks1.txt | paste -d " " students.txt - | grep -iv Anne
 
 Grep allows you to do more complex searches, for instance searching for
 sentences starting or ending with a particular pattern and regular
@@ -1712,7 +1712,7 @@ We open our editor and save the following text to ``results.sh``
 
     #!/bin/bash
     mkdir ~/marks
-    cut -d " " -f 2- marks.txt | paste -d " " students.txt - | sort > ~/marks/results.txt
+    cut -d " " -f 2- marks1.txt | paste -d " " students.txt - | sort > ~/marks/results.txt
 
 We can now run the script, 
 
@@ -1746,7 +1746,7 @@ the ``echo`` command. We can edit our ``results.sh`` script, as follows.
 
     #!/bin/bash
     mkdir ~/marks
-    cut -d " " -f 2- marks.txt | paste -d " " students.txt - | sort > ~/marks/results.txt
+    cut -d " " -f 2- marks1.txt | paste -d " " students.txt - | sort > ~/marks/results.txt
     echo "Results generated."
 
 Now, on running the script, we get a message on the screen informing us,
@@ -1760,7 +1760,7 @@ argument in the command line. We can do so, by editing the file, as below.
 
     #!/bin/bash
     mkdir ~/marks
-    cut -d " " -f 2- marks.txt | paste -d " " students.txt - | sort > ~/marks/$1
+    cut -d " " -f 2- marks1.txt | paste -d " " students.txt - | sort > ~/marks/$1
     echo "Results generated."
 
 
