@@ -620,7 +620,7 @@
   \begin{itemize}
   \item \texttt{-d} specifies delimiter between fields (default TAB)
   \item \texttt{-f} specifies the field number
-  \item Multiple fields bye separating field numbers with comma
+  \item Multiple fields by separating field numbers with comma
   \end{itemize}
   \begin{lstlisting}
     $ cut -d : -f 1,5,7 /etc/passwd
@@ -667,8 +667,10 @@
   \end{lstlisting}
   \begin{itemize}
   \item \texttt{-s} prints content, one below the other
-  \item If first column of marks file had roll numbers? We need to use
-    \texttt{cut} \& \texttt{paste} together. How?
+  \item If first column of marks file had roll numbers? How do we get
+    a combined file with the same output as above (i.e. without roll
+    numbers). We need to use \texttt{cut} \& \texttt{paste} together.
+    But how?
   \end{itemize}
 \end{frame}
 
@@ -678,20 +680,20 @@
   \frametitle{Redirection and Piping}
   \begin{lstlisting}
     $ cut -d " " -f 2- marks.txt \
-    | paste -d " " students.txt -
+    > /tmp/m_tmp.txt
+    $ paste -d " " students.txt m_tmp.txt
   \end{lstlisting} % $
 
   or
 
   \begin{lstlisting}
     $ cut -d " " -f 2- marks.txt \
-    > /tmp/m_tmp.txt
-    $ paste -d " " students.txt m_tmp.txt
+    | paste -d " " students.txt -
   \end{lstlisting} % $
 
   \begin{itemize}
-  \item The second solution uses Redirection
-  \item The first solution used Piping
+  \item The first solution used Redirection
+  \item The second solution uses Piping
   \end{itemize}
 \end{frame}
 
@@ -701,7 +703,7 @@
   \begin{itemize}
   \item The standard output (stdout) stream goes to the display
   \item Not always, what we need
-  \item Second solution, redirects output to a file
+  \item First solution, redirects output to a file
   \item \texttt{>} states that output is redirected; It is
     followed by location to redirect
   \end{itemize}
@@ -778,7 +780,7 @@
 \begin{frame}[fragile]
   \frametitle{Piping}
   \begin{itemize}
-  \item Roughly same as -- 2 redirects and a temp. file
+  \item Roughly same as -- 2 redirects and a temporary file
   \end{itemize}
   \begin{lstlisting}
     $ command1 > tempfile
@@ -1243,14 +1245,14 @@
   \begin{lstlisting}
   for i in *.mp3
   do 
-  echo $f|tr -s " " "-"|cut -d - -f 2-
+  echo $i|tr -s " " "-"|cut -d - -f 2-
   done
   \end{lstlisting} % $
   Now \texttt{mv}, instead of just echoing
   \begin{lstlisting}
     for i in *.mp3
     do 
-    mv $i `echo $f|tr -s " " "-"\
+    mv $i `echo $i|tr -s " " "-"\
     |cut -d - -f 2-`
     done
   \end{lstlisting} % $
@@ -1282,12 +1284,12 @@
 \begin{frame}[fragile]
   \frametitle{Environment Variables}
   \begin{itemize}
-  \item Pass information from shell to programs run in it
-  \item behavior of programs can change based on values of variables
+  \item Pass information from shell to programs running in it
+  \item Behavior of programs can change based on values of variables
   \item Environment variables vs. Shell variables
   \item Shell variables -- only current instance of the shell
   \item Environment variables -- valid for the whole session
-  \item Convention -- Environment variables are UPPER CASE
+  \item Convention -- environment variables are UPPER CASE
   \end{itemize}
   \begin{lstlisting}
     $ echo $OSTYPE 
