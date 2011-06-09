@@ -1,7 +1,0 @@
-Richard Stallman%http://www.stallman.org
-Eric Raymond%http://www.catb.org/~esr/
-Ian Murdock%http://ianmurdock.com/
-Lawrence Lessig%http://lessig.org
-Linus Torvalds%http://torvalds-family.blogspot.com/
-Guido van Rossum%http://www.python.org/~guido/
-Larry Wall%http://www.wall.org/~larry/

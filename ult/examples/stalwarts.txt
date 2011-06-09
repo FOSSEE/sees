@@ -1,7 +1,0 @@
-Richard Stallman%rms%GNU Project
-Eric Raymond%ESR%Jargon File
-Ian Murdock% %Debian
-Lawrence Lessig% %Creative Commons
-Linus Torvalds% %Linux Kernel
-Guido van Rossum%BDFL%Python
-Larry Wall% %Perl
