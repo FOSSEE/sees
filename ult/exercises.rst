@@ -73,7 +73,9 @@ Session-2
 
 0. Read through the section ``REGULAR EXPRESSIONS`` in ``man grep``
 
-1. grep the marks of the students who scored above 75 in atleast one
+#. Read through in ``man expr``
+
+#. grep the marks of the students who scored above 75 in atleast one
    subject. 
 
 #. grep the marks of all the students whose names begin with an 's'
