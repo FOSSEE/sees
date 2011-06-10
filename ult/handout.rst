@@ -1,7 +1,3 @@
-===================
- Using Linux Tools
-===================
-
 Introducing Linux
 =================
 

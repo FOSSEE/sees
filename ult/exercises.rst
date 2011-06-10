@@ -1,5 +1,8 @@
-Session-1
+Exercises
 =========
+
+Session-1
+---------
 
 1. Login to your machine from the CLI prompt, by pressing Ctrl+Alt+F1. 
 
@@ -66,7 +69,7 @@ Session-1
    once, at the end of the file. 
 
 Session-2
-=========
+---------
 
 0. Read through the section ``REGULAR EXPRESSIONS`` in ``man grep``
 
