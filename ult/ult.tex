@@ -1013,6 +1013,21 @@
 \end{frame}
 
 \begin{frame}[fragile]
+  \frametitle{Variables \& Comments}
+  \begin{lstlisting}
+    $ name=FOSSEE
+    $ count=`wc -l wonderland.txt`
+    $ echo $count # Shows the value of count
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item It is possible to create variables in shell scripts
+  \item Variables can be assigned with the output of commands
+  \item \alert{NOTE:} There is no space around the \texttt{=} sign
+  \item All text following the \texttt{\#} is considered a comment
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
   \frametitle{\texttt{echo}}
   \begin{itemize}
   \item \texttt{echo} command prints out messages

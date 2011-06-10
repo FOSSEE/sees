@@ -1785,6 +1785,41 @@ So, these are all the paths that are searched, when looking to execute a
 command. If we put the results.sh script in one of these locations, we
 could simply run it, without using the ``./`` at the beginning. 
 
+Variables
+---------
+
+As expected, it is possible to define our own variables inside our shell
+scripts. For example,
+
+::
+
+    name="FOSSEE"
+
+creates a new variable ``name`` whose value is ``FOSSEE``. To refer to this
+variable, inside our shell script, we would refer to it, as ``$name``.
+**NOTE** that there is no space around the ``=`` sign. 
+
+::
+
+    ls $name*
+
+It is possible to store the output of a command in a variable, by enclosing
+the command in back-quotes. 
+
+::
+
+    count=`wc -l wonderland.txt`
+
+saves the number of lines in the file ``wonderland.txt`` in the variable
+count. 
+
+Comments
+--------
+
+The ``#`` character is used to comment out content from a shell script.
+Anything that appears after the ``#`` character in a line, is ignored by
+the bash shell. 
+
 Control structures and Operators
 ================================
 
