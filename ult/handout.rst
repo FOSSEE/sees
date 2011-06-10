@@ -1910,6 +1910,15 @@ dummy or a loop variable. It can then be used to refer to the element of
 the list that is currently being dealt with. We could, obviously, use
 something as lame as ``i`` in place of ``animal``.
 
+To generate a range of numbers and iterate over them, we do the following. 
+
+::
+
+    for i in {5..10}
+    do
+    echo $i
+    done
+
 Now, we use a ``for`` loop to list the files that we are interested in.
 
 ::
