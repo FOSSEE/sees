@@ -679,7 +679,7 @@
 \begin{frame}[fragile]
   \frametitle{Redirection and Piping}
   \begin{lstlisting}
-    $ cut -d " " -f 2- marks.txt \
+    $ cut -d " " -f 2- marks1.txt \
     > /tmp/m_tmp.txt
     $ paste -d " " students.txt m_tmp.txt
   \end{lstlisting} % $
@@ -687,7 +687,7 @@
   or
 
   \begin{lstlisting}
-    $ cut -d " " -f 2- marks.txt \
+    $ cut -d " " -f 2- marks1.txt \
     | paste -d " " students.txt -
   \end{lstlisting} % $
 
@@ -745,10 +745,10 @@
   \item Error message is redirected, in the second case
   \end{itemize}
   \begin{lstlisting}
-    $ cut -d " " -c 2- marks.txt \
+    $ cut -d " " -c 2- marks1.txt \
       > /tmp/m_tmp.txt
 
-    $ cut -d " " -f 2- marks.txt 1> \
+    $ cut -d " " -f 2- marks1.txt 1> \
       /tmp/m_tmp.txt 2> /tmp/m_err.txt
   \end{lstlisting} % $
   \begin{itemize}
@@ -763,7 +763,7 @@
 \begin{frame}[fragile]
   \frametitle{Piping}
   \begin{lstlisting}
-    $ cut -d " " -f 2- marks.txt \
+    $ cut -d " " -f 2- marks1.txt \
       | paste -d " " students.txt -
   \end{lstlisting} % $
   \begin{itemize}
@@ -852,7 +852,7 @@
   \item Command below prints student marks, sorted by name
   \end{itemize}
   \begin{lstlisting}
-    $ cut -d " " -f 2- marks.txt \
+    $ cut -d " " -f 2- marks1.txt \
       | paste -d " " students.txt - \
       | sort
   \end{lstlisting} % $
@@ -868,7 +868,7 @@
   \item The command below sorts based on marks in first subject
   \end{itemize}
   \begin{lstlisting}
-    $ cut -d " " -f 2- marks.txt \
+    $ cut -d " " -f 2- marks1.txt \
       | paste -d " " students.txt -\
       | sort -t " " -k 2 -rn
   \end{lstlisting} % $
@@ -887,7 +887,7 @@
   \item Command below searches \& shows the marks of Anne alone 
   \end{itemize}
   \begin{lstlisting}
-    $ cut -d " " -f 2- marks.txt \
+    $ cut -d " " -f 2- marks1.txt \
     | paste -d " " students.txt - 
     | grep Anne
   \end{lstlisting} % $
@@ -902,7 +902,7 @@
   \item \texttt{-i} for case-insensitive searches
   \end{itemize}
   \begin{lstlisting}
-    $ cut -d " " -f 2- marks.txt \
+    $ cut -d " " -f 2- marks1.txt \
     | paste -d " " students.txt - 
     | grep -i Anne
   \end{lstlisting} % $
@@ -911,7 +911,7 @@
   \item To see everyone's marks except Anne's
   \end{itemize}
   \begin{lstlisting}
-    $ cut -d " " -f 2- marks.txt \
+    $ cut -d " " -f 2- marks1.txt \
     | paste -d " " students.txt - 
     | grep -iv Anne
   \end{lstlisting} % $
@@ -989,7 +989,7 @@
   \begin{lstlisting}
     #!/bin/bash
     mkdir ~/marks
-    cut -d " " -f 2- marks.txt \
+    cut -d " " -f 2- marks1.txt \
     | paste -d " " students.txt - \
     | sort > ~/marks/results.txt
   \end{lstlisting} % $
@@ -1013,6 +1013,21 @@
 \end{frame}
 
 \begin{frame}[fragile]
+  \frametitle{Variables \& Comments}
+  \begin{lstlisting}
+    $ name=FOSSEE
+    $ count=`wc -l wonderland.txt`
+    $ echo $count # Shows the value of count
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item It is possible to create variables in shell scripts
+  \item Variables can be assigned with the output of commands
+  \item \alert{NOTE:} There is no space around the \texttt{=} sign
+  \item All text following the \texttt{\#} is considered a comment
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
   \frametitle{\texttt{echo}}
   \begin{itemize}
   \item \texttt{echo} command prints out messages
@@ -1020,7 +1035,7 @@
   \begin{lstlisting}
     #!/bin/bash
     mkdir ~/marks
-    cut -d " " -f 2- marks.txt \
+    cut -d " " -f 2- marks1.txt \
     | paste -d " " students.txt - \
     | sort > ~/marks/results.txt
     echo "Results generated."
@@ -1036,7 +1051,7 @@
   \begin{lstlisting}
     #!/bin/bash
     mkdir ~/marks
-    cut -d " " -f 2- marks.txt \
+    cut -d " " -f 2- marks1.txt \
     | paste -d " " students.txt - \
     | sort > ~/marks/$1
     echo "Results generated."
@@ -1211,6 +1226,12 @@
   \item Loop over the list; \texttt{animal} is a dummy variable
   \item Echo value of \texttt{animal} ---  each name in list
   \end{itemize}
+  \begin{lstlisting}
+    for i in {10..20}
+    do 
+    echo $i
+    done
+  \end{lstlisting} % $
 \end{frame}
 
 \begin{frame}[fragile]

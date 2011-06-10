@@ -99,7 +99,7 @@
 \begin{frame}
   \frametitle{Course Outline}
   \begin{itemize}
-  \item Look at Sample document - \typ{sample.pdf}
+  \item Look at the sample document - \typ{sample.pdf}
     \begin{itemize}
     \item Title, Author, Date
     \item Abstract
@@ -132,7 +132,7 @@
 \begin{frame}[fragile]
   \frametitle{Typesetting a minimal document}
   \begin{itemize}
-  \item Write the sample code  code into the file \typ{draft.tex}\\
+  \item Write the sample code  into the file \typ{draft.tex}\\
       {\tiny See \typ{hg} rev0 of draft}
   \item   To compile, (in terminal) \\
     \begin{lstlisting}[language=bash]
@@ -223,7 +223,7 @@
 \begin{frame}[fragile]
   \frametitle{Abstract}
   \begin{itemize}
-  \item \typ{\\abstract} environment inserts abstract.
+  \item \typ{abstract} environment inserts abstract.
   \item Place it at the location where you want your abstract. 
   \end{itemize}
   \tiny See rev3 of \typ{hg}
@@ -277,13 +277,13 @@
 \begin{frame}[fragile]
   \frametitle{Table of Contents [TOC]}
   \begin{itemize}
-  \item Our document is short, but let's learn to add a TOC.
+  \item Our document is short, but let's learn to add a TOC
   \item Add \lstinline{\tableofcontents} where you want TOC to
-    appear.
-  \item Compile. 
-  \item Only headings appear. No page numbers. 
-  \item A \lstinline{.toc} file is generated. 
-  \item Re-compile.
+    appear
+  \item Compile
+  \item Only headings appear. No page numbers
+  \item A \lstinline{.toc} file is generated
+  \item Re-compile
   \item Any numbered section/block automatically appears
   \end{itemize}
   \tiny See rev8 of \typ{hg}
@@ -369,7 +369,7 @@
   \begin{itemize}
   \item Instead of using \lstinline{\texttt} we could use
     \lstinline{\verbatim} 
-  \item \lstinline+\lstinline{listings}+ is a powerful package
+  \item \lstinline+listings+ is a powerful package
   \item \lstinline+\usepackage{listings}+ needs to be added 
   \item Tell {\LaTeX} the language to be used, using \typ{\\lstset}
   \end{itemize}
@@ -504,7 +504,7 @@
 \begin{frame}[fragile]
   \frametitle{Math in \LaTeX}
   \begin{itemize}
-  \item Math is enclosed in a pair of \lstinline{$} signs of %%$
+  \item Math is enclosed in a pair of \lstinline{$} signs or %%$
     \lstinline+\(  \)+ 
   \item Used for typesetting inline Math. 
   \item \lstinline+\usepackage{amsmath}+
@@ -516,9 +516,9 @@
   \frametitle{Matrices}
   \begin{itemize}
   \item \lstinline+\bmatrix+ is used to typeset the matrix A
-  \item It works similar to ta tabular environment
+  \item It works similar to the tabular environment
   \item \lstinline+&+ for demarcating columns
-  \item \lstinline+\\+ for demwarcating rows
+  \item \lstinline+\\+ for demarcating rows
   \item Other matrix environments
   \begin{table}
     \center
@@ -635,7 +635,7 @@
   \item \lstinline+thebibliography+ environment provides a clean and
     simple way to add a bibliography to \LaTeX documents. 
   \item \lstinline+\begin{thebibliography}+ takes as argument the
-    maximum with of the label that references will have. 
+    maximum width of the label that references will have. 
   \item Each item of the Bibliography is similar to an item in a
     list. 
   \item \lstinline+\bibitem[label]{name}+ followed by the actual
@@ -653,7 +653,7 @@
   \frametitle{Beamer}
   \begin{itemize}
   \item Use beamer since your report's \LaTeX~ would be re-usable.
-  \item It is recommended to start with on of the beamer templates.
+  \item It is recommended to start with one of the beamer templates.
   \item Let's look at speaker introduction template.
   \item \lstinline+\documentclass{beamer}+ tells \LaTeX~ to start a
     beamer presentation. 
