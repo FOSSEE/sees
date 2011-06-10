@@ -1,5 +1,8 @@
-Session-1
+Exercises
 =========
+
+Session-1
+---------
 
 1. Login to your machine from the CLI prompt, by pressing Ctrl+Alt+F1. 
 
@@ -54,7 +57,7 @@ Session-1
 
 #. Change ownership of the file ``test`` to some other user (if exists).
 
-#. Count the number of files in a directory. 
+#. Count the number of files (files, sub-directories, etc.) in a directory. 
 
 #. Create a new file ``alice.txt`` by concatenating the first 30 lines
    and the last 40 lines of ``wonderland.txt``.
@@ -66,11 +69,13 @@ Session-1
    once, at the end of the file. 
 
 Session-2
-=========
+---------
 
 0. Read through the section ``REGULAR EXPRESSIONS`` in ``man grep``
 
-1. grep the marks of the students who scored above 75 in atleast one
+#. Read through in ``man expr``
+
+#. grep the marks of the students who scored above 75 in atleast one
    subject. 
 
 #. grep the marks of all the students whose names begin with an 's'
