@@ -45,7 +45,7 @@ Session-1
 #. Copy the file again, but this time, ensure that ``cp`` checks if
    such a file doesn't already exist.
 
-#. Copy the directory ``sees` to the directory ``sttp``. 
+#. Copy the directory ``sees`` to the directory ``sttp``.
 
 #. Rename directory ``sttp`` with your name.
 
