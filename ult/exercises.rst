@@ -57,7 +57,7 @@ Session-1
 
 #. Change ownership of the file ``test`` to some other user (if exists).
 
-#. Count the number of files in a directory. 
+#. Count the number of files (files, sub-directories, etc.) in a directory. 
 
 #. Create a new file ``alice.txt`` by concatenating the first 30 lines
    and the last 40 lines of ``wonderland.txt``.
