@@ -12,7 +12,7 @@ Contents:
    :maxdepth: 2
 
    Introduction to the course <introduction/introduction>
-   Using Linux Tools <ult/handout.rst>
+   Using Linux Tools <ult/index.rst>
    LaTeX <latex/handout.rst>
    Version Control <versionControl/handOut.rst>
    Basic Python <basic_python/handOut.rst>
