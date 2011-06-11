@@ -1,5 +1,5 @@
- Exercises
-===========
+Exercises
+=========
 
 Lab-1
 -----

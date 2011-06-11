@@ -1,8 +1,5 @@
-LaTeX
-=====
-
 Introduction
-------------
+============
 
 LaTeX is a typesetting program that produces excellently typeset documents.
 Typesetting is placing text onto a page with all the style formatting
@@ -15,7 +12,7 @@ LaTeX is pronounced either as "Lah-tech" or "Lay-tech".
 
 
 Why LaTeX?
-~~~~~~~~~~
+==========
 
 A few reasons for using LaTeX - 
 
@@ -33,7 +30,7 @@ A few reasons for using LaTeX -
 
 
 Course Outline
-~~~~~~~~~~~~~~
+==============
 
 In this course, we will learn enough LaTeX to be a able to produce a simple
 document with text, tables, figures, math, references and bibliography. We
@@ -45,7 +42,7 @@ serve as a teaching/learning tool to learn LaTeX. During the course, we shall
 reproduce this sample document, starting from scratch, in LaTeX
 
 A Look at the Sample Document
-+++++++++++++++++++++++++++++
+-----------------------------
 
 A look at the sample document gives us an idea about the various elements
 present in the document, that we will be learning during this course.
@@ -64,7 +61,7 @@ documents.
 
 
 LaTeX is not a Word Processor
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=============================
 
 What do we mean by LaTeX not being a Word Processor? Suppose we wanted to
 create a simple document as shown in the image below. If one used a normal
@@ -98,7 +95,7 @@ consistently, with a few changes in the preamble of the document, with-out
 having to change each element separately.
 
 First steps -- Typesetting a minimal document
----------------------------------------------
+=============================================
 
 Let us start with a minimal example to learn how to write a LaTeX document
 and compile it to see the **typeset** output.
@@ -122,7 +119,7 @@ Note: The ``latex`` command is often used, instead of ``pdflatex`` to get the
 compile our documents.
 
 What does it mean?
-~~~~~~~~~~~~~~~~~~
+------------------
 
 As we have already seen, LaTeX is a document based markup. The first line,
 ``\documentclass{article}``, tells that our document is an article type
@@ -134,7 +131,7 @@ of the content of the LaTeX document. The text in between the begin and end
 commands is typeset in the output document. 
 
 A little digression
-~~~~~~~~~~~~~~~~~~~
+===================
 
 Just like in ``bash`` and ``Python``, the commands in LaTeX are
 case-sensitive. ``\Documentclass`` is therefore not a valid command. 
@@ -174,13 +171,13 @@ equivalent to a single empty line.) Similarly, multiple spaces are treated as
 a single space. 
 
 Adding Structure
-----------------
+================
 
 Let us now, look at giving the document some basic structure, like title,
 sections, etc. 
 
 ``\documentclass``
-~~~~~~~~~~~~~~~~~~
+------------------
 
 As we have already seen, the ``documentclass`` command tells LaTeX, the type
 of the document that we intend to create. Some of the available LaTeX classes
@@ -348,7 +345,7 @@ Now, that we have the basic structure of the document, let's get into the
 content and the details of it.
 
 Typesetting Text
-----------------
+~~~~~~~~~~~~~~~~
 
 Let's begin with adding the second paragraph to the introduction section.
 Let's place the text of the second para, after the first line, that we
@@ -394,7 +391,7 @@ We could also change the separating - (hyphen) to an em-dash (or en-dash) --
 is em-dash and --- is an em-dash, to improve the appearance of the document.
 
 Lists
------
+=====
 
 The section on Use of Scipy in this course, contains lists. Let's now add
 lists to our document. The ``enumerate`` environment adds numbered lists to
@@ -407,7 +404,7 @@ LaTeX also has a description list, which shall be an exercise, for you.
 
 
 Footnotes, Labels and References
---------------------------------
+================================
 
 Let's now add the footnote to pylab. LaTeX provides a footnote command to add
 a footnote.
@@ -426,7 +423,7 @@ compile once again, for the section number to appear in the footnote.
 
 
 Including code
---------------
+==============
 
 In the footnote above, and in the table for the sub-packages list, we
 used the ``\texttt`` command to get a fixed width font. But we could
@@ -457,7 +454,7 @@ use the lstlisting environment (``\begin{lstlisting}`` and
 of our document.
 
 Figures, Tables and Floats
---------------------------
+==========================
 
 Let's now add the figure, to the appendix.
 
@@ -517,7 +514,7 @@ beginning of the appendix. The bibliographic citations will be dealt
 with later.
 
 Tables
-~~~~~~
+------
 
 Now, let us look at the other kind of floats - Tables. We shall
 convert the list of sub-packages in the sub-packages section to a
@@ -558,7 +555,7 @@ You could also add a listoftables or listoffigures to the document,
 similar to the way we added table of contents.
 
 Typesetting Math
-----------------
+================
 
 Now we shall move to typesetting the Math in the sample document given
 to us. We shall start with the Matrices subsection.
@@ -653,7 +650,7 @@ spacing required.
 +---------+--------------------+---------+
 
 Bibliography
-------------
+============
 
 Let's now look at how to write bibliography and cite references.
 
@@ -672,7 +669,7 @@ have. In our sample document, we have less than 10 items in the
 Bibliography and therefore we use 9.
 
 Presentations with Beamer
--------------------------
+=========================
 
 Using beamer for you presentations is a good idea, since you can use
 the LaTeX that you have used for the report/document for the
@@ -705,7 +702,6 @@ you need to give the frame an optional parameter ``[fragile]``.
 To achieve more with beamer, it is highly recommended that you look at
 the ``beameruserguide``.
 
-.. include :: lab-workbook.rst
 .. 
    Local Variables:
    mode: rst
