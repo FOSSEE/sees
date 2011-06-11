@@ -13,7 +13,7 @@ Contents:
 
    Introduction to the course <introduction/introduction>
    Using Linux Tools <ult/index.rst>
-   LaTeX <latex/handout.rst>
+   LaTeX <latex/index.rst>
    Version Control <versionControl/handOut.rst>
    Basic Python <basic_python/handOut.rst>
    Advanced Python <advanced_python/handOut.rst>
