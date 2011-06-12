@@ -51,7 +51,7 @@
 \newcommand{\kwrd}[1]{ \texttt{\textbf{\color{blue}{#1}}}  }
 
 % Title page
-\title[Mercurial]{SEES: Version Control with \typ{hg}}
+\title[Mercurial]{Version Control with \typ{hg}}
 
 \author[FOSSEE] {FOSSEE}
 
@@ -189,7 +189,7 @@ a.out  id1.txt  id2.txt  identifier.cpp  id.txt  lex  pda1.cpp  pda2.cpp  pda.cp
   \frametitle{We need a repo!}
   \begin{itemize}
   \item A Repository (repo) is where all the action is!
-  \item Project's files plus a special folder that stores all the
+  \item Project files along with a special directory that stores all the
     changes
   \item We take snapshots of the whole repository; not individual
     files. 
@@ -201,7 +201,7 @@ a.out  id1.txt  id2.txt  identifier.cpp  id.txt  lex  pda1.cpp  pda2.cpp  pda.cp
   \begin{itemize}
   \item \typ{\$ hg init}
   \item Creates a fresh repository
-  \item Adds a \typ{.hg} directory to our \emph{Working directory}
+  \item Adds a \typ{.hg} directory to our \emph{working directory}
   \end{itemize}
   \emphbar{\typ{.hg} directory keeps log of changes made henceforth}
 \end{frame}
@@ -261,7 +261,7 @@ a.out  id1.txt  id2.txt  identifier.cpp  id.txt  lex  pda1.cpp  pda2.cpp  pda.cp
   \end{itemize}
   \begin{block}{Log information}
     \begin{itemize}
-    \item \alert{changeset}: Identifiers for the changeset
+    \item \alert{changeset}: Identifier for the changeset
     \item \alert{user}: Details of user who created the changeset
     \item \alert{date}: Date and time of creation
     \item \alert{summary}: One line description
@@ -302,7 +302,7 @@ a.out  id1.txt  id2.txt  identifier.cpp  id.txt  lex  pda1.cpp  pda2.cpp  pda.cp
 \begin{frame}
   \frametitle{Operational overhead?}
   \begin{itemize}
-  \item But why do we \typ{commit}
+  \item But why do we \typ{commit}?
   \item Isn't all this just adding to operational costs?
   \item Isn't all this a waste of time?
   \end{itemize}
