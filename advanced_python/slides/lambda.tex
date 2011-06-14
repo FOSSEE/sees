@@ -105,23 +105,6 @@
 
 \begin{frame}[fragile]
   \frametitle{\texttt{map} \ldots}
-  \begin{itemize}
-  \item Takes a function and a sequence as arguments
-  \item Calls function with each element of sequence as argument
-  \item Returns a sequence with all the results as elements
-  \item We solve the easier problem first, using \texttt{map}
-  \end{itemize}
-
-  \begin{lstlisting}
-    def moonize(weight):
-        return weight/6.0
-
-    map(moonize, weights)
-  \end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{\texttt{map} \ldots}
   \begin{lstlisting}
     def migrate(weight):
         if weight < 50:
