@@ -28,3 +28,4 @@ bin
 develop-eggs
 .DS_Store
 index.yaml
+tests/
