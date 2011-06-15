@@ -7,4 +7,4 @@
 .. include :: io_files_parsing.rst
 .. include :: func.rst
 .. include :: tuples_dicts_sets.rst
-
+.. include :: exercises.rst

@@ -11,6 +11,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+   Test 1 <tests/test1>
    Introduction to the course <introduction/introduction>
    Using Linux Tools <ult/index.rst>
    LaTeX <latex/index.rst>
