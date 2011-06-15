@@ -226,9 +226,8 @@
   \item \texttt{loc} parameter allows to change the location
   \end{itemize}
   \begin{lstlisting}
-    legend(['sine-10 points', 'sine-500 points'], loc='center')
-
-    loc?
+    legend(['sine-10 points', 'sine-500 points'], 
+            loc='center')
   \end{lstlisting}
 \end{frame}
 
@@ -346,7 +345,8 @@
     loadtxt('pendulum_error.txt', unpack=True)
     Tsq = square(T)
 
-    errorbar(L, Tsq , xerr=L_err, yerr=T_err, fmt='b.')
+    errorbar(L, Tsq , xerr=L_err, 
+             yerr=T_err, fmt='b.')
   \end{lstlisting}
 \end{frame}
 
@@ -361,7 +361,8 @@
   \item Let's plot the data of profits of a company
   \end{itemize}
   \begin{lstlisting}
-    year, profit = loadtxt('company-a-data.txt', dtype=type(int()))
+    year, profit = loadtxt('company-a-data.txt', 
+                            dtype=type(int()))
 
     scatter(year, profit)
   \end{lstlisting}

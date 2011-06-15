@@ -42,7 +42,8 @@ Out[]: array([ 1., -2., -2.])
 \begin{lstlisting}
 In []: Ax = dot(A, x)
 In []: Ax
-Out[]: array([  1.00000000e+00,  -2.00000000e+00,  -1.11022302e-16])
+Out[]: array([ 1.00000000e+00,  -2.00000000e+00, 
+              -1.11022302e-16])
 \end{lstlisting}
 \end{small}
 \begin{block}{}
@@ -89,7 +90,6 @@ Out[]: True
 \begin{frame}[fragile]
 \frametitle{\texttt{fsolve} \ldots}
 Find the root of $sin(z)+cos^2(z)$ nearest to $0$
-\begin{lstlisting}
 \begin{lstlisting}
 In []: def g(z):
  ....:     return sin(z)+cos(z)*cos(z)
@@ -192,9 +192,10 @@ In []: initial = [10*2*pi/360, 0]
 \begin{frame}[fragile]
 \frametitle{ODEs - Simple Pendulum \ldots}
 %%\begin{small}
-\texttt{In []: from scipy.integrate import odeint}
+\texttt{}
 %%\end{small}
 \begin{lstlisting}
+In []: from scipy.integrate import odeint
 In []: pend_sol = odeint(pend_int, 
                          initial,t)
 \end{lstlisting}
