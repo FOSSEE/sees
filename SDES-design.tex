@@ -8,7 +8,7 @@
 
 \subsection{Preamble} 
 \begin{description}
-  \item[Version] 0.8
+  \item[Version] 0.9
   \item[Purpose] This document captures the design of the Software
       Tools, Techniques and Practices course. This course is designed
       under the project on ``Software Development Techniques for Engineers and Scientist''
@@ -79,7 +79,7 @@ After successfully completing the program, the participants will be able to:
 \item \label{scr} automate tasks by writing shell scripts and python scripts,\hfill \texttt{RBT Ap}
 \item \label{sty} realise the impact of coding style and readbility on quality,\hfill \texttt{RBT U\phantom{p}}
 \item \label{py} write mid-sized programs that carry out typical engineering/numerical computations such as those that involve (basic) manipulation of large arrays in an efficient manner,\hfill \texttt{RBT Ap}
-\item \label{plot} generate 2D and simple 3D plots, \hfill \texttt{RBT Ap}
+\item \label{plot} generate 2D plots, \hfill \texttt{RBT Ap}
 \item \label{dbg} debug programs using a standardised approach,\hfill \texttt{RBT Ap}
 \item \label{test} understand the importance of tests and the philosophy of Test Driven Development,\hfill \texttt{RBT U\phantom{p}}
 \item \label{unit} write unit tests and improve the quality of code.  \hfill \texttt{RBT Ap}
@@ -93,12 +93,12 @@ The objectives listed against the modules may be covered only partially in that 
 \begin{tabular}{||l|l|l|r||}\hline\hline
 Seq & Module  & Course Objectives & Duration\\
 Num & Name    & Covered           & (Hours)\\\hline 
-1 & Using Linux Tools        & \ref{intro}, \ref{cmd}, \ref{scr}, \ref{dbg} and  \ref{test} & 7\\\hline
-2 & Basic Python Programming & \ref{scr}, \ref{sty}, \ref{dbg} and \ref{test}               & 8\\\hline 
-3 & LaTeX                    & \ref{pdf} and \ref{scr}                                      & 2\\\hline
-4 & Version Control          & \ref{VC}                                                     & 2\\\hline
-5 & Test Driven Development  & \ref{test}, \ref{unit}, \ref{cmd} and \ref{scr}              & 4\\\hline
-6 & Advanced Python          & \ref{py}, \ref{dbg}, \ref{plot} and \ref{test}               & 8\\\hline
+1 & Using Linux Tools        & \ref{intro}, \ref{cmd}, \ref{scr}, \ref{dbg} and  \ref{test} & 4.5\\\hline
+2 & Basic Python Programming & \ref{scr}, \ref{sty}, \ref{dbg} and \ref{test}               & 4.5\\\hline 
+3 & LaTeX                    & \ref{pdf} and \ref{scr}                                      & 3\\\hline
+4 & Version Control          & \ref{VC}                                                     & 2.5\\\hline
+5 & Test Driven Development  & \ref{test}, \ref{unit}, \ref{cmd} and \ref{scr}              & 2.5\\\hline
+6 & Advanced Python          & \ref{py}, \ref{dbg}, \ref{plot} and \ref{test}               & 3.5\\\hline
 7 & Project                  & All applied                                                  & 6\\\hline
 \end{tabular}    
 
@@ -189,21 +189,21 @@ After successfully completing this module a participant will be able to:
 \begin{tabular}{llr}
 \hline
 Session & Topic & Duration\\\hline
-1 & Introduction to the Python language. Philosophy                  & ~5 mts\\
+1 & Introduction to the Python language. Philosophy                  & 10 mts\\
   & The python interpreter, its's features                           & 10 mts \\
   & Basic data types: \tt{int, float, complex}                       & ~5 mts \\
   & Operation on numbers                                             & 10 mts\\
   & Sequences and operations on them                                 & 10 mts\\\hline
 
-2 & Intoduction to strings                                           & ~5 mts\\
+2 & Intoduction to strings                                           & 10 mts\\
   & Operations on strings                                            & 10 mts\\
-  & Problem set 1: \tt{slicing, striding, solution}                   & 15 mts\\
+  & Problem set 1: \tt{slicing, striding, solution}                  & 15 mts\\
   & Syntax: \tt{.join()}                                             & ~5 mts\\
   & Conditionals: \tt{if-else, if-elif-else,ternanry operator, pass} & 10 mts\\
   & Loops: \tt{while, for}                                           & 15 mts\\
   & Lists: \tt{Creation,Accessing elements, Operations}              & 15 mts\\\hline
 
-3 & I/O: \tt{print x \& print x, raw\_input}                          & 15 mts\\
+3 & I/O: \tt{print x \& print x, raw\_input}                         & 15 mts\\
   & Files: \tt{opening \& reading the files}                         & ~5 mts\\
   & Exercise: \tt{parsing, tokenization}                             & 10 mts\\
   & Functions: \tt{definition, doc-strings, code reading,}           & 30 mts\\
@@ -214,7 +214,7 @@ Session & Topic & Duration\\\hline
   & \tt{Adding \& removing elements, containership, keys and values}  &\\
   & Sets: \tt{creating, operations, sub-sets, example}                & 10 mts\\\hline
 
-5 & Assessment                                                       & 50 mts\\\hline\hline
+5 & Assessment                                                        & 50 mts\\\hline\hline
 \end{tabular}
 
 \section{Module 3: LaTeX}
@@ -242,7 +242,7 @@ Session & Topic & Duration\\\hline
   & Typesetting a minimal document,                           & \\
   & Commands and Environments,                                & \\
   & Comments and special characters, Spacing.                 & \\
-  & Adding Structure: documentclass, top matter,              & 25 mts\\
+  & Adding Structure: documentclass, top matter,              & 30 mts\\
   & abstract, sections, appendix, ToC,                        & \\
   & Typesetting Text: quotation marks,fonts,                  & 20 mts\\
   & emphasis, lists, footnotes,                               & \\
@@ -283,12 +283,12 @@ After successfully completing this module a participant will be able to:
 \hline
 Session & Topic & Duration\\\hline
 1 & Introduction to version control                             & 10 mts\\
-  & Introduction to Hg and it's installation                    & 10 mts\\
+  & Introduction to Hg and it's installation                    & 15 mts\\
   & Getting started: \tt{hg init, hg status,hg help, hg commit} & 20 mts\\
   & Practical use of VC: \tt{hg revert, hg diff}                & 20 mts\\\hline
 
-2 & Collaborating using VC                                      & 15 mts\\
-  & Working in a team: \tt{hg pull, hg push, hg merge}          & 15 mts\\
+2 & Collaborating using VC                                      & 20 mts\\
+  & Working in a team: \tt{hg pull, hg push, hg merge}          & 20 mts\\
   & Resolving conflicts: \tt{hg incoming, hg parent}            & 15 mts\\\hline
 
 3 & Assessment                                                  & 30 mts\\\hline\hline
@@ -355,7 +355,7 @@ Session & Topic & Duration\\\hline
   & Matrix operations                                                     & 10 mts\\
   & Least square fit                                                      & 15 mts\\\hline
 
-3 & Solving equations: \tt{solve, roots, fsolve}                          & 15 mts\\
+3 & Solving equations: \tt{solve, roots, fsolve}                          & 20 mts\\
   & ODEs: \tt{1st order, 2nd order}                                       & 20 mts\\
   & Python modules: \tt{imports, sys.path, writing own modules}           & 20 mts\\\hline
 
