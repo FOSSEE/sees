@@ -11,8 +11,8 @@
   \item[Version] 0.8
   \item[Purpose] This document captures the design of the Software
       Tools, Techniques and Practices course. This course is designed
-      under the project on ``Adoption of Open Source Software in Science
-      and Engineering Education'' at Indian Institute of Technology,
+      under the project on ``Software Development Techniques for Engineers and Scientist''
+      at Indian Institute of Technology,
       Bombay funded by the National Mission on Education through
       Information and Communication Technology, Ministry of Human
       Resources Development under the thrust area of ``Adaptation and
@@ -97,18 +97,22 @@ Num & Name    & Covered           & (Hours)\\\hline
 2 & Basic Python Programming & \ref{scr}, \ref{sty}, \ref{dbg} and \ref{test}               & 8\\\hline 
 3 & LaTeX                    & \ref{pdf} and \ref{scr}                                      & 2\\\hline
 4 & Version Control          & \ref{VC}                                                     & 2\\\hline
-5 & Coding Style \& Approach & \ref{sty} and \ref{test}                                     & 2\\\hline
-6 & Test Driven Development  & \ref{test}, \ref{unit}, \ref{cmd} and \ref{scr}              & 4\\\hline
-7 & Advanced Python          & \ref{py}, \ref{dbg}, \ref{plot} and \ref{test}               & 8\\\hline
-8 & Project                  & All applied                                                  & 6\\\hline
+5 & Test Driven Development  & \ref{test}, \ref{unit}, \ref{cmd} and \ref{scr}              & 4\\\hline
+6 & Advanced Python          & \ref{py}, \ref{dbg}, \ref{plot} and \ref{test}               & 8\\\hline
+7 & Project                  & All applied                                                  & 6\\\hline
 \end{tabular}    
 
 Session Count = 39 + 1 Buffer
 \subsection*{Note}
 \begin{itemize}
     \item All sessions will be held in rooms where students are sitting before a computer.
-    \item We will use \texttt{bzr} as the version control tool. The course materials will be duplicated with other tools
+<<<<<<< HEAD
+    \item We will use \texttt{hg} as the version control tool. The course materials will be duplicated with other tools
           such as \texttt{hg, git, svn}.
+=======
+    \item We will use \texttt{hg} as the version control tool. The course materials will be duplicated with other tools
+          such as \texttt{bzr, git, svn}.
+>>>>>>> 075aa6ad233e751b2cd95a0715cc938277a6be66
     \item It is expected that shell scripting covered in module 1 will act as a revision for basic programming
       concepts.
 \end{itemize}     
@@ -218,6 +222,7 @@ Session & Topic & Duration\\\hline
 \subsection{Module Objectives}
 After successfully completing this module a participant will be able to:
 	\begin{itemize}
+        \item Understand the basic structure of a LaTeX document, \hfill RBT U
 	\item Produce professional documents in LaTeX, \hfill RBT Ap
         \item Typeset Mathematical equations, \hfill  RBT Ap
         \item Include figures, tables and code samples, \hfill RBT Ap
@@ -294,7 +299,8 @@ Session & Topic & Duration\\\hline
 \subsection{Module Objectives}
 After successfully completing this module a participant will be able to:
         \begin{itemize}
-            \item Understand the use of test driven development,\hfill RBT U
+            \item Understand the need of test driven development,\hfill RBT U
+            \item Understand the structure and nature of different types of tests for the given code, \hfill RBT U
             \item Use Python testing frameworks efficiently  \hfill RBT Ap
         \end{itemize}
 \subsection{Suggested Reading}
@@ -322,7 +328,7 @@ After successfully completing this module a participant will be able to:
             \item Work with arrays and use them effectively, \hfill RBT Ap
             \item Solve linear, polynomial and other non-linear equations, \hfill RBT Ap
             \item Solve ODEs, \hfill RBT Ap
-            \item Write mid-sized programs that carry out typical (Ap) engineering/numerical computations such as those that involve (basic) manipulation of large arrays in an efficient manner.
+            \item Write mid-sized programs that carry out typical engineering/numerical computations such as those that involve (basic) manipulation of large arrays in an efficient manner. \hfill RBT Ap
         \end{itemize}
 \subsection{Suggested Reading}
 \begin{itemize}
