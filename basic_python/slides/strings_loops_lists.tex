@@ -217,7 +217,8 @@
         score = 0
   \end{lstlisting}
   \begin{lstlisting}
-    score = int(score_str) if score_str != 'AA' else 0
+    ss = score_str
+    score = int(ss) if ss != 'AA' else 0
   \end{lstlisting}
 \end{frame}
 
@@ -292,7 +293,7 @@
     while True:
         print i*i
         i += 2
-        if i<10:
+        if i>10:
             break
   \end{lstlisting}
 \end{frame}
