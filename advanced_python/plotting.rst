@@ -87,11 +87,9 @@ Embellishing Plots
 Now that we know how to make simple plots, let us look at embellishing the
 plots. We shall look at how to modify the colour, thickness and line-style of
 a plot. We shall then learn how to add title to a plot and then look at
-adding labels to x and y axes. We shall also look at adding annotations to
-the plot and setting the limits on the axes.
+adding labels to x and y axes. We shall also look at adding annotations to the plot and setting the limits on the axes.
 
-Let us decorate the sine curve that we have already plotted. If you have
-closed that window or your IPython terminal, redo the plot. 
+Let us decorate the sine curve that we have already plotted. If you have closed that window or your IPython terminal, redo the plot. 
 
 ::
 

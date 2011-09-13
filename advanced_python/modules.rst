@@ -91,8 +91,8 @@ Yes! it worked. So what did we do?
 We actually imported the required functions and keywords, using ``import``.
 By using the *, we are asking python to import everything from the
 ``scipy`` and ``pylab`` modules. This isn't a good practice, as 
-  1. it imports a lot of unnecessary things
-  2. the two modules may have functions with the same name, which would
+1. it imports a lot of unnecessary things
+2. the two modules may have functions with the same name, which would
   cause a conflict. 
 
 One of the ways out is to import only the stuff that we need, explicitly. 
@@ -174,8 +174,7 @@ Often we will have to reuse the code that we have previously written. We do
 that by writing functions. Functions can then be put into modules, and
 imported as and when required. 
 
-Let us first write a function that computes the gcd of two numbers and save
-it in a script.
+Let us first write a function that computes the gcd of two numbers and save it in a script.
 
 ::
 
@@ -184,8 +183,7 @@ it in a script.
             a, b = b, a%b
         return a
 
-Now, we shall write a test function in the script that tests the gcd
-function, to see if it works. 
+Now, we shall write a test function in the script that tests the gcd function, to see if it works. 
 
 ::
 

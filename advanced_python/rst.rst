@@ -27,14 +27,16 @@ Why ReST?
 Tools used
 ----------
 
-  + You will need python-docutils to compile your ReST documents::
+  + You will need python-docutils to compile your ReST documents
+::
 
-      sudo apt-get install python-docutils
+    sudo apt-get install python-docutils
 
   + To build websites, look at Sphinx, rest2web, etc. 
-  + rst2html doesn't support math. We shall use Sphinx to see how math works::
+  + rst2html doesn't support math. We shall use Sphinx to see how math works
+::
 
-      sudo apt-get install python-sphinx
+    sudo apt-get install python-sphinx
 
 Generating output
 -----------------
@@ -200,7 +202,7 @@ Tables...
 ---------
 
 Grid Tables
-~~~~~~~~~~~
+-----------
 
 ::
 

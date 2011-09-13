@@ -365,12 +365,11 @@ array.
 To access, the third column of C, we said, ``C[:, 2]``. Essentially, we are
 accessing all the rows in column three of C. Now, let us modify this to
 access only the first three rows, of column three of C.
-
 We say, 
 
 ::
 
-  C[0:3, 2]
+    C[0:3, 2]
 
 to get the elements of rows indexed from 0 to 3, 3 not included and column
 indexed 2. Note that, the index before the colon is included and the index
