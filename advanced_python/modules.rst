@@ -89,7 +89,7 @@ And run the script,
 Yes! it worked. So what did we do?
 
 We actually imported the required functions and keywords, using ``import``.
-By using the *, we are asking python to import everything from the
+By using the * , we are asking python to import everything from the
 ``scipy`` and ``pylab`` modules. This isn't a good practice, as 
 1. it imports a lot of unnecessary things
 2. the two modules may have functions with the same name, which would

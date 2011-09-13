@@ -1,5 +1,5 @@
 ReST
-====
+----
 
 ----------------------------
 The Pythonic way to Document
@@ -242,7 +242,7 @@ Links
     
           `A Title`_ automatically generates hyperlink targets.
 
-     + in Sphinx ::
+      + in Sphinx ::
     
          :ref: `This is an example <example>` link.
          This is an :ref: `example` link.
@@ -250,7 +250,6 @@ Links
 
 Footnotes
 ---------
-
 ::
 
   This[#]_ gives auto-numbered[#]_ footnotes. 
