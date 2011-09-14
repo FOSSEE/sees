@@ -288,7 +288,7 @@ To list all the commands between 5 and 10, type
 
 ::
 
-    %hist 5 10
+    %hist 5-10
 
 Now that we have the history, we would like to save the required lines of
 code from history to reproduce the plot of the parabolic function. This is
