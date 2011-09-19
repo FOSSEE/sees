@@ -3,9 +3,9 @@
 \begin{frame}[fragile]
   \frametitle{Printing}
   \begin{lstlisting}
-    a = "This is a string"
-    a
-    print a
+  In[]:  a = "This is a string"
+  In[]:  a
+  In[]:  print a
   \end{lstlisting}
   \begin{itemize}
   \item Both \texttt{a}, and \texttt{print a} are showing the value
@@ -15,19 +15,19 @@
   \item In a script, it has no effect. 
   \end{itemize}
   \begin{lstlisting}
-    b = "A line \n New line"
-    b
-    print b
+  In[]:  b = "A line \n New line"
+  In[]:  b
+  In[]:  print b
   \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{String formatting}
   \begin{lstlisting}
-    x = 1.5
-    y = 2
-    z = "zed"
-    print "x is %2.1f y is %d z is %s" %(x, y, z)
+  In[]: x = 1.5
+  In[]:  y = 2
+  In[]:  z = "zed"
+  In[]:  print "x is %2.1f y is %d z is %s" %(x, y, z)
   \end{lstlisting}
 \end{frame}
 
@@ -39,11 +39,11 @@
   \item Save as \texttt{print\_example.py}
   \end{itemize}
   \begin{lstlisting}
-    print "Hello"
-    print "World"
+   In[]: print "Hello"
+   In[]: print "World"
 
-    print "Hello",
-    print "World"
+   In[]:  print "Hello",
+   In[]: print "World"
   \end{lstlisting}
   \begin{itemize}
   \item Run the script using \texttt{\% run print\_example.py}
@@ -55,30 +55,30 @@
 \begin{frame}[fragile]
   \frametitle{\texttt{raw\_input}}
   \begin{lstlisting}
-    ip = raw_input()    
+  In[]:  ip = raw_input()    
   \end{lstlisting}
   \begin{itemize}
   \item The cursor is blinking; waiting for input
   \item Type \texttt{an input} and hit <ENTER>
   \end{itemize}
   \begin{lstlisting}
-    print ip
+   In[]: print ip
   \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{\texttt{raw\_input} \ldots}
   \begin{lstlisting}
-    c = raw_input()
-    5.6
-    c
-    type(c)
+  In[]:  c = raw_input()
+  In[]:  5.6
+  In[]: c
+  In[]:  type(c)
   \end{lstlisting}
   \begin{itemize}
   \item \alert{\texttt{raw\_input} always takes a string}
   \end{itemize}
   \begin{lstlisting}
-    name = raw_input("Please enter your name: ")
+  In[]:  name = raw_input("Please enter your name: ")
     George
   \end{lstlisting}
   \begin{itemize}
@@ -96,8 +96,8 @@
   \end{lstlisting}
   {\tiny The file is in our present working directory}
   \begin{lstlisting}
-    f = open('pendulum.txt')
-    f
+   In[]: f = open('pendulum.txt')
+   In[]: f
   \end{lstlisting}
   \begin{itemize}
   \item \texttt{f} is a file object
@@ -108,16 +108,16 @@
 \begin{frame}[fragile]
   \frametitle{Reading the whole file}
   \begin{lstlisting}
-    pend = f.read()
-    print pend
+   In[]: pend = f.read()
+   In[]: print pend
   \end{lstlisting}
   \begin{itemize}
   \item We have read the whole file into the variable \texttt{pend}
   \end{itemize}
   \begin{lstlisting}
-    type(pend)
-    pend_list = pend.splitlines()
-    pend_list
+   In[]: type(pend)
+   In[]: pend_list = pend.splitlines()
+   In[]: pend_list
   \end{lstlisting}
   \begin{itemize}
   \item  \texttt{pend} is a string variable
@@ -126,16 +126,16 @@
   \item Close the file, when done; Also, if you want to read again
   \end{itemize}
   \begin{lstlisting}
-    f.close()
-    f
+   In[]:  f.close()
+   In[]: f
   \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{Reading line-by-line}
   \begin{lstlisting}
-    for line in open('pendulum.txt'):
-        print line
+   In[]: for line in open('pendulum.txt'):
+   ....:     print line
   \end{lstlisting}
   \begin{itemize}
   \item The file object is an ``iterable''
@@ -143,9 +143,9 @@
   \item Instead of printing, collect lines in a list
   \end{itemize}
   \begin{lstlisting}
-    line_list = [ ]
-    for line in open('pendulum.txt'):
-        line_list.append(line)
+   In[]: line_list = [ ]
+   In[]: for line in open('pendulum.txt'):
+   ....:     line_list.append(line)
   \end{lstlisting}
 \end{frame}
 
@@ -171,8 +171,8 @@
 \begin{frame}[fragile]
   \frametitle{Tokenization}
   \begin{lstlisting}
-    line = "parse this           string"
-    line.split()
+  In[]:  line = "parse this           string"
+  In[]:  line.split()
   \end{lstlisting}
   \begin{itemize}
   \item Original string is split on white-space (if no argument)
@@ -180,8 +180,8 @@
   \item It can be given an argument to split on that argrument
   \end{itemize}
   \begin{lstlisting}
-    record = "A;015163;JOSEPH RAJ S;083;042;47;AA;72;244;;;"
-    record.split(';')
+   In[]:  record = "A;015163;JOSEPH RAJ S;083;042;47;AA;72;244;;;"
+   In[]: record.split(';')
   \end{lstlisting}
 \end{frame}
 
@@ -192,8 +192,8 @@
   \item We can strip out the spaces at the ends
   \end{itemize}
   \begin{lstlisting}
-    word = "     B    "
-    word.strip()
+   In[]: word = "     B    "
+   In[]: word.strip()
   \end{lstlisting}
   \begin{itemize}
   \item \texttt{strip} is returning a new string 
@@ -207,10 +207,10 @@
   \item We need numbers to perform math operations
   \end{itemize}
   \begin{lstlisting}
-    mark_str = "1.25"
-    mark = int(mark_str)
-    type(mark_str)
-    type(mark)
+  In[]:  mark_str = "1.25"
+  In[]:  mark = int(mark_str)
+  In[]:  type(mark_str)
+  In[]: type(mark)
   \end{lstlisting}
   \begin{itemize}
   \item \texttt{strip} is returning a new string 
@@ -220,20 +220,20 @@
 \begin{frame}[fragile]
   \frametitle{File parsing -- Solution}
   \begin{lstlisting}
-    math_B = [] # empty list to store marks
-    for line in open("sslc1.txt"):
-        fields = line.split(";")
+  In[]:  math_B = [] # empty list to store marks
+  In[]: for line in open("sslc1.txt"):
+  ....:      fields = line.split(";")
 
-        reg_code = fields[0]
-        reg_code_clean = reg_code.strip()
+  ....:      reg_code = fields[0]
+  ....:      reg_code_clean = reg_code.strip()
 
-        math_mark_str = fields[5]
-        math_mark = float(math_mark_str)
+  ....:      math_mark_str = fields[5]
+  ....:      math_mark = float(math_mark_str)
 
-        if reg_code == "B":
-            math_B.append(math_mark)
+  ....:      if reg_code == "B":
+  ....:          math_B.append(math_mark)
 
-    math_B_mean = sum(math_B) / len(math_B)
-    math_B_mean
+  In[]:  math_B_mean = sum(math_B) / len(math_B)
+  In[]:  math_B_mean
   \end{lstlisting}
 \end{frame}

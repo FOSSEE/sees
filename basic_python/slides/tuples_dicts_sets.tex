@@ -3,24 +3,24 @@
 \begin{frame}[fragile]
   \frametitle{Tuples -- Initialization}
   \begin{lstlisting}
-    t = (1, 2.5, "hello", -4, "world", 1.24, 5)
-    t
+  In[]:  t = (1, 2.5, "hello", -4, "world", 1.24, 5)
+  In[]:  t
   \end{lstlisting}
   \begin{itemize}
   \item It is not always necessary to use parenthesis
   \end{itemize}
   \begin{lstlisting}
-    a = 1, 2, 3 
-    b = 1, 
+  In[]:  a = 1, 2, 3 
+  In[]:  b = 1, 
   \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{Indexing}
   \begin{lstlisting}
-    t[3]
-    t[1:5:2]
-    t[2] = "Hello"
+   In[]: t[3]
+   In[]: t[1:5:2]
+   In[]: t[2] = "Hello"
   \end{lstlisting}
   \begin{itemize}
   \item \alert{Tuples are immutable!}
@@ -30,41 +30,41 @@
 \begin{frame}[fragile]
   \frametitle{Swapping values}
   \begin{lstlisting}
-    a = 5
-    b = 7
+  In[]:  a = 5
+  In[]:  b = 7
 
-    temp = a
-    a = b
-    b = temp
+  In[]:  temp = a
+  In[]:  a = b
+  In[]:  b = temp
   \end{lstlisting}
   \begin{itemize}
   \item Here's the Pythonic way of doing it
   \end{itemize}
   \begin{lstlisting}
-    a, b = b, a
+  In[]:  a, b = b, a
   \end{lstlisting}
   \begin{itemize}
   \item The variables can be of different data-types
   \end{itemize}
   \begin{lstlisting}
-    a = 2.5
-    b = "hello"
-    a, b = b, a
+  In[]:  a = 2.5
+  In[]:  b = "hello"
+  In[]:  a, b = b, a
   \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{Tuple packing \& unpacking}
   \begin{lstlisting}
-    5,
+   In[]: 5,
 
-    5, "hello", 2.5
+   In[]: 5, "hello", 2.5
   \end{lstlisting}
   \begin{itemize}
   \item Tuple packing and unpacking, when swapping
   \end{itemize}
   \begin{lstlisting}
-    a, b = b, a
+  In[]:  a, b = b, a
   \end{lstlisting}
 \end{frame}
 
@@ -73,14 +73,14 @@
 \begin{frame}[fragile]
   \frametitle{Creating Dictionaries}
   \begin{lstlisting}
-    mt_dict = {}
+  In[]:  mt_dict = {}
 
-    extensions = {'jpg' : 'JPEG Image', 
+  In[]:  extensions = {'jpg' : 'JPEG Image', 
                   'py' : 'Python script', 
                   'html' : 'Html document', 
                   'pdf' : 'Portable Document Format'}
 
-    extensions
+  In[]:  extensions
   \end{lstlisting}
   \begin{itemize}
   \item Key-Value pairs
@@ -91,13 +91,13 @@
 \begin{frame}[fragile]
   \frametitle{Accessing Elements}
   \begin{lstlisting}
-    print extensions['jpg']
+  In[]:  print extensions['jpg']
   \end{lstlisting}
   \begin{itemize}
   \item Values can be accessed using keys
   \end{itemize}
   \begin{lstlisting}
-    print extensions['zip']
+  In[]:  print extensions['zip']
   \end{lstlisting}
   \begin{itemize}
   \item Values of non-existent keys cannot, obviously, be accessed
@@ -110,30 +110,30 @@
   \item Adding a new key-value pair
   \end{itemize}
   \begin{lstlisting}
-    extensions['cpp'] = 'C++ code'
-    extensions
+   In[]: extensions['cpp'] = 'C++ code'
+   In[]: extensions
   \end{lstlisting}
   \begin{itemize}
   \item Deleting a key-value pair
   \end{itemize}
   \begin{lstlisting}
-    del extension['pdf']
-    extensions
+   In[]: del extension['pdf']
+   In[]: extensions
   \end{lstlisting}
   \begin{itemize}
   \item Assigning to existing key, modifies the value
   \end{itemize}
   \begin{lstlisting}
-    extensions['cpp'] = 'C++ source code'
-    extensions
+   In[]: extensions['cpp'] = 'C++ source code'
+   In[]: extensions
   \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{Containership}
   \begin{lstlisting}
-    'py' in extensions
-    'odt' in extensions
+   In[]: 'py' in extensions
+   In[]: 'odt' in extensions
   \end{lstlisting}
   \begin{itemize}
   \item Allow checking for container-ship of keys; NOT values
@@ -144,16 +144,17 @@
 \begin{frame}[fragile]
   \frametitle{Lists of Keys and Values}
   \begin{lstlisting}
-    extensions.keys()
-    extensions.values()
+   In[]: extensions.keys()
+   In[]: extensions.values()
   \end{lstlisting}
   \begin{itemize}
   \item Note that the order of the keys and values match
   \item That can be relied upon and used
   \end{itemize}
   \begin{lstlisting}
-    for each in extensions.keys():
-        print each, "-->", extensions[each]
+   In[]: for each in extensions.keys():
+   ....:     print each, "-->", extensions[each]
+   ....:
   \end{lstlisting}
 \end{frame}
 
@@ -162,9 +163,9 @@
 \begin{frame}[fragile]
   \frametitle{Creating Sets}
   \begin{lstlisting}
-    a_list = [1, 2, 1, 4, 5, 6, 2]
-    a = set(a_list)
-    a
+  In[]:  a_list = [1, 2, 1, 4, 5, 6, 2]
+  In[]:  a = set(a_list)
+  In[]:  a
   \end{lstlisting}
   \begin{itemize}
   \item Conceptually identical to the sets in mathematics
@@ -176,8 +177,8 @@
 \begin{frame}[fragile]
   \frametitle{Operations on Sets}
   \begin{lstlisting}
-    f10 = set([1, 2, 3, 5, 8])
-    p10 = set([2, 3, 5, 7])
+  In[]:  f10 = set([1, 2, 3, 5, 8])
+  In[]:  p10 = set([2, 3, 5, 7])
   \end{lstlisting}
   \begin{itemize}
   \item Mathematical operations performed on sets, can be performed
@@ -185,19 +186,19 @@
   \begin{itemize}
   \item Union
     \begin{lstlisting}
-      f10 | p10
+    In[]:  f10 | p10
     \end{lstlisting}
   \item Intersection
     \begin{lstlisting}
-      f10 & p10
+    In[]:  f10 & p10
     \end{lstlisting}
   \item Difference
     \begin{lstlisting}
-      f10 - p10
+    In[]:  f10 - p10
     \end{lstlisting}
   \item Symmetric Difference
     \begin{lstlisting}
-      f10 ^ p10
+    In[]:  f10 ^ p10
     \end{lstlisting}
   \end{itemize}
 \end{frame}
@@ -207,12 +208,12 @@
   \begin{itemize}
   \item Proper Subset
     \begin{lstlisting}
-      b = set([1, 2])
-      b < f10
+    In[]:  b = set([1, 2])
+    In[]:  b < f10
     \end{lstlisting}
   \item Subsets
     \begin{lstlisting}
-      f10 <= f10
+    In[]:  f10 <= f10
     \end{lstlisting}
   \end{itemize}
 \end{frame}
@@ -222,17 +223,18 @@
   \begin{itemize}
   \item Containership
     \begin{lstlisting}
-      1 in f10
-      4 in f10
+    In[]:  1 in f10
+    In[]:  4 in f10
     \end{lstlisting}
   \item Iterating over elements
     \begin{lstlisting}
-      for i in f10:
-          print i,
+    In[]:  for i in f10:
+    ....:      print i,
+    ....:
     \end{lstlisting}
   \item Subsets
     \begin{lstlisting}
-      f10 <= f10
+    In[]:  f10 <= f10
     \end{lstlisting}
   \end{itemize}
 \end{frame}
@@ -244,13 +246,13 @@
     all the duplicates
   \end{block}
   \begin{lstlisting}
-    marks = [20, 23, 22, 23, 20, 21, 23] 
-    marks_set = set(marks)
-    for mark in marks_set:
-        marks.remove(mark)
+  In[]:  marks = [20, 23, 22, 23, 20, 21, 23] 
+  In[]:  marks_set = set(marks)
+  In[]:  for mark in marks_set:
+  ....:      marks.remove(mark)
 
     # left with only duplicates
-    duplicates = set(marks)
+  In[]:  duplicates = set(marks)
   \end{lstlisting}
 \end{frame}
 
