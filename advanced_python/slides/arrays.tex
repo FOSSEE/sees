@@ -7,9 +7,9 @@
   \item Much faster than arrays
   \end{itemize}
   \begin{lstlisting}
-  In []:  a1 = array([1,2,3,4])
+    a1 = array([1,2,3,4])
     a1 # 1-D
-  In []:  a2 = array([[1,2,3,4],[5,6,7,8]])
+    a2 = array([[1,2,3,4],[5,6,7,8]])
     a2 # 2-D
   \end{lstlisting}
 \end{frame}
@@ -17,38 +17,39 @@
 \begin{frame}[fragile]
   \frametitle{\texttt{arange} and \texttt{shape}}
   \begin{lstlisting}
-  In []:  ar1 = arange(1, 5)
-  In []:  ar2 = arange(1, 9) 
-  In []:  print ar2
-  In []:  ar2.shape = 2, 4
-  In []:  print ar2
+    ar1 = arange(1, 5)
+
+    ar2 = arange(1, 9) 
+    print ar2
+    ar2.shape = 2, 4
+    print ar2
   \end{lstlisting}
   \begin{itemize}
   \item \texttt{linspace} and \texttt{loadtxt} also returned arrays
   \end{itemize}
   \begin{lstlisting}
-  In []:  ar1.shape
-   In []: ar2.shape
+    ar1.shape
+    ar2.shape
   \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{Special methods}
   \begin{lstlisting}
-  In []:  identity(3)
+    identity(3)
   \end{lstlisting}
   \begin{itemize}
   \item array of shape (3, 3) with diagonals as 1s, rest 0s
   \end{itemize}
   \begin{lstlisting}
-  In []:  zeros((4,5))
+    zeros((4,5))
   \end{lstlisting}
   \begin{itemize}
   \item array of shape (4, 5) with all 0s
   \end{itemize}
   \begin{lstlisting}
-  In []:  a = zeros_like([1.5, 1, 2, 3])
-  In []:  print a, a.dtype
+    a = zeros_like([1.5, 1, 2, 3])
+    print a, a.dtype
   \end{lstlisting}
   \begin{itemize}
   \item An array with all 0s, with similar shape and dtype as argument
@@ -60,17 +61,17 @@
 \begin{frame}[fragile]
   \frametitle{Operations on arrays}
   \begin{lstlisting}
-  In []:  a1
-  In []:  a1 * 2
-  In []:  a1
+    a1
+    a1 * 2
+    a1
   \end{lstlisting}
   \begin{itemize}
   \item The array is not changed; New array is returned
   \end{itemize}
   \begin{lstlisting}
-  In []:  a1 + 3
-  In []:  a1 - 7
-  In []:  a1 / 2.0
+    a1 + 3
+    a1 - 7
+    a1 / 2.0
   \end{lstlisting}
 \end{frame}
 
@@ -80,25 +81,25 @@
   \item Like lists, we can assign the new array, the old name
   \end{itemize}
   \begin{lstlisting}
-  In []:  a1 = a1 + 2
-  In []:  a1
+    a1 = a1 + 2
+    a1
   \end{lstlisting}
   \begin{itemize}
    \item \alert{Beware of Augmented assignment!}
   \end{itemize}
   \begin{lstlisting}
-  In []:  a, b = arange(1, 5), arange(1, 5)
-  In []:  print a, a.dtype, b, b.dtype
-  In []:  a = a/2.0
-  In []:  b /= 2.0
-  In []:  print a, a.dtype, b, b.dtype
+    a, b = arange(1, 5), arange(1, 5)
+    print a, a.dtype, b, b.dtype
+    a = a/2.0
+    b /= 2.0
+    print a, a.dtype, b, b.dtype
   \end{lstlisting}
   \begin{itemize}
   \item Operations on two arrays; element-wise
   \end{itemize}
   \begin{lstlisting}
-  In []:  a1 + a1
-   In []: a1 * a2
+    a1 + a1
+    a1 * a2
   \end{lstlisting}
 \end{frame}
 
@@ -107,24 +108,24 @@
 \begin{frame}[fragile]
   \frametitle{Accessing \& changing elements}
   \begin{lstlisting}
-   In []: A = array([12, 23, 34, 45, 56])
+    A = array([12, 23, 34, 45, 56])
 
-   In []: C = array([[11, 12, 13, 14, 15],
+    C = array([[11, 12, 13, 14, 15],
                [21, 22, 23, 24, 25],
                [31, 32, 33, 34, 35],
                [41, 42, 43, 44, 45],
                [51, 52, 53, 54, 55]])
 
-   In []: A[2]
-   In []: C[2, 3]
+    A[2]
+    C[2, 3]
   \end{lstlisting}
   \begin{itemize}
   \item Indexing starts from 0
   \item Assign new values, to change elements
   \end{itemize}
   \begin{lstlisting}
-   In []: A[2] = -34
-   In []: C[2, 3] = -34
+    A[2] = -34
+    C[2, 3] = -34
   \end{lstlisting}
 \end{frame}
 
@@ -134,49 +135,49 @@
   \item Indexing works just like with lists
   \end{itemize}
   \begin{lstlisting}
-   In []: C[2]
-   In []: C[4]
-   In []: C[-1]
+    C[2]
+    C[4]
+    C[-1]
   \end{lstlisting}
   \begin{itemize}
   \item Change the last row into all zeros
   \end{itemize}
   \begin{lstlisting}
-   In []: C[-1] = [0, 0, 0, 0, 0]
+    C[-1] = [0, 0, 0, 0, 0]
   \end{lstlisting}
   OR
   \begin{lstlisting}
-   In []: C[-1] = 0
+    C[-1] = 0
   \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{Accessing columns}
   \begin{lstlisting}
-   In []: C[:, 2]
-   In []: C[:, 4]
-   In []: C[:, -1]
+    C[:, 2]
+    C[:, 4]
+    C[:, -1]
   \end{lstlisting}
   \begin{itemize}
   \item The first parameter is replaced by a \texttt{:} to specify we
     require all elements of that dimension
   \end{itemize}
   \begin{lstlisting}
-   In []: C[:, -1] = 0
+    C[:, -1] = 0
   \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{Slicing}
   \begin{lstlisting}
-   In []: I = imread('squares.png')
-   In []: imshow(I)
+    I = imread('squares.png')
+    imshow(I)
   \end{lstlisting}
   \begin{itemize}
   \item The image is just an array
   \end{itemize}
   \begin{lstlisting}
-    In []: print I, I.shape
+    print I, I.shape
   \end{lstlisting}
   \begin{enumerate}
   \item Get the top left quadrant of the image
@@ -190,14 +191,14 @@
   \item Slicing works just like with lists
   \end{itemize}
   \begin{lstlisting}
-    In []:C[0:3, 2]
-    In []: C[2, 0:3]
-    In []:C[2, :3]
+    C[0:3, 2]
+    C[2, 0:3]
+    C[2, :3]
   \end{lstlisting}
   \begin{lstlisting}
-   In []: imshow(I[:150, :150])
+    imshow(I[:150, :150])
 
-   In []: imshow(I[75:225, 75:225])
+    imshow(I[75:225, 75:225])
   \end{lstlisting}
 \end{frame}
 
@@ -210,15 +211,15 @@
   \item The idea is similar to striding in lists
   \end{itemize}
   \begin{lstlisting}
-   In []: C[0:5:2, 0:5:2]
-   In []: C[::2, ::2]
-   In []: C[1::2, ::2]
+    C[0:5:2, 0:5:2]
+    C[::2, ::2]
+    C[1::2, ::2]
   \end{lstlisting}
   \begin{itemize}
   \item Now, the image can be shrunk by
   \end{itemize}
   \begin{lstlisting}
-   In []: imshow(I[::2, ::2])
+    imshow(I[::2, ::2])
   \end{lstlisting}
 \end{frame}
 
@@ -251,49 +252,17 @@
 \begin{frame}[fragile]
   \frametitle{Least Square Fit}
   \begin{lstlisting}
-   In []: L, t = loadtxt("pendulum.txt", 
-                      unpack=True)
-   In []: L
-   In []: t
-   In []: tsq = t * t
-   In []: plot(L, tsq, 'bo')
-\end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{$L$ vs. $T^2$ - Scatter}
-Linear trend visible.
-\begin{figure}
-\includegraphics[width=4in]{data/L-Tsq-points}
-\end{figure}
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{Least Square Fit}
-\begin{lstlisting}
-   In []: plot(L, tsq, 'r')
-\end{lstlisting}
+    l, t = loadtxt("pendulum.txt", unpack=True)
+    l
+    t
+    tsq = t * t
+    plot(l, tsq, 'bo')
+    plot(l, tsq, 'r')
+  \end{lstlisting}
   \begin{itemize}
   \item Both the plots, aren't what we expect -- linear plot
   \item Enter Least square fit!
   \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{$L$ vs. $T^2$ - Line}
-This line does not make any mathematical sense.
-\vspace{-0.1in}
-\begin{figure}
-\includegraphics[width=4in]{data/L-Tsq-Line}
-\end{figure}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{$L$ vs. $T^2$ - Least Square Fit}
-This is what our intention is.
-\begin{figure}
-\includegraphics[width=4in]{data/least-sq-fit}
-\end{figure}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -326,26 +295,24 @@ This is what our intention is.
 \begin{frame}[fragile]
   \frametitle{Least Square Fit Line}
   \begin{lstlisting}
-   In []: A = array((L, ones_like(L)))
-   In []: A = A.T
-   In []: A
+    A = array((l, ones_like(l)))
+    A.T
+    A
   \end{lstlisting}
   \begin{itemize}
   \item We now have \texttt{A} and \texttt{tsq}
   \end{itemize}
   \begin{lstlisting}
-   In []: result = lstsq(A, tsq)
+    result = lstsq(A, tsq)
   \end{lstlisting}
   \begin{itemize}
   \item Result has a lot of values along with m and c, that we need
   \end{itemize}
   \begin{lstlisting}
-   In []: m, c = result[0]
-   In []: print m, c
+    m, c = result[0]
+    print m, c
   \end{lstlisting}
 \end{frame}
-
-
 
 \begin{frame}[fragile]
   \frametitle{Least Square Fit Line}
@@ -353,9 +320,9 @@ This is what our intention is.
   \item Now that we have m and c, we use them to generate line and plot
   \end{itemize}
   \begin{lstlisting}
-   In []: tsq_fit = m * L + c
-   In []: plot(L, tsq, 'bo')
-   In []:plot(L, tsq_fit, 'r')
+    tsq_fit = m * l + c
+    plot(l, tsq, 'bo')
+    plot(l, tsq_fit, 'r')
   \end{lstlisting}
 \end{frame}
 

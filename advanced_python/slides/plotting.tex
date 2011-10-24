@@ -9,8 +9,8 @@
     $ ipython -pylab
   \end{lstlisting}  % $
   \begin{lstlisting}
-   In []: p = linspace(-pi,pi,100) 
-   In []: plot(p, cos(p))
+    p = linspace(-pi,pi,100) 
+    plot(p, cos(p))
   \end{lstlisting}
 \end{frame}
 
@@ -20,11 +20,11 @@
   \begin{itemize}
   \item \texttt{p} has a hundred points in the range -pi to pi
     \begin{lstlisting}
-    In []:  print p[0], p[-1], len(p)
+      print p[0], p[-1], len(p)
     \end{lstlisting}
   \item Look at the doc-string of \texttt{linspace} for more details
     \begin{lstlisting}
-     In []: linspace?
+      linspace?
     \end{lstlisting}
   \end{itemize}
   \begin{itemize}
@@ -38,50 +38,50 @@
 \begin{frame}[fragile]
   \frametitle{Plot color and thickness}
   \begin{lstlisting}
-   In []: clf()
-   In []: plot(p, sin(p), 'r')
+    clf()
+    plot(p, sin(p), 'r')
   \end{lstlisting}
   \begin{itemize}
   \item Gives a sine curve in Red. 
   \end{itemize}
   \begin{lstlisting}
-   In []: plot(p, cos(p), linewidth=2)
+    plot(p, cos(p), linewidth=2)
   \end{lstlisting}
   \begin{itemize}
   \item Sets line thickness to 2
   \end{itemize}
   \begin{lstlisting}
-   In []: clf()
-   In []:plot(p, sin(p), '.')
+    clf()
+    plot(p, sin(p), '.')
   \end{lstlisting}
   \begin{itemize}
   \item Produces a plot with only points
   \end{itemize}
   \begin{lstlisting}
-   In []: plot?
+    plot?
   \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{\texttt{title}}
   \begin{lstlisting}
-   In []: x = linspace(-2, 4, 50)
-   In []: plot(x, -x*x + 4*x - 5, 'r', linewidth=2)
-   In []: title("Parabolic function -x^2+4x-5")
+    x = linspace(-2, 4, 50)
+    plot(x, -x*x + 4*x - 5, 'r', linewidth=2)
+    title("Parabolic function -x^2+4x-5")
   \end{lstlisting}
   \begin{itemize}
   \item We can set title using \LaTeX~ 
   \end{itemize}
   \begin{lstlisting}
-   In []: title("Parabolic function $-x^2+4x-5$")
+    title("Parabolic function $-x^2+4x-5$")
   \end{lstlisting} 
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{Axes labels}
   \begin{lstlisting}
-   In []: xlabel("x")
-   In []:ylabel("f(x)")
+    xlabel("x")
+    ylabel("f(x)")
   \end{lstlisting}
   \begin{itemize}
   \item We could, if required use \LaTeX~ 
@@ -91,7 +91,7 @@
 \begin{frame}[fragile]
   \frametitle{Annotate}
   \begin{lstlisting}
-   In []: annotate("local maxima", xy=(2, -1))
+    annotate("local maxima", xy=(2, -1))
   \end{lstlisting}
   \begin{itemize}
   \item First argument is the annotation text
@@ -103,8 +103,8 @@
 \begin{frame}[fragile]
   \frametitle{Limits of Plot area}
   \begin{lstlisting}
-   In []: xlim()
-   In []: ylim()
+    xlim()
+    ylim()
   \end{lstlisting}
   \begin{itemize}
   \item With no arguments, \texttt{xlim} \& \texttt{ylim} get the
@@ -112,10 +112,10 @@
   \item New limits are set, when arguments are passed to them
   \end{itemize}
   \begin{lstlisting}
-   In []: xlim(-4, 5)
+    xlim(-4, 5)
   \end{lstlisting}
   \begin{lstlisting}
-   In []: ylim(-15, 2)
+    ylim(-15, 2)
   \end{lstlisting}
 \end{frame}
 
@@ -126,17 +126,17 @@
   \begin{itemize}
   \item To see the history of commands, we typed
     \begin{lstlisting}
-     In []: %hist
+      %hist
     \end{lstlisting}
   \item All commands, valid or invalid, appear in the history
   \item \texttt{\%hist} is a magic command, available only in IPython
   \end{itemize}
   \begin{lstlisting}
-   In []: %hist 5
+    %hist 5
     # last 5 commands
   \end{lstlisting}
   \begin{lstlisting}
-   In []: %hist 5-10
+    %hist 5 10
     # commands between 5 and 10
   \end{lstlisting}
 \end{frame}
@@ -150,7 +150,7 @@
   \item \texttt{\%save} magic command to save the commands to a file
   \end{itemize}
   \begin{lstlisting}
-   In []: %save plot_script.py 1 3-6 8
+    %save plot_script.py 1 3-6 8
   \end{lstlisting}
   \begin{itemize}
   \item File name must have a \texttt{.py} extension
@@ -160,7 +160,7 @@
 \begin{frame}[fragile]
   \frametitle{Running the script}
   \begin{lstlisting}
-   In []: %run -i plot_script.py
+    %run -i plot_script.py
   \end{lstlisting}
   \begin{itemize}
   \item There were no errors in the plot, but we don't see it!
@@ -168,7 +168,7 @@
   \item We need to explicitly ask for the image to be shown
   \end{itemize}
   \begin{lstlisting}
-   In []: show()
+    show()
   \end{lstlisting}
   \begin{itemize}
   \item \texttt{-i} asks the interpreter to check for names,
@@ -183,9 +183,9 @@
 \begin{frame}[fragile]
   \frametitle{\texttt{savefig}}
   \begin{lstlisting}
-   In []: x = linspace(-3*pi,3*pi,100)
-   In []: plot(x,sin(x))
-   In []: savefig('sine.png')
+    x = linspace(-3*pi,3*pi,100)
+    plot(x,sin(x))
+    savefig('sine.png')
   \end{lstlisting}
   \begin{itemize}
   \item \texttt{savefig} takes one argument
@@ -199,16 +199,16 @@
 \begin{frame}[fragile]
   \frametitle{Overlaid plots}
   \begin{lstlisting}
-   In []: x = linspace(0, 50, 10)
-   In []: plot(x, sin(x))
+    x = linspace(0, 50, 10)
+    plot(x, sin(x))
   \end{lstlisting}
   \begin{itemize}
   \item The curve isn't as smooth as we expected
   \item We chose too few points in the interval
   \end{itemize}
   \begin{lstlisting}
-   In []: y = linspace(0, 50, 500)
-   In []: plot(y, sin(y))
+    y = linspace(0, 50, 500)
+    plot(y, sin(y))
   \end{lstlisting}
   \begin{itemize}
   \item The plots are overlaid
@@ -219,14 +219,14 @@
 \begin{frame}[fragile]
   \frametitle{Legend}
   \begin{lstlisting}
-   In []: legend(['sine-10 points', 'sine-500 points'])
+    legend(['sine-10 points', 'sine-500 points'])
   \end{lstlisting}
   \begin{itemize}
   \item Placed in the location, \texttt{pylab} thinks is `best'
   \item \texttt{loc} parameter allows to change the location
   \end{itemize}
   \begin{lstlisting}
-  In []:  legend(['sine-10 points', 'sine-500 points'], 
+    legend(['sine-10 points', 'sine-500 points'], 
             loc='center')
   \end{lstlisting}
 \end{frame}
@@ -234,24 +234,24 @@
 \begin{frame}[fragile]
   \frametitle{Plotting in separate figures}
   \begin{lstlisting}
-   In []: clf()
-   In []: x = linspace(0, 50, 500)
-   In []: figure(1)
-   In []: plot(x, sin(x), 'b')
-   In []:figure(2)
-   In []: plot(x, cos(x), 'g')
+    clf()
+    x = linspace(0, 50, 500)
+    figure(1)
+    plot(x, sin(x), 'b')
+    figure(2)
+    plot(x, cos(x), 'g')
   \end{lstlisting}
   \begin{itemize}
   \item \texttt{figure} command allows us to have plots separately
   \item It is also used to switch context between the plots
   \end{itemize}
   \begin{lstlisting}
-   In []: savefig('cosine.png')
-   In []: figure(1)
-   In []: title('sin(y)')
-   In []: savefig('sine.png')
-   In []: close()
-   In []: close()
+    savefig('cosine.png')
+    figure(1)
+    title('sin(y)')
+    savefig('sine.png')
+    close()
+    close()
   \end{lstlisting}
   \begin{itemize}
   \item \texttt{close('all')} closes all the figures
@@ -261,7 +261,7 @@
 \begin{frame}[fragile]
   \frametitle{Subplots}
   \begin{lstlisting}
-   In []: subplot(2, 1, 1)
+    subplot(2, 1, 1)
   \end{lstlisting}
   \begin{itemize}
   \item number of rows
@@ -269,13 +269,13 @@
   \item plot number, in serial order, to access or create
   \end{itemize}
   \begin{lstlisting}
-   In []: subplot(2, 1, 2)
-   In []: x = linspace(0, 50, 500)
-   In []: plot(x, cos(x))
+    subplot(2, 1, 2)
+    x = linspace(0, 50, 500)
+    plot(x, cos(x))
 
-   In []: subplot(2, 1, 1)
-   In []: y = linspace(0, 5, 100)
-   In []: plot(y, y ** 2)
+    subplot(2, 1, 1)
+    y = linspace(0, 5, 100)
+    plot(y, y ** 2)
   \end{lstlisting}
 \end{frame}
 
@@ -289,8 +289,8 @@
   \item We read the data using \texttt{loadtxt} 
   \end{itemize}
   \begin{lstlisting}
-  In []:  primes = loadtxt('primes.txt')
-  In []:  print primes
+    primes = loadtxt('primes.txt')
+    print primes
   \end{lstlisting}
   \begin{itemize}
   \item \texttt{primes} is a sequence of floats
@@ -306,8 +306,8 @@
   \item \texttt{loadtxt} requires both columns to be of same length
   \end{itemize}
   \begin{lstlisting}
-  In []:  pend = loadtxt('pendulum.txt')
-  In []:  print pend
+    pend = loadtxt('pendulum.txt')
+    print pend
   \end{lstlisting}
   \begin{itemize}
   \item \texttt{pend} is not a simple sequence like \texttt{primes}
@@ -317,9 +317,9 @@
 \begin{frame}[fragile]
   \frametitle{Unpacking with \texttt{loadtxt}}
   \begin{lstlisting}
-  In []: L, T = loadtxt('pendulum.txt', unpack=True)
-  In []: print L
-  In []: print T
+    L, T = loadtxt('pendulum.txt', unpack=True)
+    print L
+    print T
   \end{lstlisting}
   \begin{itemize}
   \item We wish to plot L vs. $T^2$
@@ -327,9 +327,9 @@
   \item (We could instead iterate over T and calculate)
   \end{itemize}
   \begin{lstlisting}
-   In []: Tsq = square(T)
+    Tsq = square(T)
 
-   In []: plot(L, Tsq, '.')
+    plot(L, Tsq, '.')
   \end{lstlisting}
 \end{frame}
 
@@ -341,11 +341,11 @@
   \item Read the values and make an error bar plot
   \end{itemize}
   \begin{lstlisting}
-   In []: L, T, L_err, T_err = \
-   In []: loadtxt('pendulum_error.txt', unpack=True)
-   In []: Tsq = square(T)
+    L, T, L_err, T_err = \
+    loadtxt('pendulum_error.txt', unpack=True)
+    Tsq = square(T)
 
-   In []: errorbar(L, Tsq , xerr=L_err, 
+    errorbar(L, Tsq , xerr=L_err, 
              yerr=T_err, fmt='b.')
   \end{lstlisting}
 \end{frame}
@@ -361,10 +361,10 @@
   \item Let's plot the data of profits of a company
   \end{itemize}
   \begin{lstlisting}
-   In []: year, profit = loadtxt('company-a-data.txt', 
+    year, profit = loadtxt('company-a-data.txt', 
                             dtype=type(int()))
 
-   In []: scatter(year, profit)
+    scatter(year, profit)
   \end{lstlisting}
   \begin{itemize}
   \item \alert{\texttt{dtype=int}; default is float} 
@@ -374,11 +374,11 @@
 \begin{frame}[fragile]
   \frametitle{Pie Chart \& Bar Chart}
   \begin{lstlisting}
-   In []: pie(profit, labels=year)
+    pie(profit, labels=year)
   \end{lstlisting}
 
   \begin{lstlisting}
-   In []: bar(year, profit)
+    bar(year, profit)
   \end{lstlisting}
 \end{frame}
 
@@ -388,11 +388,11 @@
   \item Plot a \texttt{log-log} chart of $y=5x^3$ for x from 1 to 20
   \end{itemize}
   \begin{lstlisting}
-  In []:  x = linspace(1,20,100)
-  In []: y = 5*x**3
+    x = linspace(1,20,100)
+    y = 5*x**3
 
-  In []: loglog(x, y)
-  In []: plot(x, y)
+    loglog(x, y)
+    plot(x, y)
   \end{lstlisting}
   \begin{itemize}
   \item Look at \url{http://matplotlib.sourceforge.net/contents.html}

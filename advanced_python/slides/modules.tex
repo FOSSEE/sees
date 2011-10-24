@@ -6,13 +6,13 @@
     \item Script to print `hello world' -- \texttt{hello.py}
     \end{itemize}
     \begin{lstlisting}
-    In []: print "Hello world!"
+      print "Hello world!"
     \end{lstlisting}
     \begin{itemize}
     \item We have been running scripts from IPython
     \end{itemize}
     \begin{lstlisting}
-    In []: %run -i hello.py
+      %run -i hello.py
     \end{lstlisting}
     \begin{itemize}
     \item Now, we run from the shell using python
@@ -28,9 +28,9 @@
   \item Save the following in \texttt{sine\_plot.py} 
   \end{itemize}
   \begin{lstlisting}
-  In []: x = linspace(-2*pi, 2*pi, 100)
-  In []: plot(x, sin(x))
-  In []: show()
+    x = linspace(-2*pi, 2*pi, 100)
+    plot(x, sin(x))
+    show()
   \end{lstlisting}
   \begin{itemize}
   \item Now, let us run the script
@@ -103,20 +103,19 @@
   \item Save it as \texttt{gcd\_script.py}
   \end{itemize}
   \begin{lstlisting}
-  In []: def gcd(a, b):
-    ....    while b:
-    ....        a, b = b, a%b
-    ....    return a
-    ....
+    def gcd(a, b):
+        while b:
+            a, b = b, a%b
+        return a
   \end{lstlisting}
   \begin{itemize}
   \item Also add the tests to the file
   \end{itemize}
   \begin{lstlisting}
-    .... if gcd(40, 12) == 4 and gcd(12, 13) == 1:
-       ....  print "Everything OK"
-    .... else:
-       ....  print "The GCD function is wrong"
+    if gcd(40, 12) == 4 and gcd(12, 13) == 1:
+        print "Everything OK"
+    else:
+        print "The GCD function is wrong"
   \end{lstlisting}
   \begin{lstlisting}
     $ python gcd_script.py
