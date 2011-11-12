@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Version Control Systems
 %
-% Author: FOSSEE 
+% Author: FOSSEE
 % Copyright (c) 2009, FOSSEE, IIT Bombay
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -38,7 +38,7 @@
 % Macros
 \setbeamercolor{emphbar}{bg=blue!20, fg=black}
 \newcommand{\emphbar}[1]
-{\begin{beamercolorbox}[rounded=true]{emphbar} 
+{\begin{beamercolorbox}[rounded=true]{emphbar}
       {#1}
  \end{beamercolorbox}
 }
@@ -51,7 +51,7 @@
 \newcommand{\kwrd}[1]{ \texttt{\textbf{\color{blue}{#1}}}  }
 
 % Title page
-\title[Mercurial]{Version Control with \typ{hg}}
+\title[Git]{Version Control with \typ{Git}}
 
 \author[FOSSEE] {FOSSEE}
 
@@ -74,7 +74,7 @@
   \maketitle
 \end{frame}
 
-% CREATING TOC 
+% CREATING TOC
 \begin{frame}
   \frametitle{Outline}
   \tableofcontents
@@ -88,14 +88,14 @@
   \item Understand what is Version Control and the need for it
   \item Create and use repository on a daily basis
   \item Clone existing repositories, from the web
-  \item View the history of a repository 
+  \item View the history of a repository
   \item Make changes to a repository and commit them
-  \item Work collaboratively with a team 
+  \item Work collaboratively with a team
   \end{itemize}
 \end{frame}
 
 %% There are some %$ used just to minimise the effect of $ sign used
-%% in lstlisting. In emacs it looks dirty. 
+%% in lstlisting. In emacs it looks dirty.
 
 % Introduction to course-need of version control, history, options available.
 \section{Introduction}
@@ -115,7 +115,7 @@
     An example of a \typ{home-brew} Version Control system
     \includegraphics[height=1.8in,width=4.2in]{images/folder.png}
   \end{center}
-  \begin{lstlisting} 
+  \begin{lstlisting}
 $ ls
 a.out  id1.txt  id2.txt  identifier.cpp  id.txt  lex  pda1.cpp  pda2.cpp  pda.cpp  pda.txt  string.txt
   \end{lstlisting} %%$
@@ -123,12 +123,12 @@ a.out  id1.txt  id2.txt  identifier.cpp  id.txt  lex  pda1.cpp  pda2.cpp  pda.cp
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Problems}  
-  \begin{block}{}    
+  \frametitle{Problems}
+  \begin{block}{}
   \begin{itemize}
-  \item Name and changes made are not related or linked. 
-  \item Can't track sequence of changes made to a file. 
-  \item Does not scale. 
+  \item Name and changes made are not related or linked.
+  \item Can't track sequence of changes made to a file.
+  \item Does not scale.
   \end{itemize}
     \end{block}
 \end{frame}
@@ -136,11 +136,11 @@ a.out  id1.txt  id2.txt  identifier.cpp  id.txt  lex  pda1.cpp  pda2.cpp  pda.cp
 \begin{frame}[fragile]
   \frametitle{The need for Version Control}
   \begin{itemize}
-  \item \alert{To err is Human} \ldots 
+  \item \alert{To err is Human} \ldots
   \item Tracking the history and evolution of a project
   \item To collaborate effectively on a project
   \item To efficiently track down bugs and pin-point the changes that
-    caused it 
+    caused it
   \end{itemize}
 \end{frame}
 
@@ -161,25 +161,26 @@ a.out  id1.txt  id2.txt  identifier.cpp  id.txt  lex  pda1.cpp  pda2.cpp  pda.cp
 
 
 \begin{frame}
-  \frametitle{Mercurial or \typ{hg}}
+  \frametitle{\typ{git}}
   \begin{center}
-    \includegraphics[height=.75in,interpolate=true]{images/mercurial_logo}
+    \includegraphics[height=.75in,interpolate=true]{images/git-logo}
   \end{center}
   \begin{itemize}
-  \item Easy to learn and use
+  \item Very fast and powerful
   \item Lightweight
   \item Scales excellently
-  \item Written in Python
+  \item Lot of projects use \typ{git}; Scope for contribution
   \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{Installation}
   \begin{itemize}
-  \item \typ{sudo apt-get install mercurial}
-  \item TortoiseHg
-  \item \typ{\$ hg}
-  \item \typ{\$ hg version}
+  \item \typ{sudo apt-get install git-core}
+  \item \typ{sudo port install git-core}
+  \item \typ{msysgit} on Windows
+  \item \typ{\$ git}
+  \item \typ{\$ git version}
   \end{itemize}
 \end{frame}
 
@@ -192,94 +193,77 @@ a.out  id1.txt  id2.txt  identifier.cpp  id.txt  lex  pda1.cpp  pda2.cpp  pda.cp
   \item Project files along with a special directory that stores all the
     changes
   \item We take snapshots of the whole repository; not individual
-    files. 
+    files.
   \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{Initializing a repo}
   \begin{itemize}
-  \item \typ{\$ hg init}
+  \item \typ{\$ git init}
   \item Creates a fresh repository
-  \item Adds a \typ{.hg} directory to our \emph{working directory}
+  \item Adds a \typ{.git} directory to our \emph{working directory}
   \end{itemize}
-  \emphbar{\typ{.hg} directory keeps log of changes made henceforth}
+  \emphbar{\typ{.git} directory keeps log of changes made henceforth}
 \end{frame}
 
 \begin{frame}
   \frametitle{Status report}
   \begin{itemize}
-  \item \typ{hg status} gives the status of our repo
+  \item \typ{git status} gives the status of our repo
   \item Use it often; at least as a beginner
-  \item \typ{hg help command} gives us help about \typ{command}
+  \item \typ{git help command} gives us help about \typ{command}
   \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{Status codes}
-  \begin{lstlisting}
-    M = modified                                               
-    A = added                                                  
-    R = removed                                                
-    C = clean                                                  
-    ! = missing 
-    ? = not tracked                                            
-    I = ignored                                                
-  \end{lstlisting}
 \end{frame}
 
 \begin{frame}
   \frametitle{Adding files}
   \begin{itemize}
-  \item From \typ{hg status} we know, none of the files are being
-    tracked, yet. 
-  \item \typ{hg add} --- asking \typ{hg} to track these files
-  \item As expected \typ{hg status} prepends an \typ{A} to the file
-  names.
-  \item \typ{? --> A} 
-  \item \typ{! --> R} (\typ{hg remove})
+  \item From \typ{git status} we know, none of the files are being
+    tracked, yet.
+  \item \typ{git add .} --- asking \typ{git} to track these files.
+    Note the \typ{.} at the end.
+  \item As expected \typ{git status} now adds all the files to changes
+    to be committed.
+  \item \typ{git remove} to stop tracking files.
   \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{Taking Snapshots}
   \begin{itemize}
-  \item \typ{hg commit}
-  \item Asking Mercurial to take a snapshot; remember the changes made
-    to the repository. 
-  \item \typ{-u FirstName LastName <email>}
-  \item \typ{-m ``Commit message''} -- a description of changes committed. 
+  \item \typ{git commit}
+  \item Asking Git to take a snapshot; remember the changes made
+    to the repository.
+  \item \typ{--author ``FirstName LastName <email>''}
+  \item \typ{-m ``Commit message''} -- a description of changes committed.
   \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{Thumbnail views}
   \begin{itemize}
-  \item \typ{hg log}~ gives the log of the changes made
+  \item \typ{git log}~ gives the log of the changes made
   \item A \typ{changeset} is an atomic collection of changes to the
     files (between successive commits)
   \end{itemize}
   \begin{block}{Log information}
     \begin{itemize}
-    \item \alert{changeset}: Identifier for the changeset
-    \item \alert{user}: Details of user who created the changeset
-    \item \alert{date}: Date and time of creation
-    \item \alert{summary}: One line description
-    \end{itemize}    
+    \item \alert{commit}: Identifier for the changeset
+    \item \alert{Author}: Details of user who created the changeset
+    \item \alert{Date}: Date and time of creation
+    \item One line description
+    \end{itemize}
   \end{block}
 \end{frame}
 
 \begin{frame}
   \frametitle{User information}
   \begin{itemize}
-  \item User information is set in the \typ{hgrc} file
+  \item User information can be set using the \typ{config} command.
   \item It can be set globally or local to the project
-  \item Global \typ{hgrc}
-    \begin{itemize}
-    \item \typ{\$HOME/.hgrc} -- Unix like systems
-    \item \typ{\%HOME\%\\.hgrc} -- Windows
-    \end{itemize}
-  \end{itemize}
+  \item \typ{git config --global user.name "A U Thor"}
+  \item \typ{git config --global user.email "author@example.com"}
 \end{frame}
 
 \begin{frame}
@@ -292,7 +276,7 @@ a.out  id1.txt  id2.txt  identifier.cpp  id.txt  lex  pda1.cpp  pda2.cpp  pda.cp
     \item Why the change?
     \item What does it effect?
     \item Known bugs/issues?
-    \item etc. 
+    \item etc.
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -307,7 +291,7 @@ a.out  id1.txt  id2.txt  identifier.cpp  id.txt  lex  pda1.cpp  pda2.cpp  pda.cp
   \item Isn't all this a waste of time?
   \end{itemize}
   \begin{center}
-    \emphbar{No! You shall see the benefits, soon!}    
+    \emphbar{No! You shall see the benefits, soon!}
   \end{center}
 \end{frame}
 
@@ -315,11 +299,12 @@ a.out  id1.txt  id2.txt  identifier.cpp  id.txt  lex  pda1.cpp  pda2.cpp  pda.cp
   \frametitle{Revert Changes}
   \begin{itemize}
   \item Undo all changes; the editor can only do so much.
-  \item \typ{hg revert --all}
-  \item \typ{hg revert filename}
-  \item Present file, with changes --- \typ{filename.orig}
+  \item \typ{git checkout filename}
+  \item \typ{git checkout .}
   \end{itemize}
 \end{frame}
+
+%%%% Gittified until till here.
 
 \begin{frame}[fragile]
   \frametitle{Viewing Changes}
@@ -370,7 +355,7 @@ a.out  id1.txt  id2.txt  identifier.cpp  id.txt  lex  pda1.cpp  pda2.cpp  pda.cp
   \begin{itemize}
   \item \typ{hg serve}
   \item Can be cloned with \typ{hg clone http://my-ip-address:8000}
-  \item We share a central repository; work on our local copies. 
+  \item We share a central repository; work on our local copies.
   \item Set write permissions in \typ{.hg/hgrc}
   \end{itemize}
   \begin{lstlisting}
@@ -392,7 +377,7 @@ a.out  id1.txt  id2.txt  identifier.cpp  id.txt  lex  pda1.cpp  pda2.cpp  pda.cp
 \begin{frame}
   \frametitle{Pulling Changes}
   \begin{itemize}
-  \item \typ{hg incoming} shows new \typ{changesets} in the server 
+  \item \typ{hg incoming} shows new \typ{changesets} in the server
   \item To get these \typ{changesets}, we use \typ{hg pull}
   \item These changes do not affect our working directory
   \item \typ{hg parent} shows the parents of the working directory
@@ -402,10 +387,10 @@ a.out  id1.txt  id2.txt  identifier.cpp  id.txt  lex  pda1.cpp  pda2.cpp  pda.cp
 \begin{frame}
   \frametitle{Pulling Changes \ldots}
   \begin{itemize}
-  \item \typ{hg update} will update the working directory 
+  \item \typ{hg update} will update the working directory
     \begin{itemize}
     \item Updates to the \typ{tip} if no revision is specified
-    \item \typ{tip} is the most recently added changeset 
+    \item \typ{tip} is the most recently added changeset
     \item Can specify revision number to update to
     \end{itemize}
   \item \typ{hg tip} shows the \typ{tip} of the repository
@@ -446,7 +431,7 @@ a.out  id1.txt  id2.txt  identifier.cpp  id.txt  lex  pda1.cpp  pda2.cpp  pda.cp
   \begin{itemize}
   \item What if the changes conflict? -- overlapping edits
   \item \typ{hg push} fails; \typ{hg pull}; \typ{hg merge}
-  \item You now get a diff view with 3 panes 
+  \item You now get a diff view with 3 panes
     \begin{itemize}
     \item First --- current file
     \item Second --- \typ{changesets} that you pulled
@@ -475,7 +460,7 @@ a.out  id1.txt  id2.txt  identifier.cpp  id.txt  lex  pda1.cpp  pda2.cpp  pda.cp
 
 \begin{frame}[fragile,allowframebreaks]
   \frametitle{Summary}
-  In this session, we have learnt to: 
+  In this session, we have learnt to:
   \begin{itemize}
   \item initialize new repositories, using \typ{hg init}
   \item check the status using \typ{hg status}
