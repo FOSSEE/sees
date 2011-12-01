@@ -1,0 +1,8 @@
+"Bar" as the second term in the series may have developed in
+electronics, where a digital signal which is considered "on" with a
+negative or zero-voltage condition is identified with a horizontal bar
+over the signal label; the notation for an inverted signal foo would
+then be pronounced "foo bar". Bar may also be read as beyond all
+repair, which is how it is used in the acronym FUBAR. 
+
+source: wikipedia

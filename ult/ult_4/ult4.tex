@@ -1,0 +1,234 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Using Linux Tools
+%
+% Author: FOSSEE 
+% Copyright (c) 2009, FOSSEE, IIT Bombay
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt,compress]{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+  \useoutertheme{infolines}
+  \setbeamercovered{transparent}
+}
+
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+%\usepackage{times}
+\usepackage[T1]{fontenc}
+
+% Taken from Fernando's slides.
+\usepackage{ae,aecompl}
+\usepackage{mathpazo,courier,euler}
+\usepackage[scaled=.95]{helvet}
+
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+
+\usepackage{listings}
+\lstset{language=sh,
+    basicstyle=\ttfamily\bfseries,
+    commentstyle=\color{red}\itshape,
+  stringstyle=\color{darkgreen},
+  showstringspaces=false,
+  keywordstyle=\color{blue}\bfseries}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DOCUMENT STARTS
+\begin{document}
+
+\begin{frame}
+
+\begin{center}
+\vspace{12pt}
+\textcolor{blue}{\huge Using Linux Tools\\Part IV}
+\end{center}
+\vspace{18pt}
+\begin{center}
+\vspace{10pt}
+\includegraphics[scale=0.95]{../images/fossee-logo.png}\\
+\vspace{5pt}
+\scriptsize Developed by FOSSEE Team, IIT-Bombay. \\ 
+\scriptsize Funded by National Mission on Education through ICT\\
+\scriptsize  MHRD,Govt. of India\\
+\includegraphics[scale=0.30]{../images/iitb-logo.png}\\
+\end{center}
+\end{frame}
+\begin{frame}
+\frametitle{Objectives}
+\label{sec-2}
+
+At the end of this tutorial, you will be able to,
+\begin{itemize}
+\item Understand what is Redirection and Piping.
+\item Learn various features of the shell.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Pre-requisite}
+\label{sec-3}
+
+Spoken tutorial on -
+\begin{itemize}
+\item Using Linux tools -- Part I
+\item Using Linux tools -- Part II
+\item Using Linux tools -- Part III
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Redirection} 
+
+  \begin{itemize}
+  \item The standard output (stdout) stream goes to the display
+  \item Not always, what we need
+  \item First solution, redirects output to a file
+  \item \texttt{>} states that output is redirected; It is
+    followed by location to redirect
+  \end{itemize}
+  \begin{lstlisting}
+    $ command > file1
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item \texttt{>} creates a new file at specified location
+  \item \texttt{>>} appends to a file at specified location
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Redirection \ldots} 
+  \begin{itemize}
+  \item Similarly, the standard input (stdin) can be redirected
+  \end{itemize}
+  \begin{lstlisting}
+    $ command < file1
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item input and the output redirection could be combined
+  \end{itemize}
+  \begin{lstlisting}
+    $ command < infile > outfile
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item Standard error (stderr) is the third standard stream
+  \item All error messages come through this stream
+  \item \texttt{stderr} can also be redirected
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Piping}
+  \begin{lstlisting}
+    $ cut -d " " -f 2- marks1.txt \
+      | paste -d " " students.txt -
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item \texttt{-} instead of FILE asks \texttt{paste} to read from
+    \texttt{stdin}
+  \item \texttt{cut} command is a normal command
+  \item the \texttt{|} seems to be joining the two commands
+  \item Redirects output of first command to \texttt{stdin}, which
+    becomes input to the second command
+  \item This is called piping; \texttt{|} is called a pipe
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Piping \ldots}
+  \begin{itemize}
+  \item Roughly same as -- 2 redirects and a temporary file
+  \end{itemize}
+  \begin{lstlisting}
+    $ command1 > tempfile
+    $ command2 < tempfile
+    $ rm tempfile
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item Any number of commands can be piped together
+  \end{itemize}
+\end{frame}
+
+\subsection{Features of the Shell}
+
+\begin{frame}[fragile]
+  \frametitle{Tab-completion}
+  \begin{itemize}
+  \item Bash provides tab completion for the following.
+    \begin{enumerate}
+    \item File Names
+    \item Directory Names
+    \item Executable Names
+    \item User Names (when they are prefixed with a \~{})
+    \item Host Names (when they are prefixed with a @)
+    \item Variable Names (when they are prefixed with a \$)
+    \end{enumerate}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Shell Meta Characters}
+  \begin{itemize}
+  \item ``meta characters''  are special command directives
+  \item File-names shouldn't have meta-characters
+  \item The following are the shell meta characters --
+  \begin{itemize}
+  \item   \verb+/<>!$%^&*|{}[]"'`~;+
+  \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Summary}
+\label{sec-8}
+
+  In this tutorial, we have learnt to,
+
+
+\begin{itemize}
+\item Use the ``cut'' and ``paste'' commands in redirection.
+\item Use the pipe ( | ) character. 
+\item Implement features of shell like tab-completion and history. 
+\end{itemize}
+\end{frame}
+\begin{frame}[fragile]
+\frametitle{Evaluation}
+\label{sec-9}
+
+
+\begin{enumerate}
+\item 
+\item 
+\item 
+\end{enumerate}
+\end{frame}
+\begin{frame}
+\frametitle{Solutions}
+\label{sec-10}
+
+
+\begin{enumerate}
+\item 
+\vspace{15pt}
+\item 
+\end{enumerate}
+\end{frame}
+\begin{frame}
+
+  \begin{block}{}
+  \begin{center}
+  \textcolor{blue}{\Large THANK YOU!} 
+  \end{center}
+  \end{block}
+\begin{block}{}
+  \begin{center}
+    For more Information, visit our website\\
+    \url{http://fossee.in/}
+  \end{center}  
+  \end{block}
+\end{frame}
+
+\end{document}
+
+

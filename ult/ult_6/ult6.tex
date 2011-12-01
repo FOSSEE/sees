@@ -1,0 +1,169 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Using Linux Tools
+%
+% Author: FOSSEE 
+% Copyright (c) 2009, FOSSEE, IIT Bombay
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt,compress]{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+  \useoutertheme{infolines}
+  \setbeamercovered{transparent}
+}
+
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+%\usepackage{times}
+\usepackage[T1]{fontenc}
+
+% Taken from Fernando's slides.
+\usepackage{ae,aecompl}
+\usepackage{mathpazo,courier,euler}
+\usepackage[scaled=.95]{helvet}
+
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+
+\usepackage{listings}
+\lstset{language=sh,
+    basicstyle=\ttfamily\bfseries,
+    commentstyle=\color{red}\itshape,
+  stringstyle=\color{darkgreen},
+  showstringspaces=false,
+  keywordstyle=\color{blue}\bfseries}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DOCUMENT STARTS
+\begin{document}
+
+\begin{frame}
+
+\begin{center}
+\vspace{12pt}
+\textcolor{blue}{\huge Using Linux Tools}
+\end{center}
+\vspace{18pt}
+\begin{center}
+\vspace{10pt}
+\includegraphics[scale=0.95]{../images/fossee-logo.png}\\
+\vspace{5pt}
+\scriptsize Developed by FOSSEE Team, IIT-Bombay. \\ 
+\scriptsize Funded by National Mission on Education through ICT\\
+\scriptsize  MHRD,Govt. of India\\
+\includegraphics[scale=0.30]{../images/iitb-logo.png}\\
+\end{center}
+\end{frame}
+\begin{frame}
+\frametitle{Objectives}
+\label{sec-2}
+
+At the end of this tutorial, you will be able to,
+\begin{itemize}
+\item Prepare a simple shell script. 
+\item Run a script successfully and print it's result.
+\item Understand what an environment variable is.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Pre-requisite}
+\label{sec-3}
+
+Spoken tutorial on -
+\begin{itemize}
+\item Using Linux tools -- Part I
+\item Using Linux tools -- Part II
+\item Using Linux tools -- Part III
+\item Using Linux tools -- Part IV
+\item Using Linux tools -- Part V
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{PATH}}
+  \begin{itemize}
+  \item The shell searches in a set of locations, for the command 
+  \item Locations are saved in ``environment'' variable called PATH
+  \item \texttt{echo} can show the value of variables
+  \end{itemize}
+  \begin{lstlisting}
+    $ echo $PATH
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item Put \texttt{results.sh} in one of these locations
+  \item It can then be run without \texttt{./} 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Variables \& Comments}
+  \begin{lstlisting}
+    $ name=FOSSEE
+    $ count=`wc -l wonderland.txt`
+    $ echo $count # Shows the value of count
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item It is possible to create variables in shell scripts
+  \item Variables can be assigned with the output of commands
+  \item \alert{NOTE:} There is no space around the \texttt{=} sign
+  \item All text following the \texttt{\#} is considered a comment
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Summary}
+\label{sec-8}
+
+  In this tutorial, we have learnt to,
+
+
+\begin{itemize}
+\item Prepare a shell script.
+\item Display the result of a script, using the ``echo'' command.
+\item Use the environment variable ``PATH''.
+\item Create variables and comment out content using the ``\#'' sign.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Evaluation}
+\label{sec-9}
+
+
+\begin{enumerate}
+\item 
+\item 
+\item 
+\end{enumerate}
+\end{frame}
+\begin{frame}
+\frametitle{Solutions}
+\label{sec-10}
+
+
+\begin{enumerate}
+\item 
+\vspace{15pt}
+\item 
+\end{enumerate}
+\end{frame}
+\begin{frame}
+
+  \begin{block}{}
+  \begin{center}
+  \textcolor{blue}{\Large THANK YOU!} 
+  \end{center}
+  \end{block}
+\begin{block}{}
+  \begin{center}
+    For more Information, visit our website\\
+    \url{http://fossee.in/}
+  \end{center}  
+  \end{block}
+\end{frame}
+
+\end{document}
+
+

@@ -1,0 +1,198 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Using Linux Tools
+%
+% Author: FOSSEE 
+% Copyright (c) 2009, FOSSEE, IIT Bombay
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt,compress]{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+  \useoutertheme{infolines}
+  \setbeamercovered{transparent}
+}
+
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+%\usepackage{times}
+\usepackage[T1]{fontenc}
+
+% Taken from Fernando's slides.
+\usepackage{ae,aecompl}
+\usepackage{mathpazo,courier,euler}
+\usepackage[scaled=.95]{helvet}
+
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+
+\usepackage{listings}
+\lstset{language=sh,
+    basicstyle=\ttfamily\bfseries,
+    commentstyle=\color{red}\itshape,
+  stringstyle=\color{darkgreen},
+  showstringspaces=false,
+  keywordstyle=\color{blue}\bfseries}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DOCUMENT STARTS
+\begin{document}
+
+\begin{frame}
+
+\begin{center}
+\vspace{12pt}
+\textcolor{blue}{\huge Using Linux Tools\\Part II}
+\end{center}
+\vspace{18pt}
+\begin{center}
+\vspace{10pt}
+\includegraphics[scale=0.95]{../images/fossee-logo.png}\\
+\vspace{5pt}
+\scriptsize Developed by FOSSEE Team, IIT-Bombay. \\ 
+\scriptsize Funded by National Mission on Education through ICT\\
+\scriptsize  MHRD,Govt. of India\\
+\includegraphics[scale=0.30]{../images/iitb-logo.png}\\
+\end{center}
+\end{frame}
+\begin{frame}
+\frametitle{Objectives}
+\label{sec-2}
+
+At the end of this tutorial, you will be able to,
+\begin{itemize}
+\item Handle files efficiently.
+\item Change permissions and ownership of files.
+\item Navigate through directories and files.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Pre-requisite}
+\label{sec-3}
+
+Spoken tutorial on -
+\begin{itemize}
+\item Using Linux tools -- Part I
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Linux File Hierarchy}
+  \begin{itemize}
+  \item \texttt{/} is called the root directory
+  \item It is the topmost level of the hierarchy
+  \item For details \texttt{man hier}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Symbolic modes}
+  \begin{small}
+    \begin{center}
+      \begin{tabular}{lll}
+        Reference  &  Class   &  Description                                                      \\
+        \hline
+        u          &  user    &  the owner of the file                                            \\
+        g          &  group   &  users who are members of the file's group                        \\
+        o          &  others  &  users who are not hte owner of the file or members of the group  \\
+        a          &  all     &  all three of the above; is the same as \emph{ugo}                \\
+      \end{tabular}
+    \end{center}
+
+    \begin{center}
+      \begin{tabular}{ll}
+        Operator  &  Description                                                                   \\
+        \hline
+        +         &  adds the specified modes to the specified classes                             \\
+        -         &  removes the specified modes from the specified classes                        \\
+        =         &  the modes specified are to be made the exact modes for the specified classes  \\
+      \end{tabular}
+    \end{center}
+
+    \begin{center}
+      \begin{tabular}{lll}
+        Mode  &  Name     &  Description                                 \\
+        \hline
+        r     &  read     &  read a file or list a directory's contents  \\
+        w     &  write    &  write to a file or directory                \\
+        x     &  execute  &  execute a file or recurse a directory tree  \\
+      \end{tabular}
+    \end{center}
+  \end{small}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Exercise 1}
+  \begin{itemize}
+  \item Change the permissions of a directory along with all of its
+        sub-directories and files.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Solution 1}
+  \begin{itemize}
+  \item chmod go-r -R <directory name>/
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Summary}
+\label{sec-8}
+
+  In this tutorial, we have learnt to,
+
+
+\begin{itemize}
+\item Copy and move files from one location to another, using the ``cp'' 
+      and ``mv'' commands respectively.
+\item Understand the Linux file hierarchy.
+\item Change permissions and ownership of files, using the ``chmod''
+      and ``chown'' commands respectively.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Evaluation}
+\label{sec-9}
+
+
+\begin{enumerate}
+\item How to copy all the contents of one folder into another?
+\vspace{15pt}
+\item How will you rename the file wonderland.txt to alice.txt using the 
+      commands learnt so far? 
+\end{enumerate}
+\end{frame}
+\begin{frame}
+\frametitle{Solutions}
+\label{sec-10}
+
+
+\begin{enumerate}
+\item cp folder1/* folder2 
+\vspace{15pt}
+\item mv wonderland.txt alice.txt
+\end{enumerate}
+\end{frame}
+\begin{frame}
+
+  \begin{block}{}
+  \begin{center}
+  \textcolor{blue}{\Large THANK YOU!} 
+  \end{center}
+  \end{block}
+\begin{block}{}
+  \begin{center}
+    For more Information, visit our website\\
+    \url{http://fossee.in/}
+  \end{center}  
+  \end{block}
+\end{frame}
+
+\end{document}
+
+

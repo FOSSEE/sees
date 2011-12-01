@@ -1,0 +1,9 @@
+FOO is an abbreviation of Forward Observation Officer, a British Army
+term in use as early as the First World War. The etymology of foo is
+explored in the Internet Engineering Task Force (IETF) Request for
+Comments 3092, which notes usage of foo in 1930s cartoons including
+The Daffy Doc (with Daffy Duck) and comic strips, especially Smokey
+Stover and Pogo. From there the term migrated into military slang,
+where it merged with FUBAR.
+
+source: wikipedia

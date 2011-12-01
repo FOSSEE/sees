@@ -1,0 +1,170 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Using Linux Tools
+%
+% Author: FOSSEE 
+% Copyright (c) 2009, FOSSEE, IIT Bombay
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt,compress]{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+  \useoutertheme{infolines}
+  \setbeamercovered{transparent}
+}
+
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+%\usepackage{times}
+\usepackage[T1]{fontenc}
+
+% Taken from Fernando's slides.
+\usepackage{ae,aecompl}
+\usepackage{mathpazo,courier,euler}
+\usepackage[scaled=.95]{helvet}
+
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+
+\usepackage{listings}
+\lstset{language=sh,
+    basicstyle=\ttfamily\bfseries,
+    commentstyle=\color{red}\itshape,
+  stringstyle=\color{darkgreen},
+  showstringspaces=false,
+  keywordstyle=\color{blue}\bfseries}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DOCUMENT STARTS
+\begin{document}
+
+\begin{frame}
+
+\begin{center}
+\vspace{12pt}
+
+\textcolor{blue}{\huge Using Linux Tools\\Part III}
+\end{center}
+\vspace{18pt}
+\begin{center}
+\vspace{10pt}
+\includegraphics[scale=0.95]{../images/fossee-logo.png}\\
+\vspace{5pt}
+\scriptsize Developed by FOSSEE Team, IIT-Bombay. \\ 
+\scriptsize Funded by National Mission on Education through ICT\\
+\scriptsize  MHRD,Govt. of India\\
+\includegraphics[scale=0.30]{../images/iitb-logo.png}\\
+\end{center}
+\end{frame}
+\begin{frame}
+\frametitle{Objectives}
+\label{sec-2}
+
+At the end of this tutorial, you will be able to,
+\begin{itemize}
+\item Display the contents of files.
+\item Read only parts of a file.
+\item Look at the statistical information of a file.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Pre-requisite}
+\label{sec-3}
+
+Spoken tutorial on -
+\begin{itemize}
+\item Using Linux tools -- Part I
+\item Using Linux tools -- Part II
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{less}}
+   \begin{itemize}
+  \item q: Quit
+  \item Arrows/Page Up/Page Down/Home/End: Navigation
+  \item ng: Jump to line number n
+  \item /pattern: Search. Regular expressions can be used
+  \item h: Help
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Exercise 1}
+  \begin{itemize}
+  \item Print only the first, fifth and the seventh fields of the file ``/etc/passwd''.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{paste}}
+      \begin{center}
+      \begin{tabular}{l|l}
+        \verb~students.txt~  &  \verb~marks.txt~  \\
+        Hussain              &  89 92 85          \\
+        Dilbert              &  98 47 67          \\
+        Anne                 &  67 82 76          \\
+        Raul                 &  78 97 60          \\
+        Sven                 &  67 68 69          \\
+      \end{tabular}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Summary}
+\label{sec-8}
+
+  In this tutorial, we have learnt to,
+
+
+\begin{itemize}
+\item Display the contents of files using the ``cat'' command.
+\item View the contents of a file one screen at a time using the 
+      ``less'' command.
+\item Display specific contents of file using the ``head'' and 
+      ``tail'' commands.
+\item Use the ``cut'', ``paste'' and ``wc'' commands.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Evaluation}
+\label{sec-9}
+
+
+\begin{enumerate}
+\item How to view lines from 1 to 15 in wonderland.txt ?
+\vspace{15pt}
+\item In ``cut'' command, how to specify space as the delimiter ? 
+\end{enumerate}
+\end{frame}
+\begin{frame}
+\frametitle{Solutions}
+\label{sec-10}
+
+
+\begin{enumerate}
+\item \$ head -15 wonderland.txt
+\vspace{15pt}
+\item \$ cut -d " " <filename>
+\end{enumerate}
+\end{frame}
+\begin{frame}
+
+  \begin{block}{}
+  \begin{center}
+  \textcolor{blue}{\Large THANK YOU!} 
+  \end{center}
+  \end{block}
+\begin{block}{}
+  \begin{center}
+    For more Information, visit our website\\
+    \url{http://fossee.in/}
+  \end{center}  
+  \end{block}
+\end{frame}
+
+\end{document}
+
+

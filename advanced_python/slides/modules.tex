@@ -6,13 +6,13 @@
     \item Script to print `hello world' -- \texttt{hello.py}
     \end{itemize}
     \begin{lstlisting}
-      print "Hello world!"
+     print "Hello world!"
     \end{lstlisting}
     \begin{itemize}
     \item We have been running scripts from IPython
     \end{itemize}
     \begin{lstlisting}
-      %run -i hello.py
+     In[]: %run -i hello.py
     \end{lstlisting}
     \begin{itemize}
     \item Now, we run from the shell using python
@@ -28,9 +28,9 @@
   \item Save the following in \texttt{sine\_plot.py} 
   \end{itemize}
   \begin{lstlisting}
-    x = linspace(-2*pi, 2*pi, 100)
-    plot(x, sin(x))
-    show()
+  x = linspace(-2*pi, 2*pi, 100)
+  plot(x, sin(x))
+  show()
   \end{lstlisting}
   \begin{itemize}
   \item Now, let us run the script
@@ -51,7 +51,7 @@
   \item Add the following to the top of your file
   \end{itemize}
   \begin{lstlisting}
-    from scipy import *
+   from scipy import *
   \end{lstlisting}
   \begin{lstlisting}
     $ python sine_plot.py
