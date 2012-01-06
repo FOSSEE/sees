@@ -5,7 +5,7 @@
    
    ..   1. Display the contents of files.
    ..   2. Read only parts of a file.
-   ..   3. Look at the statistical information ao a file.
+   ..   3. Look at the statistical information of a file.
 
 .. Prerequisites
 .. -------------
@@ -129,7 +129,7 @@ of the file. The ``wc`` command prints these details for a file.
 
 .. R10
 
-As you can, we get some information about the file.
+As you can see, we get some information about the file.
 The first number is the number of lines, the second is the number of words
 and the third is the number of characters in the file. 
 
@@ -158,7 +158,7 @@ wish to view, we use the option ``-n``.
 
 .. R13
 
-It print only the first line of the file. Similarly, we could print only
+It prints only the first line of the file. Similarly, we could print only
 the last line of the file.
 
 The most common use of the tail command is to monitor a continuously
@@ -324,7 +324,7 @@ which is covered in the next spoken tutorial.
 
 .. R26
 
-This brings us to the end of the end of this tutorial.
+This brings us to the end of this tutorial.
 In this tutorial, we have learnt to, 
 
  1. Display the contents of files using the ``cat`` command.
