@@ -43,16 +43,16 @@ At the end of this tutorial, you will be able to,
 
 .. R3
 
-Before beginning this tutorial,we would suggest you to complete the 
+Before beginning this tutorial, we would suggest you to complete the 
 tutorial on "Using Linux tools from Part 1 to Part 3".
 
 .. R4
 
-Let us begin with the concept of 'Redirection and Piping'  which can do the 
-same operations as the ``cut`` and ``paste`` commands.
+Let us begin with the concept of 'Redirection and Piping'  which 
+performs the  same operations as the ``cut`` and ``paste`` commands.
 
-Consider the files ``marks.txt`` and ``students.txt``, which has the 
-following contents
+Consider the files ``marks.txt`` and ``students.txt``.The contents of 
+the files  are as following:
 
 .. L4
 
@@ -64,7 +64,7 @@ following contents
 
 .. R5
 
-Let us view the contents of both the files side-by-side
+Now, let us view the contents of both these files side-by-side.
 
 .. L5
 ::
@@ -73,7 +73,8 @@ Let us view the contents of both the files side-by-side
 
 .. R6
 
-Now, in order to view the same ouput in a file at a new location, we say,
+Now, in order to view the same output in a new file at an other 
+location, we say,
 
 .. L6
 ::
@@ -83,8 +84,9 @@ Now, in order to view the same ouput in a file at a new location, we say,
 
 .. R7
 
-Let's first try to understand the second solution, which is a two step
-solution. Later, we shall look at the first solution. 
+First, let us try to understand the second solution,which is a two 
+step approach.
+Later, we shall look at the first solution. 
 
 .. L7
 
@@ -96,7 +98,7 @@ solution. Later, we shall look at the first solution.
 
 The standard output, in general, goes to the display.
 Hence, the output of the commands that we type, come out to the display.
-This may not always be what we require. 
+This may not be what we always require. 
 
 For instance, in the solution above, we use the cut command and get only
 the required columns of the file and write the output to a new temporary
@@ -116,7 +118,8 @@ Similarly, the standard input (stdin) can be redirected as,
     
     command < file1
 
-The input and the output redirection could be combined in a single command, as, 
+The input and the output redirection could be combined in a single command, 
+as, 
 
     command < infile > outfile
 
@@ -127,8 +130,8 @@ but it could be redirected to a file, as well.
 
 .. R10
 
-For instance, let's introduce an error into the ``cut`` command used
-before. We change the ``-f`` option to ``-c`` 
+For instance, let's reproduce an error using the ``cut`` command used
+before. We shall change the ``-f`` option to ``-c`` 
 
 .. L10
 
@@ -139,10 +142,10 @@ before. We change the ``-f`` option to ``-c``
 
 .. R11
 
-This prints an error that says the delimiter option should be used with the
-fields option only, and you can verify that the ``m_tmp.txt`` file is
-empty.  We can now, redirect the ``stderr`` also to a file, instead of
-showing it on the display. 
+This displays an error saying that the delimiter option should be used 
+with the fields option only. You may verify this by looking at the 
+``m_tmp.txt`` file, which is now empty.We can now, redirect the 
+``stderr`` also to a file, instead of showing it on the display. 
 
 .. L11
 ::
@@ -152,10 +155,10 @@ showing it on the display.
 .. R12
 
 The above command redirects all the errors to the ``m_err.txt`` file
-and the output to ``m_tmp.txt`` file. When redirecting, 1 stands
+and the output to the ``m_tmp.txt`` file. When redirecting, 1 stands
 for ``stdout`` and 2 stands for ``stderr``. 
 
-Let us complete the solution by using the ``paste`` command
+Let us complete the solution by using the ``paste`` command.
 
 .. L12
 ::
@@ -182,16 +185,17 @@ Let us now look at the first solution.
 
 .. R14
 
-First of all, the hyphen at the end is to ask the paste command to read the
-standard input, instead of looking for a FILE. The ``man`` page of ``paste``
-command gives us this information. 
+First of all, the hyphen at the end is to ask the paste command to 
+read the standard input, instead of looking for a FILE. The ``man`` 
+page of ``paste`` command gives us this information. 
 
 The character ``|`` is called a pipe. 
-Now, what is happening with the ``cut`` command. If we look at the command only 
-up to the ``|`` character, it is a normal ``cut`` command . So, the ``|`` seems 
-to be joining the commands in some way. 
+Now, let us observe the ``cut`` command. If we look at the command only 
+upto the ``|`` character, it appears as a normal ``cut`` command .
+So, the ``|`` character here, seems 
+to be joining the two commands in some way. 
 Essentially, what we are doing is, to redirect the output of the first
-command to ``stdin`` and the second command takes input from the ``stdin``. 
+command to ``stdin`` and the second command takes the input from the ``stdin``. 
 
 More generally, 
 
@@ -206,28 +210,29 @@ used as the input for ``command2``. This activity is commonly called piping.
 
 .. R15
 
-This is roughly equivalent to using two redirects and a temporary file 
+This is roughly equivalent to using two redirects and a temporary file.
 
     command1 > tempfile
     command2 < tempfile
     rm tempfile
 
-Also, given that a pipe is just a way to send the output of the command to
-the ``stdin``, it should be obvious, to you that we can use a chain of
-pipes. Any number of commands can be piped together and you need not be
-restricted to two commands. 
+Also, given that a pipe is just a way to send the output of a command to
+the ``stdin``, it should be obvious to you that we can use a chain of
+pipes. Any number of commands can be piped together and therefore it should
+ be noted that it is not restricted to only two commands. 
 
 The Bash shell has some nice features, that make our job of using the shell
-easier and much more pleasant. We shall look at a few of them, here. 
+easier and much more pleasant. Let us have a look at few of them here. 
 
-Bash provides the feature of tab completion. What does tab completion mean?
-When you are trying to type a word and you have entered enough portion of the 
-word, bash can complete the word for you, by hitting the tab key. 
+Bash provides the feature of 'tab completion'. What does tab completion mean?
+When you are typing a word, bash helps you to complete the word.
+This can be done by entering some portion of the word and thereafter, 
+pressing the tab key. 
 
-If on hitting the tab key, the word doesn't get completed, either the word
-doesn't exist or the word cannot be decided unambiguously. If the case is
-the latter one, hitting the tab key a second time, will list the
-possibilities.
+If you do not get the desired word on pressing the tab key, it implies that 
+either the word doesn't exist or the word cannot be decided unambiguously. 
+In the latter case, pressing the tab key for a second time,will list out 
+all the possibilities.
 
 .. L16
 
@@ -258,9 +263,11 @@ For example,
 
 .. R18
 
-Bash also saves the history of the commands you have typed. So, you can go
-back to a previously typed command and use the up and down arrow keys to
-navigate in your bash history. 
+Bash also saves the history of the commands you have typed earlier.
+This feature enables you to goto the previously typed commands and 
+use them as and when necessary. The up and down arrow keys will help 
+you to navigate 
+through these commands in the bash history. 
 
 .. L18
 ::
@@ -269,10 +276,10 @@ navigate in your bash history.
 
 .. R19
 
-You can also search incrementally, for commands in your bash history.
-``Ctrl-r`` searches for the commands that you have typed before. But, note
-that the number of commands saved in the history is limited, generally upto
-a 1000 commands. 
+You may also search incrementally, for commands in your bash history.
+``Ctrl-r`` searches for the commands that you have typed earlier. However, 
+it should be noted that the number of commands saved in the history is 
+limited, generally upto a 1000 commands. 
 
 .. L19
 ::
@@ -281,13 +288,13 @@ a 1000 commands.
 
 .. R20
 
-Unix recognizes certain special characters, called "meta characters," as
+Unix recognizes certain special characters, called "meta characters", as
 command directives. The shell meta characters are recognized anywhere they
-appear in the command line, even if they are not surrounded by blank space.
-For that reason, it is safest to only use the characters A-Z, a-z, 0-9, and
-the period, dash, and underscore characters when naming files and
+appear in the command line, even if they are not surrounded by a blank space.
+For this reason, it is always recommended to use only the characters A-Z, 
+a-z, 0-9, period, dash and underscore, when naming files and
 directories on Unix. If your file or directory has a shell meta character
-in the name, you will find it difficult to use the name in a shell command.
+in the name, you may find it difficult to use this name in a shell command.
 
 .. L20
 
@@ -297,7 +304,7 @@ in the name, you will find it difficult to use the name in a shell command.
 
 .. R21
 
-The characters that you can see on the slide are the shell meta characters
+The characters that you see on the slide are the shell meta characters
 
 .. R22
 
@@ -323,8 +330,7 @@ and myfile would list the files file.c and file.lst. However,
 .. R24
 
 Run on the same directory would only list file.c because the ? only matches
-one character, no more, no less. This can save you a great deal of typing
-time. 
+one character, no more, no less. This helps you save time, while typing. 
 
 For example, if there is a file called
 california_cornish_hens_with_wild_rice and no other files whose names begin
@@ -354,8 +360,8 @@ This brings us to the end of the end of this tutorial.
 In this tutorial, we have learnt to,
 
  1. Use the ``cut`` and ``paste`` commands in redirection.
- #. Use the pipe ( | ) character. 
- #. Implement features of shell like tab-completion and history.
+ 2. Use the pipe ( | ) character. 
+ 3. Implement features of shell, like tab-completion and history.
 
 .. L27
  
@@ -363,15 +369,34 @@ In this tutorial, we have learnt to,
 
 .. R27
 
-Here are some self assessment questions for you to solve
+Here are some self assessment questions for you to solve:
+
+ 1. Bash does not provide tab completion for Host Names. 
+    True of False? 
+
+ 2. In a file /home/test.txt ,first line is "data:myscripts:20:30". How do we 
+    view only the minutes (last field, 30). 
+    
+    - cut -d : -f 4 /home/test.txt
+    - cut -f 3 /home/test.txt
+    - cut -d : -f 3 /home/test.txt
+    - None of these
 
 .. L28
 
-{{{ Solution of self assessment questions on slide }}}
+{{{ Solutions for the self assessment questions on slide }}}
 
 .. R28
 
-And the answers,
+And the answers:
+
+ 1. False. Bash provides tab completion for Host Names when they are prefixed 
+    with a @ sign.
+
+ 2. The correct option would be
+::
+    
+    cut -d : -f 4 /home/test.txt
 
 .. L29
 
