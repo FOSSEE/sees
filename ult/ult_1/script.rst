@@ -4,9 +4,9 @@
    .. At the end of this tutorial, you will be able to:
    
    ..   1. Know what is linux and it's need.
-   ..   
-   ..   2. Move around in directories and files.
-   ..   3. Use basic commands of Linux.
+   ..   2. Understand the need for linux in today's world.
+   ..   3. Move around in directories and files.
+   ..   4. Use basic commands of Linux.
 
 .. Prerequisites
 .. -------------
@@ -29,13 +29,14 @@ Hello friends and Welcome to the tutorial on
 
 .. L2
 
-{{{ Show slide with objectives }}} 
+{{{ Show the slide, Objectives }}} 
 
 .. R2
 
 At the end of this tutorial, you will be able to,
 
- 1. Know what is linux and it's need.
+ 1. Know what is linux. 
+ #. Understand the need for linux in today's world.
  #. Move around in directories and files.
  #. Use basic commands of Linux.
 
@@ -70,7 +71,8 @@ The security model used in Linux is based on the UNIX idea of security,
 which is known to be robust and of proven quality. Also, there are no
 viruses in the GNU/Linux world.
 
-We can share our operating system and the libraries that we are using
+Python is used a lot for scientific computing. Why? Beause,
+we can share our operating system and the libraries that we are using
 with our co-workers, without any headaches of licensing.
 There are a host of tools and libraries, that are useful in day-to-day 
 scientific computing work.GNU/Linux distributions are very stable and 
