@@ -3,9 +3,10 @@
    
    .. At the end of this tutorial, you will be able to:
    
-   ..   1. Handle files efficiently.
-   ..   2. Change permissions and ownership of files.
-   ..   3. Navigate through directories and files.
+   ..   1. Copy files from one location to another.
+   ..   2. Remove files and directories.
+   ..   3. Change permissions and ownership of files.
+   ..   4. Navigate through directories and files.
 
 .. Prerequisites
 .. -------------
@@ -34,7 +35,8 @@ Hello friends and Welcome to the tutorial on
 
 At the end of this tutorial, you will be able to,
 
- 1. Handle files efficiently.
+ 1. Copy files from one location to another.
+ #. Remove files and directories.
  #. Change permissions and ownership of files.
  #. Navigate through directories and files.
 
@@ -442,6 +444,7 @@ This brings us to the end of the tutorial.In this tutorial, we have learnt to,
 
  1. Copy and move files from one location to another, using the ``cp`` 
     and ``mv`` commands respectively.
+ #. Remove files using ``rm`` command. 
  #. Understand the Linux file hierarchy.
  #. Change permissions and ownership of files, using the ``chmod`` 
     and ``chown`` commands respectively.
