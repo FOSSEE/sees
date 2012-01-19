@@ -1,0 +1,202 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Using Linux Tools
+%
+% Author: FOSSEE 
+% Copyright (c) 2009, FOSSEE, IIT Bombay
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt,compress]{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+  \useoutertheme{infolines}
+  \setbeamercovered{transparent}
+}
+
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+%\usepackage{times}
+\usepackage[T1]{fontenc}
+
+% Taken from Fernando's slides.
+\usepackage{ae,aecompl}
+\usepackage{mathpazo,courier,euler}
+\usepackage[scaled=.95]{helvet}
+
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+
+\usepackage{listings}
+\lstset{language=sh,
+    basicstyle=\ttfamily\bfseries,
+    commentstyle=\color{red}\itshape,
+  stringstyle=\color{darkgreen},
+  showstringspaces=false,
+  keywordstyle=\color{blue}\bfseries}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DOCUMENT STARTS
+\begin{document}
+
+\begin{frame}
+
+\begin{center}
+\vspace{12pt}
+\textcolor{blue}{\huge Using Linux Tools\\Part VII}
+\end{center}
+\vspace{18pt}
+\begin{center}
+\vspace{10pt}
+\includegraphics[scale=0.95]{../images/fossee-logo.png}\\
+\vspace{5pt}
+\scriptsize Developed by FOSSEE Team, IIT-Bombay. \\ 
+\scriptsize Funded by National Mission on Education through ICT\\
+\scriptsize  MHRD,Govt. of India\\
+\includegraphics[scale=0.30]{../images/iitb-logo.png}\\
+\end{center}
+\end{frame}
+\begin{frame}
+\frametitle{Objectives}
+\label{sec-2}
+
+At the end of this tutorial, you will be able to,
+\begin{itemize}
+\item Prepare scripts using 'Control Operators'.
+\item Understand what 'Environment Variables' are.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Pre-requisite}
+\label{sec-3}
+
+Spoken tutorial on -
+\begin{itemize}
+\item Using Linux tools -- Part I
+\item Using Linux tools -- Part II
+\item Using Linux tools -- Part III
+\item Using Linux tools -- Part IV
+\item Using Linux tools -- Part V
+\item Using Linux tools -- Part VI
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{if}}
+  \begin{itemize}
+  \item Print message if directory exists in \texttt{pwd}
+  \end{itemize}
+  \begin{lstlisting}
+    #!/bin/bash
+    if test -d $1
+    then
+    echo "Yes, the directory" \
+    $1 "is present"
+    fi
+  \end{lstlisting} % $
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{[ ]} - alias for \texttt{test}}
+  \begin{itemize}
+  \item Square brackets (\texttt{[]}) can be used instead of
+    \texttt{test}
+  \item 
+  \end{itemize}
+  \begin{lstlisting}
+    #!/bin/bash
+    if [ $1 -lt 0 ]
+    then
+    echo "number is negative"
+    else
+    echo "number is non-negative"
+    fi
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item \alert{spacing is important, when using the square brackets}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{for}}
+  \begin{block}{Problem}
+    Given a set of \texttt{.mp3} files, that have names beginning with
+    numbers followed by their names --- \texttt{08 - Society.mp3} ---
+    rename the files to have just the names. Also replace any spaces
+    in the name with hyphens. 
+  \end{block}
+  \begin{itemize}
+  \item Loop over the list of files
+  \item Process the names, to get new names
+  \item Rename the files
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Environment Variables}
+  \begin{itemize}
+  \item Pass information from shell to programs running in it
+  \item Behavior of programs can change based on values of variables
+  \item Environment variables vs. Shell variables
+  \item Shell variables -- only current instance of the shell
+  \item Environment variables -- valid for the whole session
+  \item Convention -- environment variables are UPPER CASE
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Summary}
+\label{sec-8}
+
+  In this tutorial, we have learnt to,
+
+
+\begin{itemize}
+\item Prepare scripts using control structures like ``if'', ``if-else'',
+      ``for'' and ``while''.
+\item Use 'environment variables'.
+\item Export a variable to the environment of all the processes, using 
+      the ``export'' command.
+\end{itemize}
+\end{frame}
+\begin{frame}[fragile]
+\frametitle{Evaluation}
+\label{sec-9}
+
+
+\begin{enumerate}
+\item Print the text ``dog man'' in such a way that the prompt 
+    continues after the text.
+\vspace{8pt}
+\item How can you add a new path variable ``/data/myscripts'' to \$PATH variable ?
+\end{enumerate}
+\end{frame}
+\begin{frame}
+\frametitle{Solutions}
+\label{sec-10}
+
+
+\begin{enumerate}
+\item \$ echo -n dog man
+\vspace{15pt}
+\item \$ export PATH=\$PATH://data/myscripts
+\end{enumerate}
+\end{frame}
+\begin{frame}
+
+  \begin{block}{}
+  \begin{center}
+  \textcolor{blue}{\Large THANK YOU!} 
+  \end{center}
+  \end{block}
+\begin{block}{}
+  \begin{center}
+    For more Information, visit our website\\
+    \url{http://fossee.in/}
+  \end{center}  
+  \end{block}
+\end{frame}
+
+\end{document}
+
+
