@@ -1,0 +1,248 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Using Linux Tools
+%
+% Author: FOSSEE 
+% Copyright (c) 2009, FOSSEE, IIT Bombay
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt,compress]{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+  \useoutertheme{infolines}
+  \setbeamercovered{transparent}
+}
+
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+%\usepackage{times}
+\usepackage[T1]{fontenc}
+
+% Taken from Fernando's slides.
+\usepackage{ae,aecompl}
+\usepackage{mathpazo,courier,euler}
+\usepackage[scaled=.95]{helvet}
+
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+
+\usepackage{listings}
+\lstset{language=sh,
+    basicstyle=\ttfamily\bfseries,
+    commentstyle=\color{red}\itshape,
+  stringstyle=\color{darkgreen},
+  showstringspaces=false,
+  keywordstyle=\color{blue}\bfseries}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DOCUMENT STARTS
+\begin{document}
+
+\begin{frame}
+
+\begin{center}
+\vspace{12pt}
+\textcolor{blue}{\huge Using Linux Tools}
+\end{center}
+\vspace{18pt}
+\begin{center}
+\vspace{10pt}
+\includegraphics[scale=0.95]{../images/fossee-logo.png}\\
+\vspace{5pt}
+\scriptsize Developed by FOSSEE Team, IIT-Bombay. \\ 
+\scriptsize Funded by National Mission on Education through ICT\\
+\scriptsize  MHRD,Govt. of India\\
+\includegraphics[scale=0.30]{../images/iitb-logo.png}\\
+\end{center}
+\end{frame}
+\begin{frame}
+\frametitle{Objectives}
+\label{sec-2}
+
+At the end of this tutorial, you will be able to,
+\begin{itemize}
+\item Search for files in many different ways.
+\item Compare files with same names.
+\item Create and extract an archive. 
+\item Customize a shell.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Pre-requisite}
+\label{sec-3}
+
+Spoken tutorial on -
+\begin{itemize}
+\item Using Linux tools -- Part I
+\item Using Linux tools -- Part II
+\item Using Linux tools -- Part III
+\item Using Linux tools -- Part IV
+\item Using Linux tools -- Part V
+\item Using Linux tools -- Part VI
+\item Using Linux tools -- Part VII
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{`find'}}
+  \begin{itemize}
+  \item `find' command helps to find files in a directory hierarchy
+  \item Offers a very complex feature set\\ For eg: search files by name, owner, date,etc.
+  \item Look at the \texttt{man} page of `find' 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{`cmp'}}
+  \begin{itemize}
+  \item Compare two files
+  \end{itemize}
+  \begin{lstlisting}
+    $ find . -name quick.c
+    ./Desktop/programs/quick.c
+    ./c-folder/quick.c
+    $ cmp Desktop/programs/quick.c \
+    c-folder/quick.c
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item No output when the files are exactly the same
+  \item Else, gives location where the first difference occurs 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{`diff'}}
+  \begin{itemize}
+  \item We know the files are different, but want exact differences
+  \end{itemize}
+  \begin{lstlisting}
+    $ diff Desktop/programs/quick.c \
+    c-folder/quick.c
+  \end{lstlisting} % $
+  \begin{itemize}
+  \item line by line difference between files
+  \item \texttt{>} indicates content only in second file
+  \item \texttt{<} indicates content only in first file
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{\texttt{`tar'}}
+\begin{itemize}
+\item \emph{tarball} -- essentially a collection of files
+\item May or may not be compressed
+\item Eases the job of storing, backing-up \& transporting files
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Extracting an archive}
+
+\begin{lstlisting}
+$ mkdir extract 
+$ cp allfiles.tar extract/ 
+$ cd extract 
+$ tar -xvf allfiles.tar
+\end{lstlisting} %$
+
+\begin{itemize}
+\item \texttt{-x} --- Extract files within the archive
+\item \texttt{-f} --- Specify the archive file
+\item \texttt{-v} --- Be verbose
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Compressed archives}
+  \begin{itemize}
+  \item \texttt{tar} can create and extract compressed archives
+  \item Supports compressions like gzip, bzip2, lzma, etc.
+  \item Additional option to handle compressed archives
+    \begin{center}
+      \begin{tabular}{|l|l|}\hline
+        Compression      &  Option   \\\hline
+        gzip   &  \texttt{-z}        \\\hline
+        bzip2  &  \texttt{-j}        \\\hline
+        lzma   &  \texttt{-{}-lzma}  \\\hline
+      \end{tabular}
+    \end{center}
+  \end{itemize}
+  \begin{lstlisting}
+    $ tar -cvzf newarchive.tar.gz *.txt
+  \end{lstlisting} % $
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Customizing your shell}
+\begin{itemize}
+\item Bash reads \texttt{/etc/profile},
+  \texttt{\textasciitilde{}/.bash\_profile},
+  \texttt{\textasciitilde{}/.bash\_login}, and
+  \texttt{\textasciitilde{}/.profile} in that order, when starting
+  up as a login shell. 
+\item \texttt{\textasciitilde{}/.bashrc} is read, when not a login
+  shell 
+\item Put any commands that you want to run when bash starts, in this
+  file. 
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Summary}
+\label{sec-8}
+
+  In this tutorial, we have learnt to,
+
+
+\begin{itemize}
+\item To make use of the ``find'' command find files in a directory hierarchy.
+\item To find the differences between files with the same name, using the
+    ``cmp'' and ``diff'' commands.
+\item To extract and create compressed archive's using the ``tar'' command.
+\item Customize one's shell according to one's choice. 
+\end{itemize}
+\end{frame}
+\begin{frame}[fragile]
+\frametitle{Evaluation}
+\label{sec-9}
+
+
+\begin{enumerate}
+\item Look at the man page of ``find'' and state the options which
+    deal with symbolic links.
+\vspace{8pt}
+\item How do you append tar files to an archive ?
+\end{enumerate}
+\end{frame}
+\begin{frame}
+\frametitle{Solutions}
+
+\begin{enumerate}
+\item  -H,  -L  and  -P options with the ``find'' command   
+\vspace{15pt}
+\item tar -Af <tar\_file> <tar\_file\_to\_be\_added>
+\end{enumerate}
+
+\end{frame}
+\begin{frame}
+
+  \begin{block}{}
+  \begin{center}
+  \textcolor{blue}{\Large THANK YOU!} 
+  \end{center}
+  \end{block}
+\begin{block}{}
+  \begin{center}
+    For more Information, visit our website\\
+    \url{http://fossee.in/}
+  \end{center}  
+  \end{block}
+\end{frame}
+
+\end{document}
+
+
+
