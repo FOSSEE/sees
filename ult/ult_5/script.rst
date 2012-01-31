@@ -36,7 +36,11 @@ Hello friends and Welcome to the tutorial on
 
 At the end of this tutorial, you will be able to,
 
- 1. Learn text editing tools of linux. 
+ 1. Sort lines of text files
+ #. Print lines matching a pattern
+ #. Translate or delete characters
+ #. Omit repeated lines.
+
 
 .. L3
 
@@ -50,8 +54,9 @@ tutorial on "Using Linux tools from Part 1 to Part 4".
 .. R4
 
 In this tutorial, we shall learn about text processing.
-Consider data kept in two files, namely marks1.txt and students.txt
-Let us see what data they contain,
+TO begin with, consider data kept in two files, namely marks1.txt and 
+students.txt
+Let us see what data they contain. Open a terminal and type, 
 
 .. L4
 
@@ -93,31 +98,33 @@ is used to specify the field.
 
 .. R7
 
-This command give us a sorted output as required. But, it would be
-nicer to have the output sorted in the reverse order.
+This command give us a sorted output as required. But, what if we would 
+like the output to appear in the reverse order. ``-r`` option allows the output
+to be sorted in the reverse order and the ``-n`` option is used to choose 
+a numerical sorting. 
 
 .. R8
 
- ``-r`` option allows the output to be sorted in the reverse order and 
-the ``-n`` option is used to choose a numerical sorting. 
+Let us do it on the terminal and see for ourselves, 
 
 .. L8
 
-{{ Switch to the terminal }}}
+{{{ Switch to the terminal }}}
 ::
 
-    cut -d " " -f 2- marks1.txt | paste -d " " students.txt -| sort -t " " -k 2 -rn
+    cut -d " " -f 2- marks1.txt | paste -d " " students.txt -| 
+    sort -t " " -k 2 -rn
 
 .. R9
 
 Suppose, While you are compiling the student marklist, Anne walks up to you and
 wants to know her marks. You, being a kind person that you are, oblige.
 But you do not wish to her to see the marks that others have scored. What
-do you do? The ``grep`` command comes to your rescue. 
+do you do? Here, the ``grep`` command comes to your rescue. 
 
 ``grep`` is a command line text search utility. You can use it to search
-for Anne and show her, what she scored. ``grep`` allows you to search for a
-search string in files. But you could, like any other command, pipe the
+for Anne and show her, what she scored. ``grep`` allows us to search for a
+search string in files. But we could, like any other command, pipe the
 output of other commands to it. So, we shall use the previous combination
 of cut and paste that we had, to get the marks of students along with their
 names and search for Anne in that. 
@@ -129,10 +136,10 @@ names and search for Anne in that.
 
 .. R10
 
-This will give you only the line containing the word Anne as the output.
-The grep command is by default case-sensitive. So, you wouldn't have got
-the result if you had searched for anne, with a small a, instead of 
-Anne, with a capital a. But, what if you didn't know, whether the name was 
+This will give us only the line containing the word Anne as the output.
+The grep command is by default case-sensitive. So, we wouldn't have got
+the result if we had searched for anne, with a small a, instead of 
+Anne, with a capital a. But, what if we didn't know, whether the name was 
 capitalized or not? ``grep`` allows you to do case-insensitive searches 
 by using the ``-i`` option. 
 
@@ -143,8 +150,8 @@ by using the ``-i`` option.
 
 .. R11
 
-Now, in another scenario, if you wished to print all the lines, which do
-not contain the word Anne, you could use the ``-v`` option. 
+Now, in another scenario, if we wished to print all the lines, which do
+not contain the word Anne, we could use the ``-v`` option. 
 
 .. L11
 ::
@@ -153,7 +160,7 @@ not contain the word Anne, you could use the ``-v`` option.
 
 .. R12
 
-grep allows you to do more complex searches, for instance, searching for
+grep allows us to do more complex searches, for instance, searching for
 sentences starting or ending with a particular pattern and regular
 expression based searches. 
 
@@ -164,8 +171,8 @@ replaces occurrences of the characters in the first set with the
 corresponding elements from the other set. It reads from the standard
 output and writes to the standard output. 
 
-For instance, if you wish to replace all the lower case letters in the
-students file with upper case, you can do it as, 
+For instance, if we wish to replace all the lower case letters in the
+students file with upper case, we can do it as, 
 
 .. L12
 
@@ -220,11 +227,12 @@ The ``-c`` flag complements the first set of characters.
 
 .. R17
 
-therefore removes all non-alphanumeric characters.
+It therefore removes all non-alphanumeric characters.
 
-Suppose we have a list of items, say books, and we wish to obtain a list 
-which names of all the books only once, without any duplicates. We use 
-the ``uniq`` command to achieve this. Let us first have a look at our file
+Let us consider one more scenario.Suppose we have a list of items, say books, 
+and we wish to obtain a list which names of all the books only once, without 
+any duplicates. To achieve this, we use the ``uniq`` command. Let us first 
+have a look at our file
 
 .. L17
 ::
@@ -243,9 +251,9 @@ the ``uniq`` command.
 
 .. R19
 
-Nothing happens! Why? The ``uniq`` command removes duplicate lines only when they 
-are next to each other. So, henceforth, we get a sorted file from the original file and work 
-with that file. 
+Nothing happens! Why? The ``uniq`` command removes duplicate lines only when 
+they are next to each other. So, henceforth, we get a sorted file from the 
+original file and work with that file. 
 
 .. L19
 ::
@@ -255,7 +263,8 @@ with that file.
 .. R20
 
 ``uniq -u`` command gives the lines which are unique and do not have any 
-duplicates in the file. ``uniq -d`` outputs only those lines which have duplicates. 
+duplicates in the file. ``uniq -d`` outputs only those lines which 
+have duplicates. 
 
 .. L20 
 ::
@@ -293,6 +302,17 @@ In this tutorial, we have learnt to,
 
 Here are some self assessment questions for you to solve
 
+ 1. To obtain patterns; one per line, which of the following command is used ?
+   
+    - grep -f
+    - grep -i
+    - grep -v
+    - grep -e
+
+ 2. Translate the word 'linux' to upper-case.
+
+ 3. Sort the output of the ``ls -al`` command.
+
 .. L24
 
 {{{ Solution of self assessment questions on slide }}}
@@ -300,6 +320,22 @@ Here are some self assessment questions for you to solve
 .. R24
 
 And the answers,
+
+ 1. In order to obtain patterns one per line, we use the ``grep`` command
+    alongwith the -f option.
+
+ 2. We use the tr command to change the word into uppercase 
+::
+
+    echo 'linux' | tr a-z A-Z
+ 
+
+ 3. We use the sort command as, 
+::
+     
+    ls -al | sort -n -k5
+The -n  means "sort numerically", and the -k5 option means to key off of 
+column five. 
 
 .. L25
 

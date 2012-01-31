@@ -61,7 +61,10 @@
 
 At the end of this tutorial, you will be able to,
 \begin{itemize}
-\item Learn text editing tools of linux.
+\item Sort lines of text files.
+\item Print lines matching a pattern.
+\item Translate or delete characters.
+\item Omit repeated lines.
 \end{itemize}
 \end{frame}
 
@@ -81,7 +84,7 @@ Spoken tutorial on -
 \begin{frame}[fragile]
   \frametitle{\texttt{sort} \ldots}
   \begin{itemize}
-  \item The command below sorts based on marks in first subject
+  \item The command below sorts, based on marks in first subject
   \end{itemize}
   \begin{lstlisting}
     $ cut -d " " -f 2- marks1.txt \
@@ -91,15 +94,15 @@ Spoken tutorial on -
   \begin{itemize}
   \item \texttt{-t} specifies the delimiter between fields
   \item \texttt{-k} specifies the field to use for sorting
-  \item \texttt{-n} to choose numerical sorting
   \item \texttt{-r} for sorting in the reverse order
+  \item \texttt{-n} to choose numerical sorting
   \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{\texttt{tr}}
   \begin{itemize}
-  \item \texttt{tr} translates or deletes characters
+  \item Translates or deletes characters
   \item Reads from \texttt{stdin} and outputs to \texttt{stdout}
   \item Given, two sets of characters, replaces one with other
   \item The following, replaces all lower-case with upper-case 
@@ -129,9 +132,18 @@ Spoken tutorial on -
 
 
 \begin{enumerate}
-\item 
-\item 
-\item 
+\item To obtain patterns; one per line, which of the following command is used ?
+\vspace{3pt}
+\begin{itemize}
+\item grep -f
+\item grep -i
+\item grep -v
+\item grep -e
+\end{itemize}
+\vspace{8pt}
+\item Translate the word `linux' to upper-case.
+\vspace{8pt}
+\item Sort the output of the ``ls -al'' command.
 \end{enumerate}
 \end{frame}
 \begin{frame}
@@ -140,9 +152,11 @@ Spoken tutorial on -
 
 
 \begin{enumerate}
-\item 
+\item grep -f
 \vspace{15pt}
-\item 
+\item \$ echo `linux' | tr a-z A-Z
+\vspace{15pt}
+\item \$ ls -al | sort -n -k5
 \end{enumerate}
 \end{frame}
 \begin{frame}
