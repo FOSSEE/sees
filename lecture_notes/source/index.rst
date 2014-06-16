@@ -13,7 +13,7 @@ Contents:
    basic_python/handout
    advanced_python/handout
    version_control/handout
-   latex/hadout
+   latex/handout
    test_driven_development/handout
    :maxdepth: 2
 
