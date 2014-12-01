@@ -19,7 +19,7 @@ able to:
 - understand how software tools work together and how they can be used
   in tandem to carry out tasks,
                              
-- use unix command line tools to carry out common (mostly text
+- use unix command line tools to carry out common (mostly) text
   processing tasks,
                                                             
 - to generate professional documents,
