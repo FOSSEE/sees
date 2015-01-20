@@ -1986,13 +1986,15 @@ hyphens.
     echo $f|tr -s " " "-"|cut -d - -f 2-
   done
 
-Now we just replace the echo command with a ``mv``  command. 
+Now we just replace the echo command with a ``mv``  command. Note that ``Si`` 
+has to be within quotes as ``mv`` takes it to be 2 different inputs as it has 
+space in it. 
 
 ::
 
   for i in *.mp3
   do 
-    mv $i `echo $f|tr -s " " "-"|cut -d - -f 2-`
+    mv "$i" `echo $f|tr -s " " "-"|cut -d - -f 2-`
   done
 
 ``while``
