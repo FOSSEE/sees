@@ -39,11 +39,11 @@
 \begin{frame}[fragile]
   \frametitle{Defining functions \ldots}
   \begin{lstlisting}
-  In[]:  def greet():
-  ....:      print "Hello World!"
+  In[]: def greet():
+  ....:     print "Hello World!"
   ....:
 
-  In[]:  greet()
+  In[]: greet()
   \end{lstlisting}
   \begin{itemize}
   \item \texttt{greet} is a function that takes no arguments
@@ -51,11 +51,11 @@
   \item But implicitly, Python returns \texttt{None}
   \end{itemize}
   \begin{lstlisting}
-  In[]:  def avg(a, b):
-  ....:      return (a + b)/2
+  In[]: def avg(a, b):
+  ....:     return (a + b)/2
   ....:
       
-  In[]:  avg(12, 10)
+  In[]: avg(12, 10)
   \end{lstlisting}
 \end{frame}
 
@@ -66,15 +66,15 @@
   \item We write a doc-string along with the function definition
   \end{itemize}
   \begin{lstlisting}
-  In[]:  def avg(a, b):
-         """ avg takes two numbers as input 
-         and returns their average"""
+  In[]: def avg(a, b):
+        """ avg takes two numbers as input 
+        and returns their average"""
 
-  ....:      return (a + b)/2
+  ....:     return (a + b)/2
   ....:
         
-  In[]:  avg?
-  In[]:  greet?
+  In[]: avg?
+  In[]: greet?
   \end{lstlisting}
 \end{frame}
 
@@ -85,20 +85,20 @@
   \item Function needs to return two values
   \end{itemize}
   \begin{lstlisting}
-  In[]:  def circle(r):
-         """returns area and perimeter of a 
-         circle given, the radius r"""
+  In[]: def circle(r):
+        """returns area and perimeter of a 
+        circle given, the radius r"""
 
-  ....:      pi = 3.14
-  ....:      area = pi * r * r
-  ....:      perimeter = 2 * pi * r
-  ....:      return area, perimeter
+  ....:     pi = 3.14
+  ....:     area = pi * r * r
+  ....:     perimeter = 2 * pi * r
+  ....:     return area, perimeter
   ....:
 
-  In[]:  circle(4)
-  In[]:  a, p = circle(6)
-  In[]:  print a
-  In[]:  print p
+  In[]: circle(4)
+  In[]: a, p = circle(6)
+  In[]: print a
+  In[]: print p
   \end{lstlisting}
   \begin{itemize}
   \item Any number of values can be returned
@@ -108,13 +108,13 @@
 \begin{frame}[fragile]
   \frametitle{What? -- 1}
   \begin{lstlisting}       
-  In[]:  def what( n ):           
-  ....:      if n < 0: n = -n     
-  ....:      while n > 0:         
-  ....:          if n % 2 == 1:   
-  ....:              return False 
-  ....:          n /= 10          
-  ....:      return True          
+  In[]: def what( n ):           
+  ....:     if n < 0: n = -n     
+  ....:     while n > 0:         
+  ....:         if n % 2 == 1:   
+  ....:             return False 
+  ....:         n /= 10          
+  ....:     return True          
   ....:
   \end{lstlisting}         
 \end{frame}
@@ -122,11 +122,11 @@
 \begin{frame}[fragile]
   \frametitle{What? -- 2}
   \begin{lstlisting}
-  In[]:  def what( n ):
-  ....:      i = 1
-  ....:      while i * i < n:
-  ....:          i += 1
-  ....:      return i * i == n, i
+  In[]: def what( n ):
+  ....:     i = 1
+  ....:     while i * i < n:
+  ....:         i += 1
+  ....:     return i * i == n, i
   ....:
   \end{lstlisting}
 \end{frame}
@@ -139,8 +139,8 @@
   In[]: round(2.484)
   In[]: round(2.484, 2)
 
-  In[]:  s.split() # split on spaces
-  In[]:  s.split(';') # split on ';'
+  In[]: s.split() # split on spaces
+  In[]: s.split(';') # split on ';'
 
   In[]: range(10) # returns numbers from 0 to 9
   In[]: range(1, 10) # returns numbers from 1 to 9
@@ -151,8 +151,8 @@
 \begin{frame}[fragile]
   \frametitle{Default arguments \ldots}
   \begin{lstlisting}
-  In[]:  def welcome(greet, name="World"):
-  ....:      print greet, name
+  In[]: def welcome(greet, name="World"):
+  ....:     print greet, name
   ....:
 
   In[]: welcome("Hi", "Guido")
@@ -163,8 +163,8 @@
   \item The following definition is \alert{WRONG}
   \end{itemize}
   \begin{lstlisting}
-  In[]:  def welcome(name="World", greet):
-  ....:      print greet, name
+  In[]: def welcome(name="World", greet):
+  ....:     print greet, name
   ....:
   \end{lstlisting}
 \end{frame}
@@ -172,17 +172,17 @@
 \begin{frame}[fragile]
   \frametitle{Keyword Arguments}
   \begin{lstlisting}
-  In[]:  def welcome(greet, name="World"):
-  ....:      print greet, name
+  In[]: def welcome(greet, name="World"):
+  ....:     print greet, name
   ....:
 
-  In[]:  welcome("Hello", "James")
+  In[]: welcome("Hello", "James")
 
   In[]: welcome("Hi", name="Guido")
 
   In[]: welcome(name="Guido", greet="Hey")
 
-  In[]:  welcome(name="Guido", "Hey")
+  In[]: welcome(name="Guido", "Hey")
   \end{lstlisting}
 \end{frame}
 
@@ -207,33 +207,21 @@
    ....:     print q
    ....:
 
-  In[]:  change(1)
-  In[]:  print q
+   In[]: change(1)
+   In[]: print q
   \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{Variables inside function are local}
   \begin{lstlisting}
-  In[]:  n = 5
-  In[]:  def change():
-  ....:      n = 10
-  ....:      print n
+  In[]: n = 5
+  In[]: def change():
+  ....:     n = 10
+  ....:     print n
   ....:
-  In[]:  change()
-  In[]:  print n
-  \end{lstlisting}
-  \begin{itemize}
-  \item Use the \texttt{global} statement to assign to global variables
-  \end{itemize}
-  \begin{lstlisting}
-  In[]:  def change():
-  ....:      global n
-  ....:      n = 10
-  ....:      print n
-  ....:
-  In[]:  change()
-  In[]:  print n
+  In[]: change()
+  In[]: print n
   \end{lstlisting}
 \end{frame}
 
@@ -243,13 +231,13 @@
   \item Use the \texttt{global} statement to assign to global variables
   \end{itemize}
   \begin{lstlisting}
-  In[]:  def change():
-  ....:      global n
-  ....:      n = 10
-  ....:      print n
+  In[]: def change():
+  ....:     global n
+  ....:     n = 10
+  ....:     print n
   ....:
-  In[]:  change()
-  In[]:  print n
+  In[]: change()
+  In[]: print n
   \end{lstlisting}
 \end{frame}  
 
@@ -261,9 +249,9 @@
     until the name is found
   \end{itemize}
   \begin{lstlisting}
-  In[]:  name = ['Mr.', 'Steve', 'Gosling']
-  In[]:  def change_name():
-  ....:      name[0] = 'Dr.'
+  In[]: name = ['Mr.', 'Steve', 'Gosling']
+  In[]: def change_name():
+  ....:     name[0] = 'Dr.'
   ....:
   In[]: change_name()
   In[]: print name
@@ -273,22 +261,22 @@
 \begin{frame}[fragile]
   \frametitle{Passing Arguments \ldots}
   \begin{lstlisting}
-  In[]:  n = 5
-  In[]:  def change(n):
-  ....:      n = 10
-  ....:      print "n = %s inside change " %n
+  In[]: n = 5
+  In[]: def change(n):
+  ....:     n = 10
+  ....:     print "n = %s inside change " %n
   ....:
-  In[]:  change(n)
-  In[]:  print n
+  In[]: change(n)
+  In[]: print n
   \end{lstlisting}
   
   \begin{lstlisting}
-  In[]:  name = ['Mr.', 'Steve', 'Gosling']
-  In[]:  def change_name(n):
-  ....:      n[0] = 'Dr.'
-  ....:      print "n = %s inside change_name" %n
+  In[]: name = ['Mr.', 'Steve', 'Gosling']
+  In[]: def change_name(n):
+  ....:     n[0] = 'Dr.'
+  ....:     print "n = %s inside change_name" %n
   ....:
-  In[]:  change_name(name)
-  In[]:  print name
+  In[]: change_name(name)
+  In[]: print name
   \end{lstlisting}
 \end{frame}
