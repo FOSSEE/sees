@@ -191,6 +191,28 @@ def fib(n): # write Fibonacci series up to n
   \end{itemize}
 \end{frame}
 
+
+\begin{frame}[fragile]
+  \frametitle{Stand-alone scripts}
+Consider a file \texttt{f.py}:
+\footnotesize
+\begin{lstlisting}
+#!/usr/bin/env python
+"""Module level documentation."""
+# First line tells the shell that it should use Python
+# to interpret the code in the file.
+def f():
+    print "f"
+
+# Check if we are running standalone or as module.
+# When imported, __name__ will not be '__main__'
+if __name__ == '__main__':
+    # This is not executed when f.py is imported.
+    f() 
+\end{lstlisting}
+\end{frame}
+
+
 \section{Exceptions}
 
 \begin{frame}{Motivation}
