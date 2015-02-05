@@ -1,0 +1,269 @@
+\documentclass[12pt,presentation]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{soul}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\usepackage[english]{babel} \usepackage{ae,aecompl}
+\usepackage{mathpazo,courier,euler} \usepackage[scaled=.95]{helvet}
+\usepackage{listings}
+\lstset{language=Python, basicstyle=\ttfamily\bfseries,
+commentstyle=\color{red}\itshape, stringstyle=\color{green},
+showstringspaces=false, keywordstyle=\color{blue}\bfseries}
+\providecommand{\alert}[1]{\textbf{#1}}
+
+\title{More Basic Python}
+\author[FOSSEE] {FOSSEE}
+\institute[IIT Bombay] {Department of Aerospace Engineering\\IIT Bombay}
+\date []{}
+
+\usetheme{Warsaw}\usecolortheme{default}\useoutertheme{infolines}\setbeamercovered{transparent}
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Outline}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}
+\frametitle{Outline}
+\setcounter{tocdepth}{3}
+\tableofcontents
+\end{frame}
+
+\section{Using Python modules}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{hello.py}}
+    \begin{itemize}
+    \item Script to print `hello world' -- \texttt{hello.py}
+    \end{itemize}
+    \begin{lstlisting}
+     print "Hello world!"
+    \end{lstlisting}
+    \begin{itemize}
+    \item We have been running scripts from IPython
+    \end{itemize}
+    \begin{lstlisting}
+     In[]: %run -i hello.py
+    \end{lstlisting}
+    \begin{itemize}
+    \item Now, we run from the shell using python
+    \end{itemize}
+    \begin{lstlisting}
+      $ python hello.py
+    \end{lstlisting} 
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Modules}
+  \begin{itemize}
+      \item Organize your code
+      \item Collect similar functionality
+      \item Functions, classes, constants, etc.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Modules}
+  \begin{itemize}
+  \item Define variables, functions and classes in a file with a
+    \texttt{.py} extension
+  \item This file becomes a module!
+  \item The \texttt{import} keyword ``loads'' a module
+  \item One can also use:
+    \mbox{\texttt{from module import name1, name2, name2}}\\
+    where \texttt{name1} etc. are names in the module, ``module''
+  \item \texttt{from module import *} \ --- imports everything from module,
+    \alert{use only in interactive mode}
+    \item File name should be valid variable name
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Modules: example}
+  \begin{lstlisting}
+# --- foo.py ---
+some_var = 1
+def fib(n): # write Fibonacci series up to n
+    """Print a Fibonacci series up to n."""
+    a, b = 0, 1
+    while b < n:
+        print b,
+        a, b = b, a+b
+# EOF
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Modules: example}
+  \begin{lstlisting}
+>>> import foo
+>>> foo.fib(10)
+1 1 2 3 5 8 
+>>> foo.some_var
+1
+  \end{lstlisting}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Python path}
+  \begin{itemize}
+  \item In IPython type the following
+  \end{itemize}
+  \begin{lstlisting}
+    import sys
+    sys.path
+  \end{lstlisting}
+  \begin{itemize}
+  \item List of locations where python searches for a module
+  \item \texttt{import sys} -- searches for file \texttt{sys.py} or
+    dir \texttt{sys} in all these locations
+  \item So, our own modules can be in any one of the locations
+  \item Current working directory is one of the locations
+  \item Can also set \texttt{PYTHONPATH} env var
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Another example: GCD script}
+  \begin{itemize}
+  \item Function that computes gcd of two numbers
+  \item Save it as \texttt{gcd\_script.py}
+  \end{itemize}
+  \begin{lstlisting}
+    def gcd(a, b):
+        while b:
+            a, b = b, a%b
+        return a
+  \end{lstlisting}
+  \begin{itemize}
+  \item Also add the tests to the file
+  \end{itemize}
+  \begin{lstlisting}
+    if gcd(40, 12) == 4 and gcd(12, 13) == 1:
+        print "Everything OK"
+    else:
+        print "The GCD function is wrong"
+  \end{lstlisting}
+  \begin{lstlisting}
+    $ python gcd_script.py
+  \end{lstlisting} % $
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{\_\_name\_\_}}
+  \begin{lstlisting}
+    import gcd_script
+  \end{lstlisting}
+  \begin{itemize}
+  \item The import is successful
+  \item But the test code, gets run
+  \item Add the tests to the following \texttt{if} block
+  \end{itemize}
+  \begin{lstlisting}
+    if __name__ == "__main__":
+  \end{lstlisting}
+  \begin{itemize}
+  \item Now the script runs properly 
+  \item As well as the import works; test code not executed
+  \item \texttt{\_\_name\_\_} is local to every module and is equal
+    to \texttt{\_\_main\_\_} only when the file is run as a script.
+  \end{itemize}
+\end{frame}
+
+\section{Exceptions}
+
+\begin{frame}{Motivation}
+    \begin{itemize}
+        \item How do you signal errors to a user?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Exceptions}
+  \begin{itemize}
+  \item Python's way of notifying you of errors
+  \item Several standard exceptions: \texttt{SyntaxError}, \texttt{IOError}
+    etc.
+  \item Users can also \texttt{raise} errors
+  \item Users can create their own exceptions
+  \item Exceptions can be ``caught'' via \texttt{try/except} blocks
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Exception: examples}
+\begin{lstlisting}
+>>> 10 * (1/0)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in ?
+ZeroDivisionError: integer division or modulo by zero
+>>> 4 + spam*3
+Traceback (most recent call last):
+  File "<stdin>", line 1, in ?
+NameError: name 'spam' is not defined
+>>> '2' + 2
+Traceback (most recent call last):
+  File "<stdin>", line 1, in ?
+TypeError: cannot concatenate 'str' and 'int' objects
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Exception: examples}
+\begin{lstlisting}
+>>> while True:
+...     try:
+...         x = int(raw_input("Enter a number: "))
+...         break
+...     except ValueError:
+...         print "Invalid number, try again..."
+...
+>>> # To raise exceptions
+... raise ValueError, "your error message"
+Traceback (most recent call last):
+  File "<stdin>", line 2, in ?
+ValueError: your error message
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Exception: try/finally}
+\begin{lstlisting}
+>>> while True:
+...     try:
+...         x = open("my_data.txt")
+...         lines = x.readlines()
+...         # Process the data from the file.
+...         value = int(line[0])
+...     except ValueError:
+...         print "Invalid file!"
+...     finally:
+...         print "All good!"
+...
+\end{lstlisting}
+\end{frame}
+
+
+
+\end{document}
