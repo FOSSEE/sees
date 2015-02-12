@@ -13,6 +13,190 @@
 \end{frame}
 
 \begin{frame}[fragile]
+  \frametitle{Classes: the big picture}
+  \begin{itemize}
+  \item Lets you create new data types
+  \item Class is a template for an object belonging to that class
+  \item Note: in Python a class is also an object
+  \item Instantiating a class creates an instance (an object)
+  \item An instance encapsulates the state (data) and behavior
+    (methods)
+  \item Allows you to define an inheritance hierarchy
+    \begin{itemize}
+    \item ``A Honda car \alert{is a} car.''
+    \item ``A car \alert{is an} automobile.''
+    \item ``A Python \alert{is a} reptile.''
+    \end{itemize}
+  \item Programmers need to think OO
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Classes: what's the big deal?}
+  \begin{itemize}
+  \item Lets you create objects that mimic a real problem being
+    simulated
+  \item Makes problem solving more natural and elegant
+  \item Easier to create code
+  \item Allows for code-reuse
+  \item Polymorphism
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Class definition and instantiation}
+  \begin{itemize}
+  \item Class definitions when executed create class objects
+  \item Instantiating the class object creates an instance of the
+    class
+  \end{itemize}
+\footnotesize
+\begin{lstlisting}
+class Foo(object):
+    pass
+# class object created.
+
+# Create an instance of Foo.
+f = Foo()
+# Can assign an attribute to the instance
+f.a = 100
+print f.a
+100
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Classes \ldots}
+  \begin{itemize}
+  \item All attributes are accessed via the \texttt{object.attribute}
+    syntax
+  \item Both class and instance attributes are supported
+  \item \emph{Methods} represent the behavior of an object: crudely
+    think of them as functions ``belonging'' to the object
+  \item All methods in Python are ``virtual''
+  \item Inheritance through subclassing
+  \item Multiple inheritance is supported
+  \item No special public and private attributes: only good
+    conventions
+    \begin{itemize}
+    \item \verb+object.public()+: public
+    \item \verb+object._private()+ \& \verb+object.__priv()+: 
+      non-public
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Classes: examples}
+\begin{lstlisting}
+class MyClass(object):
+    """Example class (this is the class docstring)."""
+    i = 12345 # A class attribute
+    def f(self):
+        """This is the method docstring"""
+        return 'hello world'
+
+>>> a = MyClass() # creates an instance
+>>> a.f()
+'hello world'
+>>> # a.f() is equivalent to MyClass.f(a)
+... # This also explains why f has a 'self' argument.
+... MyClass.f(a)
+'hello world'
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Classes (continued)}
+  \begin{itemize}
+  \item \texttt{self} is \alert{conventionally} the first argument for a
+    method
+  \item In previous example, \texttt{a.f} is a method object
+  \item When \texttt{a.f} is called, it is passed the instance \texttt{a} as
+    the first argument
+  \item If a method called \verb+__init__+ exists, it is called when
+    the object is created
+  \item If a method called \verb+__del__+ exists, it is called before
+    the object is garbage collected
+  \item Instance attributes are set by simply ``setting'' them in
+    \texttt{self}
+  \item Other special methods (by convention) like \verb+__add__+ let
+    you define numeric types:
+    {\footnotesize \url{https://docs.python.org/2.7/reference/datamodel.html}
+    }
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Classes: examples}
+\begin{lstlisting}
+class Bag(MyClass): # Shows how to derive classes
+    def __init__(self): # called on object creation.
+        self.data = [] # an instance attribute
+    def add(self, x):
+        self.data.append(x)
+    def addtwice(self, x):
+        self.add(x)
+        self.add(x)
+>>> a = Bag()
+>>> a.f() # Inherited method
+'hello world'
+>>> a.add(1); a.addtwice(2)
+>>> a.data
+[1, 2, 2]
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Derived classes}
+  \begin{itemize}
+  \item Call the parent's \verb+__init__+ if needed
+  \item If you don't need a new constructor, no need to define it in subclass
+  \item Can also use the \verb+super+ built-in function
+  \end{itemize}
+\begin{lstlisting}
+class AnotherBag(Bag):
+    def __init__(self):
+        # Must call parent's __init__ explicitly
+        Bag.__init__(self)
+        # Alternatively use this:
+        super(AnotherBag, self).__init__()
+        # Now setup any more data.
+        self.more_data = []
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Classes: polymorphism}
+\begin{lstlisting}
+class Drawable(object):
+    def draw(self):
+        # Just a specification.
+        pass
+\end{lstlisting}
+\mode<presentation>{\pause}
+\begin{lstlisting}
+class Square(Drawable):
+    def draw(self):
+        # draw a square.
+class Circle(Drawable):
+    def draw(self):
+        # draw a circle.
+\end{lstlisting}
+\end{frame}
+\begin{frame}[fragile]
+  \frametitle{Classes: polymorphism}
+\begin{lstlisting}
+class Artist(Drawable):
+    def draw(self):
+        for obj in self.drawables:
+            obj.draw()
+\end{lstlisting}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
   \frametitle{Example: Managing Talks}
   \begin{itemize}
   \item A list of talks at a conference
@@ -191,8 +375,10 @@
     class Tutorial(Talk):
         """A class for the tutorials."""
 
-        def __init__(self, speaker, title, tags, handson=True):
-            Talk.__init__(self, speaker, title, tags)
+        def __init__(self, speaker, title, tags, 
+                     handson=True):
+            Talk.__init__(self, speaker, title, 
+                          tags)
             self.handson = handson
 
         def is_handson(self):
