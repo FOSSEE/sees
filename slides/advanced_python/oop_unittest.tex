@@ -1,0 +1,117 @@
+\documentclass[12pt,presentation]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{soul}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\usepackage[english]{babel} \usepackage{ae,aecompl}
+\usepackage{mathpazo,courier,euler} \usepackage[scaled=.95]{helvet}
+\usepackage{listings}
+\lstset{language=Python, basicstyle=\ttfamily\bfseries,
+commentstyle=\color{red}\itshape, stringstyle=\color{green},
+showstringspaces=false, keywordstyle=\color{blue}\bfseries}
+\providecommand{\alert}[1]{\textbf{#1}}
+
+\title{SEES: OOP and more testing}
+\author{FOSSEE}
+
+\usetheme{Warsaw}\usecolortheme{default}\useoutertheme{infolines}\setbeamercovered{transparent}
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Outline}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}
+\frametitle{Outline}
+\setcounter{tocdepth}{3}
+\tableofcontents
+\end{frame}
+
+\include{slides/oop}
+
+
+\section{\texttt{unittest} framework}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{unittest}}
+  \begin{itemize}
+  \item \texttt{unittest} framework can efficiently automate tests
+  \item Easily initialize code and data for executing the specific
+    tests
+  \item Cleanly shut them down once the tests are executed
+  \item Easily aggregate tests into collections and improved reporting
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{unittest}ing \texttt{gcd.py}}
+  \begin{itemize}
+  \item Subclass the \texttt{TestCase} class in \texttt{unittest}
+  \item Place all the test code as methods of this class
+  \item Place the code in \texttt{test\_gcd.py} 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,allowframebreaks]
+  \frametitle{\texttt{test\_gcd.py}}
+\small
+\begin{lstlisting}
+import gcd
+import unittest
+
+class TestGcdFunction(unittest.TestCase):
+    def setUp(self):
+        # Called before each test case.
+        print "In setUp"
+
+    def tearDown(self):
+        print "In tearDown"
+
+    def test_gcd(self):
+        self.assertEqual(gcd.gcd(45, 5), 5)
+        self.assertEqual(gcd.gcd(45, 5), 5)
+
+    def test_gcd_correctly_handles_floats(self):
+        # Write appropriate tests here.
+        pass
+
+if __name__ == '__main__':
+    unittest.main()
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{test\_gcd.py}}
+  \begin{itemize}
+  \item \texttt{setUp} -- called before every \texttt{test\_*} method
+  \item \texttt{tearDown} -- called after every test
+  \item \texttt{setUp} and \texttt{tearDown} -- useful to perform common
+      operations, make a temporary directory, delete it when done etc.
+  \item \texttt{test\_gcd} -- actual test code
+  \item \texttt{assertEqual} -- compare actual result with expected one
+  \item Also see: \url{docs.python.org/2.7/library/unittest.html}
+  \end{itemize}
+\end{frame}
+
+
+
+\end{document}
