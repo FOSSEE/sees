@@ -28,7 +28,7 @@ able to:
 
 - automate tasks by writing shell scripts and python scripts,
 
-- realise the impact of coding style and readbility on quality,
+- realise the impact of coding style and readability on quality,
 
 - write mid-sized programs that carry out typical engineering /
   numerical computations such as those that involve (basic)
