@@ -4,3 +4,8 @@ all: build-tools.html
 
 build-tools.html: build-tools.rst
 	$(RST2S5) --theme=small-white $< $@
+
+.PHONY: clean
+
+clean:
+	$(RM) build-tools.html
