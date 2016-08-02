@@ -71,3 +71,54 @@ Example
     :scale: 50%
     :align: center
 
+Note that changing ``mylib.h`` would require rebuilding ``main.c`` and
+``mylib.c``, but not so if you edit any of the C files.
+
+Steps to build
+==============
+
+1. ``gcc -c main.c -o main.o``
+2. ``gcc -c mylib.c -o mylib.o``
+3. ``gcc -o main main.o mylib.o``
+
+How do we write a Makefile for this?
+
+Our first Makefile
+==================
+Format::
+
+  target: prerequisites
+  	recipe
+
+Rule for the build::
+
+  main: main.o
+  	gcc -c main.c -o main.o
+  	gcc -c mylib.c -o mylib.o
+  	gcc -o main main.o mylib.o
+
+Our first Makefile
+==================
+Run::
+
+  # make
+  gcc -c main.c -o main.o
+  gcc -c mylib.c -o mylib.o
+  gcc -o main main.o mylib.o
+  # make
+  make: 'main' is up to date.
+
+Issue: Even updating main.c will cause a recompile of all files.
+
+Our first Makefile v2
+=====================
+Makefile::
+
+  main: main.o mylib.o
+  	gcc -o main main.o mylib.o
+
+  main.o: main.c mylib.h
+  	gcc -c -o main.o main.c
+
+  mylib.o: mylib.c mylib.h
+  	gcc -c -o mylib.o mylib.c
