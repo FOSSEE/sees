@@ -1,4 +1,6 @@
-FILES = file1.pdf file2.pdf file3.pdf
+FILES := file1.pdf file2.pdf file3.pdf
+AUXFILES := $(FILES:.pdf=.aux)
+LOGFILES := $(FILES:.pdf=.log)
 
 all: $(FILES)
 
@@ -7,4 +9,4 @@ all: $(FILES)
 
 .PHONY: clean
 clean:
-	$(RM) $(FILES)
+	$(RM) $(FILES) $(AUXFILES) $(LOGFILES)
