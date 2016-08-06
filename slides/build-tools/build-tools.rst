@@ -122,3 +122,58 @@ Makefile::
 
   mylib.o: mylib.c mylib.h
   	gcc -c -o mylib.o mylib.c
+
+Cleaning up: phony rules
+========================
+We can use ``make`` to handle cleanups as well::
+
+  clean:
+  	rm mylib.o main.o main
+
+Issue: what if you create a file called ``clean``? Ignore it by
+calling it a ``.PHONY``::
+
+  .PHONY: clean
+
+  clean:
+  	rm mylib.o main.o main
+
+Simplifying with variables, implicit rules
+==========================================
+Example::
+
+  objects = main.o mylib.o
+  main: $(objects)
+
+  main.o: mylib.h
+  mylib.o: mylib.h
+  .PHONY: clean
+  clean:
+  	rm main $(objects)
+
+Another style
+=============
+Example::
+
+  objects = main.o mylib.o
+  main: $(objects)
+
+  $(objects): mylib.h
+
+  .PHONY: clean
+  clean:
+  	rm main $(objects)
+
+Another style
+=============
+Suppose that ``main.o`` depends on ``mylib.h`` and ``main.h`` and ``mylib.o`` depends
+on ``mylib.h`` and ``utils.h``, then::
+
+  objects = main.o mylib.o
+  main: $(objects)
+
+  $(objects): mylib.h
+  main.o: main.h
+  mylib.o: utils.h
+
+  .PHONY: ...
