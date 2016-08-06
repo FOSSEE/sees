@@ -177,3 +177,31 @@ on ``mylib.h`` and ``utils.h``, then::
   mylib.o: utils.h
 
   .PHONY: ...
+
+Handling errors during clean
+============================
+
+- As you may have seen in bash, commands return status messages
+
+- ``make`` passes the status to the shell
+
+- Usually useful, except when using the ``clean`` rule
+
+- Avoid error status with ``clean`` rule by prepending the commands
+  with a hyphen
+
+Handling errors during clean
+============================
+Example to handle ``clean``::
+
+  objects = main.o mylib.o
+  main: $(objects)
+
+  $(objects): mylib.h
+
+  .PHONY: clean
+  clean:
+  	-rm main $(objects)
+
+Rules for multiple targets
+==========================
