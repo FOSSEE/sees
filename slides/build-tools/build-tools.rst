@@ -142,7 +142,7 @@ Simplifying with variables, implicit rules
 ==========================================
 Example::
 
-  objects = main.o mylib.o
+  objects := main.o mylib.o
   main: $(objects)
 
   main.o: mylib.h
@@ -155,7 +155,7 @@ Another style
 =============
 Example::
 
-  objects = main.o mylib.o
+  objects := main.o mylib.o
   main: $(objects)
 
   $(objects): mylib.h
@@ -169,7 +169,7 @@ Another style
 Suppose that ``main.o`` depends on ``mylib.h`` and ``main.h`` and ``mylib.o`` depends
 on ``mylib.h`` and ``utils.h``, then::
 
-  objects = main.o mylib.o
+  objects := main.o mylib.o
   main: $(objects)
 
   $(objects): mylib.h
@@ -194,7 +194,7 @@ Handling errors during clean
 ============================
 Example to handle ``clean``::
 
-  objects = main.o mylib.o
+  objects := main.o mylib.o
   main: $(objects)
 
   $(objects): mylib.h
@@ -205,3 +205,15 @@ Example to handle ``clean``::
 
 Rules for multiple targets
 ==========================
+Example::
+
+  FILES := file1.pdf file2.pdf file3.pdf
+  AUXFILES := $(FILES:.pdf=.aux)
+  LOGFILES := $(FILES:.pdf=.log)
+  all: $(FILES)
+  %.pdf: %.tex
+  	pdflatex $<
+  .PHONY: clean
+  clean:
+  	$(RM) $(FILES) $(AUXFILES) $(LOGFILES)
+
