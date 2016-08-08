@@ -217,3 +217,17 @@ Example::
   clean:
   	$(RM) $(FILES) $(AUXFILES) $(LOGFILES)
 
+
+Handling shell requests
+=======================
+Example: This presentation is built with ``rst2s5``. But some people
+have it in their computer as ``rst2s5.py``. To handle both::
+
+  RST2S5 = $(shell if which rst2s5.py > /dev/null; \
+  then echo rst2s5.py; else echo rst2s5; fi)
+  all: build-tools.html
+  build-tools.html: build-tools.rst
+	$(RST2S5) --theme=small-white $< $@
+  .PHONY: clean
+  clean:
+  	$(RM) build-tools.html
