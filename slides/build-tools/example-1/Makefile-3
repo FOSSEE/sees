@@ -1,0 +1,8 @@
+objects = main.o mylib.o
+main: $(objects)
+
+$(objects): mylib.h
+
+.PHONY: clean
+clean:
+	rm main $(objects)
