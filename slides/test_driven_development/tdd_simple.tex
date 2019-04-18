@@ -190,7 +190,7 @@ AssertionError
 \end{lstlisting} %$
 
   \begin{itemize}
-  \item We have our code unit stub, and a failing test. 
+  \item We have our code unit stub, and a failing test.
   \item The next step is to write code, so that the test just passes.
   \end{itemize}
 \end{frame}
@@ -262,7 +262,7 @@ def gcd(a, b):
   \end{itemize}
 \begin{lstlisting}
 def gcd(a, b):
-    """Returns the Greatest Common Divisor of the 
+    """Returns the Greatest Common Divisor of the
     two integers passed as arguments.
 
     Args:
@@ -322,7 +322,7 @@ if __name__ == '__main__':
   \frametitle{\texttt{nose} tests}
   \begin{itemize}
   \item It is not easy to organize, choose and run tests scattered
-    across multiple files. 
+    across multiple files.
   \item \texttt{nose} module aggregate these tests automatically
   \item Can aggregate \texttt{unittests} and \texttt{doctests}
   \item Allows us to pick and choose which tests to run
@@ -339,4 +339,11 @@ $ nosetests
   \end{itemize}
 \end{frame}
 
+
+\begin{frame}
+  \frametitle{\texttt{py.test}}
+  \begin{itemize}
+  \item Another test runner with different features
+  \end{itemize}
+\end{frame}
 \end{document}
